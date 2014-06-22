@@ -12,6 +12,8 @@
 {
     IBOutlet UITableView *table;
     NSArray *languages;
+    
+    NSArray *allUserLanguages;
 }
 @property(nonatomic, strong) IBOutlet UITableView *table;
 

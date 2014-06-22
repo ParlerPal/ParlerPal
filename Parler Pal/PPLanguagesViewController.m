@@ -19,14 +19,27 @@
 {
     languages = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SupportedLanguages" ofType:@"plist"]];
     
+    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(didGetLanguages:)];
+    
     [super viewDidLoad];
+}
+
+#pragma mark -
+#pragma mark - query did finish method
+
+-(void)didGetLanguages:(NSArray *)theReceivedLanguages
+{
+    allUserLanguages = theReceivedLanguages;
+    [self.table reloadData];
 }
 
 #pragma mark -
 #pragma mark table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 94.0;
+    return 103.0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -56,6 +69,33 @@
     }
     
     cell.language.text = [languages objectAtIndex:indexPath.row];
+    
+    for(PFObject *object in allUserLanguages)
+    {
+        if([object[@"name"]isEqualToString:[languages objectAtIndex:indexPath.row]])
+        {
+            if(object)
+            {
+                cell.status.selectedSegmentIndex = [[object objectForKey:@"languageStatus"]intValue];
+                
+                if([[object objectForKey:@"languageLevel"]intValue] != -1)
+                {
+                    cell.level.enabled = YES;
+                }
+                
+                else if(cell.status.selectedSegmentIndex == 0 || cell.status.selectedSegmentIndex == 1)
+                {
+                    cell.level.enabled = YES;
+                }
+                else
+                {
+                    cell.level.enabled = NO;
+                }
+                
+                cell.level.selectedSegmentIndex = [[object objectForKey:@"languageLevel"]intValue];
+            }
+        }
+    }
     
     return cell;
 }
