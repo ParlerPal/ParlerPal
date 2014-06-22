@@ -24,7 +24,7 @@
 {
     IBOutlet UILabel *username;
     IBOutlet UIImageView *image;
-    id delegate;
+    id <PPPalTableViewCellDelegate>delegate;
 }
 @property (nonatomic, strong) IBOutlet UILabel *username;
 @property (nonatomic, strong) IBOutlet UIImageView *image;

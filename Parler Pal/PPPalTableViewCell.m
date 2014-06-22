@@ -7,6 +7,7 @@
 //
 
 #import "PPPalTableViewCell.h"
+#import "PPFriendshipManagement.h"
 
 @implementation PPPalTableViewCell
 @synthesize username, image, delegate;
@@ -16,12 +17,13 @@
 
 -(IBAction)didSelectDetailsButton:(id)sender
 {
-    [self.delegate shouldShowDetails:username.text];
+    if([self.delegate respondsToSelector:@selector(shouldShowDetails:)])[self.delegate shouldShowDetails:username.text];
 }
 
 -(IBAction)didSelectAddRemoveButton:(id)sender
 {
-    [self.delegate didAddUser:username.text];
+    [PPFriendshipManagement requestFriendshipWith:username.text trusted:NO confirmed:NO];
+    if([self.delegate respondsToSelector:@selector(requestFriendshipWith:trusted:confirmed:)])[self.delegate didAddUser:username.text];
 }
 
 @end
