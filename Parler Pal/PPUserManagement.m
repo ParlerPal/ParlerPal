@@ -32,14 +32,10 @@
     }
     
     PFUser *user = [PFUser user];
-    NSDictionary *languageStatuses = [[NSDictionary alloc]init];
-    NSDictionary *languageLevels = [[NSDictionary alloc]init];
 
     user.username = username;
     user.password = password;
     user.email = email;
-    user[@"languageStatuses"] = languageStatuses;
-    user[@"languageLevels"] = languageLevels;
     
     // other fields can be set just like with PFObject
     //user[@"phone"] = @"415-392-0202";
