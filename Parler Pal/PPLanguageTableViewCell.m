@@ -16,30 +16,7 @@
 
 -(void)layoutSubviews
 {
-    PFUser *currentUser = [PFUser currentUser];
-    NSDictionary *languageStatuses = currentUser[@"languageStatuses"];
-    NSDictionary *languageLevels = currentUser[@"languageLevels"];
-    
-    if([languageStatuses objectForKey:language.text])
-    {
-        status.selectedSegmentIndex = [[languageStatuses objectForKey:language.text]intValue];
-        
-        if([[languageLevels objectForKey:language.text]intValue] != -1)
-        {
-            self.level.enabled = YES;
-        }
-        
-        else if(self.status.selectedSegmentIndex == 0 || self.status.selectedSegmentIndex == 1)
-        {
-            self.level.enabled = YES;
-        }
-        else
-        {
-            self.level.enabled = NO;
-        }
-        
-        level.selectedSegmentIndex = [[languageLevels objectForKey:language.text]intValue];
-    }
+
 }
 
 #pragma mark -
@@ -71,6 +48,31 @@
 
 -(void)saveUserLanguageInformation
 {
+    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
+    [query whereKey:@"name" equalTo:self.language.text];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
+    {
+        if(object)
+        {
+            object[@"languageStatus"] = [NSNumber numberWithInt:(int)status.selectedSegmentIndex];
+            object[@"languageLevel"] = [NSNumber numberWithInt:(int)level.selectedSegmentIndex];
+            [object saveInBackground];
+        }
+        
+        else
+        {
+            PFObject *object = [PFObject objectWithClassName:@"Languages"];
+            object[@"name"] = self.language.text;
+            object[@"languageStatus"] = [NSNumber numberWithInt:(int)status.selectedSegmentIndex];
+            object[@"languageLevel"] = [NSNumber numberWithInt:(int)level.selectedSegmentIndex];
+            object[@"user"] = [PFUser currentUser];
+            [object saveInBackground];
+        }
+    }];
+    
+    /*
     PFUser *currentUser = [PFUser currentUser];
     NSDictionary *languageStatuses = currentUser[@"languageStatuses"];
     NSDictionary *languageLevels = currentUser[@"languageLevels"];
@@ -83,7 +85,7 @@
     
     [currentUser setObject:languageStatuses forKey:@"languageStatuses"];
     [currentUser setObject:languageLevels forKey:@"languageLevels"];
-    [currentUser saveInBackground];
+    [currentUser saveInBackground];*/
 }
 
 @end
