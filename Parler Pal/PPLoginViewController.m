@@ -8,6 +8,7 @@
 
 #import "PPLoginViewController.h"
 #import "PPMainViewController.h"
+
 @implementation PPLoginViewController
 @synthesize userName, password, scrollView, contentView, welcomeMessage;
 
@@ -25,6 +26,10 @@
     languageIndex = 0;
     welcomeLanguages = @[@"Welcome",@"أهلا وسهلا", @"Bienvenue",@"Willkommen",@"Benvenuto",@"ようこそ",@"환영합니다",@"歡迎",@"Bem-vindo",@"Merhaba", @"witaj", @"добро пожаловать", @"Ласкаво просимо",@"chào mừng"];
     
+    if([PFUser currentUser])
+    {
+        [self shouldPerformSegueWithIdentifier:@"Login" sender:self];
+    }
 }
 
 -(void)viewDidLayoutSubviews
@@ -124,9 +129,11 @@
 
 -(BOOL)validateLogin
 {
+    if([PFUser currentUser]){return YES;}
+    
     NSError *error;
     [PFUser logInWithUsername:userName.text password:password.text error:&error];
-    
+
     if(error)
     {
         welcomeMessage.text = @"Invalid Credentials";
