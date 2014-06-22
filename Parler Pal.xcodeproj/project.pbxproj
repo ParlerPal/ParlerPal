@@ -23,9 +23,6 @@
 		648153881953BEF500D0B3F0 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153861953BEF500D0B3F0 /* menu@2x.png */; };
 		6481538E1953E87F00D0B3F0 /* Noteworthy.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 6481538D1953E86F00D0B3F0 /* Noteworthy.ttc */; };
 		648153901953EE3F00D0B3F0 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6481538F1953EE3F00D0B3F0 /* button.png */; };
-		648153921953F62D00D0B3F0 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153911953F62D00D0B3F0 /* Login_Screen.png */; };
-		648153981953FB8C00D0B3F0 /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153971953FB8C00D0B3F0 /* messageButton.png */; };
-		6481539A1953FC0000D0B3F0 /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153991953FC0000D0B3F0 /* palsButton.png */; };
 		6487B434194FAAE500F526E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B433194FAAE500F526E4 /* CFNetwork.framework */; };
 		6487B436194FAAF200F526E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B435194FAAF200F526E4 /* Security.framework */; };
 		6487B4A9194FAC6400F526E4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B4A8194FAC6400F526E4 /* libresolv.dylib */; };
@@ -33,21 +30,29 @@
 		648985711954CE66004C0286 /* PPPalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985701954CE66004C0286 /* PPPalsViewController.m */; };
 		648985741954D0F4004C0286 /* PPFriendshipManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985731954D0F4004C0286 /* PPFriendshipManagement.m */; };
 		648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985761954FAF5004C0286 /* PPPalTableViewCell.m */; };
-		648985791954FAF5004C0286 /* PPPalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 648985771954FAF5004C0286 /* PPPalTableViewCell.xib */; };
-		64898589195509FA004C0286 /* PPLanguagesPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64898588195509FA004C0286 /* PPLanguagesPopupView.xib */; };
 		6489858C19550A79004C0286 /* PPLanguagesPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489858B19550A79004C0286 /* PPLanguagesPopupView.m */; };
+		649547CE1955ED1D00349DC4 /* PPPalFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 649547CD1955ED1D00349DC4 /* PPPalFinder.m */; };
+		649547D0195656E800349DC4 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547CF195656E800349DC4 /* Login_Screen.png */; };
+		649547D2195657DE00349DC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D1195657DE00349DC4 /* background.png */; };
+		649547D41956596200349DC4 /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D31956596200349DC4 /* palsButton.png */; };
+		649547D619565AC900349DC4 /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D519565AC900349DC4 /* messageButton.png */; };
+		649547D819565BB100349DC4 /* languagesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D719565BB100349DC4 /* languagesButton.png */; };
+		649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649547E1195677B200349DC4 /* Main_iPhone.storyboard */; };
+		649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */; };
+		649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547F11956826A00349DC4 /* PPPalTableViewCell.xib */; };
+		649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547F8195682A700349DC4 /* PPMessageTableViewCell.xib */; };
+		649547FD195682E100349DC4 /* PPLanguagesPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */; };
+		649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649548051956907600349DC4 /* PPFindPalsViewController.m */; };
 		64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E88C19520AAC00620BA1 /* PPNavigationController.m */; };
 		64A1E89119520EB000620BA1 /* PPTopReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E89019520EB000620BA1 /* PPTopReplaceSegue.m */; };
 		64A1E894195216F100620BA1 /* PPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E893195216F100620BA1 /* PPProfileViewController.m */; };
 		64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E8981952265700620BA1 /* PPMessageTableViewCell.m */; };
-		64A1E89B1952265700620BA1 /* PPMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A1E8991952265700620BA1 /* PPMessageTableViewCell.xib */; };
 		64BFB63B1944183300D11E88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63A1944183300D11E88 /* Foundation.framework */; };
 		64BFB63D1944183300D11E88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63C1944183300D11E88 /* CoreGraphics.framework */; };
 		64BFB63F1944183300D11E88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63E1944183300D11E88 /* UIKit.framework */; };
 		64BFB6451944183300D11E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64BFB6431944183300D11E88 /* InfoPlist.strings */; };
 		64BFB6471944183300D11E88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BFB6461944183300D11E88 /* main.m */; };
 		64BFB64B1944183300D11E88 /* PPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BFB64A1944183300D11E88 /* PPAppDelegate.m */; };
-		64BFB64E1944183300D11E88 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BFB64C1944183300D11E88 /* Main_iPhone.storyboard */; };
 		64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BFB64F1944183300D11E88 /* Main_iPad.storyboard */; };
 		64BFB6541944183300D11E88 /* PPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BFB6531944183300D11E88 /* PPLoginViewController.m */; };
 		64BFB6561944183300D11E88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BFB6551944183300D11E88 /* Images.xcassets */; };
@@ -58,7 +63,6 @@
 		64BFB6691944183300D11E88 /* Parler_PalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BFB6681944183300D11E88 /* Parler_PalTests.m */; };
 		64BFB674194429C500D11E88 /* PPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BFB673194429C500D11E88 /* PPMainViewController.m */; };
 		64F780CE195270F80028A8D6 /* PPLanguageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F780CC195270F80028A8D6 /* PPLanguageTableViewCell.m */; };
-		64F780CF195270F80028A8D6 /* PPLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F780CD195270F80028A8D6 /* PPLanguageTableViewCell.xib */; };
 		64F780D2195272BB0028A8D6 /* PPLanguagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F780D1195272BB0028A8D6 /* PPLanguagesViewController.m */; };
 		64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64F780D319527CBB0028A8D6 /* SupportedLanguages.plist */; };
 /* End PBXBuildFile section */
@@ -94,9 +98,6 @@
 		648153861953BEF500D0B3F0 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		6481538D1953E86F00D0B3F0 /* Noteworthy.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noteworthy.ttc; sourceTree = "<group>"; };
 		6481538F1953EE3F00D0B3F0 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		648153911953F62D00D0B3F0 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
-		648153971953FB8C00D0B3F0 /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
-		648153991953FC0000D0B3F0 /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
 		6487B433194FAAE500F526E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6487B435194FAAF200F526E4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6487B4A8194FAC6400F526E4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
@@ -108,10 +109,35 @@
 		648985731954D0F4004C0286 /* PPFriendshipManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFriendshipManagement.m; sourceTree = "<group>"; };
 		648985751954FAF5004C0286 /* PPPalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPalTableViewCell.h; sourceTree = "<group>"; };
 		648985761954FAF5004C0286 /* PPPalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPalTableViewCell.m; sourceTree = "<group>"; };
-		648985771954FAF5004C0286 /* PPPalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPalTableViewCell.xib; sourceTree = "<group>"; };
-		64898588195509FA004C0286 /* PPLanguagesPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPLanguagesPopupView.xib; sourceTree = "<group>"; };
 		6489858A19550A79004C0286 /* PPLanguagesPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguagesPopupView.h; sourceTree = "<group>"; };
 		6489858B19550A79004C0286 /* PPLanguagesPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguagesPopupView.m; sourceTree = "<group>"; };
+		649547CC1955ED1D00349DC4 /* PPPalFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPalFinder.h; sourceTree = "<group>"; };
+		649547CD1955ED1D00349DC4 /* PPPalFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPalFinder.m; sourceTree = "<group>"; };
+		649547CF195656E800349DC4 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
+		649547D1195657DE00349DC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		649547D31956596200349DC4 /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
+		649547D519565AC900349DC4 /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
+		649547D719565BB100349DC4 /* languagesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = languagesButton.png; sourceTree = "<group>"; };
+		649547E0195677B200349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		649547E31956782900349DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		649547E4195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		649547E5195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		649547E6195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		649547E7195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		649547E919567FEE00349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPLanguageTableViewCell.xib; sourceTree = "<group>"; };
+		649547EC19567FF700349DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PPLanguageTableViewCell.strings; sourceTree = "<group>"; };
+		649547EE19567FF800349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PPLanguageTableViewCell.strings; sourceTree = "<group>"; };
+		649547F01956826A00349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPPalTableViewCell.xib; sourceTree = "<group>"; };
+		649547F31956826E00349DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PPPalTableViewCell.strings; sourceTree = "<group>"; };
+		649547F51956826F00349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PPPalTableViewCell.strings; sourceTree = "<group>"; };
+		649547F7195682A700349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPMessageTableViewCell.xib; sourceTree = "<group>"; };
+		649547FA195682AE00349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PPMessageTableViewCell.strings; sourceTree = "<group>"; };
+		649547FC195682AF00349DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PPMessageTableViewCell.strings; sourceTree = "<group>"; };
+		649547FE195682E100349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPLanguagesPopupView.xib; sourceTree = "<group>"; };
+		64954801195682E900349DC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PPLanguagesPopupView.strings; sourceTree = "<group>"; };
+		64954803195682EA00349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PPLanguagesPopupView.strings; sourceTree = "<group>"; };
+		649548041956907600349DC4 /* PPFindPalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFindPalsViewController.h; sourceTree = "<group>"; };
+		649548051956907600349DC4 /* PPFindPalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFindPalsViewController.m; sourceTree = "<group>"; };
 		64A1E88B19520AAC00620BA1 /* PPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNavigationController.h; sourceTree = "<group>"; };
 		64A1E88C19520AAC00620BA1 /* PPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNavigationController.m; sourceTree = "<group>"; };
 		64A1E88F19520EB000620BA1 /* PPTopReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTopReplaceSegue.h; sourceTree = "<group>"; };
@@ -120,7 +146,6 @@
 		64A1E893195216F100620BA1 /* PPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPProfileViewController.m; sourceTree = "<group>"; };
 		64A1E8971952265700620BA1 /* PPMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessageTableViewCell.h; sourceTree = "<group>"; };
 		64A1E8981952265700620BA1 /* PPMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessageTableViewCell.m; sourceTree = "<group>"; };
-		64A1E8991952265700620BA1 /* PPMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMessageTableViewCell.xib; sourceTree = "<group>"; };
 		64BFB6371944183300D11E88 /* Parler Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parler Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFB63A1944183300D11E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64BFB63C1944183300D11E88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,7 +156,6 @@
 		64BFB6481944183300D11E88 /* Parler Pal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parler Pal-Prefix.pch"; sourceTree = "<group>"; };
 		64BFB6491944183300D11E88 /* PPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPAppDelegate.h; sourceTree = "<group>"; };
 		64BFB64A1944183300D11E88 /* PPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPAppDelegate.m; sourceTree = "<group>"; };
-		64BFB64D1944183300D11E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		64BFB6501944183300D11E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		64BFB6521944183300D11E88 /* PPLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPLoginViewController.h; sourceTree = "<group>"; };
 		64BFB6531944183300D11E88 /* PPLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPLoginViewController.m; sourceTree = "<group>"; };
@@ -145,7 +169,6 @@
 		64BFB673194429C500D11E88 /* PPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainViewController.m; sourceTree = "<group>"; };
 		64F780CB195270F80028A8D6 /* PPLanguageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguageTableViewCell.h; sourceTree = "<group>"; };
 		64F780CC195270F80028A8D6 /* PPLanguageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguageTableViewCell.m; sourceTree = "<group>"; };
-		64F780CD195270F80028A8D6 /* PPLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		64F780D0195272BB0028A8D6 /* PPLanguagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguagesViewController.h; sourceTree = "<group>"; };
 		64F780D1195272BB0028A8D6 /* PPLanguagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguagesViewController.m; sourceTree = "<group>"; };
 		64F780D319527CBB0028A8D6 /* SupportedLanguages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SupportedLanguages.plist; sourceTree = "<group>"; };
@@ -204,6 +227,8 @@
 				64F780D1195272BB0028A8D6 /* PPLanguagesViewController.m */,
 				6489856F1954CE66004C0286 /* PPPalsViewController.h */,
 				648985701954CE66004C0286 /* PPPalsViewController.m */,
+				649548041956907600349DC4 /* PPFindPalsViewController.h */,
+				649548051956907600349DC4 /* PPFindPalsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -224,9 +249,11 @@
 		648153891953BEF900D0B3F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				648153991953FC0000D0B3F0 /* palsButton.png */,
-				648153971953FB8C00D0B3F0 /* messageButton.png */,
-				648153911953F62D00D0B3F0 /* Login_Screen.png */,
+				649547D719565BB100349DC4 /* languagesButton.png */,
+				649547D519565AC900349DC4 /* messageButton.png */,
+				649547D31956596200349DC4 /* palsButton.png */,
+				649547D1195657DE00349DC4 /* background.png */,
+				649547CF195656E800349DC4 /* Login_Screen.png */,
 				6481538F1953EE3F00D0B3F0 /* button.png */,
 				648153851953BEF500D0B3F0 /* menu.png */,
 				648153861953BEF500D0B3F0 /* menu@2x.png */,
@@ -247,13 +274,13 @@
 			children = (
 				64A1E8971952265700620BA1 /* PPMessageTableViewCell.h */,
 				64A1E8981952265700620BA1 /* PPMessageTableViewCell.m */,
-				64A1E8991952265700620BA1 /* PPMessageTableViewCell.xib */,
+				649547F8195682A700349DC4 /* PPMessageTableViewCell.xib */,
 				64F780CB195270F80028A8D6 /* PPLanguageTableViewCell.h */,
 				64F780CC195270F80028A8D6 /* PPLanguageTableViewCell.m */,
-				64F780CD195270F80028A8D6 /* PPLanguageTableViewCell.xib */,
+				649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */,
 				648985751954FAF5004C0286 /* PPPalTableViewCell.h */,
 				648985761954FAF5004C0286 /* PPPalTableViewCell.m */,
-				648985771954FAF5004C0286 /* PPPalTableViewCell.xib */,
+				649547F11956826A00349DC4 /* PPPalTableViewCell.xib */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -274,6 +301,8 @@
 				6487B4AB194FB16700F526E4 /* PPUserManagement.m */,
 				648985721954D0F4004C0286 /* PPFriendshipManagement.h */,
 				648985731954D0F4004C0286 /* PPFriendshipManagement.m */,
+				649547CC1955ED1D00349DC4 /* PPPalFinder.h */,
+				649547CD1955ED1D00349DC4 /* PPPalFinder.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -283,7 +312,7 @@
 			children = (
 				6489858A19550A79004C0286 /* PPLanguagesPopupView.h */,
 				6489858B19550A79004C0286 /* PPLanguagesPopupView.m */,
-				64898588195509FA004C0286 /* PPLanguagesPopupView.xib */,
+				649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */,
 				6489857A1954FE38004C0286 /* Table Cells */,
 			);
 			name = "Custom Views";
@@ -339,7 +368,7 @@
 				6423F59F195126FD00C14934 /* View Controllers */,
 				64BFB6491944183300D11E88 /* PPAppDelegate.h */,
 				64BFB64A1944183300D11E88 /* PPAppDelegate.m */,
-				64BFB64C1944183300D11E88 /* Main_iPhone.storyboard */,
+				649547E1195677B200349DC4 /* Main_iPhone.storyboard */,
 				64BFB64F1944183300D11E88 /* Main_iPad.storyboard */,
 				64BFB6551944183300D11E88 /* Images.xcassets */,
 				64BFB6411944183300D11E88 /* Supporting Files */,
@@ -442,6 +471,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 64BFB62E1944183300D11E88;
 			productRefGroup = 64BFB6381944183300D11E88 /* Products */;
@@ -461,20 +491,22 @@
 			files = (
 				648153871953BEF500D0B3F0 /* menu.png in Resources */,
 				648153901953EE3F00D0B3F0 /* button.png in Resources */,
+				649547D2195657DE00349DC4 /* background.png in Resources */,
+				649547D819565BB100349DC4 /* languagesButton.png in Resources */,
+				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
-				64F780CF195270F80028A8D6 /* PPLanguageTableViewCell.xib in Resources */,
+				649547D619565AC900349DC4 /* messageButton.png in Resources */,
+				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
+				649547D41956596200349DC4 /* palsButton.png in Resources */,
 				648153881953BEF500D0B3F0 /* menu@2x.png in Resources */,
-				64BFB64E1944183300D11E88 /* Main_iPhone.storyboard in Resources */,
-				648153921953F62D00D0B3F0 /* Login_Screen.png in Resources */,
-				648985791954FAF5004C0286 /* PPPalTableViewCell.xib in Resources */,
-				64A1E89B1952265700620BA1 /* PPMessageTableViewCell.xib in Resources */,
-				6481539A1953FC0000D0B3F0 /* palsButton.png in Resources */,
-				648153981953FB8C00D0B3F0 /* messageButton.png in Resources */,
+				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,
+				649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */,
+				649547D0195656E800349DC4 /* Login_Screen.png in Resources */,
 				64BFB6451944183300D11E88 /* InfoPlist.strings in Resources */,
 				6481538E1953E87F00D0B3F0 /* Noteworthy.ttc in Resources */,
 				64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */,
-				64898589195509FA004C0286 /* PPLanguagesPopupView.xib in Resources */,
+				649547FD195682E100349DC4 /* PPLanguagesPopupView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,11 +538,13 @@
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
 				64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */,
 				64BFB6541944183300D11E88 /* PPLoginViewController.m in Sources */,
+				649547CE1955ED1D00349DC4 /* PPPalFinder.m in Sources */,
 				648985741954D0F4004C0286 /* PPFriendshipManagement.m in Sources */,
 				64F780D2195272BB0028A8D6 /* PPLanguagesViewController.m in Sources */,
 				648153811953ABCC00D0B3F0 /* PPMessagesMenuViewController.m in Sources */,
 				6423F59E195126F900C14934 /* PPUserRegistrationViewController.m in Sources */,
 				64A1E89119520EB000620BA1 /* PPTopReplaceSegue.m in Sources */,
+				649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */,
 				64BFB6471944183300D11E88 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,26 +568,70 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		649547E1195677B200349DC4 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649547E0195677B200349DC4 /* Base */,
+				649547E31956782900349DC4 /* en */,
+				649547E4195678D600349DC4 /* fr */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649547E919567FEE00349DC4 /* Base */,
+				649547EC19567FF700349DC4 /* en */,
+				649547EE19567FF800349DC4 /* fr */,
+			);
+			name = PPLanguageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		649547F11956826A00349DC4 /* PPPalTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649547F01956826A00349DC4 /* Base */,
+				649547F31956826E00349DC4 /* en */,
+				649547F51956826F00349DC4 /* fr */,
+			);
+			name = PPPalTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		649547F8195682A700349DC4 /* PPMessageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649547F7195682A700349DC4 /* Base */,
+				649547FA195682AE00349DC4 /* fr */,
+				649547FC195682AF00349DC4 /* en */,
+			);
+			name = PPMessageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649547FE195682E100349DC4 /* Base */,
+				64954801195682E900349DC4 /* en */,
+				64954803195682EA00349DC4 /* fr */,
+			);
+			name = PPLanguagesPopupView.xib;
+			sourceTree = "<group>";
+		};
 		64BFB6431944183300D11E88 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				64BFB6441944183300D11E88 /* en */,
+				649547E6195678D600349DC4 /* fr */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		64BFB64C1944183300D11E88 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64BFB64D1944183300D11E88 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		64BFB64F1944183300D11E88 /* Main_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				64BFB6501944183300D11E88 /* Base */,
+				649547E5195678D600349DC4 /* fr */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -562,6 +640,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				64BFB6661944183300D11E88 /* en */,
+				649547E7195678D600349DC4 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
