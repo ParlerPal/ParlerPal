@@ -18,12 +18,28 @@
 
 - (void)viewDidLoad
 {
-    friendships = [PPFriendshipManagement getFriendships];
-    requests = [PPFriendshipManagement getFriendshipRequests];
+    fm = [[PPFriendshipManagement alloc]init];
+    fm.delegate = self;
+    [fm getFriendshipRequests];
+    [fm getFriendships];
+    
     [super viewDidLoad];
     
     popup = [[PPLanguagesPopupView alloc]initWithFrame:CGRectMake(60, 200, 208, 159)];
-    
+}
+
+#pragma PPFriendshipManagement delegate methods;
+
+-(void)didGetFriendshipRequests:(NSArray *)theRequests
+{
+    requests = theRequests;
+    [self.table reloadData];
+}
+
+-(void)didGetFriendships:(NSArray *)theFriendships
+{
+    friendships = theFriendships;
+    [self.table reloadData];
 }
 
 #pragma mark -
@@ -100,26 +116,26 @@
 {
     [self.view addSubview:popup];
     
-    PFUser *currentUser = [PPFriendshipManagement getUserForUserName:user];
-    NSDictionary *languageLevels = (NSDictionary *)currentUser[@"languageLevels"];
-    NSDictionary *languageStatuses = (NSDictionary *)currentUser[@"languageStatuses"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
+    [query whereKey:@"user" equalTo:user];
+    NSArray *allUserLanguages = [query findObjects];
     
     NSMutableString *learningString = [NSMutableString stringWithString:@"I'm Learning:\n"];
     NSMutableString *knowItString = [NSMutableString stringWithString:@"\nI Know:\n"];
     
-    for(NSString *key in [languageStatuses allKeys])
+    for(PFObject *object in allUserLanguages)
     {
-        int languageStatusIndex = [[languageStatuses objectForKey:key]intValue];
-        int languageLevelIndex = [[languageLevels objectForKey:key]intValue];
+        int languageStatusIndex = [[object objectForKey:@"languageStatus"]intValue];
+        int languageLevelIndex = [[object objectForKey:@"languageLevel"]intValue];
         
         if(languageStatusIndex == 1)
         {
-            [learningString appendString:[NSString stringWithFormat:@"%@: %@ \n",key, languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
+            [learningString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
         }
         
         else if(languageStatusIndex == 0)
         {
-            [knowItString appendString:[NSString stringWithFormat:@"%@: %@ \n",key, languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
+            [knowItString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
         }
     }
     popup.textView.text = [NSString stringWithFormat:@"%@%@",learningString,knowItString];

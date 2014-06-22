@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "PPPalTableViewCell.h"
 #import "PPLanguagesPopupView.h"
+#import "PPFriendshipManagement.h"
 
-@interface PPPalsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPPalTableViewCellDelegate>
+@interface PPPalsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPPalTableViewCellDelegate, PPFriendshipManagementDelegate>
 {
     IBOutlet UITableView *table;
     NSArray *friendships;
     NSArray *requests;
     PPLanguagesPopupView *popup;
+    PPFriendshipManagement *fm;
 }
 @property(nonatomic, strong) IBOutlet UITableView *table;
 
