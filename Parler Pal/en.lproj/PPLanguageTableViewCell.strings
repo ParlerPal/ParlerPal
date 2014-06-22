@@ -1,0 +1,21 @@
+
+/* Class = "IBUILabel"; text = "French"; ObjectID = "Nk4-6A-iUW"; */
+"Nk4-6A-iUW.text" = "French";
+
+/* Class = "IBUISegmentedControl"; fHx-Tc-foo.segmentTitles[0] = "I Know It"; ObjectID = "fHx-Tc-foo"; */
+"fHx-Tc-foo.segmentTitles[0]" = "I Know It";
+
+/* Class = "IBUISegmentedControl"; fHx-Tc-foo.segmentTitles[1] = "I'm Learning"; ObjectID = "fHx-Tc-foo"; */
+"fHx-Tc-foo.segmentTitles[1]" = "I'm Learning";
+
+/* Class = "IBUISegmentedControl"; fHx-Tc-foo.segmentTitles[2] = "Neither"; ObjectID = "fHx-Tc-foo"; */
+"fHx-Tc-foo.segmentTitles[2]" = "Neither";
+
+/* Class = "IBUISegmentedControl"; vCz-OD-wNg.segmentTitles[0] = "Beginner"; ObjectID = "vCz-OD-wNg"; */
+"vCz-OD-wNg.segmentTitles[0]" = "Beginner";
+
+/* Class = "IBUISegmentedControl"; vCz-OD-wNg.segmentTitles[1] = "Intermediate"; ObjectID = "vCz-OD-wNg"; */
+"vCz-OD-wNg.segmentTitles[1]" = "Intermediate";
+
+/* Class = "IBUISegmentedControl"; vCz-OD-wNg.segmentTitles[2] = "Fluent"; ObjectID = "vCz-OD-wNg"; */
+"vCz-OD-wNg.segmentTitles[2]" = "Fluent";

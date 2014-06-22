@@ -1,0 +1,141 @@
+
+/* Class = "IBUISegmentedControl"; 2lR-1d-9Dk.segmentTitles[0] = "Male"; ObjectID = "2lR-1d-9Dk"; */
+"2lR-1d-9Dk.segmentTitles[0]" = "Male";
+
+/* Class = "IBUISegmentedControl"; 2lR-1d-9Dk.segmentTitles[1] = "Female"; ObjectID = "2lR-1d-9Dk"; */
+"2lR-1d-9Dk.segmentTitles[1]" = "Female";
+
+/* Class = "IBUISegmentedControl"; 2lR-1d-9Dk.segmentTitles[2] = "N/S"; ObjectID = "2lR-1d-9Dk"; */
+"2lR-1d-9Dk.segmentTitles[2]" = "N/S";
+
+/* Class = "IBUITextField"; placeholder = "Private Email"; ObjectID = "2sZ-zW-cvp"; */
+"2sZ-zW-cvp.placeholder" = "Private Email";
+
+/* Class = "IBUILabel"; text = "Work in Progress"; ObjectID = "4Se-co-4ct"; */
+"4Se-co-4ct.text" = "Work in Progress";
+
+/* Class = "IBUIBarButtonItem"; title = "Profile"; ObjectID = "4Wc-Mh-RKl"; */
+"4Wc-Mh-RKl.title" = "Profile";
+
+/* Class = "IBUITextField"; placeholder = "Email"; ObjectID = "4f0-xe-gsN"; */
+"4f0-xe-gsN.placeholder" = "Email";
+
+/* Class = "IBUITextField"; placeholder = "Skype ID"; ObjectID = "4zd-Py-KF7"; */
+"4zd-Py-KF7.placeholder" = "Skype ID";
+
+/* Class = "IBUIButton"; normalTitle = "Cancel"; ObjectID = "6gg-li-jcv"; */
+"6gg-li-jcv.normalTitle" = "Cancel";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "7Ts-CU-vci"; */
+"7Ts-CU-vci.placeholder" = "Password";
+
+/* Class = "IBUIButton"; normalTitle = "Confirm"; ObjectID = "85X-1Y-WkS"; */
+"85X-1Y-WkS.normalTitle" = "Confirm";
+
+/* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "AqW-Cx-Rwe"; */
+"AqW-Cx-Rwe.title" = "Done";
+
+/* Class = "IBUILabel"; text = "About You!"; ObjectID = "Ayc-fr-Lmo"; */
+"Ayc-fr-Lmo.text" = "About You!";
+
+/* Class = "IBUITextField"; placeholder = "Confirm"; ObjectID = "DHz-lp-L5G"; */
+"DHz-lp-L5G.placeholder" = "Confirm";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "Doy-oS-KH3"; */
+"Doy-oS-KH3.title" = "Back";
+
+/* Class = "IBUITextField"; placeholder = "New Password"; ObjectID = "EZa-b9-3PS"; */
+"EZa-b9-3PS.placeholder" = "New Password";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "FGw-wu-EkM"; */
+"FGw-wu-EkM.title" = "Back";
+
+/* Class = "IBUILabel"; text = "Shared Details"; ObjectID = "IhU-vw-5pe"; */
+"IhU-vw-5pe.text" = "Shared Details";
+
+/* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "Jid-Xc-AUq"; */
+"Jid-Xc-AUq.placeholder" = "Username";
+
+/* Class = "IBUINavigationItem"; title = "username"; ObjectID = "JpL-Ky-MT5"; */
+"JpL-Ky-MT5.title" = "username";
+
+/* Class = "IBUIButton"; normalTitle = "Sign Up"; ObjectID = "KLb-hM-JEH"; */
+"KLb-hM-JEH.normalTitle" = "Sign Up";
+
+/* Class = "IBUILabel"; text = "Compose New"; ObjectID = "L0l-z0-hST"; */
+"L0l-z0-hST.text" = "Compose New";
+
+/* Class = "IBUILabel"; text = "Private Details"; ObjectID = "Lvd-Jb-aYx"; */
+"Lvd-Jb-aYx.text" = "Private Details";
+
+/* Class = "IBUILabel"; text = "Recent messages from your pals..."; ObjectID = "MCg-7V-SQx"; */
+"MCg-7V-SQx.text" = "Recent messages from your pals...";
+
+/* Class = "IBUITextField"; placeholder = "Confirm"; ObjectID = "NfA-TT-RRM"; */
+"NfA-TT-RRM.placeholder" = "Confirm";
+
+/* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "Tor-hE-fa3"; */
+"Tor-hE-fa3.placeholder" = "Username";
+
+/* Class = "IBUILabel"; text = "All information is Required"; ObjectID = "U6v-6u-EbR"; */
+"U6v-6u-EbR.text" = "All information is Required";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "WOJ-3S-AK1"; */
+"WOJ-3S-AK1.title" = "Back";
+
+/* Class = "IBUIBarButtonItem"; title = "Find Pals"; ObjectID = "Wpb-q0-sTc"; */
+"Wpb-q0-sTc.title" = "Find Pals";
+
+/* Class = "IBUIBarButtonItem"; title = "Logout"; ObjectID = "XTW-fM-FkD"; */
+"XTW-fM-FkD.title" = "Logout";
+
+/* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "XXe-i0-NzL"; */
+"XXe-i0-NzL.title" = "Done";
+
+/* Class = "IBUITextField"; placeholder = "Country of Origin"; ObjectID = "Yrb-7A-Hox"; */
+"Yrb-7A-Hox.placeholder" = "Country of Origin";
+
+/* Class = "IBUILabel"; text = "Your Pals"; ObjectID = "ajb-Lo-Xdx"; */
+"ajb-Lo-Xdx.text" = "Your Pals";
+
+/* Class = "IBUILabel"; text = "Age & Gender"; ObjectID = "bgT-YB-wSu"; */
+"bgT-YB-wSu.text" = "Age & Gender";
+
+/* Class = "IBUITextField"; placeholder = "Age"; ObjectID = "c1X-OR-TDO"; */
+"c1X-OR-TDO.placeholder" = "Age";
+
+/* Class = "IBUILabel"; text = "People who speak what you're learning"; ObjectID = "etN-MF-BJb"; */
+"etN-MF-BJb.text" = "People who speak what you're learning";
+
+/* Class = "IBUILabel"; text = "Your Languages"; ObjectID = "fPv-zS-dHg"; */
+"fPv-zS-dHg.text" = "Your Languages";
+
+/* Class = "IBUILabel"; text = "Change Password"; ObjectID = "gBa-X8-e15"; */
+"gBa-X8-e15.text" = "Change Password";
+
+/* Class = "IBUINavigationItem"; title = "All Messages"; ObjectID = "lCB-5Z-he4"; */
+"lCB-5Z-he4.title" = "All Messages";
+
+/* Class = "IBUILabel"; text = "Saved"; ObjectID = "ogj-RB-9cD"; */
+"ogj-RB-9cD.text" = "Saved";
+
+/* Class = "IBUISearchBar"; placeholder = "Language"; ObjectID = "p4Z-Qg-i4l"; */
+"p4Z-Qg-i4l.placeholder" = "Language";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "sPX-oD-PZ8"; */
+"sPX-oD-PZ8.placeholder" = "Password";
+
+/* Class = "IBUITextField"; placeholder = "Shared Email"; ObjectID = "udQ-NO-9jI"; */
+"udQ-NO-9jI.placeholder" = "Shared Email";
+
+/* Class = "IBUIButton"; normalTitle = "New"; ObjectID = "ufa-Ct-1Ik"; */
+"ufa-Ct-1Ik.normalTitle" = "New";
+
+/* Class = "IBUILabel"; text = "Pals"; ObjectID = "ukU-WR-eGB"; */
+"ukU-WR-eGB.text" = "Pals";
+
+/* Class = "IBUILabel"; text = "All Messages"; ObjectID = "x4H-34-hdT"; */
+"x4H-34-hdT.text" = "All Messages";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "zk0-gE-Ogk"; */
+"zk0-gE-Ogk.normalTitle" = "Login";
