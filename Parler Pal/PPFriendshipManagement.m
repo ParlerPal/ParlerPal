@@ -9,6 +9,7 @@
 #import "PPFriendshipManagement.h"
 
 @implementation PPFriendshipManagement
+@synthesize delegate;
 
 #pragma mark -
 #pragma mark request and confirm methods
@@ -135,10 +136,8 @@
 #pragma mark -
 #pragma mark get methods
 
-+(NSArray *)getFriendships
+-(void)getFriendships
 {
-    NSArray *friendships = NULL;
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Friendship"];
     [query whereKey:@"userA" equalTo:[[PFUser currentUser]username]];
     [query whereKey:@"confirmed" equalTo:@YES];
@@ -149,21 +148,21 @@
     
     PFQuery *query3 = [PFQuery orQueryWithSubqueries:@[query,query1]];
     
-    friendships = [query3 findObjects];
-    
-    return friendships;
+    [query3 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if([self.delegate respondsToSelector:@selector(didGetFriendships:)])[self.delegate didGetFriendships:objects];
+    }];
 }
 
-+(NSArray *)getFriendshipRequests
-{
-    NSArray *friendships = NULL;
-    
+-(void)getFriendshipRequests
+{    
     PFQuery *query = [PFQuery queryWithClassName:@"Friendship"];
     [query whereKey:@"userB" equalTo:[[PFUser currentUser]username]];
     [query whereKey:@"confirmed" equalTo:@NO];
-    friendships = [query findObjects];
     
-    return friendships;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if([self.delegate respondsToSelector:@selector(didGetFriendshipRequests:)])[self.delegate didGetFriendshipRequests:objects];
+    }];
+    
 }
 
 +(PFUser *)getUserForUserName:(NSString *)username

@@ -9,10 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+@protocol PPFriendshipManagementDelegate <NSObject>
+
+@optional
+-(void)didGetFriendships:(NSArray *)theFriendships;
+-(void)didGetFriendshipRequests:(NSArray *)theRequests;
+
+@end
+
 @interface PPFriendshipManagement : NSObject
 {
-    
+    id <PPFriendshipManagementDelegate>delegate;
 }
+@property (nonatomic, strong) id delegate;
 
 //Request a friendship with a given person, the trusted and confirmed variables may be obsolete
 +(BOOL)requestFriendshipWith:(NSString *)theUser trusted:(BOOL)trusted confirmed:(BOOL)confirmed;
@@ -30,10 +39,10 @@
 +(BOOL)deleteFriendshipWith:(NSString*)theUser;
 
 //Get all friendships for the current user
-+(NSArray *)getFriendships;
+-(void)getFriendships;
 
 //Get all friendship requests for the current user
-+(NSArray *)getFriendshipRequests;
+-(void)getFriendshipRequests;
 
 //Get the PFUser object for a given username
 +(PFUser *)getUserForUserName:(NSString *)username;
