@@ -7,7 +7,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Mf6-Bf-9bl">
             <objects>
-                <viewController id="wcY-Rr-nMp" customClass="PPProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileView" id="wcY-Rr-nMp" customClass="PPProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TVv-rn-kHs"/>
                         <viewControllerLayoutGuide type="bottom" id="F1b-SZ-LFz"/>
@@ -28,7 +28,7 @@
                                     <barButtonItem title="Done" id="AqW-Cx-Rwe">
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="pnS-xi-IeC" kind="push" identifier="doneSegue" customClass="PPTopReplaceSegue" id="i2K-a1-sYD"/>
+                                            <segue destination="pnS-xi-IeC" kind="custom" identifier="doneSegue" customClass="PPBottomReplaceSegue" id="i2K-a1-sYD"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Aeh-mV-vp0"/>
@@ -196,9 +196,11 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="tQi-qz-ON4"/>
                     <connections>
+                        <outlet property="age" destination="c1X-OR-TDO" id="PId-cn-b9v"/>
                         <outlet property="confirmPasswordField" destination="NfA-TT-RRM" id="9aI-Oh-KXB"/>
                         <outlet property="contentView" destination="ML7-p7-bjy" id="oHQ-Rj-SRr"/>
                         <outlet property="countryField" destination="Yrb-7A-Hox" id="F3f-1T-9Il"/>
+                        <outlet property="gender" destination="2lR-1d-9Dk" id="sz3-HL-BnP"/>
                         <outlet property="passwordField" destination="EZa-b9-3PS" id="zpe-ud-a6c"/>
                         <outlet property="privateEmailField" destination="2sZ-zW-cvp" id="0O7-Bj-7bh"/>
                         <outlet property="profile" destination="WS1-kK-5SS" id="iDv-ht-tWA"/>
@@ -214,7 +216,7 @@
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="PPLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="vXZ-lx-hvc" customClass="PPLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yIq-fP-Dj8"/>
                         <viewControllerLayoutGuide type="bottom" id="qD2-qg-gQ6"/>
@@ -257,7 +259,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="pnS-xi-IeC" kind="push" identifier="Login" id="9dj-j6-pEe"/>
+                                                    <segue destination="pnS-xi-IeC" kind="custom" identifier="Login" customClass="PPRightReplaceSegue" id="9dj-j6-pEe"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ts-CU-vci">
@@ -298,12 +300,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="191"/>
+            <point key="canvasLocation" x="188" y="191"/>
         </scene>
         <!--User Registration View Controller-->
         <scene sceneID="ljq-aQ-Dyk">
             <objects>
-                <viewController id="wT8-0t-uvE" customClass="PPUserRegistrationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupView" id="wT8-0t-uvE" customClass="PPUserRegistrationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ee-od-UGs"/>
                         <viewControllerLayoutGuide type="bottom" id="ogk-7d-nvV"/>
@@ -420,7 +422,7 @@
         <!--Languages View Controller-->
         <scene sceneID="2in-wg-1wH">
             <objects>
-                <viewController id="ulX-F3-raB" customClass="PPLanguagesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LanguagesView" id="ulX-F3-raB" customClass="PPLanguagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GAA-0V-Mbx"/>
                         <viewControllerLayoutGuide type="bottom" id="uZi-T0-43d"/>
@@ -450,7 +452,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wt1-rR-P7F"/>
                                     <barButtonItem title="Done" id="XXe-i0-NzL">
                                         <connections>
-                                            <segue destination="pnS-xi-IeC" kind="push" id="Edo-KQ-LCm"/>
+                                            <segue destination="pnS-xi-IeC" kind="custom" customClass="PPLeftReplaceSegue" id="Edo-KQ-LCm"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0Nz-BA-EXA"/>
@@ -493,12 +495,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7BP-PR-Bcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-308" y="191"/>
+            <point key="canvasLocation" x="-242" y="191"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="IRD-SC-CH6">
             <objects>
-                <viewController id="pnS-xi-IeC" customClass="PPMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="pnS-xi-IeC" customClass="PPMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hgT-uQ-Dne"/>
                         <viewControllerLayoutGuide type="bottom" id="ZqM-2l-1ec"/>
@@ -527,19 +529,19 @@
                                 <items>
                                     <barButtonItem image="languagesButton.png" id="XZL-Sr-4Ct">
                                         <connections>
-                                            <segue destination="ulX-F3-raB" kind="push" id="XXP-xd-8kK"/>
+                                            <segue destination="ulX-F3-raB" kind="custom" customClass="PPRightReplaceSegue" id="XXP-xd-8kK"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="G66-px-SqK"/>
                                     <barButtonItem image="palsButton.png" id="wbb-CP-xux">
                                         <connections>
-                                            <segue destination="lpi-Ax-aHa" kind="push" id="fsN-a6-hgO"/>
+                                            <segue destination="lpi-Ax-aHa" kind="custom" customClass="PPRightReplaceSegue" id="fsN-a6-hgO"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xmB-cD-42u"/>
                                     <barButtonItem image="messageButton.png" id="icv-JE-Q43">
                                         <connections>
-                                            <segue destination="YbH-uM-V8g" kind="push" id="x4a-3v-fct"/>
+                                            <segue destination="YbH-uM-V8g" kind="custom" customClass="PPRightReplaceSegue" id="x4a-3v-fct"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -556,13 +558,13 @@
                                         <barButtonItem key="leftBarButtonItem" title="Logout" id="XTW-fM-FkD">
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="vXZ-lx-hvc" kind="push" identifier="logout" id="joE-rc-OhB"/>
+                                                <segue destination="vXZ-lx-hvc" kind="custom" identifier="logout" customClass="PPLeftReplaceSegue" id="joE-rc-OhB"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Profile" id="4Wc-Mh-RKl">
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="wcY-Rr-nMp" kind="push" customClass="PPTopReplaceSegue" id="yFl-ik-0Dc"/>
+                                                <segue destination="wcY-Rr-nMp" kind="custom" customClass="PPTopReplaceSegue" id="yFl-ik-0Dc"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -731,7 +733,7 @@
         <!--Pals View Controller-->
         <scene sceneID="8No-8s-UbN">
             <objects>
-                <viewController id="lpi-Ax-aHa" customClass="PPPalsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PalsView" id="lpi-Ax-aHa" customClass="PPPalsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P3f-5M-gC0"/>
                         <viewControllerLayoutGuide type="bottom" id="8v3-Rp-xAO"/>
@@ -755,15 +757,15 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Back" id="FGw-wu-EkM">
+                                    <barButtonItem image="backButton.png" id="FGw-wu-EkM">
                                         <connections>
-                                            <segue destination="pnS-xi-IeC" kind="push" id="afg-Ip-1iT"/>
+                                            <segue destination="pnS-xi-IeC" kind="custom" customClass="PPLeftReplaceSegue" id="afg-Ip-1iT"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vv1-3d-jf9"/>
-                                    <barButtonItem title="Find Pals" id="Wpb-q0-sTc">
+                                    <barButtonItem image="searchPalsButton.png" id="Wpb-q0-sTc">
                                         <connections>
-                                            <segue destination="euj-dF-JxE" kind="push" id="MTI-7R-8RG"/>
+                                            <segue destination="euj-dF-JxE" kind="custom" customClass="PPRightReplaceSegue" id="MTI-7R-8RG"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -793,7 +795,7 @@
         <!--Find Pals View Controller-->
         <scene sceneID="XVX-2E-uCg">
             <objects>
-                <viewController id="euj-dF-JxE" customClass="PPFindPalsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PalsFinderView" id="euj-dF-JxE" customClass="PPFindPalsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cVh-hX-Qes"/>
                         <viewControllerLayoutGuide type="bottom" id="adp-r0-3Dq"/>
@@ -824,9 +826,9 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Back" id="WOJ-3S-AK1">
+                                    <barButtonItem image="backButton.png" id="WOJ-3S-AK1">
                                         <connections>
-                                            <segue destination="lpi-Ax-aHa" kind="push" id="paA-2m-pF3"/>
+                                            <segue destination="lpi-Ax-aHa" kind="custom" customClass="PPLeftReplaceSegue" id="paA-2m-pF3"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="haC-Eu-fEP"/>
@@ -855,7 +857,7 @@
         <!--Navigation Controller-->
         <scene sceneID="791-Gi-dRH">
             <objects>
-                <navigationController definesPresentationContext="YES" id="A5m-Mo-NQy" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="A5m-Mo-NQy" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="259-3O-FsM">
                         <autoresizingMask key="autoresizingMask"/>
@@ -871,33 +873,47 @@
         <!--Messages Main View Controller - All Messages-->
         <scene sceneID="6BZ-ya-kig">
             <objects>
-                <viewController id="bjF-aj-633" customClass="PPMessagesMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessagesView" id="bjF-aj-633" customClass="PPMessagesMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ueb-8a-Tgf"/>
                         <viewControllerLayoutGuide type="bottom" id="H91-Io-Ufq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q2m-xE-JkE">
-                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ice-u1-2YV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="612"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Gh-Qv-wWC">
-                                <rect key="frame" x="0.0" y="480" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A28-kq-Gwx"/>
-                                    <barButtonItem title="Back" id="Doy-oS-KH3">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cRZ-0q-Wnv"/>
+                                    <barButtonItem title="Done" id="Doy-oS-KH3">
                                         <connections>
-                                            <segue destination="pnS-xi-IeC" kind="push" id="se6-wn-NBQ"/>
+                                            <segue destination="pnS-xi-IeC" kind="custom" customClass="PPLeftReplaceSegue" id="se6-wn-NBQ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QxW-tM-1Yh"/>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rL5-XV-jlr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="All Messages" id="yR9-d4-Jq0">
+                                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="Dyl-oO-gil">
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.58431375029999999" green="0.78823536630000002" blue="0.43137258290000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -908,7 +924,7 @@
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="sidebarButton" destination="ei4-Uq-H1T" id="JGb-5n-oMN"/>
+                        <outlet property="sidebarButton" destination="Dyl-oO-gil" id="aTV-RT-ICb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pF6-gO-QHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -918,12 +934,14 @@
     </scenes>
     <resources>
         <image name="Login_Screen.png" width="640" height="1136"/>
+        <image name="backButton.png" width="44" height="36"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="button.png" width="490" height="124"/>
         <image name="languagesButton.png" width="35" height="30"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="messageButton.png" width="35" height="30"/>
         <image name="palsButton.png" width="35" height="30"/>
+        <image name="searchPalsButton.png" width="44" height="36"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -933,7 +951,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="afg-Ip-1iT"/>
-        <segue reference="paA-2m-pF3"/>
+        <segue reference="fsN-a6-hgO"/>
         <segue reference="joE-rc-OhB"/>
     </inferredMetricsTieBreakers>
 </document>

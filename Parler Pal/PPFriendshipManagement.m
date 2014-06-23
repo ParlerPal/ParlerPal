@@ -7,6 +7,7 @@
 //
 
 #import "PPFriendshipManagement.h"
+#import "PPDataShare.h"
 
 @implementation PPFriendshipManagement
 @synthesize delegate;
@@ -14,12 +15,11 @@
 #pragma mark -
 #pragma mark request and confirm methods
 
-+(BOOL)requestFriendshipWith:(NSString *)theUser trusted:(BOOL)trusted confirmed:(BOOL)confirmed
++(BOOL)requestFriendshipWith:(NSString *)theUser confirmed:(BOOL)confirmed
 {
      PFObject *friendship = [PFObject objectWithClassName:@"Friendship"];
      friendship[@"userA"] = [[PFUser currentUser]username];
      friendship[@"userB"] = theUser;
-     friendship[@"trusted"] = [NSNumber numberWithBool:trusted];
      friendship[@"confirmed"] = [NSNumber numberWithBool:confirmed];
      [friendship saveInBackground];
     
@@ -149,6 +149,7 @@
     PFQuery *query3 = [PFQuery orQueryWithSubqueries:@[query,query1]];
     
     [query3 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [[PPDataShare sharedSingleton]setSharedFriendships:objects];
         if([self.delegate respondsToSelector:@selector(didGetFriendships:)])[self.delegate didGetFriendships:objects];
     }];
 }
@@ -160,6 +161,7 @@
     [query whereKey:@"confirmed" equalTo:@NO];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [[PPDataShare sharedSingleton]setSharedFriendshipRequests:objects];
         if([self.delegate respondsToSelector:@selector(didGetFriendshipRequests:)])[self.delegate didGetFriendshipRequests:objects];
     }];
     

@@ -21,6 +21,6 @@
 +(BOOL)updatePasswordWithPassword:(NSString *)password confirm:(NSString *)confirm;
 
 //Update some required and option information of the PFUser current user
-+(BOOL)updateUserWithPrivateEmail:(NSString *)privateEmail country:(NSString *)country sharedEmail:(NSString *)sharedEmail skypeID:(NSString *)skypeID profile:(NSString *)profile;
++(BOOL)updateUserWithPrivateEmail:(NSString *)privateEmail country:(NSString *)country sharedEmail:(NSString *)sharedEmail skypeID:(NSString *)skypeID profile:(NSString *)profile age:(NSString*)age gender:(int)gender;
 
 @end

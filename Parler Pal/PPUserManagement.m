@@ -59,7 +59,7 @@
 #pragma mark -
 #pragma mark update methods
 
-+(BOOL)updateUserWithPrivateEmail:(NSString *)privateEmail country:(NSString *)country sharedEmail:(NSString *)sharedEmail skypeID:(NSString *)skypeID profile:(NSString *)profile
++(BOOL)updateUserWithPrivateEmail:(NSString *)privateEmail country:(NSString *)country sharedEmail:(NSString *)sharedEmail skypeID:(NSString *)skypeID profile:(NSString *)profile age:(NSString*)age gender:(int)gender
 {
     if(privateEmail.length <= 0)
     {
@@ -75,6 +75,8 @@
     currentUser[@"sharedEmail"] = sharedEmail;
     currentUser[@"skypeID"] = skypeID;
     currentUser[@"profile"] = profile;
+    currentUser[@"age"] = age;
+    currentUser[@"gender"] = [NSNumber numberWithInt:gender];
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded)

@@ -19,16 +19,16 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-tf-bnc">
-                        <rect key="frame" x="139" y="12" width="76" height="21"/>
+                        <rect key="frame" x="78" y="12" width="76" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-ha-HXX">
-                        <rect key="frame" x="278" y="26" width="22" height="22"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-ha-HXX">
+                        <rect key="frame" x="278" y="23" width="35" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal">
+                        <state key="normal" image="addPalButton.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -36,7 +36,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVd-Fq-Vxp">
-                        <rect key="frame" x="111" y="32" width="132" height="30"/>
+                        <rect key="frame" x="78" y="32" width="132" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="See My Languages">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,14 +46,30 @@
                             <action selector="didSelectDetailsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mvI-SB-jkh"/>
                         </connections>
                     </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-NG-cl4">
+                        <rect key="frame" x="235" y="23" width="35" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" backgroundImage="deletePalButton.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="rejectRequestButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5rO-eL-EfT"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.50676171670000003" blue="0.80988875680000005" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addRemoveButton" destination="qxy-ha-HXX" id="3lN-9J-6o6"/>
                 <outlet property="image" destination="aIv-cd-Pd4" id="DVO-KW-hlf"/>
+                <outlet property="rejectButton" destination="xCb-NG-cl4" id="s0A-PC-Iyz"/>
                 <outlet property="username" destination="r9h-tf-bnc" id="Cau-EY-quQ"/>
             </connections>
         </tableViewCell>
         <barButtonItem title="Item" id="9fJ-sJ-u8U"/>
     </objects>
+    <resources>
+        <image name="addPalButton.png" width="44" height="36"/>
+        <image name="deletePalButton.png" width="44" height="36"/>
+    </resources>
 </document>

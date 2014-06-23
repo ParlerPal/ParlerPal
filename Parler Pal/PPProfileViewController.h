@@ -21,15 +21,19 @@
     IBOutlet UITextField *sharedEmailField;
     IBOutlet UITextField *skypeIDField;
     
+    IBOutlet UITextField *age;
+    IBOutlet UISegmentedControl *gender;
+    
     IBOutlet UITextView *profile;
     
     IBOutlet UIView *contentView;
     IBOutlet UIScrollView *scrollView;
 }
-@property (nonatomic, strong) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField;
+@property (nonatomic, strong) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
 @property (nonatomic, strong) IBOutlet UITextView *profile;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *gender;
 
 //Text field action methods for when editing is complete
 -(IBAction)fieldDidEndEditing:(id)sender;

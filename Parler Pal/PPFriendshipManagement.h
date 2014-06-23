@@ -24,7 +24,7 @@
 @property (nonatomic, strong) id delegate;
 
 //Request a friendship with a given person, the trusted and confirmed variables may be obsolete
-+(BOOL)requestFriendshipWith:(NSString *)theUser trusted:(BOOL)trusted confirmed:(BOOL)confirmed;
++(BOOL)requestFriendshipWith:(NSString *)theUser confirmed:(BOOL)confirmed;
 
 //Confirm a friendship with a given username
 +(BOOL)confirmFriendshipWith:(NSString *)theUser;

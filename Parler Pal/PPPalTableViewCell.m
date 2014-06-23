@@ -10,7 +10,7 @@
 #import "PPFriendshipManagement.h"
 
 @implementation PPPalTableViewCell
-@synthesize username, image, delegate;
+@synthesize username, image, delegate, type, addRemoveButton, rejectButton;
 
 #pragma mark -
 #pragma mark action methods
@@ -22,8 +22,55 @@
 
 -(IBAction)didSelectAddRemoveButton:(id)sender
 {
-    [PPFriendshipManagement requestFriendshipWith:username.text trusted:NO confirmed:NO];
-    if([self.delegate respondsToSelector:@selector(requestFriendshipWith:trusted:confirmed:)])[self.delegate didAddUser:username.text];
+    if(self.type == kPalType)
+    {
+        [PPFriendshipManagement deleteFriendshipWith:username.text];
+    }
+    
+    else if(self.type == kFoundType)
+    {
+        [PPFriendshipManagement requestFriendshipWith:username.text confirmed:NO];
+    }
+    
+    else if(self.type == kRequestType)
+    {
+        [PPFriendshipManagement confirmFriendshipWith:username.text];
+    }
+}
+
+-(IBAction)rejectRequestButton:(id)sender
+{
+    if(self.type == kRequestType)
+    {
+        [PPFriendshipManagement deleteFriendshipWith:username.text];
+    }
+}
+
+#pragma mark -
+#pragma mark Setter methods
+
+-(void)setType:(PalTableViewCellType)theType
+{
+    type = theType;
+    
+    if(self.type == kPalType)
+    {
+        [self.addRemoveButton setImage:[UIImage imageNamed:@"deletePalButton.png"]  forState: UIControlStateNormal];
+        [self.rejectButton setHidden:YES];
+    }
+    
+    else if(self.type == kFoundType)
+    {
+        [self.addRemoveButton setImage:[UIImage imageNamed:@"addPalButton.png"] forState: UIControlStateNormal];
+        [self.rejectButton setHidden:YES];
+    }
+    
+    else if(self.type == kRequestType)
+    {
+        [self.addRemoveButton setImage:[UIImage imageNamed:@"addPalButton.png"] forState: UIControlStateNormal];
+
+        [self.rejectButton setHidden:NO];
+    }
 }
 
 @end

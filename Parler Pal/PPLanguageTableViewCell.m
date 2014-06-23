@@ -9,7 +9,7 @@
 #import "PPLanguageTableViewCell.h"
 
 @implementation PPLanguageTableViewCell
-@synthesize language, status, level;
+@synthesize language, status, level, delegate;
 
 #pragma mark -
 #pragma mark setup methods
@@ -36,11 +36,21 @@
     }
     
     [self saveUserLanguageInformation];
+    
+    if([self.delegate respondsToSelector:@selector(didAlterLanguageSettingsForCell:)])
+    {
+        [self.delegate didAlterLanguageSettingsForCell:self];
+    }
 }
 
 -(IBAction)levelChange:(id)sender
 {
     [self saveUserLanguageInformation];
+    
+    if([self.delegate respondsToSelector:@selector(didAlterLanguageSettingsForCell:)])
+    {
+        [self.delegate didAlterLanguageSettingsForCell:self];
+    }
 }
 
 #pragma mark -
@@ -68,6 +78,7 @@
             object[@"languageStatus"] = [NSNumber numberWithInt:(int)status.selectedSegmentIndex];
             object[@"languageLevel"] = [NSNumber numberWithInt:(int)level.selectedSegmentIndex];
             object[@"user"] = [PFUser currentUser];
+            object[@"username"] = [PFUser currentUser].username;
             [object saveInBackground];
         }
     }];

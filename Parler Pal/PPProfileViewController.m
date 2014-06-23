@@ -9,7 +9,7 @@
 #import "PPProfileViewController.h"
 
 @implementation PPProfileViewController
-@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView;
+@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender;
 
 #pragma mark -
 #pragma mark view methods
@@ -27,6 +27,8 @@
     sharedEmailField.text = [PFUser currentUser][@"sharedEmail"];
     skypeIDField.text = [PFUser currentUser][@"skypeID"];
     profile.text = [PFUser currentUser][@"profile"];
+    age.text = [PFUser currentUser][@"age"];
+    [gender setSelectedSegmentIndex:[[[PFUser currentUser]objectForKey:@"gender"]intValue]];
 }
 
 -(void)viewDidLayoutSubviews
@@ -104,7 +106,7 @@
 {
     if([identifier isEqualToString:@"doneSegue"])
     {
-        [PPUserManagement updateUserWithPrivateEmail:privateEmailField.text country:countryField.text sharedEmail:sharedEmailField.text skypeID:skypeIDField.text profile:profile.text];
+        [PPUserManagement updateUserWithPrivateEmail:privateEmailField.text country:countryField.text sharedEmail:sharedEmailField.text skypeID:skypeIDField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex];
         
         return YES;
     }

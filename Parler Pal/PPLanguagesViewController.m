@@ -36,6 +36,28 @@
 }
 
 #pragma mark -
+#pragma mark Table View Cell delegate methods
+
+-(void)didAlterLanguageSettingsForCell:(id)theCell
+{
+    PFObject *foundObject;
+    PPLanguageTableViewCell *currCell = (PPLanguageTableViewCell *)theCell;
+    
+    for(PFObject *object in allUserLanguages)
+    {
+        NSString *objectName = object[@"name"];
+        
+        if([objectName isEqualToString:currCell.language.text])
+        {
+            foundObject = object;
+        }
+    }
+    
+    foundObject[@"languageStatus"] = [NSNumber numberWithInt:(int)currCell.status.selectedSegmentIndex];
+    foundObject[@"languageLevel"] = [NSNumber numberWithInt:(int)currCell.level.selectedSegmentIndex];
+}
+
+#pragma mark -
 #pragma mark table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,6 +85,7 @@
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
                 cell = (PPLanguageTableViewCell *)currentObject;
+                cell.delegate = self;
                 break;
             }
         }

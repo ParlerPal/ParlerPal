@@ -28,7 +28,10 @@
     
     if([PFUser currentUser])
     {
-        [self shouldPerformSegueWithIdentifier:@"Login" sender:self];
+        PPMainViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+       // [self performSegueWithIdentifier:@"Login" sender:self];
     }
 }
 
@@ -128,9 +131,7 @@
 #pragma mark login methods
 
 -(BOOL)validateLogin
-{
-    if([PFUser currentUser]){return YES;}
-    
+{    
     NSError *error;
     [PFUser logInWithUsername:userName.text password:password.text error:&error];
 

@@ -53,7 +53,7 @@
 
 -(IBAction)hide:(id)sender
 {
-    [UIView animateWithDuration:.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
     } completion:^(BOOL finished){[self removeFromSuperview];}];
 }
@@ -63,7 +63,7 @@
 
 -(void)show
 {
-    [UIView animateWithDuration:.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
     } completion:^(BOOL finished){}];
 }

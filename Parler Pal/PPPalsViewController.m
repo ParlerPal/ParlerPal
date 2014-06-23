@@ -100,6 +100,7 @@
                 PFObject *friendship = indexPath.section == 1 ? [friendships objectAtIndex:indexPath.row] : [requests objectAtIndex:indexPath.row];
                 NSString *userA = friendship[@"userA"];
                 NSString *userB = friendship[@"userB"];
+                cell.type = indexPath.section == 1 ? kPalType : kRequestType;
                 cell.username.text = [userA isEqualToString:[[PFUser currentUser]username]] ? userB : userA;
                 break;
             }
@@ -117,7 +118,7 @@
     [self.view addSubview:popup];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
-    [query whereKey:@"user" equalTo:user];
+    [query whereKey:@"username" equalTo:user];
     NSArray *allUserLanguages = [query findObjects];
     
     NSMutableString *learningString = [NSMutableString stringWithString:@"I'm Learning:\n"];

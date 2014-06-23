@@ -20,18 +20,30 @@
 
 @end
 
+typedef enum : NSUInteger {
+    kPalType,
+    kRequestType,
+    kFoundType,
+} PalTableViewCellType;
+
 @interface PPPalTableViewCell : UITableViewCell
 {
     IBOutlet UILabel *username;
     IBOutlet UIImageView *image;
     id <PPPalTableViewCellDelegate>delegate;
+    PalTableViewCellType type;
+    IBOutlet UIButton *addRemoveButton;
+    IBOutlet UIButton *rejectButton;
 }
 @property (nonatomic, strong) IBOutlet UILabel *username;
 @property (nonatomic, strong) IBOutlet UIImageView *image;
 @property (nonatomic, strong) id delegate;
+@property (nonatomic, readwrite) PalTableViewCellType type;
+@property (nonatomic, strong) IBOutlet UIButton *addRemoveButton, *rejectButton;
 
 //Action methods
 -(IBAction)didSelectDetailsButton:(id)sender;
 -(IBAction)didSelectAddRemoveButton:(id)sender;
+-(IBAction)rejectRequestButton:(id)sender;
 
 @end

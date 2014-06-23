@@ -8,6 +8,7 @@
 
 #import "PPPalFinder.h"
 #import <Parse/Parse.h>
+#import "PPDataShare.h"
 
 #define kBlockSize 5
 
@@ -26,12 +27,13 @@
     return self;
 }
 
-//returning languages but needs to return users
 -(void)searchForABatchOfPossiblePals
 {
+    //Getting user's language info
     PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"languageStatus" equalTo:@1];
+    //Continue on to find pals based on this...
     [query findObjectsInBackgroundWithTarget:self selector:@selector(finishSearchBasedOnUserLanguages:)];
     
 }
@@ -63,11 +65,39 @@
          
          for(PFObject *object in objects)
          {
-             [users addObject:object[@"user"]];
+             if(![self isUserAlreadyFriend:object[@"user"]])
+             {
+                 [users addObject:object[@"user"]];
+             }
          }
          
          if([self.delegate respondsToSelector:@selector(didFindBatchOfPals:)])[self.delegate didFindBatchOfPals:users];
          lastReturnCount += objects.count;
      }];
 }
+
+-(BOOL)isUserAlreadyFriend:(PFUser *)user
+{
+    NSArray *sharedFriendships = [[PPDataShare sharedSingleton]sharedFriendships];
+    NSArray *sharedRequests = [[PPDataShare sharedSingleton]sharedFriendshipRequests];
+
+    for(PFObject *object in sharedFriendships)
+    {
+        if([object[@"userA"]isEqualToString:user.username] || [object[@"userB"]isEqualToString:user.username])
+        {
+            return YES;
+        }
+    }
+    
+    for(PFObject *object in sharedRequests)
+    {
+        if([object[@"userA"]isEqualToString:user.username] || [object[@"userB"]isEqualToString:user.username])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 @end

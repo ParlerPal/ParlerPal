@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPLanguageTableViewCell.h"
 
-@interface PPLanguagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PPLanguagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPLanguageTableViewCellDelegate>
 {
     IBOutlet UITableView *table;
     NSArray *languages;

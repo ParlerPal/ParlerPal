@@ -66,6 +66,7 @@
                 cell.delegate = self;
                 PFUser *friendship = [foundPals objectAtIndex:indexPath.row];
                 cell.username.text = [friendship username];
+                cell.type = kFoundType;
                 break;
             }
         }
@@ -82,7 +83,7 @@
     [self.view addSubview:popup];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
-    [query whereKey:@"user" equalTo:user];//We are going to need to include a connection to the users table to properly get the username.
+    [query whereKey:@"username" equalTo:user];
     NSArray *allUserLanguages = [query findObjects];
     
     NSMutableString *learningString = [NSMutableString stringWithString:@"I'm Learning:\n"];
