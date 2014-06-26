@@ -7,7 +7,6 @@
 //
 
 #import "PPPalTableViewCell.h"
-#import "PPFriendshipManagement.h"
 
 @implementation PPPalTableViewCell
 @synthesize username, image, delegate, type, addRemoveButton, rejectButton;
@@ -17,24 +16,25 @@
 
 -(IBAction)didSelectDetailsButton:(id)sender
 {
-    if([self.delegate respondsToSelector:@selector(shouldShowDetails:)])[self.delegate shouldShowDetails:username.text];
+    [self.delegate shouldShowDetails:username.text];
 }
 
 -(IBAction)didSelectAddRemoveButton:(id)sender
 {
     if(self.type == kPalType)
     {
-        [PPFriendshipManagement deleteFriendshipWith:username.text];
+        [self.delegate shouldDeleteFriend:self];
     }
     
     else if(self.type == kFoundType)
     {
-        [PPFriendshipManagement requestFriendshipWith:username.text confirmed:NO];
+        self.addRemoveButton.enabled = false;
+        [self.delegate shouldRequestFriend:self];
     }
     
     else if(self.type == kRequestType)
     {
-        [PPFriendshipManagement confirmFriendshipWith:username.text];
+        [self.delegate shouldAcceptRequest:self];
     }
 }
 
@@ -42,7 +42,7 @@
 {
     if(self.type == kRequestType)
     {
-        [PPFriendshipManagement deleteFriendshipWith:username.text];
+        [self.delegate shouldDenyRequest:self];
     }
 }
 

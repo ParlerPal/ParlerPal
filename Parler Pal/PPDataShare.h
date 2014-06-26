@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPPalsViewController;
+
 @interface PPDataShare : NSObject
 {
-    NSArray *sharedFriendshipRequests;
-    NSArray *sharedFriendships;
+
 }
-@property (nonatomic, strong)NSArray *sharedFriendshipRequests, *sharedFriendships;
 
 +(PPDataShare *)sharedSingleton;
 

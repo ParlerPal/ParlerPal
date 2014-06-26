@@ -7,6 +7,7 @@
 //
 
 #import "PPProfileViewController.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPProfileViewController
 @synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender;
@@ -22,16 +23,26 @@
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
     
-    privateEmailField.text = [[PFUser currentUser]email];
-    countryField.text = [PFUser currentUser][@"countryOfOrigin"];
-    sharedEmailField.text = [PFUser currentUser][@"sharedEmail"];
-    skypeIDField.text = [PFUser currentUser][@"skypeID"];
-    profile.text = [PFUser currentUser][@"profile"];
-    age.text = [PFUser currentUser][@"age"];
-    [gender setSelectedSegmentIndex:[[[PFUser currentUser]objectForKey:@"gender"]intValue]];
+    [[PPDatabaseManager sharedDatabaseManager]getUserProfileWithFinish:^(NSMutableDictionary *results)
+    {
+        privateEmailField.text = [results objectForKey: @"email"];
+        countryField.text = [results objectForKey: @"country"];
+        sharedEmailField.text = [results objectForKey: @"sharedEmail"];
+        skypeIDField.text = [results objectForKey: @"skypeID"];
+        profile.text = [results objectForKey: @"profile"];
+        age.text = [results objectForKey:@"age"];
+        [gender setSelectedSegmentIndex:[[results objectForKey:@"gender"]intValue]];
+    }];
 }
 
 -(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
+}
+
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidLayoutSubviews];
     [self.scrollView layoutIfNeeded];
@@ -89,14 +100,19 @@
 }
 
 #pragma mark -
-#pragma mark update password action method
+#pragma mark account action methods
 
 -(IBAction)updatePassword:(id)sender
 {
     [self.view endEditing:YES];
-    [PPUserManagement updatePasswordWithPassword:passwordField.text confirm:confirmPasswordField.text];
+    //[PPUserManagement updatePasswordWithPassword:passwordField.text confirm:confirmPasswordField.text];
     passwordField.text = @"";
     confirmPasswordField.text = @"";
+}
+
+-(IBAction)deleteAccount:(id)sender
+{
+    NSLog(@"DELETE ACCOUNT!");
 }
 
 #pragma mark -
@@ -106,7 +122,11 @@
 {
     if([identifier isEqualToString:@"doneSegue"])
     {
-        [PPUserManagement updateUserWithPrivateEmail:privateEmailField.text country:countryField.text sharedEmail:sharedEmailField.text skypeID:skypeIDField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex];
+        //[PPUserManagement updateUserWithPrivateEmail:privateEmailField.text country:countryField.text sharedEmail:sharedEmailField.text skypeID:skypeIDField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex];
+        
+        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex finish:^(bool success) {
+            
+        }];
         
         return YES;
     }

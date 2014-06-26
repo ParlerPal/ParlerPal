@@ -7,21 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
-
-@protocol PPLanguageTableViewCellDelegate <NSObject>
-
-@optional
--(void)didAlterLanguageSettingsForCell:(id)theCell;
-
-@end
 
 @interface PPLanguageTableViewCell : UITableViewCell
 {
     IBOutlet UILabel *language;
     IBOutlet UISegmentedControl *status;
     IBOutlet UISegmentedControl *level;
-    id <PPLanguageTableViewCellDelegate> delegate;
 }
 @property(nonatomic, strong)UILabel *language;
 @property(nonatomic, strong)UISegmentedControl *status, *level;

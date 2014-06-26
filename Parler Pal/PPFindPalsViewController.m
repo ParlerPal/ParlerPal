@@ -7,7 +7,7 @@
 //
 
 #import "PPFindPalsViewController.h"
-#import <Parse/Parse.h>
+#import "PPDatabaseManager.h"
 
 @implementation PPFindPalsViewController
 @synthesize table;
@@ -17,22 +17,37 @@
 
 - (void)viewDidLoad
 {
-    pf = [[PPPalFinder alloc]init];
-    pf.delegate = self;
-    [pf searchForABatchOfPossiblePals];
-    
     [super viewDidLoad];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPals:^(NSMutableArray *results) {
+        foundPals = results;
+        [self.table reloadData];
+    }];
     
     popup = [[PPLanguagesPopupView alloc]initWithFrame:CGRectMake(60, 200, 208, 159)];
 }
 
 #pragma mark -
-#pragma mark PPPalFinder delegate methods
+#pragma mark Friendship Management delegate methods
 
--(void)didFindBatchOfPals:(NSArray *)pals
+-(void)shouldRequestFriend:(id)sender
 {
-    foundPals = pals;
-    [self.table reloadData];
+    /*
+    PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
+    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+        NSMutableDictionary *userToRemove = NULL;
+        
+        for(NSMutableDictionary *user in foundPals)
+        {
+            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            {
+                userToRemove = user;
+            }
+        }
+        
+        [foundPals removeObject:userToRemove];
+        [self.table reloadData];
+    }];*/
 }
 
 #pragma mark -
@@ -64,9 +79,8 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
                 cell = (PPPalTableViewCell *)currentObject;
                 cell.delegate = self;
-                PFUser *friendship = [foundPals objectAtIndex:indexPath.row];
-                cell.username.text = [friendship username];
                 cell.type = kFoundType;
+                cell.username.text = [[foundPals objectAtIndex:indexPath.row]objectForKey:@"username"];
                 break;
             }
         }
@@ -80,6 +94,7 @@
 
 -(void)shouldShowDetails:(NSString *)user
 {
+    /*
     [self.view addSubview:popup];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
@@ -105,7 +120,7 @@
         }
     }
     popup.textView.text = [NSString stringWithFormat:@"%@%@",learningString,knowItString];
-    [popup show];
+    [popup show];*/
 }
 
 

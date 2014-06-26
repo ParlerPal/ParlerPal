@@ -7,7 +7,6 @@
 //
 
 #import "PPAppDelegate.h"
-#import "PPUserManagement.h"
 
 @implementation PPAppDelegate
 
@@ -21,11 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Parse setApplicationId:@"oNpx1fvw2xIFgAlwRez4xLcyHpiIiDDZiW3BLgFp"
-                  clientKey:@"EfLOgZuil4i7A55DfAwvtHLGAwuejVjFH2jb4bu3"];
-    
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
+
     return YES;
 }
 							

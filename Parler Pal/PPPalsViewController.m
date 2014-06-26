@@ -7,8 +7,7 @@
 //
 
 #import "PPPalsViewController.h"
-#import <Parse/Parse.h>
-#import "PPFriendshipManagement.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPPalsViewController
 @synthesize table;
@@ -18,28 +17,82 @@
 
 - (void)viewDidLoad
 {
-    fm = [[PPFriendshipManagement alloc]init];
-    fm.delegate = self;
-    [fm getFriendshipRequests];
-    [fm getFriendships];
+    [[PPDatabaseManager sharedDatabaseManager]getAllPals:^(NSMutableArray *results) {
+        friendships = results;
+        [self.table reloadData];
+    }];
     
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalRequests:^(NSMutableArray *results) {
+        requests = results;
+        [self.table reloadData];
+    }];
+
     [super viewDidLoad];
     
     popup = [[PPLanguagesPopupView alloc]initWithFrame:CGRectMake(60, 200, 208, 159)];
 }
 
-#pragma PPFriendshipManagement delegate methods;
-
--(void)didGetFriendshipRequests:(NSArray *)theRequests
+#pragma mark -
+#pragma mark PPPalTableViewCellDelegate Methods
+-(void)shouldAcceptRequest:(id)sender
 {
-    requests = theRequests;
-    [self.table reloadData];
+    PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
+    
+    [[PPDatabaseManager sharedDatabaseManager]confirmFriendshipWith:cell.username.text finish:^(bool success) {
+        
+        NSMutableDictionary *userToSwap = NULL;
+        
+        for(NSMutableDictionary *user in requests)
+        {
+            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            {
+                userToSwap = user;
+            }
+        }
+        
+        [requests removeObject:userToSwap];
+        [friendships addObject:userToSwap];
+        [self.table reloadData];
+        
+    }];
 }
 
--(void)didGetFriendships:(NSArray *)theFriendships
+-(void)shouldDenyRequest:(id)sender
 {
-    friendships = theFriendships;
-    [self.table reloadData];
+    PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
+    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+        NSMutableDictionary *userToRemove = NULL;
+        
+        for(NSMutableDictionary *user in requests)
+        {
+            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            {
+                userToRemove = user;
+            }
+        }
+        
+        [requests removeObject:userToRemove];
+        [self.table reloadData];
+    }];
+}
+
+-(void)shouldDeleteFriend:(id)sender
+{
+    PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
+    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+        NSMutableDictionary *userToRemove = NULL;
+        
+        for(NSMutableDictionary *user in friendships)
+        {
+            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            {
+                userToRemove = user;
+            }
+        }
+        
+        [friendships removeObject:userToRemove];
+        [self.table reloadData];
+    }];
 }
 
 #pragma mark -
@@ -97,11 +150,8 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
                 cell = (PPPalTableViewCell *)currentObject;
                 cell.delegate = self;
-                PFObject *friendship = indexPath.section == 1 ? [friendships objectAtIndex:indexPath.row] : [requests objectAtIndex:indexPath.row];
-                NSString *userA = friendship[@"userA"];
-                NSString *userB = friendship[@"userB"];
                 cell.type = indexPath.section == 1 ? kPalType : kRequestType;
-                cell.username.text = [userA isEqualToString:[[PFUser currentUser]username]] ? userB : userA;
+                cell.username.text = cell.type == kPalType ? [[friendships objectAtIndex:indexPath.row]objectForKey:@"username"] : [[requests objectAtIndex:indexPath.row]objectForKey:@"username"];
                 break;
             }
         }
@@ -115,6 +165,7 @@
 
 -(void)shouldShowDetails:(NSString *)user
 {
+    /*
     [self.view addSubview:popup];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
@@ -140,7 +191,7 @@
         }
     }
     popup.textView.text = [NSString stringWithFormat:@"%@%@",learningString,knowItString];
-    [popup show];
+    [popup show];*/
 }
 
 @end

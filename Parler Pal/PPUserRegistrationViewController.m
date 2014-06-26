@@ -7,6 +7,7 @@
 //
 
 #import "PPUserRegistrationViewController.h"
+#import "PPUserManagement.h"
 
 @implementation PPUserRegistrationViewController
 @synthesize usernameField, passwordField, confirmField, emailField, welcomeMessage, scrollView, contentView;
@@ -17,6 +18,10 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    tapRec.delegate = self;
+    [self.view addGestureRecognizer:tapRec];
 }
 
 -(void)viewDidLayoutSubviews
@@ -24,6 +29,23 @@
     [super viewDidLayoutSubviews];
     [self.scrollView layoutIfNeeded];
     self.scrollView.contentSize = self.contentView.bounds.size;
+}
+
+#pragma mark -
+#pragma mark gesture methods
+
+-(void)tap:(UITapGestureRecognizer *)tapRec
+{
+    [[self view] endEditing: YES];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        // we touched a button, slider, or other UIControl
+        return NO; // ignore the touch
+    }
+    return YES; // handle the touch
 }
 
 #pragma mark -

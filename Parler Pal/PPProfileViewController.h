@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
-#import "PPUserManagement.h"
-
 @interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 {
     IBOutlet UITextField *passwordField;
@@ -28,6 +25,8 @@
     
     IBOutlet UIView *contentView;
     IBOutlet UIScrollView *scrollView;
+    
+    CGPoint *previousPoint; 
 }
 @property (nonatomic, strong) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
 @property (nonatomic, strong) IBOutlet UITextView *profile;
@@ -39,4 +38,8 @@
 -(IBAction)fieldDidEndEditing:(id)sender;
 //Update password confirm button action
 -(IBAction)updatePassword:(id)sender;
+
+//Delete Account!
+-(IBAction)deleteAccount:(id)sender;
+
 @end

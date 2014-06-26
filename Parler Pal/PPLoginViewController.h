@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PPMainViewController.h"
-#import <Parse/Parse.h>
 
 @interface PPLoginViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
@@ -27,7 +26,7 @@
 @property(nonatomic, strong)UILabel *welcomeMessage;
 
 //Check if login credentials are correct
--(BOOL)validateLogin;
+-(IBAction)login:(id)sender;
 
 //Text field action methods for when fields did return
 -(IBAction)userFieldDidReturn:(id)sender;

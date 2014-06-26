@@ -8,6 +8,7 @@
 
 #import "PPLanguagesViewController.h"
 #import "PPLanguageTableViewCell.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPLanguagesViewController
 @synthesize table;
@@ -19,42 +20,12 @@
 {
     languages = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SupportedLanguages" ofType:@"plist"]];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithTarget:self selector:@selector(didGetLanguages:)];
+    [[PPDatabaseManager sharedDatabaseManager]getAllLanguages:^(NSMutableArray *results) {
+        allUserLanguages = results;
+        [self.table reloadData];
+    }];
     
     [super viewDidLoad];
-}
-
-#pragma mark -
-#pragma mark - query did finish method
-
--(void)didGetLanguages:(NSArray *)theReceivedLanguages
-{
-    allUserLanguages = theReceivedLanguages;
-    [self.table reloadData];
-}
-
-#pragma mark -
-#pragma mark Table View Cell delegate methods
-
--(void)didAlterLanguageSettingsForCell:(id)theCell
-{
-    PFObject *foundObject;
-    PPLanguageTableViewCell *currCell = (PPLanguageTableViewCell *)theCell;
-    
-    for(PFObject *object in allUserLanguages)
-    {
-        NSString *objectName = object[@"name"];
-        
-        if([objectName isEqualToString:currCell.language.text])
-        {
-            foundObject = object;
-        }
-    }
-    
-    foundObject[@"languageStatus"] = [NSNumber numberWithInt:(int)currCell.status.selectedSegmentIndex];
-    foundObject[@"languageLevel"] = [NSNumber numberWithInt:(int)currCell.level.selectedSegmentIndex];
 }
 
 #pragma mark -
@@ -93,34 +64,34 @@
     
     cell.language.text = [languages objectAtIndex:indexPath.row];
     
-    for(PFObject *object in allUserLanguages)
+    for(NSDictionary *dict in allUserLanguages)
     {
-        if([object[@"name"]isEqualToString:[languages objectAtIndex:indexPath.row]])
+        if([[dict objectForKey:@"name"]isEqualToString:[languages objectAtIndex:indexPath.row]])
         {
-            if(object)
-            {
-                cell.status.selectedSegmentIndex = [[object objectForKey:@"languageStatus"]intValue];
+                cell.status.selectedSegmentIndex = [[dict objectForKey:@"languageStatus"]intValue];
                 
-                if([[object objectForKey:@"languageLevel"]intValue] != -1)
+                if([[dict objectForKey:@"languageStatus"]intValue] == 2)
                 {
-                    cell.level.enabled = YES;
+                    cell.level.enabled = NO;
                 }
                 
-                else if(cell.status.selectedSegmentIndex == 0 || cell.status.selectedSegmentIndex == 1)
+                else if([[dict objectForKey:@"languageStatus"]intValue] == 1 || [[dict objectForKey:@"languageStatus"]intValue] == 0)
                 {
+                    cell.level.selectedSegmentIndex = [[dict objectForKey:@"languageLevel"]intValue];
                     cell.level.enabled = YES;
                 }
                 else
                 {
                     cell.level.enabled = NO;
                 }
-                
-                cell.level.selectedSegmentIndex = [[object objectForKey:@"languageLevel"]intValue];
-            }
-        }
+         }
     }
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
 @end

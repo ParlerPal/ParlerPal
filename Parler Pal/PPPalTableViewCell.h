@@ -11,12 +11,14 @@
 //Delegate for handling when user choses to add/remove the pal or wishes to see details
 @protocol PPPalTableViewCellDelegate <NSObject>
 
-@optional //These are optional for now, but they will likely be required
--(void)didAddUser:(NSString *)user;
--(void)didRemoveUser:(NSString *)user;
-
 @required
 -(void)shouldShowDetails:(NSString *)user;
+
+@optional
+-(void)shouldAcceptRequest:(id)sender;
+-(void)shouldDenyRequest:(id)sender;
+-(void)shouldDeleteFriend:(id)sender;
+-(void)shouldRequestFriend:(id)sender;
 
 @end
 

@@ -9,7 +9,6 @@
 #import "PPDataShare.h"
 
 @implementation PPDataShare
-@synthesize sharedFriendshipRequests, sharedFriendships;
 
 #pragma mark -
 #pragma mark instance methods

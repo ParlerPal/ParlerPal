@@ -8,8 +8,6 @@
 
 #import "PPMainViewController.h"
 #import "PPMessageTableViewCell.h"
-#import "PPUserManagement.h"
-
 @implementation PPMainViewController
 @synthesize toolbarTitle;
 
@@ -20,7 +18,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.toolbarTitle.title = [PFUser currentUser].username;
+    self.toolbarTitle.title = @"username";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -33,7 +31,7 @@
 #pragma mark table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 94.0;
+    return 67.0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -71,6 +69,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
+
 #pragma mark -
 #pragma mark segue methods
 
@@ -78,7 +81,7 @@
 {
     if ([identifier isEqualToString:@"logout"])
     {
-        [PFUser logOut];
+        //[PFUser logOut];
         return YES;
     }
     

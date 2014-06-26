@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "PPLanguageTableViewCell.h"
 
-@interface PPLanguagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPLanguageTableViewCellDelegate>
+@interface PPLanguagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UITableView *table;
     NSArray *languages;
     
-    NSArray *allUserLanguages;
+    NSMutableArray *allUserLanguages;
 }
 @property(nonatomic, strong) IBOutlet UITableView *table;
 

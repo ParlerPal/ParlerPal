@@ -8,6 +8,7 @@
 
 #import "PPLoginViewController.h"
 #import "PPMainViewController.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPLoginViewController
 @synthesize userName, password, scrollView, contentView, welcomeMessage;
@@ -26,13 +27,14 @@
     languageIndex = 0;
     welcomeLanguages = @[@"Welcome",@"أهلا وسهلا", @"Bienvenue",@"Willkommen",@"Benvenuto",@"ようこそ",@"환영합니다",@"歡迎",@"Bem-vindo",@"Merhaba", @"witaj", @"добро пожаловать", @"Ласкаво просимо",@"chào mừng"];
     
+    /*
     if([PFUser currentUser])
     {
         PPMainViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
         [self.navigationController pushViewController:controller animated:YES];
         
        // [self performSegueWithIdentifier:@"Login" sender:self];
-    }
+    }*/
 }
 
 -(void)viewDidLayoutSubviews
@@ -99,12 +101,12 @@
 
 -(void)animateText
 {
-    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(-10, 110, 340, 100)];
+    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(-10, 130, 340, 100)];
     welcome.text = @"Welcome";
     welcome.textAlignment = NSTextAlignmentCenter;
     welcome.alpha = 0.0;
     welcome.font = [UIFont fontWithName:@"Noteworthy" size:36];
-    welcome.textColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:1.0];
+    welcome.textColor = [UIColor colorWithRed:0 green:0  blue:0  alpha:1.0];
     [self.contentView addSubview:welcome];
     [self beginFadeInTextLabel:welcome];
 }
@@ -130,34 +132,15 @@
 #pragma mark -
 #pragma mark login methods
 
--(BOOL)validateLogin
+-(IBAction)login:(id)sender
 {    
-    NSError *error;
-    [PFUser logInWithUsername:userName.text password:password.text error:&error];
-
-    if(error)
-    {
-        welcomeMessage.text = @"Invalid Credentials";
-        return NO;
-    }
-    
-    else
-    {
-        return YES;
-    }
-}
-
-#pragma mark -
-#pragma mark segue methods
-
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"Login"])
-    {
-        return [self validateLogin];
-    }
-    
-    return YES;
+    [[PPDatabaseManager sharedDatabaseManager]signinWithUsername:userName.text password:password.text finish:^(bool success){
+        if(success)
+        {
+            [self performSegueWithIdentifier:@"login" sender:self];
+        }
+        else NSLog(@"NO");
+    }];
 }
 
 @end

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PPUserManagement.h"
 
-@interface PPUserRegistrationViewController : UIViewController <UITextFieldDelegate>
+@interface PPUserRegistrationViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     IBOutlet UITextField *usernameField;
     IBOutlet UITextField *passwordField;

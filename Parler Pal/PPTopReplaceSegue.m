@@ -44,6 +44,7 @@
     
     [nav popViewControllerAnimated:NO];
     [nav pushViewController:dst animated:NO];
+    
     [dst.view setUserInteractionEnabled:YES];
 }
 
