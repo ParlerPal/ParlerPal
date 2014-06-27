@@ -104,17 +104,17 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;//requests.count > 0 ? 2 : 1;
+    return requests.count > 0 ? 2 : 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0)
+    if(section == 0 && requests.count > 0)
     {
         return [requests count];
     }
     
-    else if(section == 1)
+    else if(section == 1 || requests.count == 0)
     {
         return [friendships count];
     }
@@ -125,12 +125,12 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 
-    if (section == 0)
+    if (section == 0 && requests.count > 0)
     {
         return @"Requests";
     }
     
-    if (section == 1)
+    if (section == 1 || requests.count == 0)
     {
         return @"Friendships";
     }
@@ -150,7 +150,7 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
                 cell = (PPPalTableViewCell *)currentObject;
                 cell.delegate = self;
-                cell.type = indexPath.section == 1 ? kPalType : kRequestType;
+                cell.type = (indexPath.section == 1 || requests.count == 0) ? kPalType : kRequestType;
                 cell.username.text = cell.type == kPalType ? [[friendships objectAtIndex:indexPath.row]objectForKey:@"username"] : [[requests objectAtIndex:indexPath.row]objectForKey:@"username"];
                 break;
             }
