@@ -9,6 +9,7 @@
 #import "PPDataShare.h"
 
 @implementation PPDataShare
+@synthesize currentUser;
 
 #pragma mark -
 #pragma mark instance methods

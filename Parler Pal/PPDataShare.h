@@ -12,8 +12,9 @@
 
 @interface PPDataShare : NSObject
 {
-
+    NSString *currentUser;
 }
+@property(nonatomic, strong) NSString *currentUser;
 
 +(PPDataShare *)sharedSingleton;
 
