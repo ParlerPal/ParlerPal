@@ -26,6 +26,8 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
 }
 
 @end

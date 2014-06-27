@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PPMessagesMenuViewController : UIViewController
-
+@interface PPMessagesMenuViewController : UITableViewController
+{
+    
+}
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @end

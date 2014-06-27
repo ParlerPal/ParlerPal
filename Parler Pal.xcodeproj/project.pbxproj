@@ -34,6 +34,10 @@
 		645A1B67195B54EB004657B2 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B60195B54EB004657B2 /* DDXMLNode.m */; };
 		645A1B6A195B5A72004657B2 /* PPDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B69195B5A72004657B2 /* PPDatabaseManager.m */; };
 		645A1B6D195BDD33004657B2 /* PPUserManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B6C195BDD33004657B2 /* PPUserManagement.m */; };
+		645A1B6F195C887F004657B2 /* quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 645A1B6E195C887F004657B2 /* quotes.plist */; };
+		645A1B72195CA99C004657B2 /* PPMessagesComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */; };
+		645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */; };
+		645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */; };
 		645A850019593D7D00313358 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A84FF19593D7D00313358 /* Login_Screen.png */; };
 		6481537B1953AB7200D0B3F0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6481537A1953AB7200D0B3F0 /* SWRevealViewController.m */; };
 		6481537E1953ABBB00D0B3F0 /* PPMessagesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6481537D1953ABBB00D0B3F0 /* PPMessagesMainViewController.m */; };
@@ -150,6 +154,13 @@
 		645A1B69195B5A72004657B2 /* PPDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDatabaseManager.m; sourceTree = "<group>"; };
 		645A1B6B195BDD33004657B2 /* PPUserManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserManagement.h; sourceTree = "<group>"; };
 		645A1B6C195BDD33004657B2 /* PPUserManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserManagement.m; sourceTree = "<group>"; };
+		645A1B6E195C887F004657B2 /* quotes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = quotes.plist; sourceTree = "<group>"; };
+		645A1B70195CA99C004657B2 /* PPMessagesComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesComposeViewController.h; sourceTree = "<group>"; };
+		645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesComposeViewController.m; sourceTree = "<group>"; };
+		645A1B73195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesWorkInProgressViewController.h; sourceTree = "<group>"; };
+		645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesWorkInProgressViewController.m; sourceTree = "<group>"; };
+		645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSavedViewController.h; sourceTree = "<group>"; };
+		645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSavedViewController.m; sourceTree = "<group>"; };
 		645A84FF19593D7D00313358 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
 		648153791953AB7200D0B3F0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6481537A1953AB7200D0B3F0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -370,6 +381,12 @@
 				6481537D1953ABBB00D0B3F0 /* PPMessagesMainViewController.m */,
 				6481537F1953ABCC00D0B3F0 /* PPMessagesMenuViewController.h */,
 				648153801953ABCC00D0B3F0 /* PPMessagesMenuViewController.m */,
+				645A1B70195CA99C004657B2 /* PPMessagesComposeViewController.h */,
+				645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */,
+				645A1B73195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.h */,
+				645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */,
+				645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */,
+				645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */,
 			);
 			name = MessagesViewControllers;
 			sourceTree = "<group>";
@@ -538,6 +555,7 @@
 				64BFB6461944183300D11E88 /* main.m */,
 				64BFB6481944183300D11E88 /* Parler Pal-Prefix.pch */,
 				64F780D319527CBB0028A8D6 /* SupportedLanguages.plist */,
+				645A1B6E195C887F004657B2 /* quotes.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -652,6 +670,7 @@
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
 				649547D619565AC900349DC4 /* messageButton.png in Resources */,
+				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
 				645A850019593D7D00313358 /* Login_Screen.png in Resources */,
@@ -687,12 +706,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */,
+				645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */,
 				648985711954CE66004C0286 /* PPPalsViewController.m in Sources */,
 				6481537B1953AB7200D0B3F0 /* SWRevealViewController.m in Sources */,
 				645A1B64195B54EB004657B2 /* NSString+DDXML.m in Sources */,
 				645A1B66195B54EB004657B2 /* DDXMLElement.m in Sources */,
 				64A1E894195216F100620BA1 /* PPProfileViewController.m in Sources */,
 				645A1B63195B54EB004657B2 /* DDXMLElementAdditions.m in Sources */,
+				645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */,
 				645A1B4D195B4F54004657B2 /* AFURLResponseSerialization.m in Sources */,
 				64BFB674194429C500D11E88 /* PPMainViewController.m in Sources */,
 				6489858C19550A79004C0286 /* PPLanguagesPopupView.m in Sources */,
@@ -720,6 +741,7 @@
 				648153811953ABCC00D0B3F0 /* PPMessagesMenuViewController.m in Sources */,
 				6423F59E195126F900C14934 /* PPUserRegistrationViewController.m in Sources */,
 				64AF9D8019579BBB007EF924 /* PPBottomReplaceSegue.m in Sources */,
+				645A1B72195CA99C004657B2 /* PPMessagesComposeViewController.m in Sources */,
 				64A1E89119520EB000620BA1 /* PPTopReplaceSegue.m in Sources */,
 				649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */,
 				64BFB6471944183300D11E88 /* main.m in Sources */,
