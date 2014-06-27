@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    int languageIndex;
+    NSArray *allQuotes;
+}
+
 @property (strong, nonatomic) IBOutlet UINavigationItem *toolbarTitle;
+@property (strong, nonatomic) IBOutlet UILabel *quotes;
 
 @end

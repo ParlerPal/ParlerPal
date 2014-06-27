@@ -8,8 +8,10 @@
 
 #import "PPMainViewController.h"
 #import "PPMessageTableViewCell.h"
+#import "PPDataShare.h"
+
 @implementation PPMainViewController
-@synthesize toolbarTitle;
+@synthesize toolbarTitle, quotes;
 
 #pragma mark -
 #pragma mark view methods
@@ -18,13 +20,45 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.toolbarTitle.title = @"username";
+    self.toolbarTitle.title = [[PPDataShare sharedSingleton]currentUser];
+    
+    allQuotes = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"plist"]];
+    self.quotes.text = [allQuotes objectAtIndex:languageIndex];
+    languageIndex = 1;
+    [self animateText];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+}
+
+#pragma mark -
+#pragma mark Quotes Animation Methods
+
+-(void)animateText
+{
+    self.quotes.alpha = 0.0;
+    [self beginFadeInTextLabel:self.quotes];
+}
+
+-(void)beginFadeInTextLabel:(UILabel *)label
+{
+    [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        label.alpha = 1.0;
+    } completion:^(BOOL finished){[self fadeOutTextLabel:label];}];
+}
+
+-(void)fadeOutTextLabel:(UILabel *)label
+{
+    [UIView animateWithDuration:2.0 delay:6.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        label.alpha = 0.0;
+    } completion:^(BOOL finished){
+        [self beginFadeInTextLabel:label];
+        languageIndex = languageIndex + 1 > allQuotes.count -1 ? 0 : languageIndex + 1;
+        label.text = [allQuotes objectAtIndex:languageIndex];
+    }];
 }
 
 #pragma mark -
