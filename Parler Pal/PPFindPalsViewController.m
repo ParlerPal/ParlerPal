@@ -32,9 +32,8 @@
 
 -(void)shouldRequestFriend:(id)sender
 {
-    /*
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
-    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]requestFriendshipWith:cell.username.text finish:^(bool success) {
         NSMutableDictionary *userToRemove = NULL;
         
         for(NSMutableDictionary *user in foundPals)
@@ -47,7 +46,7 @@
         
         [foundPals removeObject:userToRemove];
         [self.table reloadData];
-    }];*/
+    }];
 }
 
 #pragma mark -
