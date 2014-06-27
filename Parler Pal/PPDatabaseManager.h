@@ -30,7 +30,7 @@
 -(void)getAllPalRequests:(void(^)(NSMutableArray *results))handler;
 -(void)getBatchOfPals:(void(^)(NSMutableArray *results))handler;
 
-//-(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
+-(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 @end

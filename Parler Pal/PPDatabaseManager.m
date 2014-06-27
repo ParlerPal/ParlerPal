@@ -133,7 +133,7 @@
 -(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender finish:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"country": country, @"profile": profile, @"sharedEmail": email, @"skypeID": skypeID, @"age": age, @"gender":[NSNumber numberWithInt:gender]};
-    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"uusers/pdateUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updateUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -333,6 +333,18 @@
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"userToRequest": theUser};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/requestFriendship.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
           }];
 }
 
