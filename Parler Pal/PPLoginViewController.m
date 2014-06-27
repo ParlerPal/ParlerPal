@@ -9,6 +9,7 @@
 #import "PPLoginViewController.h"
 #import "PPMainViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPDataShare.h"
 
 @implementation PPLoginViewController
 @synthesize userName, password, scrollView, contentView, welcomeMessage;
@@ -18,8 +19,9 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self animateText];
     
+    [self animateText];
+
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
@@ -27,14 +29,7 @@
     languageIndex = 0;
     welcomeLanguages = @[@"Welcome",@"أهلا وسهلا", @"Bienvenue",@"Willkommen",@"Benvenuto",@"ようこそ",@"환영합니다",@"歡迎",@"Bem-vindo",@"Merhaba", @"witaj", @"добро пожаловать", @"Ласкаво просимо",@"chào mừng"];
     
-    /*
-    if([PFUser currentUser])
-    {
-        PPMainViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
-        [self.navigationController pushViewController:controller animated:YES];
-        
-       // [self performSegueWithIdentifier:@"Login" sender:self];
-    }*/
+    [self registerForKeyboardNotifications];
 }
 
 -(void)viewDidLayoutSubviews
@@ -77,15 +72,37 @@
 #pragma mark -
 #pragma textfield delegate methods
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
 {
-    CGPoint scrollPoint = CGPointMake(0, textField.frame.origin.y/2.2);
-    [scrollView setContentOffset:scrollPoint animated:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    [scrollView setContentOffset:CGPointZero animated:YES];
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height+10, 0.0);
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+    [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
 #pragma mark -
@@ -137,6 +154,7 @@
     [[PPDatabaseManager sharedDatabaseManager]signinWithUsername:userName.text password:password.text finish:^(bool success){
         if(success)
         {
+            [[PPDataShare sharedSingleton]setCurrentUser:userName.text];
             [self performSegueWithIdentifier:@"login" sender:self];
         }
         else NSLog(@"NO");
