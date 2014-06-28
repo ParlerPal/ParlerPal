@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPMessagePopupView.h"
 
-@interface PPMessagesMainViewController : UIViewController
+@interface PPMessagesMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UIBarButtonItem *sidebarButton;
+    IBOutlet UITableView *table;
+    NSMutableArray *messages;
+    PPMessagePopupView *messageContentView;
 }
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *sidebarButton;
+@property(nonatomic, strong) IBOutlet UITableView *table;
 
 @end
