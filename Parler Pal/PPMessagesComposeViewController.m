@@ -8,9 +8,13 @@
 
 #import "PPMessagesComposeViewController.h"
 #import "SWRevealViewController.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPMessagesComposeViewController
-@synthesize revealButton;
+@synthesize revealButton, toField, subjectField, messageBox;
+
+#pragma mark -
+#pragma mark Init Methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,6 +24,9 @@
     }
     return self;
 }
+
+#pragma mark -
+#pragma mark View Methods
 
 - (void)viewDidLoad
 {
@@ -31,12 +38,69 @@
     [self.revealButton setAction: @selector( revealToggle: )];
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
+    UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    tapRec.delegate = self;
+    [self.view addGestureRecognizer:tapRec];
+    
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark -
+#pragma mark gesture methods
+
+-(void)tap:(UITapGestureRecognizer *)tapRec
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [[self view] endEditing: YES];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        // we touched a button, slider, or other UIControl
+        return NO; // ignore the touch
+    }
+    return YES; // handle the touch
+}
+
+#pragma mark -
+#pragma mark Action Methods
+
+-(IBAction)findUserButton:(id)sender
+{
+    
+}
+
+-(IBAction)sendButton:(id)sender
+{
+    if(toField.text.length <= 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Can't Send Message" message:@"Please choose a recipient." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    else if(subjectField.text.length <= 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Can't Send Message" message:@"A message needs a subject!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    else if(messageBox.text.length <= 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Can't Send Message" message:@"A message needs content!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:messageBox.text finish:^(bool success) {
+        subjectField.text = @"";
+        messageBox.text = @"";
+    }];
+}
+
+-(IBAction)saveButton:(id)sender
+{
+    
 }
 
 @end
