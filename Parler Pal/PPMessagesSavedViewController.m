@@ -9,10 +9,6 @@
 #import "PPMessagesSavedViewController.h"
 #import "SWRevealViewController.h"
 
-@interface PPMessagesSavedViewController ()
-
-@end
-
 @implementation PPMessagesSavedViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
