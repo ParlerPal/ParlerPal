@@ -348,4 +348,141 @@
           }];
 }
 
+#pragma mark -
+#pragma mark messaging methods
+
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message finish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/submitMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
+
+-(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getUnreadReceivedMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//message" error:nil];
+        
+        NSMutableArray *allResults = [[NSMutableArray alloc]init];
+        
+        for (DDXMLElement *node in results)
+        {
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+            
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+            
+            [allResults addObject:item];
+        }
+        
+        handler(allResults);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getAllReceivedMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//message" error:nil];
+        
+        NSMutableArray *allResults = [[NSMutableArray alloc]init];
+        
+        for (DDXMLElement *node in results)
+        {
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+            
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+            
+            [allResults addObject:item];
+        }
+        
+        handler(allResults);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler
+{
+    NSDictionary *parameters = @{@"id":[NSNumber numberWithInt:messageID]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getContentForMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//messageContent" error:nil];
+        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+        
+        for (DDXMLElement *node in results)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
+        
+        handler(item);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"id": [NSNumber numberWithInt:messageID]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/setMessageAsOpened.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
+
+
 @end

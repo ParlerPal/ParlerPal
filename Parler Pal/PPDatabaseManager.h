@@ -33,4 +33,10 @@
 -(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
+
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message finish:(void(^)(bool success))handler;
+-(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler;
+-(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler;
+-(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler;
+-(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler;
 @end
