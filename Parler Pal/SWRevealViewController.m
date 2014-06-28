@@ -898,7 +898,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 - (UIPanGestureRecognizer*)panGestureRecognizer
 {
-    if ( _panGestureRecognizer == nil )
+    if ( _panGestureRecognizer == nil)
     {
         SWDirectionPanGestureRecognizer *panRecognizer =
             [[SWDirectionPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handleRevealGesture:)];
