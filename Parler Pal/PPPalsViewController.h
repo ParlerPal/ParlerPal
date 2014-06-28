@@ -14,7 +14,7 @@
 {
     IBOutlet UITableView *table;
     NSMutableArray *friendships;
-    NSMutableArray *requests;
+    NSMutableArray *requests; 
     PPLanguagesPopupView *popup;
 }
 @property(nonatomic, strong) IBOutlet UITableView *table;
