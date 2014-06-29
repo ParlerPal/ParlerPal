@@ -22,6 +22,8 @@
 
 -(void)getUserProfileWithFinish:(void(^)(NSMutableDictionary *results))handler;
 -(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender finish:(void(^)(bool success))handler;
+-(void)updatePasswordWithPassword:(NSString *)password finish:(void(^)(bool success))handler;
+-(void)deleteProfileWithFinish:(void(^)(bool success))handler;
 
 -(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level finish:(void(^)(bool success))handler;
 -(void)getAllLanguages:(void(^)(NSMutableArray *results))handler;
@@ -37,6 +39,7 @@
 -(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message finish:(void(^)(bool success))handler;
 -(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler;
+-(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler;
 -(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler;
 @end

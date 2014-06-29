@@ -8,7 +8,7 @@
 
 #import "PPDatabaseManager.h"
 
-#define WEB_SERVICES @"http://24.131.92.164/ppWebServices/"
+#define WEB_SERVICES @"http://192.168.1.10/ppWebServices/"
 
 @implementation PPDatabaseManager
 
@@ -134,6 +134,30 @@
 {
     NSDictionary *parameters = @{@"country": country, @"profile": profile, @"sharedEmail": email, @"skypeID": skypeID, @"age": age, @"gender":[NSNumber numberWithInt:gender]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updateUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
+
+-(void)updatePasswordWithPassword:(NSString *)password finish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"password": password};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updatePassword.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
+
+-(void)deleteProfileWithFinish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/deleteUser.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -405,6 +429,44 @@
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getAllReceivedMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//message" error:nil];
+        
+        NSMutableArray *allResults = [[NSMutableArray alloc]init];
+        
+        for (DDXMLElement *node in results)
+        {
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+            
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+            
+            [allResults addObject:item];
+        }
+        
+        handler(allResults);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getSentMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSData *data = (NSData *)responseObject;
         DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
         NSArray *results = [xmlDoc nodesForXPath:@"//message" error:nil];
