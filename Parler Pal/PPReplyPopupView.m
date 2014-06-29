@@ -37,6 +37,7 @@
 
 -(void)setup
 {
+    
     self.layer.masksToBounds = NO;
     self.layer.cornerRadius = 8;
     self.layer.shadowOffset = CGSizeMake(-4, 4);
