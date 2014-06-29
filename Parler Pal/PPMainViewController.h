@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPMessagePopupView.h"
 
 @interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
+    IBOutlet UITableView *table;
     int languageIndex;
     NSArray *allQuotes;
+    NSMutableArray *messages;
+    PPMessagePopupView *messageContentView;
 }
 
 @property (strong, nonatomic) IBOutlet UINavigationItem *toolbarTitle;
 @property (strong, nonatomic) IBOutlet UILabel *quotes;
+@property (nonatomic, strong) IBOutlet UITableView *table;
 
 @end

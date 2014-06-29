@@ -9,9 +9,10 @@
 #import "PPMainViewController.h"
 #import "PPMessageTableViewCell.h"
 #import "PPDataShare.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPMainViewController
-@synthesize toolbarTitle, quotes;
+@synthesize toolbarTitle, quotes, table;
 
 #pragma mark -
 #pragma mark view methods
@@ -26,6 +27,13 @@
     self.quotes.text = [allQuotes objectAtIndex:languageIndex];
     languageIndex = 1;
     [self animateText];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+        messages = results;
+        [self.table reloadData];
+    }];
+    
+    messageContentView = [[PPMessagePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,12 +78,12 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -86,26 +94,40 @@
     if (cell == nil) {
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PPMessageTableViewCell" owner:self options:nil];
         for (id currentObject in topLevelObjects) {
-            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]])
+            {
                 cell = (PPMessageTableViewCell *)currentObject;
+                cell.fromLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"from"];
+                cell.messageLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"subject"];
+                cell.dateLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"created"];
                 break;
             }
         }
     }
-    
-    // Configure the cell.
-    //User *user = [items objectAtIndex:indexPath.row];
-    //cell.profilePicture.image = [UIImage imageNamed:user.avatarFname];
-    //cell.name.text = user.name;
-    //cell.status.text = user.status;
-    //cell.datePosted.text = user.datePosted;
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [cell setBackgroundColor:[UIColor clearColor]];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *messageID = [[messages objectAtIndex:indexPath.row] objectForKey:@"id"];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] andFinish:^(NSMutableDictionary *results) {
+        messageContentView.content.text = [results objectForKey:@"content"];
+        messageContentView.fromLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"from"];
+        messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
+        messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
+        
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(BOOL success) {}];
+        
+    }];
+    
+    [self.view addSubview:messageContentView];
+    [messageContentView show];
 }
 
 #pragma mark -
