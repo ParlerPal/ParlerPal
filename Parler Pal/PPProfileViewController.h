@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
+@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
 {
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *confirmPasswordField;

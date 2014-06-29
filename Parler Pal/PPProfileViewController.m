@@ -131,14 +131,47 @@
 -(IBAction)updatePassword:(id)sender
 {
     [self.view endEditing:YES];
-    //[PPUserManagement updatePasswordWithPassword:passwordField.text confirm:confirmPasswordField.text];
+    
+    if([passwordField.text isEqualToString:confirmPasswordField.text])
+    {
+        [[PPDatabaseManager sharedDatabaseManager]updatePasswordWithPassword:passwordField.text finish:^(bool success)
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Your password has been changed." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+            [alert show];
+        }];
+    }
+    
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Passwords did not match, try again." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+    }
+    
     passwordField.text = @"";
     confirmPasswordField.text = @"";
 }
 
 -(IBAction)deleteAccount:(id)sender
 {
-    NSLog(@"DELETE ACCOUNT!");
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Caution!" message:@"There is no coming back from this, choose carefully." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: @"Delete", nil];
+    [alert show];
+}
+
+#pragma mark -
+#pragma mark Alert View Delegate Methods
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]deleteProfileWithFinish:^(bool success) {
+            [self performSegueWithIdentifier:@"loginReturn" sender:self];
+        }];
+    }
+    
+    else{
+        return;
+    }
 }
 
 #pragma mark -
