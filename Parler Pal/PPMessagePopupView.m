@@ -11,7 +11,7 @@
 #import "PPDataShare.h"
 
 @implementation PPMessagePopupView
-@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID;
+@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply;
 #pragma mark -
 #pragma mark init methods
 
@@ -49,6 +49,11 @@
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
     
     popupReply = [[PPReplyPopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+}
+
+-(void)setShouldShowReply:(bool)showReply
+{
+    [self.replyButton setHidden:!showReply];
 }
 
 #pragma mark -

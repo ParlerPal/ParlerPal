@@ -18,11 +18,15 @@
     IBOutlet UIView *view;
     int messageID;
     PPReplyPopupView *popupReply;
+    IBOutlet UIButton *replyButton;
+    bool shouldShowReply;
 }
 @property (nonatomic, strong) IBOutlet UILabel *toLabel, *fromLabel, *subjectLabel;
+@property (nonatomic, strong) IBOutlet UIButton *replyButton;
 @property (nonatomic, strong) IBOutlet UITextView *content;
 @property (nonatomic, strong) IBOutlet UIView *view;
-@property (readwrite) int messageID;
+@property (nonatomic, readwrite) int messageID;
+@property (nonatomic, readwrite) bool shouldShowReply;
 
 //Button Actions
 -(IBAction)hide:(id)sender;
