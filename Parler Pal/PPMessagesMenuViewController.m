@@ -35,19 +35,6 @@
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
-    /*
-     // configure the destination view controller:
-     if ( [segue.destinationViewController isKindOfClass: [ColorViewController class]] &&
-     [sender isKindOfClass:[UITableViewCell class]] )
-     {
-     UILabel* c = [(SWUITableViewCell *)sender label];
-     ColorViewController* cvc = segue.destinationViewController;
-     
-     cvc.color = c.textColor;
-     cvc.text = c.text;
-     }
-     */
-    // configure the segue.
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
     {
         SWRevealViewControllerSegue* rvcs = (SWRevealViewControllerSegue*) segue;
