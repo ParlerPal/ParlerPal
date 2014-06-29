@@ -53,7 +53,7 @@
 #pragma mark table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.0;
+    return 95.0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
