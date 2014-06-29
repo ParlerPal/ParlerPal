@@ -18,6 +18,8 @@
 		6423F5991951245000C14934 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F5981951245000C14934 /* StoreKit.framework */; };
 		6423F59B1951245900C14934 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F59A1951245900C14934 /* SystemConfiguration.framework */; };
 		6423F59E195126F900C14934 /* PPUserRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6423F59D195126F900C14934 /* PPUserRegistrationViewController.m */; };
+		6433125C195F412A00290E02 /* PPMessagesSentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433125B195F412A00290E02 /* PPMessagesSentViewController.m */; };
+		6433125E195F9C5800290E02 /* cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 6433125D195F9C5800290E02 /* cellBG.png */; };
 		645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */; };
 		645A1B47195B4F54004657B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B36195B4F54004657B2 /* AFHTTPRequestOperationManager.m */; };
 		645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B38195B4F54004657B2 /* AFHTTPSessionManager.m */; };
@@ -52,7 +54,6 @@
 		648985711954CE66004C0286 /* PPPalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985701954CE66004C0286 /* PPPalsViewController.m */; };
 		648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985761954FAF5004C0286 /* PPPalTableViewCell.m */; };
 		6489858C19550A79004C0286 /* PPLanguagesPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489858B19550A79004C0286 /* PPLanguagesPopupView.m */; };
-		6492F33D195E0D1200F950AF /* PPMessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F33C195E0D1200F950AF /* PPMessageContentViewController.m */; };
 		6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F33F195E398700F950AF /* PPMessagePopupView.m */; };
 		6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F341195E39F700F950AF /* PPMessagePopupView.xib */; };
 		6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F344195E5A8500F950AF /* PPReplyPopupView.m */; };
@@ -125,6 +126,9 @@
 		6423F59A1951245900C14934 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6423F59C195126F900C14934 /* PPUserRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserRegistrationViewController.h; sourceTree = "<group>"; };
 		6423F59D195126F900C14934 /* PPUserRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserRegistrationViewController.m; sourceTree = "<group>"; };
+		6433125A195F412A00290E02 /* PPMessagesSentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSentViewController.h; sourceTree = "<group>"; };
+		6433125B195F412A00290E02 /* PPMessagesSentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSentViewController.m; sourceTree = "<group>"; };
+		6433125D195F9C5800290E02 /* cellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBG.png; sourceTree = "<group>"; };
 		645A1B33195B4F54004657B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		645A1B35195B4F54004657B2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -187,8 +191,6 @@
 		648985761954FAF5004C0286 /* PPPalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPalTableViewCell.m; sourceTree = "<group>"; };
 		6489858A19550A79004C0286 /* PPLanguagesPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguagesPopupView.h; sourceTree = "<group>"; };
 		6489858B19550A79004C0286 /* PPLanguagesPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguagesPopupView.m; sourceTree = "<group>"; };
-		6492F33B195E0D1200F950AF /* PPMessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessageContentViewController.h; sourceTree = "<group>"; };
-		6492F33C195E0D1200F950AF /* PPMessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessageContentViewController.m; sourceTree = "<group>"; };
 		6492F33E195E398700F950AF /* PPMessagePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagePopupView.h; sourceTree = "<group>"; };
 		6492F33F195E398700F950AF /* PPMessagePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagePopupView.m; sourceTree = "<group>"; };
 		6492F341195E39F700F950AF /* PPMessagePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMessagePopupView.xib; sourceTree = "<group>"; };
@@ -397,6 +399,8 @@
 				6481537D1953ABBB00D0B3F0 /* PPMessagesMainViewController.m */,
 				6492F348195E66CA00F950AF /* PPMessagesAllViewController.h */,
 				6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */,
+				6433125A195F412A00290E02 /* PPMessagesSentViewController.h */,
+				6433125B195F412A00290E02 /* PPMessagesSentViewController.m */,
 				6481537F1953ABCC00D0B3F0 /* PPMessagesMenuViewController.h */,
 				648153801953ABCC00D0B3F0 /* PPMessagesMenuViewController.m */,
 				645A1B70195CA99C004657B2 /* PPMessagesComposeViewController.h */,
@@ -405,8 +409,6 @@
 				645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */,
 				645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */,
 				645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */,
-				6492F33B195E0D1200F950AF /* PPMessageContentViewController.h */,
-				6492F33C195E0D1200F950AF /* PPMessageContentViewController.m */,
 			);
 			name = MessagesViewControllers;
 			sourceTree = "<group>";
@@ -414,6 +416,7 @@
 		648153891953BEF900D0B3F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6433125D195F9C5800290E02 /* cellBG.png */,
 				64FC116B1958D83700915A00 /* paper.png */,
 				64FC11691958D61F00915A00 /* stripeBar.png */,
 				64AF9D7D19579980007EF924 /* Button */,
@@ -699,6 +702,7 @@
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
 				649547D619565AC900349DC4 /* messageButton.png in Resources */,
 				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
+				6433125E195F9C5800290E02 /* cellBG.png in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
 				645A850019593D7D00313358 /* Login_Screen.png in Resources */,
@@ -764,10 +768,10 @@
 				64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */,
 				645A1B4A195B4F54004657B2 /* AFSecurityPolicy.m in Sources */,
 				64BFB6541944183300D11E88 /* PPLoginViewController.m in Sources */,
-				6492F33D195E0D1200F950AF /* PPMessageContentViewController.m in Sources */,
 				645A1B49195B4F54004657B2 /* AFNetworkReachabilityManager.m in Sources */,
 				645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */,
 				645A1B4C195B4F54004657B2 /* AFURLRequestSerialization.m in Sources */,
+				6433125C195F412A00290E02 /* PPMessagesSentViewController.m in Sources */,
 				645A1B67195B54EB004657B2 /* DDXMLNode.m in Sources */,
 				64F780D2195272BB0028A8D6 /* PPLanguagesViewController.m in Sources */,
 				648153811953ABCC00D0B3F0 /* PPMessagesMenuViewController.m in Sources */,
