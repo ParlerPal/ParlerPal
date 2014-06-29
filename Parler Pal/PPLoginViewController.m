@@ -157,7 +157,7 @@
             [[PPDataShare sharedSingleton]setCurrentUser:userName.text];
             [self performSegueWithIdentifier:@"login" sender:self];
         }
-        else NSLog(@"NO");
+        else {}
     }];
 }
 
