@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PPMessagesTableViewCellDelegate <NSObject>
+
+@end
+
 @interface PPMessageTableViewCell : UITableViewCell
 {
-    IBOutlet UIImageView *imageView;
-    IBOutlet UILabel *fromLabel;
-    IBOutlet UILabel *messageLabel;
-    IBOutlet UILabel *dateLabel;
+
 }
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *fromLabel, *messageLabel, *dateLabel;
+@property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic, weak) UILabel *fromLabel, *messageLabel, *dateLabel;
+@property (readwrite) int messageID;
 
 @end
