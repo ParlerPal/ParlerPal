@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PPMessagesSavedViewController : UIViewController
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *revealButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 
 @end
