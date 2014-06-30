@@ -7,7 +7,7 @@
 //
 
 #import "PPUserRegistrationViewController.h"
-#import "PPUserManagement.h"
+#import "PPDatabaseManager.h"
 
 @implementation PPUserRegistrationViewController
 @synthesize usernameField, passwordField, confirmField, emailField, welcomeMessage, scrollView, contentView;
@@ -97,24 +97,34 @@
 #pragma mark -
 #pragma mark sign up methods
 
--(BOOL)signup
+-(IBAction)signup:(id)sender
 {
-    self.welcomeMessage.text = [PPUserManagement signUpWithUsername:self.usernameField.text password:self.passwordField.text confirm:self.confirmField.text andEmail:self.emailField.text];
-    if([self.welcomeMessage.text isEqualToString:@"Success!"]){return YES;}
-    return NO;
-}
-
-#pragma mark -
-#pragma mark segue methods
-
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"Signup"])
+    if(self.usernameField.text == NULL || self.usernameField.text.length <= 0)
     {
-        return [self signup];
+         NSLog(@"Missing username!");
     }
     
-    return YES;
+    else if(self.passwordField.text == NULL || self.confirmField.text == NULL || self.passwordField.text.length <= 0 || self.confirmField.text.length <= 0 || ![self.passwordField.text isEqualToString:self.confirmField.text])
+    {
+         NSLog(@"Missing or mismatched passwords!");
+    }
+    
+    else if(self.emailField.text == NULL || self.emailField.text.length <= 0)
+    {
+         NSLog(@"Missing email address!");
+    }
+    
+    [[PPDatabaseManager sharedDatabaseManager]signUpWithUsername:self.usernameField.text password:self.passwordField.text andEmail:self.emailField.text];
+    
+    [self performSegueWithIdentifier:@"leave" sender:self];
+}
+
+#pragma mark - 
+#pragma mark pop return methods
+
+-(IBAction)cancel:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

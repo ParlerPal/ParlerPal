@@ -10,14 +10,11 @@
 
 @interface PPReplyPopupView : UIView <UIGestureRecognizerDelegate>
 {
-    IBOutlet UIView *view;
-    IBOutlet UITextField *toField;
-    IBOutlet UITextField *subjectField;
-    IBOutlet UITextView *contentField;
+
 }
-@property (nonatomic, strong) IBOutlet UIView *view;
-@property (nonatomic, strong) IBOutlet UITextView *contentField;
-@property (nonatomic, strong) IBOutlet UITextField *toField, *subjectField;
+@property (nonatomic, weak) IBOutlet UIView *view;
+@property (nonatomic, weak) IBOutlet UITextView *contentField;
+@property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
 
 //Button Actions
 -(IBAction)hide:(id)sender;

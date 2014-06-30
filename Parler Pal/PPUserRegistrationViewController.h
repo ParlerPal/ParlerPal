@@ -10,25 +10,19 @@
 
 @interface PPUserRegistrationViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
-    IBOutlet UITextField *usernameField;
-    IBOutlet UITextField *passwordField;
-    IBOutlet UITextField *confirmField;
-    IBOutlet UITextField *emailField;
-    
-    IBOutlet UILabel *welcomeMessage;
-    IBOutlet UIScrollView *scrollView;
-    IBOutlet UIView *contentView;
+
 }
 
-@property(nonatomic, strong)UITextField *usernameField, *passwordField, *confirmField, *emailField;
-@property(nonatomic, strong)UILabel *welcomeMessage;
-@property(nonatomic, strong)UIScrollView *scrollView;
-@property(nonatomic, strong)UIView *contentView;
-
-//Returns if the signup was a sucess
--(BOOL)signup;
+@property(nonatomic, weak)UITextField *usernameField, *passwordField, *confirmField, *emailField;
+@property(nonatomic, weak)UILabel *welcomeMessage;
+@property(nonatomic, weak)UIScrollView *scrollView;
+@property(nonatomic, weak)UIView *contentView;
 
 //Textfield did end editing so hide it
 -(IBAction)textFieldDidReturn:(id)sender;
+
+-(IBAction)signup:(id)sender;
+
+-(IBAction)cancel:(id)segue;
 
 @end

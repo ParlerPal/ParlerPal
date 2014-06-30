@@ -9,30 +9,13 @@
 #import <UIKit/UIKit.h>
 @interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
 {
-    IBOutlet UITextField *passwordField;
-    IBOutlet UITextField *confirmPasswordField;
-    
-    IBOutlet UITextField *privateEmailField;
-    
-    IBOutlet UITextField *countryField;
-    IBOutlet UITextField *sharedEmailField;
-    IBOutlet UITextField *skypeIDField;
-    
-    IBOutlet UITextField *age;
-    IBOutlet UISegmentedControl *gender;
-    
-    IBOutlet UITextView *profile;
-    
-    IBOutlet UIView *contentView;
-    IBOutlet UIScrollView *scrollView;
-    
     CGPoint *previousPoint; 
 }
-@property (nonatomic, strong) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
-@property (nonatomic, strong) IBOutlet UITextView *profile;
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UIView *contentView;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *gender;
+@property (nonatomic, weak) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
+@property (nonatomic, weak) IBOutlet UITextView *profile;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIView *contentView;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *gender;
 
 //Text field action methods for when editing is complete
 -(IBAction)fieldDidEndEditing:(id)sender;
