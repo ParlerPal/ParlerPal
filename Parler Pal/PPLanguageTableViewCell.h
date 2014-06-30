@@ -10,13 +10,10 @@
 
 @interface PPLanguageTableViewCell : UITableViewCell
 {
-    IBOutlet UILabel *language;
-    IBOutlet UISegmentedControl *status;
-    IBOutlet UISegmentedControl *level;
+
 }
-@property(nonatomic, strong)UILabel *language;
-@property(nonatomic, strong)UISegmentedControl *status, *level;
-@property(nonatomic, strong)id delegate;
+@property(nonatomic, weak)UILabel *language;
+@property(nonatomic, weak)UISegmentedControl *status, *level;
 
 //Action Methods
 -(IBAction)statusChange:(id)sender;

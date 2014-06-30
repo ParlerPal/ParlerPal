@@ -10,7 +10,7 @@
 #import "PPDatabaseManager.h"
 
 @implementation PPLanguageTableViewCell
-@synthesize language, status, level, delegate;
+@synthesize language, status, level;
 
 #pragma mark -
 #pragma mark setup methods
