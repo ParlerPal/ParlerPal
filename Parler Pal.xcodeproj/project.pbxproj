@@ -10,6 +10,8 @@
 		641B80181958FE7D0064289F /* map1.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80171958FE7D0064289F /* map1.png */; };
 		641B801A1958FF4F0064289F /* map2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80191958FF4F0064289F /* map2r.png */; };
 		641B8020195902C50064289F /* map3r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B801F195902C50064289F /* map3r.png */; };
+		64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */; };
+		64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */; };
 		6423F58F1951241C00C14934 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F58E1951241C00C14934 /* AudioToolbox.framework */; };
 		6423F5911951242D00C14934 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F5901951242D00C14934 /* CoreLocation.framework */; };
 		6423F5931951243600C14934 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F5921951243600C14934 /* libz.dylib */; };
@@ -117,6 +119,9 @@
 		641B80171958FE7D0064289F /* map1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map1.png; sourceTree = "<group>"; };
 		641B80191958FF4F0064289F /* map2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2r.png; sourceTree = "<group>"; };
 		641B801F195902C50064289F /* map3r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3r.png; sourceTree = "<group>"; };
+		64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPProfilePopupView.xib; sourceTree = "<group>"; };
+		64203A1C19610D5F00C652B2 /* PPProfilePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPProfilePopupView.h; sourceTree = "<group>"; };
+		64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPProfilePopupView.m; sourceTree = "<group>"; };
 		6423F58E1951241C00C14934 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6423F5901951242D00C14934 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6423F5921951243600C14934 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -483,16 +488,19 @@
 		64A1E8961952262300620BA1 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				6489857A1954FE38004C0286 /* Table Cells */,
 				6489858A19550A79004C0286 /* PPLanguagesPopupView.h */,
 				6489858B19550A79004C0286 /* PPLanguagesPopupView.m */,
 				649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */,
-				6489857A1954FE38004C0286 /* Table Cells */,
 				6492F33E195E398700F950AF /* PPMessagePopupView.h */,
 				6492F33F195E398700F950AF /* PPMessagePopupView.m */,
 				6492F341195E39F700F950AF /* PPMessagePopupView.xib */,
 				6492F343195E5A8500F950AF /* PPReplyPopupView.h */,
 				6492F344195E5A8500F950AF /* PPReplyPopupView.m */,
 				6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */,
+				64203A1C19610D5F00C652B2 /* PPProfilePopupView.h */,
+				64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */,
+				64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -695,6 +703,7 @@
 				64AF9D7C195798E2007EF924 /* backButton.png in Resources */,
 				648153901953EE3F00D0B3F0 /* button.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
+				64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */,
 				649547D2195657DE00349DC4 /* background.png in Resources */,
 				649547D819565BB100349DC4 /* languagesButton.png in Resources */,
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
@@ -758,6 +767,7 @@
 				645A1B65195B54EB004657B2 /* DDXMLDocument.m in Sources */,
 				64F780CE195270F80028A8D6 /* PPLanguageTableViewCell.m in Sources */,
 				648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */,
+				64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */,
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
 				645A1B6D195BDD33004657B2 /* PPUserManagement.m in Sources */,
 				6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */,
