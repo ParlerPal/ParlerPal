@@ -56,7 +56,6 @@
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
                 cell = (PPLanguageTableViewCell *)currentObject;
-                cell.delegate = self;
                 break;
             }
         }
