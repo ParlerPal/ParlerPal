@@ -10,14 +10,11 @@
 
 @interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate>
 {
-    IBOutlet UIBarButtonItem *revealButton;
-    IBOutlet UITextField *toField;
-    IBOutlet UITextField *subjectField;
-    IBOutlet UITextView *messageBox;;
+
 }
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *revealButton;
-@property (nonatomic, strong) IBOutlet UITextField *toField, *subjectField;
-@property (nonatomic, strong) IBOutlet UITextView *messageBox;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
+@property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
+@property (nonatomic, weak) IBOutlet UITextView *messageBox;
 
 -(IBAction)findUserButton:(id)sender;
 -(IBAction)sendButton:(id)sender;
