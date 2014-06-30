@@ -10,11 +10,10 @@
 
 @interface PPLanguagesPopupView : UIView
 {
-    IBOutlet UITextView *textView;
-    IBOutlet UIView *view;
+
 }
-@property (nonatomic, strong) IBOutlet UITextView *textView;
-@property (nonatomic, strong) IBOutlet UIView *view;
+@property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, weak) IBOutlet UIView *view;
 
 //Button Actions
 -(IBAction)hide:(id)sender;
