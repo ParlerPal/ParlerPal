@@ -30,18 +30,13 @@ typedef enum : NSUInteger {
 
 @interface PPPalTableViewCell : UITableViewCell
 {
-    IBOutlet UILabel *username;
-    IBOutlet UIImageView *image;
-    id <PPPalTableViewCellDelegate>delegate;
     PalTableViewCellType type;
-    IBOutlet UIButton *addRemoveButton;
-    IBOutlet UIButton *rejectButton;
 }
-@property (nonatomic, strong) IBOutlet UILabel *username;
-@property (nonatomic, strong) IBOutlet UIImageView *image;
-@property (nonatomic, strong) id delegate;
+@property (nonatomic, weak) IBOutlet UILabel *username;
+@property (nonatomic, weak) IBOutlet UIImageView *image;
+@property (nonatomic, weak) id delegate;
 @property (nonatomic, readwrite) PalTableViewCellType type;
-@property (nonatomic, strong) IBOutlet UIButton *addRemoveButton, *rejectButton;
+@property (nonatomic, weak) IBOutlet UIButton *addRemoveButton, *rejectButton;
 
 //Action methods
 -(IBAction)didSelectDetailsButton:(id)sender;
