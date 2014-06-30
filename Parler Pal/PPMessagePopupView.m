@@ -11,7 +11,7 @@
 #import "PPDataShare.h"
 
 @implementation PPMessagePopupView
-@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply;
+@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply, delegate;
 #pragma mark -
 #pragma mark init methods
 
@@ -71,6 +71,13 @@
     [self.view addSubview:popupReply];
     popupReply.toField.text = self.fromLabel.text;
     [popupReply show];
+}
+
+-(IBAction)deleteMessage:(id)sender
+{
+    [self.delegate shouldDeleteMessageWithID:self.messageID];
+    
+    [self hide:nil];
 }
 
 #pragma mark -

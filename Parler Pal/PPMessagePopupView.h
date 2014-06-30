@@ -9,29 +9,31 @@
 #import <UIKit/UIKit.h>
 #import "PPReplyPopupView.h"
 
+@protocol PPMessagesPopupViewDelegate <NSObject>
+
+@required
+-(void)shouldDeleteMessageWithID:(int)theID;
+
+@end
+
 @interface PPMessagePopupView : UIView
 {
-    IBOutlet UITextView *content;
-    IBOutlet UILabel *toLabel;
-    IBOutlet UILabel *fromLabel;
-    IBOutlet UILabel *subjectLabel;
-    IBOutlet UIView *view;
     int messageID;
     PPReplyPopupView *popupReply;
-    IBOutlet UIButton *replyButton;
     bool shouldShowReply;
 }
-@property (nonatomic, strong) IBOutlet UILabel *toLabel, *fromLabel, *subjectLabel;
-@property (nonatomic, strong) IBOutlet UIButton *replyButton;
-@property (nonatomic, strong) IBOutlet UITextView *content;
-@property (nonatomic, strong) IBOutlet UIView *view;
+@property (nonatomic, weak) IBOutlet UILabel *toLabel, *fromLabel, *subjectLabel;
+@property (nonatomic, weak) IBOutlet UIButton *replyButton;
+@property (nonatomic, weak) IBOutlet UITextView *content;
+@property (nonatomic, weak) IBOutlet UIView *view;
 @property (nonatomic, readwrite) int messageID;
 @property (nonatomic, readwrite) bool shouldShowReply;
+@property (nonatomic, weak) id delegate;
 
 //Button Actions
 -(IBAction)hide:(id)sender;
 -(IBAction)showReply:(id)sender;
-
+-(IBAction)deleteMessage:(id)sender;
 //Show and display the popup
 -(void)setup;
 -(void)show;
