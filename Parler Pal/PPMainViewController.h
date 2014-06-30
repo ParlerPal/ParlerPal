@@ -8,18 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "PPMessagePopupView.h"
+#import "PPMessageTableViewCell.h"
 
-@interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPMessagesPopupViewDelegate, PPMessagesTableViewCellDelegate>
 {
-    IBOutlet UITableView *table;
     int languageIndex;
     NSArray *allQuotes;
     NSMutableArray *messages;
     PPMessagePopupView *messageContentView;
 }
 
-@property (strong, nonatomic) IBOutlet UINavigationItem *toolbarTitle;
-@property (strong, nonatomic) IBOutlet UILabel *quotes;
-@property (nonatomic, strong) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UINavigationItem *toolbarTitle;
+@property (weak, nonatomic) IBOutlet UILabel *quotes;
+@property (nonatomic, weak) IBOutlet UITableView *table;
+
+- (IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue;
 
 @end
