@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "PPPalTableViewCell.h"
-#import "PPLanguagesPopupView.h"
-
+#import "PPProfilePopupView.h"
 @interface PPPalsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPPalTableViewCellDelegate>
 {
-    IBOutlet UITableView *table;
     NSMutableArray *friendships;
     NSMutableArray *requests; 
-    PPLanguagesPopupView *popup;
+    PPProfilePopupView *profilePopup;
 }
-@property(nonatomic, strong) IBOutlet UITableView *table;
+@property(nonatomic, weak) IBOutlet UITableView *table;
+
+-(IBAction)unwindPalsViewController:(UIStoryboardSegue *)unwindSegue;
 @end
 

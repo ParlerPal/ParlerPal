@@ -29,7 +29,8 @@
 
     [super viewDidLoad];
     
-    popup = [[PPLanguagesPopupView alloc]initWithFrame:CGRectMake(60, 200, 208, 159)];
+    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    profilePopup.delegate = self;
 }
 
 #pragma mark -
@@ -40,7 +41,7 @@
     
     [[PPDatabaseManager sharedDatabaseManager]confirmFriendshipWith:cell.username.text finish:^(bool success) {
         
-        NSMutableDictionary *userToSwap = NULL;
+        NSMutableDictionary *userToSwap = nil;
         
         for(NSMutableDictionary *user in requests)
         {
@@ -50,9 +51,12 @@
             }
         }
         
-        [requests removeObject:userToSwap];
-        [friendships addObject:userToSwap];
-        [self.table reloadData];
+        if(userToSwap)
+        {
+            [requests removeObject:userToSwap];
+            [friendships addObject:userToSwap];
+            [self.table reloadData];
+        }
         
     }];
 }
@@ -61,7 +65,7 @@
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
-        NSMutableDictionary *userToRemove = NULL;
+        NSMutableDictionary *userToRemove = nil;
         
         for(NSMutableDictionary *user in requests)
         {
@@ -71,8 +75,11 @@
             }
         }
         
-        [requests removeObject:userToRemove];
-        [self.table reloadData];
+        if(userToRemove)
+        {
+            [requests removeObject:userToRemove];
+            [self.table reloadData];
+        }
     }];
 }
 
@@ -80,7 +87,7 @@
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
-        NSMutableDictionary *userToRemove = NULL;
+        NSMutableDictionary *userToRemove = nil;
         
         for(NSMutableDictionary *user in friendships)
         {
@@ -90,8 +97,11 @@
             }
         }
         
-        [friendships removeObject:userToRemove];
-        [self.table reloadData];
+        if(userToRemove)
+        {
+            [friendships removeObject:userToRemove];
+            [self.table reloadData];
+        }
     }];
 }
 
@@ -160,38 +170,18 @@
     return cell;
 }
 
-#pragma mark -
-#pragma mark PPPalTableViewCell delegate methods
-
--(void)shouldShowDetails:(NSString *)user
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    [self.view addSubview:popup];
+    [self.view addSubview:profilePopup];
+    [profilePopup show];
+}
+
+#pragma mark -
+#pragma mark segue
+
+-(IBAction)unwindPalsViewController:(UIStoryboardSegue *)unwindSegue
+{
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
-    [query whereKey:@"username" equalTo:user];
-    NSArray *allUserLanguages = [query findObjects];
-    
-    NSMutableString *learningString = [NSMutableString stringWithString:@"I'm Learning:\n"];
-    NSMutableString *knowItString = [NSMutableString stringWithString:@"\nI Know:\n"];
-    
-    for(PFObject *object in allUserLanguages)
-    {
-        int languageStatusIndex = [[object objectForKey:@"languageStatus"]intValue];
-        int languageLevelIndex = [[object objectForKey:@"languageLevel"]intValue];
-        
-        if(languageStatusIndex == 1)
-        {
-            [learningString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
-        }
-        
-        else if(languageStatusIndex == 0)
-        {
-            [knowItString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
-        }
-    }
-    popup.textView.text = [NSString stringWithFormat:@"%@%@",learningString,knowItString];
-    [popup show];*/
 }
 
 @end
