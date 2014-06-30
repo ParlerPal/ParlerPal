@@ -11,19 +11,13 @@
 
 @interface PPLoginViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
-    IBOutlet UITextField *userName;
-    IBOutlet UITextField *password;
-    IBOutlet UIScrollView *scrollView;
-    IBOutlet UIView *contentView;
-    IBOutlet UILabel *welcomeMessage;
-    
     int languageIndex;
     NSArray *welcomeLanguages;
 }
-@property (nonatomic, strong) IBOutlet UITextField *userName, *password;
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UIView *contentView;
-@property(nonatomic, strong)UILabel *welcomeMessage;
+@property (nonatomic, weak) IBOutlet UITextField *userName, *password;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIView *contentView;
+@property(nonatomic, weak)UILabel *welcomeMessage;
 
 //Check if login credentials are correct
 -(IBAction)login:(id)sender;
@@ -35,4 +29,5 @@
 //Create an account button action
 -(IBAction)createAccount:(id)sender;
 
+- (IBAction)unwindToLogin:(UIStoryboardSegue *)segue;
 @end
