@@ -42,4 +42,5 @@
 -(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler;
 -(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler;
+-(void)deleteMessage:(int)messageID finish:(void(^)(bool success))handler;
 @end

@@ -546,5 +546,16 @@
           }];
 }
 
+-(void)deleteMessage:(int)messageID finish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"id": [NSNumber numberWithInt:messageID]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/deleteMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
 
 @end
