@@ -12,10 +12,9 @@
 
 @interface PPFindPalsViewController : UIViewController <PPPalTableViewCellDelegate>
 {
-    IBOutlet UITableView *table;
     NSMutableArray *foundPals;
     PPLanguagesPopupView *popup;
 }
-@property(nonatomic, strong) IBOutlet UITableView *table;
+@property(nonatomic, weak) IBOutlet UITableView *table;
 
 @end
