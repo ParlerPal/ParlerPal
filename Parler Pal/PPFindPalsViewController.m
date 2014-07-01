@@ -24,7 +24,8 @@
         [self.table reloadData];
     }];
     
-    popup = [[PPLanguagesPopupView alloc]initWithFrame:CGRectMake(60, 200, 208, 159)];
+    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    profilePopup.delegate = self;
 }
 
 #pragma mark -
@@ -88,39 +89,49 @@
     return cell;
 }
 
-#pragma mark -
-#pragma mark PPPalTableViewCell delegate methods
-
--(void)shouldShowDetails:(NSString *)user
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    [self.view addSubview:popup];
+    NSString *username = [[foundPals objectAtIndex:indexPath.row]objectForKey:@"username"];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Languages"];
-    [query whereKey:@"username" equalTo:user];
-    NSArray *allUserLanguages = [query findObjects];
-    
-    NSMutableString *learningString = [NSMutableString stringWithString:@"I'm Learning:\n"];
-    NSMutableString *knowItString = [NSMutableString stringWithString:@"\nI Know:\n"];
-    
-    for(PFObject *object in allUserLanguages)
-    {
-        int languageStatusIndex = [[object objectForKey:@"languageStatus"]intValue];
-        int languageLevelIndex = [[object objectForKey:@"languageLevel"]intValue];
+    [[PPDatabaseManager sharedDatabaseManager]getSharedUserProfileForUsername:username WithFinish:^(NSMutableDictionary *results) {
+        [self.view addSubview:profilePopup];
+        profilePopup.username.text = username;
+        profilePopup.profile.text = [results objectForKey:@"profile"];
+        profilePopup.gender.text = [[results objectForKey:@"gender"]intValue] == 0 ? @"Male" : [[results objectForKey:@"gender"]intValue] == 1 ? @"Female" : @"N/S";
+        profilePopup.country.text = [results objectForKey:@"country"];
+        profilePopup.age.text = [results objectForKey:@"age"];
+        profilePopup.email.text = [results objectForKey:@"sharedEmail"];
+        profilePopup.skype.text = [results objectForKey:@"skypeID"];
         
-        if(languageStatusIndex == 1)
+        NSMutableString *fullLanguageString = [NSMutableString string];
+        NSMutableString *learning = [NSMutableString stringWithString:@"I'm Learning:\n"];
+        NSMutableString *know = [NSMutableString stringWithString:@"I'm Know:\n"];
+        
+        for(NSDictionary *language in [results objectForKey:@"languages"])
         {
-            [learningString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
+            if([[language objectForKey:@"languageStatus"]intValue] != 2)
+            {
+                NSString *languageName = [language objectForKey:@"name"];
+                NSString *languageLevel = [[language objectForKey:@"languageLevel"]intValue] == 0 ? @"Beginner" : [[language objectForKey:@"languageLevel"]intValue] == 1 ? @"Intermediate" : @"Fluent" ;
+                
+                if([[language objectForKey:@"languageStatus"]intValue] == 0)
+                {
+                    [know appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
+                }
+                
+                else
+                {
+                    [learning appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
+                }
+            }
         }
         
-        else if(languageStatusIndex == 0)
-        {
-            [knowItString appendString:[NSString stringWithFormat:@"%@: %@ \n",[object objectForKey:@"name"], languageLevelIndex == 0 ? @"Beginner" : languageLevelIndex == 1 ? @"Intermediate" : @"Fluent" ]];
-        }
-    }
-    popup.textView.text = [NSString stringWithFormat:@"%@%@",learningString,knowItString];
-    [popup show];*/
+        [fullLanguageString appendString:[NSString stringWithFormat:@"%@\n\n%@",know, learning]];
+        profilePopup.languages.text = fullLanguageString;
+        
+        [profilePopup show];
+    }];
+    
 }
-
 
 @end

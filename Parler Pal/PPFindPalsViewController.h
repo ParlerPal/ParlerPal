@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PPLanguagesPopupView.h"
+#import "PPProfilePopupView.h"
 #import "PPPalTableViewCell.h"
 
 @interface PPFindPalsViewController : UIViewController <PPPalTableViewCellDelegate>
 {
     NSMutableArray *foundPals;
-    PPLanguagesPopupView *popup;
+    PPProfilePopupView *profilePopup;
 }
 @property(nonatomic, weak) IBOutlet UITableView *table;
 
