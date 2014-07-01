@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PPPalTableViewCell.h"
 #import "PPProfilePopupView.h"
+
 @interface PPPalsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPPalTableViewCellDelegate>
 {
     NSMutableArray *friendships;
