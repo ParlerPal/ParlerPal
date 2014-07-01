@@ -14,11 +14,6 @@
 #pragma mark -
 #pragma mark action methods
 
--(IBAction)didSelectDetailsButton:(id)sender
-{
-    [self.delegate shouldShowDetails:username.text];
-}
-
 -(IBAction)didSelectAddRemoveButton:(id)sender
 {
     if(self.type == kPalType)

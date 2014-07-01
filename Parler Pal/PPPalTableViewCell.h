@@ -11,9 +11,6 @@
 //Delegate for handling when user choses to add/remove the pal or wishes to see details
 @protocol PPPalTableViewCellDelegate <NSObject>
 
-@required
--(void)shouldShowDetails:(NSString *)user;
-
 @optional
 -(void)shouldAcceptRequest:(id)sender;
 -(void)shouldDenyRequest:(id)sender;
@@ -39,7 +36,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) IBOutlet UIButton *addRemoveButton, *rejectButton;
 
 //Action methods
--(IBAction)didSelectDetailsButton:(id)sender;
 -(IBAction)didSelectAddRemoveButton:(id)sender;
 -(IBAction)rejectRequestButton:(id)sender;
 
