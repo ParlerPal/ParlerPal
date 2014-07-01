@@ -217,6 +217,7 @@
     if ([identifier isEqualToString:@"logout"])
     {
         //[PFUser logOut];
+        
         return YES;
     }
     
