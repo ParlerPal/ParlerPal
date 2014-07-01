@@ -29,7 +29,7 @@
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    
+    self.revealViewController.panGestureRecognizer.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
