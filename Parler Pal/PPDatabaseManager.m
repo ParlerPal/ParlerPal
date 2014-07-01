@@ -93,6 +93,18 @@
           }];
 }
 
+-(void)logoutWithFinish:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/logout.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              handler(NO);
+          }];
+}
+
 #pragma mark -
 #pragma mark User Profile Methods
 
@@ -163,6 +175,61 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
               handler(NO);
+          }];
+}
+
+-(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(NSMutableDictionary *results))handler
+{
+    NSDictionary *parameters = @{@"username": username};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/getSharedUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        
+        NSArray *sharedUser = [xmlDoc nodesForXPath:@"//sharedUser" error:nil];
+        NSMutableDictionary *userProfileData = [[NSMutableDictionary alloc] init];
+        for (DDXMLElement *node in sharedUser)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [userProfileData setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
+        
+        NSArray *resultsLanguages = [xmlDoc nodesForXPath:@"//language" error:nil];
+        NSMutableArray *allLanguages = [[NSMutableArray alloc]init];
+        for (DDXMLElement *node in resultsLanguages)
+        {
+            NSMutableDictionary *language = [[NSMutableDictionary alloc] init];
+            
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [language setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+            [allLanguages addObject:language];
+        }
+        
+        [userProfileData setObject:allLanguages forKey:@"languages"];
+        handler(userProfileData);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
           }];
 }
 

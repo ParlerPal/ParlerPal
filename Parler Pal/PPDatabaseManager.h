@@ -19,11 +19,13 @@
 
 -(void)signUpWithUsername:(NSString *)username password:(NSString *)password andEmail:(NSString *)email;
 -(void)signinWithUsername:(NSString *)username password:(NSString *)password finish:(void(^)(bool success))handler;
+-(void)logoutWithFinish:(void(^)(bool success))handler;
 
 -(void)getUserProfileWithFinish:(void(^)(NSMutableDictionary *results))handler;
 -(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender finish:(void(^)(bool success))handler;
 -(void)updatePasswordWithPassword:(NSString *)password finish:(void(^)(bool success))handler;
 -(void)deleteProfileWithFinish:(void(^)(bool success))handler;
+-(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(NSMutableDictionary *results))handler;
 
 -(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level finish:(void(^)(bool success))handler;
 -(void)getAllLanguages:(void(^)(NSMutableArray *results))handler;
