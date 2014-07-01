@@ -191,7 +191,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NQH-ff-Tr5"/>
-                                    <barButtonItem title="Done" id="AqW-Cx-Rwe">
+                                    <barButtonItem style="done" systemItem="done" id="AqW-Cx-Rwe">
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="Rpl-kr-e5T" kind="unwind" unwindAction="unwindMainMenuViewController:" id="a4u-am-PEV"/>
@@ -474,7 +474,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wt1-rR-P7F"/>
-                                    <barButtonItem title="Done" id="XXe-i0-NzL">
+                                    <barButtonItem style="done" systemItem="done" id="XXe-i0-NzL">
                                         <connections>
                                             <segue destination="Tds-jg-gcS" kind="unwind" unwindAction="unwindMainMenuViewController:" id="vUh-zc-u0i"/>
                                         </connections>
@@ -833,7 +833,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jAJ-oM-Yfh"/>
-                                    <barButtonItem title="Done" id="AMl-0D-suM">
+                                    <barButtonItem style="done" systemItem="done" id="AMl-0D-suM">
                                         <connections>
                                             <segue destination="fT0-8z-wpP" kind="unwind" unwindAction="unwindMainMenuViewController:" id="9Hz-ZO-xOV"/>
                                         </connections>
@@ -897,7 +897,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QYB-Ja-0Rn"/>
-                                    <barButtonItem title="Done" id="VXA-DL-0JI">
+                                    <barButtonItem style="done" systemItem="done" id="VXA-DL-0JI">
                                         <connections>
                                             <segue destination="76R-LG-TRT" kind="unwind" unwindAction="unwindMainMenuViewController:" id="c1b-eU-fbN"/>
                                         </connections>
@@ -1162,7 +1162,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wue-Av-nFG"/>
-                                    <barButtonItem title="Done" id="uAJ-0C-TLn">
+                                    <barButtonItem style="done" systemItem="done" id="uAJ-0C-TLn">
                                         <connections>
                                             <segue destination="h9d-pc-87u" kind="unwind" unwindAction="unwindMainMenuViewController:" id="RTs-Dn-Tal"/>
                                         </connections>
@@ -1243,7 +1243,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4Tf-3s-EgJ"/>
-                                    <barButtonItem title="Done" id="mF3-g6-fN0">
+                                    <barButtonItem style="done" systemItem="done" id="mF3-g6-fN0">
                                         <connections>
                                             <segue destination="7oK-6m-LVD" kind="unwind" unwindAction="unwindMainMenuViewController:" id="TGC-iT-Dom"/>
                                         </connections>
@@ -1347,7 +1347,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="83F-IJ-6cR"/>
-                                    <barButtonItem title="Done" id="tm6-ar-3ZN">
+                                    <barButtonItem style="done" systemItem="done" id="tm6-ar-3ZN">
                                         <connections>
                                             <segue destination="Xmr-hb-rUX" kind="unwind" unwindAction="unwindMainMenuViewController:" id="5G6-fS-CwE"/>
                                         </connections>
@@ -1393,7 +1393,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cRZ-0q-Wnv"/>
-                                    <barButtonItem title="Done" id="Doy-oS-KH3">
+                                    <barButtonItem style="done" systemItem="done" id="Doy-oS-KH3">
                                         <connections>
                                             <segue destination="yOp-Xs-D1z" kind="unwind" unwindAction="unwindMainMenuViewController:" id="WOi-yW-GBi"/>
                                         </connections>

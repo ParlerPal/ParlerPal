@@ -37,19 +37,21 @@
 		645A1B66195B54EB004657B2 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B5E195B54EB004657B2 /* DDXMLElement.m */; };
 		645A1B67195B54EB004657B2 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B60195B54EB004657B2 /* DDXMLNode.m */; };
 		645A1B6A195B5A72004657B2 /* PPDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B69195B5A72004657B2 /* PPDatabaseManager.m */; };
-		645A1B6D195BDD33004657B2 /* PPUserManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B6C195BDD33004657B2 /* PPUserManagement.m */; };
 		645A1B6F195C887F004657B2 /* quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 645A1B6E195C887F004657B2 /* quotes.plist */; };
 		645A1B72195CA99C004657B2 /* PPMessagesComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */; };
 		645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */; };
 		645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */; };
 		645A850019593D7D00313358 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A84FF19593D7D00313358 /* Login_Screen.png */; };
+		64763E93196201F300C757CE /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E92196201F300C757CE /* messageButton.png */; };
+		64763E951962024A00C757CE /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E941962024A00C757CE /* palsButton.png */; };
+		64763E97196204AE00C757CE /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E96196204AE00C757CE /* backButton.png */; };
+		64763E991962057B00C757CE /* searchPalsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E981962057B00C757CE /* searchPalsButton.png */; };
 		6481537B1953AB7200D0B3F0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6481537A1953AB7200D0B3F0 /* SWRevealViewController.m */; };
 		6481537E1953ABBB00D0B3F0 /* PPMessagesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6481537D1953ABBB00D0B3F0 /* PPMessagesMainViewController.m */; };
 		648153811953ABCC00D0B3F0 /* PPMessagesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648153801953ABCC00D0B3F0 /* PPMessagesMenuViewController.m */; };
 		648153871953BEF500D0B3F0 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153851953BEF500D0B3F0 /* menu.png */; };
 		648153881953BEF500D0B3F0 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 648153861953BEF500D0B3F0 /* menu@2x.png */; };
 		6481538E1953E87F00D0B3F0 /* Noteworthy.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 6481538D1953E86F00D0B3F0 /* Noteworthy.ttc */; };
-		648153901953EE3F00D0B3F0 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6481538F1953EE3F00D0B3F0 /* button.png */; };
 		6487B434194FAAE500F526E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B433194FAAE500F526E4 /* CFNetwork.framework */; };
 		6487B436194FAAF200F526E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B435194FAAF200F526E4 /* Security.framework */; };
 		6487B4A9194FAC6400F526E4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B4A8194FAC6400F526E4 /* libresolv.dylib */; };
@@ -62,8 +64,6 @@
 		6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */; };
 		6492F34A195E66CA00F950AF /* PPMessagesAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */; };
 		649547D2195657DE00349DC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D1195657DE00349DC4 /* background.png */; };
-		649547D41956596200349DC4 /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D31956596200349DC4 /* palsButton.png */; };
-		649547D619565AC900349DC4 /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D519565AC900349DC4 /* messageButton.png */; };
 		649547D819565BB100349DC4 /* languagesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D719565BB100349DC4 /* languagesButton.png */; };
 		649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649547E1195677B200349DC4 /* Main_iPhone.storyboard */; };
 		649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */; };
@@ -78,8 +78,6 @@
 		64AF9D7419575047007EF924 /* PPDataShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7319575047007EF924 /* PPDataShare.m */; };
 		64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7519576F35007EF924 /* deletePalButton.png */; };
 		64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7719576F3F007EF924 /* addPalButton.png */; };
-		64AF9D7A19579865007EF924 /* searchPalsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7919579865007EF924 /* searchPalsButton.png */; };
-		64AF9D7C195798E2007EF924 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7B195798E2007EF924 /* backButton.png */; };
 		64AF9D8019579BBB007EF924 /* PPBottomReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7F19579BBB007EF924 /* PPBottomReplaceSegue.m */; };
 		64AF9D831957A449007EF924 /* PPRightReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D821957A449007EF924 /* PPRightReplaceSegue.m */; };
 		64AF9D861957AAC9007EF924 /* PPLeftReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D851957AAC9007EF924 /* PPLeftReplaceSegue.m */; };
@@ -167,8 +165,6 @@
 		645A1B62195B54EB004657B2 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		645A1B68195B5A72004657B2 /* PPDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDatabaseManager.h; sourceTree = "<group>"; };
 		645A1B69195B5A72004657B2 /* PPDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDatabaseManager.m; sourceTree = "<group>"; };
-		645A1B6B195BDD33004657B2 /* PPUserManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserManagement.h; sourceTree = "<group>"; };
-		645A1B6C195BDD33004657B2 /* PPUserManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserManagement.m; sourceTree = "<group>"; };
 		645A1B6E195C887F004657B2 /* quotes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = quotes.plist; sourceTree = "<group>"; };
 		645A1B70195CA99C004657B2 /* PPMessagesComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesComposeViewController.h; sourceTree = "<group>"; };
 		645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesComposeViewController.m; sourceTree = "<group>"; };
@@ -177,6 +173,10 @@
 		645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSavedViewController.h; sourceTree = "<group>"; };
 		645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSavedViewController.m; sourceTree = "<group>"; };
 		645A84FF19593D7D00313358 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
+		64763E92196201F300C757CE /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
+		64763E941962024A00C757CE /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
+		64763E96196204AE00C757CE /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		64763E981962057B00C757CE /* searchPalsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchPalsButton.png; sourceTree = "<group>"; };
 		648153791953AB7200D0B3F0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6481537A1953AB7200D0B3F0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6481537C1953ABBB00D0B3F0 /* PPMessagesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesMainViewController.h; sourceTree = "<group>"; };
@@ -186,7 +186,6 @@
 		648153851953BEF500D0B3F0 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		648153861953BEF500D0B3F0 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		6481538D1953E86F00D0B3F0 /* Noteworthy.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noteworthy.ttc; sourceTree = "<group>"; };
-		6481538F1953EE3F00D0B3F0 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		6487B433194FAAE500F526E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6487B435194FAAF200F526E4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6487B4A8194FAC6400F526E4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
@@ -205,8 +204,6 @@
 		6492F348195E66CA00F950AF /* PPMessagesAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesAllViewController.h; sourceTree = "<group>"; };
 		6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesAllViewController.m; sourceTree = "<group>"; };
 		649547D1195657DE00349DC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		649547D31956596200349DC4 /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
-		649547D519565AC900349DC4 /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
 		649547D719565BB100349DC4 /* languagesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = languagesButton.png; sourceTree = "<group>"; };
 		649547E0195677B200349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		649547E5195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main_iPad.strings; sourceTree = "<group>"; };
@@ -230,8 +227,6 @@
 		64AF9D7319575047007EF924 /* PPDataShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDataShare.m; sourceTree = "<group>"; };
 		64AF9D7519576F35007EF924 /* deletePalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletePalButton.png; sourceTree = "<group>"; };
 		64AF9D7719576F3F007EF924 /* addPalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addPalButton.png; sourceTree = "<group>"; };
-		64AF9D7919579865007EF924 /* searchPalsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchPalsButton.png; sourceTree = "<group>"; };
-		64AF9D7B195798E2007EF924 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		64AF9D7E19579BBB007EF924 /* PPBottomReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPBottomReplaceSegue.h; sourceTree = "<group>"; };
 		64AF9D7F19579BBB007EF924 /* PPBottomReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPBottomReplaceSegue.m; sourceTree = "<group>"; };
 		64AF9D811957A449007EF924 /* PPRightReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRightReplaceSegue.h; sourceTree = "<group>"; };
@@ -475,8 +470,6 @@
 		64A1E8951952260B00620BA1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				645A1B6B195BDD33004657B2 /* PPUserManagement.h */,
-				645A1B6C195BDD33004657B2 /* PPUserManagement.m */,
 				645A1B68195B5A72004657B2 /* PPDatabaseManager.h */,
 				645A1B69195B5A72004657B2 /* PPDatabaseManager.m */,
 				64AF9D7219575047007EF924 /* PPDataShare.h */,
@@ -508,14 +501,13 @@
 		64AF9D7D19579980007EF924 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				6481538F1953EE3F00D0B3F0 /* button.png */,
-				649547D31956596200349DC4 /* palsButton.png */,
-				64AF9D7B195798E2007EF924 /* backButton.png */,
-				64AF9D7919579865007EF924 /* searchPalsButton.png */,
+				64763E96196204AE00C757CE /* backButton.png */,
+				64763E981962057B00C757CE /* searchPalsButton.png */,
+				64763E941962024A00C757CE /* palsButton.png */,
+				64763E92196201F300C757CE /* messageButton.png */,
 				64AF9D7719576F3F007EF924 /* addPalButton.png */,
 				64AF9D7519576F35007EF924 /* deletePalButton.png */,
 				649547D719565BB100349DC4 /* languagesButton.png */,
-				649547D519565AC900349DC4 /* messageButton.png */,
 			);
 			name = Button;
 			sourceTree = "<group>";
@@ -698,10 +690,11 @@
 			files = (
 				641B8020195902C50064289F /* map3r.png in Resources */,
 				648153871953BEF500D0B3F0 /* menu.png in Resources */,
+				64763E991962057B00C757CE /* searchPalsButton.png in Resources */,
 				64FC116A1958D61F00915A00 /* stripeBar.png in Resources */,
 				64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */,
-				64AF9D7C195798E2007EF924 /* backButton.png in Resources */,
-				648153901953EE3F00D0B3F0 /* button.png in Resources */,
+				64763E93196201F300C757CE /* messageButton.png in Resources */,
+				64763E951962024A00C757CE /* palsButton.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
 				64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */,
 				649547D2195657DE00349DC4 /* background.png in Resources */,
@@ -709,14 +702,11 @@
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
 				6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
-				649547D619565AC900349DC4 /* messageButton.png in Resources */,
 				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
 				6433125E195F9C5800290E02 /* cellBG.png in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
 				645A850019593D7D00313358 /* Login_Screen.png in Resources */,
-				649547D41956596200349DC4 /* palsButton.png in Resources */,
-				64AF9D7A19579865007EF924 /* searchPalsButton.png in Resources */,
 				648153881953BEF500D0B3F0 /* menu@2x.png in Resources */,
 				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,
 				649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */,
@@ -728,6 +718,7 @@
 				64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */,
 				649547FD195682E100349DC4 /* PPLanguagesPopupView.xib in Resources */,
 				64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */,
+				64763E97196204AE00C757CE /* backButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,7 +760,6 @@
 				648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */,
 				64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */,
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
-				645A1B6D195BDD33004657B2 /* PPUserManagement.m in Sources */,
 				6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */,
 				64AF9D861957AAC9007EF924 /* PPLeftReplaceSegue.m in Sources */,
 				6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */,
