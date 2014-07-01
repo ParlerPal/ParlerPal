@@ -166,7 +166,10 @@
 
 - (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
 {
-    
+    [[PPDatabaseManager sharedDatabaseManager]logoutWithFinish:^(bool success) {
+    }];
+    self.userName.text = @"";
+    self.password.text = @"";
 }
 
 @end
