@@ -37,6 +37,7 @@
     [self.revealButton setTarget: self.revealViewController];
     [self.revealButton setAction: @selector( revealToggle: )];
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    self.revealViewController.panGestureRecognizer.delegate = self;
     
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     tapRec.delegate = self;
@@ -54,11 +55,14 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if ([touch.view isKindOfClass:[UIControl class]]) {
-        // we touched a button, slider, or other UIControl
+    if([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[UITextView class]]) {
         return NO; // ignore the touch
     }
     return YES; // handle the touch
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark -
