@@ -132,7 +132,7 @@
 {
     [self.view endEditing:YES];
     
-    if([passwordField.text isEqualToString:confirmPasswordField.text])
+    if([passwordField.text isEqualToString:confirmPasswordField.text] && (passwordField.text.length > 0 && confirmPasswordField.text.length >0 ))
     {
         [[PPDatabaseManager sharedDatabaseManager]updatePasswordWithPassword:passwordField.text finish:^(bool success)
         {
@@ -143,7 +143,7 @@
     
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Passwords did not match, try again." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Passwords did not match or they are blank, try again." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
         [alert show];
     }
     
@@ -181,8 +181,6 @@
 {
     if([identifier isEqualToString:@"doneSegue"])
     {
-        //[PPUserManagement updateUserWithPrivateEmail:privateEmailField.text country:countryField.text sharedEmail:sharedEmailField.text skypeID:skypeIDField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex];
-        
         [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex finish:^(bool success) {
             
         }];
