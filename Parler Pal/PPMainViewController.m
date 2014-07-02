@@ -10,9 +10,12 @@
 #import "PPMessageTableViewCell.h"
 #import "PPDataShare.h"
 #import "PPDatabaseManager.h"
+#import "PPMessageLocation.h"
+
+#define METERS_PER_MILE 1609.344
 
 @implementation PPMainViewController
-@synthesize toolbarTitle, quotes, table;
+@synthesize toolbarTitle, quotes, table, mapView;
 
 #pragma mark -
 #pragma mark view methods
@@ -33,6 +36,7 @@
     [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
+        [self plotMessagesPositions];
     }];
     
     messageContentView = [[PPMessagePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
@@ -66,6 +70,7 @@
         {
             [messages removeObject:messageToDelete];
             [self.table reloadData];
+            [self plotMessagesPositions];
         }
         
     }];
@@ -94,6 +99,7 @@
         {
             [messages removeObject:messageToDelete];
             [self.table reloadData];
+            [self plotMessagesPositions];
         }
     }];
 }
@@ -184,6 +190,7 @@
         [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
+            [self plotMessagesPositions];
         }];
         
     }];
@@ -205,19 +212,106 @@
         [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue] finish:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
+            [self plotMessagesPositions];
         }];
     }
 }
 
+#pragma mark -
+#pragma mark Map View Methods
+
+-(void)plotMessagesPositions
+{
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        [mapView removeAnnotation:annotation];
+    }
+
+    for(NSDictionary *message in messages)
+    {
+        if([[message objectForKey:@"lat"]doubleValue] != 0 && [[message objectForKey:@"lat"]doubleValue] != 0)
+        {
+            NSString * name = [message objectForKey:@"from"];
+            NSString * subject = [message objectForKey:@"subject"];
+    
+            CLLocationCoordinate2D coordinate;
+            coordinate.latitude = [[message objectForKey:@"lat"]doubleValue];
+            coordinate.longitude = [[message objectForKey:@"lon"]doubleValue];
+            PPMessageLocation *annotation = [[PPMessageLocation alloc] initWithName:name subject:subject coordinate:coordinate] ;
+            [mapView addAnnotation:annotation];
+        }
+    }
+    
+    [self setMapRegion];
+}
+
+/*Note that when you dequeue a reusable annotation, you give it an identifier. If you have multiple styles of annotations, be sure to have a unique identifier for each one, otherwise you might mistakenly dequeue an identifier of a different type, and have unexpected behavior in your app. It’s basically the same idea behind a cell identifier in tableView:cellForRowAtIndexPath.*/
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString *identifier = @"PPMessageLocation";
+    if ([annotation isKindOfClass:[PPMessageLocation class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView.enabled = YES;
+            annotationView.canShowCallout = YES;
+            annotationView.image = [UIImage imageNamed:@"mapPin.png"];//here we use a nice image instead of the default pins
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+-(void)setMapRegion
+{
+    if([messages count] > 0)
+    {
+        //calculate new region to show on map
+        NSDictionary *firstMessage = [messages objectAtIndex:0];
+        double max_long = [[firstMessage objectForKey:@"lon"] doubleValue];
+        double min_long = [[firstMessage objectForKey:@"lon"] doubleValue];
+        double max_lat = [[firstMessage objectForKey:@"lat"] doubleValue];
+        double min_lat = [[firstMessage objectForKey:@"lat"] doubleValue];
+        
+        //find min and max values
+        for (NSDictionary *message in messages) {
+            if ([[message objectForKey:@"lat"] doubleValue] > max_lat) {max_lat = [[message objectForKey:@"lat"] doubleValue];}
+            if ([[message objectForKey:@"lat"] doubleValue] < min_lat) {min_lat = [[message objectForKey:@"lat"] doubleValue];}
+            if ([[message objectForKey:@"lon"]doubleValue] > max_long) {max_long = [[message objectForKey:@"lon"] doubleValue];}
+            if ([[message objectForKey:@"lon"]doubleValue] < min_long) {min_long = [[message objectForKey:@"lon"]doubleValue];}
+        }
+        
+        //calculate center of map
+        double center_long = (max_long + min_long) / 2;
+        double center_lat = (max_lat + min_lat) / 2;
+        
+        //calculate deltas
+        double deltaLat = abs(max_lat - min_lat);
+        double deltaLong = abs(max_long - min_long);
+        
+        //set minimal delta
+        if (deltaLat < .028) {deltaLat = .028;}
+        if (deltaLong < .028) {deltaLong = .028;}
+        
+        MKCoordinateRegion region;
+        region.center.latitude = center_lat;
+        region.center.longitude = center_long;
+        region.span.latitudeDelta = deltaLat;
+        region.span.longitudeDelta = deltaLong;
+        [mapView setRegion:region];
+    }
+}
 #pragma mark -
 #pragma mark segue methods
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([identifier isEqualToString:@"logout"])
-    {
-        //[PFUser logOut];
-        
+    {        
         return YES;
     }
     

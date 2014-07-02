@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PPMessagePopupView.h"
 #import "PPMessageTableViewCell.h"
+#import <MapKit/MapKit.h>
 
-@interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPMessagesPopupViewDelegate, PPMessagesTableViewCellDelegate>
+@interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPMessagesPopupViewDelegate, PPMessagesTableViewCellDelegate, MKMapViewDelegate>
 {
     int languageIndex;
     NSArray *allQuotes;
@@ -21,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *toolbarTitle;
 @property (weak, nonatomic) IBOutlet UILabel *quotes;
 @property (nonatomic, weak) IBOutlet UITableView *table;
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 
-- (IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue;
+-(IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue;
+-(void)plotMessagesPositions;
 
 @end
