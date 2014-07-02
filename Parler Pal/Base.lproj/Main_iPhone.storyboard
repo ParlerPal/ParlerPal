@@ -536,20 +536,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.49999999999999961" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5XK-Ht-54N">
-                                <rect key="frame" x="0.0" y="44" width="320" height="238"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="297" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-7G-LNF">
-                                        <rect key="frame" x="12" y="151" width="297" height="82"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aP1-1I-ho7">
+                                <rect key="frame" x="0.0" y="44" width="320" height="239"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pnS-xi-IeC" id="4xP-rB-bVC"/>
+                                </connections>
+                            </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Fo-bI-KQm">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -634,7 +627,7 @@
                     <navigationItem key="navigationItem" id="ds5-Dv-SlS"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="quotes" destination="tTU-7G-LNF" id="5ag-c8-UFv"/>
+                        <outlet property="mapView" destination="aP1-1I-ho7" id="dlq-Sk-Q6H"/>
                         <outlet property="table" destination="okp-zA-ur8" id="hzE-tY-shK"/>
                         <outlet property="toolbarTitle" destination="JpL-Ky-MT5" id="30r-dQ-roG"/>
                     </connections>
@@ -1105,7 +1098,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tRL-vp-l2L">
-                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1128,16 +1121,35 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bmt-7b-OxD">
+                                <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="euj-dF-JxE" id="xUt-CK-LV7"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.58431375029999999" green="0.78823536630000002" blue="0.43137258290000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="bGb-bQ-DUP"/>
                     <connections>
+                        <outlet property="searchBar" destination="bmt-7b-OxD" id="EUq-ac-NPX"/>
+                        <outlet property="searchDisplayController" destination="7tS-Yd-JfK" id="uDs-Q6-sR7"/>
                         <outlet property="table" destination="tRL-vp-l2L" id="pDX-l9-u8R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yao-uq-WoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rym-Ao-kre" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="7tS-Yd-JfK">
+                    <connections>
+                        <outlet property="delegate" destination="euj-dF-JxE" id="yUL-2V-YwZ"/>
+                        <outlet property="searchBar" destination="bmt-7b-OxD" id="biB-VG-co7"/>
+                        <outlet property="searchContentsController" destination="euj-dF-JxE" id="kGs-av-rHH"/>
+                        <outlet property="searchResultsDataSource" destination="euj-dF-JxE" id="NcY-Xg-sBS"/>
+                        <outlet property="searchResultsDelegate" destination="euj-dF-JxE" id="CrJ-mh-u6Z"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1523" y="850"/>
         </scene>
@@ -1242,13 +1254,17 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4Tf-3s-EgJ"/>
                                     <barButtonItem style="done" systemItem="done" id="mF3-g6-fN0">
                                         <connections>
                                             <segue destination="7oK-6m-LVD" kind="unwind" unwindAction="unwindMainMenuViewController:" id="TGC-iT-Dom"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BAd-pk-Izx"/>
+                                    <barButtonItem systemItem="refresh" id="71N-Z9-mjN">
+                                        <connections>
+                                            <action selector="refresh:" destination="clO-qF-ZpL" id="Am1-j9-mZ2"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1346,13 +1362,17 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="83F-IJ-6cR"/>
                                     <barButtonItem style="done" systemItem="done" id="tm6-ar-3ZN">
                                         <connections>
                                             <segue destination="Xmr-hb-rUX" kind="unwind" unwindAction="unwindMainMenuViewController:" id="5G6-fS-CwE"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ASP-gk-XMo"/>
+                                    <barButtonItem systemItem="refresh" id="QfQ-Ow-rwr">
+                                        <connections>
+                                            <action selector="refresh:" destination="2Ba-E6-Zta" id="UQc-PC-enL"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1392,13 +1412,17 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cRZ-0q-Wnv"/>
                                     <barButtonItem style="done" systemItem="done" id="Doy-oS-KH3">
                                         <connections>
                                             <segue destination="yOp-Xs-D1z" kind="unwind" unwindAction="unwindMainMenuViewController:" id="WOi-yW-GBi"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QxW-tM-1Yh"/>
+                                    <barButtonItem systemItem="refresh" id="Nr0-xL-PCA">
+                                        <connections>
+                                            <action selector="refresh:" destination="bjF-aj-633" id="P6q-6c-OCT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

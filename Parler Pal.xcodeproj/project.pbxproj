@@ -41,7 +41,6 @@
 		645A1B72195CA99C004657B2 /* PPMessagesComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */; };
 		645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */; };
 		645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */; };
-		645A850019593D7D00313358 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A84FF19593D7D00313358 /* Login_Screen.png */; };
 		64763E93196201F300C757CE /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E92196201F300C757CE /* messageButton.png */; };
 		64763E951962024A00C757CE /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E941962024A00C757CE /* palsButton.png */; };
 		64763E97196204AE00C757CE /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E96196204AE00C757CE /* backButton.png */; };
@@ -57,7 +56,10 @@
 		6487B4A9194FAC6400F526E4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6487B4A8194FAC6400F526E4 /* libresolv.dylib */; };
 		648985711954CE66004C0286 /* PPPalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985701954CE66004C0286 /* PPPalsViewController.m */; };
 		648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648985761954FAF5004C0286 /* PPPalTableViewCell.m */; };
-		6489858C19550A79004C0286 /* PPLanguagesPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6489858B19550A79004C0286 /* PPLanguagesPopupView.m */; };
+		648C84301963115E009872D9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C842F1963115E009872D9 /* MapKit.framework */; };
+		648C843419631484009872D9 /* PPMessageLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 648C843319631484009872D9 /* PPMessageLocation.m */; };
+		648C843A19631ADC009872D9 /* mapPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C843919631ADC009872D9 /* mapPin.png */; };
+		648C843E196391EB009872D9 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C843D196391EB009872D9 /* Login_Screen.png */; };
 		6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F33F195E398700F950AF /* PPMessagePopupView.m */; };
 		6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F341195E39F700F950AF /* PPMessagePopupView.xib */; };
 		6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F344195E5A8500F950AF /* PPReplyPopupView.m */; };
@@ -69,7 +71,6 @@
 		649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */; };
 		649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547F11956826A00349DC4 /* PPPalTableViewCell.xib */; };
 		649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547F8195682A700349DC4 /* PPMessageTableViewCell.xib */; };
-		649547FD195682E100349DC4 /* PPLanguagesPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */; };
 		649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649548051956907600349DC4 /* PPFindPalsViewController.m */; };
 		64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E88C19520AAC00620BA1 /* PPNavigationController.m */; };
 		64A1E89119520EB000620BA1 /* PPTopReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E89019520EB000620BA1 /* PPTopReplaceSegue.m */; };
@@ -172,7 +173,6 @@
 		645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesWorkInProgressViewController.m; sourceTree = "<group>"; };
 		645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSavedViewController.h; sourceTree = "<group>"; };
 		645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSavedViewController.m; sourceTree = "<group>"; };
-		645A84FF19593D7D00313358 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
 		64763E92196201F300C757CE /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
 		64763E941962024A00C757CE /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
 		64763E96196204AE00C757CE /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
@@ -193,8 +193,11 @@
 		648985701954CE66004C0286 /* PPPalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPalsViewController.m; sourceTree = "<group>"; };
 		648985751954FAF5004C0286 /* PPPalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPalTableViewCell.h; sourceTree = "<group>"; };
 		648985761954FAF5004C0286 /* PPPalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPalTableViewCell.m; sourceTree = "<group>"; };
-		6489858A19550A79004C0286 /* PPLanguagesPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguagesPopupView.h; sourceTree = "<group>"; };
-		6489858B19550A79004C0286 /* PPLanguagesPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguagesPopupView.m; sourceTree = "<group>"; };
+		648C842F1963115E009872D9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		648C843219631484009872D9 /* PPMessageLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessageLocation.h; sourceTree = "<group>"; };
+		648C843319631484009872D9 /* PPMessageLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessageLocation.m; sourceTree = "<group>"; };
+		648C843919631ADC009872D9 /* mapPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapPin.png; sourceTree = "<group>"; };
+		648C843D196391EB009872D9 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
 		6492F33E195E398700F950AF /* PPMessagePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagePopupView.h; sourceTree = "<group>"; };
 		6492F33F195E398700F950AF /* PPMessagePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagePopupView.m; sourceTree = "<group>"; };
 		6492F341195E39F700F950AF /* PPMessagePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMessagePopupView.xib; sourceTree = "<group>"; };
@@ -212,7 +215,6 @@
 		649547E919567FEE00349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		649547F01956826A00349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPPalTableViewCell.xib; sourceTree = "<group>"; };
 		649547F7195682A700349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPMessageTableViewCell.xib; sourceTree = "<group>"; };
-		649547FE195682E100349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PPLanguagesPopupView.xib; sourceTree = "<group>"; };
 		649548041956907600349DC4 /* PPFindPalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFindPalsViewController.h; sourceTree = "<group>"; };
 		649548051956907600349DC4 /* PPFindPalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFindPalsViewController.m; sourceTree = "<group>"; };
 		64A1E88B19520AAC00620BA1 /* PPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNavigationController.h; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648C84301963115E009872D9 /* MapKit.framework in Frameworks */,
 				6423F59B1951245900C14934 /* SystemConfiguration.framework in Frameworks */,
 				6423F5991951245000C14934 /* StoreKit.framework in Frameworks */,
 				6423F5971951244500C14934 /* QuartzCore.framework in Frameworks */,
@@ -417,11 +420,12 @@
 			isa = PBXGroup;
 			children = (
 				6433125D195F9C5800290E02 /* cellBG.png */,
+				648C843919631ADC009872D9 /* mapPin.png */,
+				648C843D196391EB009872D9 /* Login_Screen.png */,
 				64FC116B1958D83700915A00 /* paper.png */,
 				64FC11691958D61F00915A00 /* stripeBar.png */,
 				64AF9D7D19579980007EF924 /* Button */,
 				649547D1195657DE00349DC4 /* background.png */,
-				645A84FF19593D7D00313358 /* Login_Screen.png */,
 				648153851953BEF500D0B3F0 /* menu.png */,
 				648153861953BEF500D0B3F0 /* menu@2x.png */,
 			);
@@ -450,6 +454,15 @@
 				649547F11956826A00349DC4 /* PPPalTableViewCell.xib */,
 			);
 			name = "Table Cells";
+			sourceTree = "<group>";
+		};
+		648C843119631463009872D9 /* Custom Map Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				648C843219631484009872D9 /* PPMessageLocation.h */,
+				648C843319631484009872D9 /* PPMessageLocation.m */,
+			);
+			name = "Custom Map Stuff";
 			sourceTree = "<group>";
 		};
 		64A1E88E19520E6F00620BA1 /* Custom Segues */ = {
@@ -481,10 +494,8 @@
 		64A1E8961952262300620BA1 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				648C843119631463009872D9 /* Custom Map Stuff */,
 				6489857A1954FE38004C0286 /* Table Cells */,
-				6489858A19550A79004C0286 /* PPLanguagesPopupView.h */,
-				6489858B19550A79004C0286 /* PPLanguagesPopupView.m */,
-				649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */,
 				6492F33E195E398700F950AF /* PPMessagePopupView.h */,
 				6492F33F195E398700F950AF /* PPMessagePopupView.m */,
 				6492F341195E39F700F950AF /* PPMessagePopupView.xib */,
@@ -534,6 +545,7 @@
 		64BFB6391944183300D11E88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				648C842F1963115E009872D9 /* MapKit.framework */,
 				6423F59A1951245900C14934 /* SystemConfiguration.framework */,
 				6423F5981951245000C14934 /* StoreKit.framework */,
 				6423F5961951244500C14934 /* QuartzCore.framework */,
@@ -690,9 +702,11 @@
 			files = (
 				641B8020195902C50064289F /* map3r.png in Resources */,
 				648153871953BEF500D0B3F0 /* menu.png in Resources */,
+				648C843A19631ADC009872D9 /* mapPin.png in Resources */,
 				64763E991962057B00C757CE /* searchPalsButton.png in Resources */,
 				64FC116A1958D61F00915A00 /* stripeBar.png in Resources */,
 				64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */,
+				648C843E196391EB009872D9 /* Login_Screen.png in Resources */,
 				64763E93196201F300C757CE /* messageButton.png in Resources */,
 				64763E951962024A00C757CE /* palsButton.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
@@ -706,7 +720,6 @@
 				6433125E195F9C5800290E02 /* cellBG.png in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
-				645A850019593D7D00313358 /* Login_Screen.png in Resources */,
 				648153881953BEF500D0B3F0 /* menu@2x.png in Resources */,
 				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,
 				649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */,
@@ -716,7 +729,6 @@
 				64FC116C1958D83800915A00 /* paper.png in Resources */,
 				641B80181958FE7D0064289F /* map1.png in Resources */,
 				64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */,
-				649547FD195682E100349DC4 /* PPLanguagesPopupView.xib in Resources */,
 				64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */,
 				64763E97196204AE00C757CE /* backButton.png in Resources */,
 			);
@@ -749,7 +761,6 @@
 				645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */,
 				645A1B4D195B4F54004657B2 /* AFURLResponseSerialization.m in Sources */,
 				64BFB674194429C500D11E88 /* PPMainViewController.m in Sources */,
-				6489858C19550A79004C0286 /* PPLanguagesPopupView.m in Sources */,
 				6481537E1953ABBB00D0B3F0 /* PPMessagesMainViewController.m in Sources */,
 				64BFB64B1944183300D11E88 /* PPAppDelegate.m in Sources */,
 				645A1B4B195B4F54004657B2 /* AFURLConnectionOperation.m in Sources */,
@@ -757,6 +768,7 @@
 				645A1B6A195B5A72004657B2 /* PPDatabaseManager.m in Sources */,
 				645A1B65195B54EB004657B2 /* DDXMLDocument.m in Sources */,
 				64F780CE195270F80028A8D6 /* PPLanguageTableViewCell.m in Sources */,
+				648C843419631484009872D9 /* PPMessageLocation.m in Sources */,
 				648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */,
 				64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */,
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
@@ -834,14 +846,6 @@
 				649547F7195682A700349DC4 /* Base */,
 			);
 			name = PPMessageTableViewCell.xib;
-			sourceTree = "<group>";
-		};
-		649547FF195682E100349DC4 /* PPLanguagesPopupView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				649547FE195682E100349DC4 /* Base */,
-			);
-			name = PPLanguagesPopupView.xib;
 			sourceTree = "<group>";
 		};
 		64BFB6431944183300D11E88 /* InfoPlist.strings */ = {
