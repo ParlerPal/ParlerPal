@@ -51,6 +51,21 @@
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
+    
+    if(!self.lm)self.lm = [CLLocationManager new];
+    self.lm.delegate = self;
+    self.lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.lm.distanceFilter = 10.0f;
+    self.lm.headingFilter = 5;
+    [self.lm startUpdatingLocation];
+}
+
+#pragma mark -
+#pragma mark Core Location Delegate Method
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.location = [locations objectAtIndex:0];
 }
 
 #pragma mark -
@@ -79,6 +94,8 @@
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
     } completion:^(BOOL finished){[self removeFromSuperview];}];
+    
+    [self.lm stopUpdatingLocation];
 }
 
 -(IBAction)sendButton:(id)sender
@@ -104,7 +121,7 @@
         return;
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text location: self.location finish:^(bool success) {
         subjectField.text = @"";
         contentField.text = @"";
         [self hide:nil];
@@ -119,6 +136,8 @@
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
     } completion:^(BOOL finished){}];
+    
+    [self.lm startUpdatingLocation];
 }
 
 @end

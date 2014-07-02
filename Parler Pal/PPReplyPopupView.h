@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PPReplyPopupView : UIView <UIGestureRecognizerDelegate>
+@interface PPReplyPopupView : UIView <UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 {
 
 }
 @property (nonatomic, weak) IBOutlet UIView *view;
 @property (nonatomic, weak) IBOutlet UITextView *contentField;
 @property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
+@property (nonatomic, strong) CLLocationManager *lm;
+@property (nonatomic, strong) CLLocation *location;
 
 //Button Actions
 -(IBAction)hide:(id)sender;
