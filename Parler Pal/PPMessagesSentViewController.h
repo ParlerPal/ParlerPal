@@ -21,4 +21,6 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
 @property(nonatomic, weak) IBOutlet UITableView *table;
 
+-(IBAction)refresh:(id)sender;
+
 @end

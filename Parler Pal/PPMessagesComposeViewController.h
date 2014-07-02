@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 {
 
 }
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
 @property (nonatomic, weak) IBOutlet UITextView *messageBox;
+@property (nonatomic, strong) CLLocationManager *lm;
+@property (nonatomic, strong) CLLocation *location;
 
 -(IBAction)findUserButton:(id)sender;
 -(IBAction)sendButton:(id)sender;

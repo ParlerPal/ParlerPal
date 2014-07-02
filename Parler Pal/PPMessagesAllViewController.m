@@ -38,6 +38,22 @@
     messageContentView.delegate = self;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [table setEditing:NO];
+}
+
+#pragma mark -
+#pragma mark Action methods
+
+-(IBAction)refresh:(id)sender
+{
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+        messages = results;
+        [self.table reloadData];
+    }];
+}
+
 #pragma mark -
 #pragma mark Messages Popup View delegate methods
 
