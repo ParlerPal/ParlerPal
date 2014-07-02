@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "DDXML.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface PPDatabaseManager : NSObject
 {
@@ -38,7 +39,7 @@
 -(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message finish:(void(^)(bool success))handler;
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location finish:(void(^)(bool success))handler;
 -(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler;

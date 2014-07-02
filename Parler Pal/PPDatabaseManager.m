@@ -442,9 +442,10 @@
 #pragma mark -
 #pragma mark messaging methods
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message finish:(void(^)(bool success))handler
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location finish:(void(^)(bool success))handler
 {
-    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message};
+
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"lat":[NSNumber numberWithDouble:location.coordinate.latitude], @"lon":[NSNumber numberWithDouble:location.coordinate.longitude]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/submitMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         handler(YES);
     }
