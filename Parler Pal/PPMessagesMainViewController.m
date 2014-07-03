@@ -136,6 +136,7 @@
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
         messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
         messageContentView.messageID = [messageID intValue];
+        messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
         [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];

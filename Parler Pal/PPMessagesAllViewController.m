@@ -134,6 +134,7 @@
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
         messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
         messageContentView.messageID = [messageID intValue];
+        messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
         if([[messages objectAtIndex:indexPath.row]objectForKey:@"opened"]==NO)
         {
