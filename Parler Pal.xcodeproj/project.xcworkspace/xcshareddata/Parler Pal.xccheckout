@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9F62808D-0802-4EDD-BD81-11867BF05ADD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Parler Pal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9707CAE2-FC72-4F7A-A3A5-0DD9CB8DDC8F</key>
+		<string>https://github.com/Avizzv92/ParlerPal.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Parler Pal.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9707CAE2-FC72-4F7A-A3A5-0DD9CB8DDC8F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Avizzv92/ParlerPal.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9707CAE2-FC72-4F7A-A3A5-0DD9CB8DDC8F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9707CAE2-FC72-4F7A-A3A5-0DD9CB8DDC8F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ParlerPal</string>
+		</dict>
+	</array>
+</dict>
+</plist>
