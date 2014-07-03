@@ -12,14 +12,13 @@
 @implementation PPFindPalsViewController
 @synthesize table, filteredPalsArray, searchBar;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPals:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsCompletionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
         self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
@@ -30,13 +29,12 @@
 
 }
 
-#pragma mark -
-#pragma mark Friendship Management delegate methods
+#pragma mark - Friendship Management delegate methods
 
 -(void)shouldRequestFriend:(id)sender
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
-    [[PPDatabaseManager sharedDatabaseManager]requestFriendshipWith:cell.username.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]requestFriendshipWith:cell.username.text completionHandler:^(bool success) {
         NSMutableDictionary *userToRemove = NULL;
         
         for(NSMutableDictionary *user in foundPals)
@@ -52,8 +50,7 @@
     }];
 }
 
-#pragma mark -
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 95.0;
@@ -156,8 +153,8 @@
     
 }
 
-#pragma mark -
-#pragma mark Content Filtering
+#pragma mark - Content Filtering
+
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     // Update the filtered array based on the search text and scope.
     // Remove all objects from the filtered search array
@@ -167,8 +164,8 @@
     filteredPalsArray = [NSMutableArray arrayWithArray:[foundPals filteredArrayUsingPredicate:predicate]];
 }
 
-#pragma mark
 #pragma mark - UISearchDisplayController Delegate Methods
+
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:

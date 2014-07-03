@@ -20,32 +20,37 @@
 
 +(PPDatabaseManager *)sharedDatabaseManager;
 
+//Sign in and out methods
 -(void)signUpWithUsername:(NSString *)username password:(NSString *)password andEmail:(NSString *)email;
--(void)signinWithUsername:(NSString *)username password:(NSString *)password finish:(void(^)(bool success))handler;
--(void)logoutWithFinish:(void(^)(bool success))handler;
+-(void)signinWithUsername:(NSString *)username password:(NSString *)password completionHandler:(void(^)(bool success))handler;
+-(void)logoutCompletionHandler:(void(^)(bool success))handler;
 
--(void)getUserProfileWithFinish:(void(^)(NSMutableDictionary *results))handler;
--(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender finish:(void(^)(bool success))handler;
--(void)updatePasswordWithPassword:(NSString *)password finish:(void(^)(bool success))handler;
--(void)deleteProfileWithFinish:(void(^)(bool success))handler;
+//User profile methods
+-(void)getUserProfileCompletionHandler:(void(^)(NSMutableDictionary *results))handler;
+-(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler;
+-(void)updatePasswordWithPassword:(NSString *)password completionHandler:(void(^)(bool success))handler;
+-(void)deleteProfileCompletionHandler:(void(^)(bool success))handler;
 -(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(NSMutableDictionary *results))handler;
 
--(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level finish:(void(^)(bool success))handler;
--(void)getAllLanguages:(void(^)(NSMutableArray *results))handler;
+//Language methods
+-(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level completionHandler:(void(^)(bool success))handler;
+-(void)getAllLanguagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
 
--(void)getAllPals:(void(^)(NSMutableArray *results))handler;
--(void)getAllPalRequests:(void(^)(NSMutableArray *results))handler;
--(void)getBatchOfPals:(void(^)(NSMutableArray *results))handler;
+//Friendship methods
+-(void)getAllPalsCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getAllPalRequestsCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getBatchOfPalsCompletionHandler:(void(^)(NSMutableArray *results))handler;
 
--(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
--(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
--(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
+-(void)requestFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler;
+-(void)confirmFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler;
+-(void)deleteFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler;
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo finish:(void(^)(bool success))handler;
--(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler;
--(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler;
--(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler;
--(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler;
--(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler;
--(void)deleteMessage:(int)messageID finish:(void(^)(bool success))handler;
+//Messaging methods
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo completionHandler:(void(^)(bool success))handler;
+-(void)getAllReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getUnreadReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getAllSentMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getMessageContentForID:(int)messageID completionHandler:(void(^)(NSMutableDictionary *results))handler;
+-(void)markMessageAsRead:(int)messageID completionHandler:(void(^)(bool success))handler;
+-(void)deleteMessage:(int)messageID completionHandler:(void(^)(bool success))handler;
 @end

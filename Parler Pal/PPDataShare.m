@@ -11,9 +11,6 @@
 @implementation PPDataShare
 @synthesize currentUser, sharedMessage, sharedUser;
 
-#pragma mark -
-#pragma mark instance methods
-
 + (PPDataShare *)sharedSingleton
 {
     static PPDataShare *sharedSingleton;

@@ -9,20 +9,9 @@
 #import "PPMessagesWorkInProgressViewController.h"
 #import "SWRevealViewController.h"
 
-@interface PPMessagesWorkInProgressViewController ()
-
-@end
-
 @implementation PPMessagesWorkInProgressViewController
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {

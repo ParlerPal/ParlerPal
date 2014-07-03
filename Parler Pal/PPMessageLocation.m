@@ -31,6 +31,8 @@
     return self;
 }
 
+#pragma mark - property return methods
+
 -(NSString *)title {
     return _name;
 }
@@ -43,7 +45,8 @@
     return _theCoordinate;
 }
 
--(MKMapItem*)mapItem {
+-(MKMapItem*)mapItem
+{
     NSDictionary *addressDict = @{(NSString*)kABPersonAddressStreetKey : _subject};
     
     MKPlacemark *placemark = [[MKPlacemark alloc]

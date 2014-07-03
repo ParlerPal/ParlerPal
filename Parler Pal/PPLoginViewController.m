@@ -14,8 +14,7 @@
 @implementation PPLoginViewController
 @synthesize userName, password, scrollView, contentView, welcomeMessage;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,8 +38,7 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
-#pragma mark -
-#pragma mark gesture methods
+#pragma mark - gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
 {
@@ -56,8 +54,7 @@
     return YES; // handle the touch
 }
 
-#pragma mark -
-#pragma mark textfield action methods
+#pragma mark - textfield action methods
 
 -(IBAction)userFieldDidReturn:(id)sender
 {
@@ -69,8 +66,7 @@
     [self.password resignFirstResponder];
 }
 
-#pragma mark -
-#pragma textfield delegate methods
+#pragma mark - textfield delegate methods
 
 // Call this method somewhere in your view controller setup code.
 -(void)registerForKeyboardNotifications
@@ -113,8 +109,7 @@
 
 }
 
-#pragma mark -
-#pragma mark Welcome text animation methods
+#pragma mark - Welcome text animation methods
 
 -(void)animateText
 {
@@ -146,12 +141,11 @@
     }];
 }
 
-#pragma mark -
-#pragma mark login methods
+#pragma mark - login methods
 
 -(IBAction)login:(id)sender
 {    
-    [[PPDatabaseManager sharedDatabaseManager]signinWithUsername:userName.text password:password.text finish:^(bool success){
+    [[PPDatabaseManager sharedDatabaseManager]signinWithUsername:userName.text password:password.text completionHandler:^(bool success){
         if(success)
         {
             [[PPDataShare sharedSingleton]setCurrentUser:userName.text];
@@ -161,12 +155,11 @@
     }];
 }
 
-#pragma mark -
-#pragma mark segue
+#pragma mark - segue methods
 
 -(IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
 {
-    [[PPDatabaseManager sharedDatabaseManager]logoutWithFinish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]logoutCompletionHandler:^(bool success) {
     }];
     self.userName.text = @"";
     self.password.text = @"";

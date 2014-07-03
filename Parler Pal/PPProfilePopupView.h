@@ -13,5 +13,6 @@
 @property(nonatomic, weak) IBOutlet UITextView *profile, *languages;
 @property(nonatomic, weak) IBOutlet UIView *view;
 @property(nonatomic, weak) id delegate;
+
 -(void)show;
 @end

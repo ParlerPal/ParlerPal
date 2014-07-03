@@ -11,8 +11,6 @@
 
 @implementation PPProfilePopupView
 @synthesize username, country, email, skype, age, gender, profile, languages, view, delegate;
-#pragma mark -
-#pragma mark init methods
 
 -(id)initWithFrame:(CGRect)frame
 {
@@ -32,8 +30,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark setup methods
+#pragma mark - setup methods
 
 -(void)setup
 {
@@ -48,8 +45,7 @@
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
 }
 
-#pragma mark -
-#pragma mark action methods
+#pragma mark - action methods
 
 -(IBAction)hide:(id)sender
 {
@@ -58,8 +54,7 @@
     } completion:^(BOOL finished){[self removeFromSuperview];}];
 }
 
-#pragma mark -
-#pragma mark visibility methods methods
+#pragma mark - visibility methods methods
 
 -(void)show
 {

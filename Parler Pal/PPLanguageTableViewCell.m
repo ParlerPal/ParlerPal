@@ -12,16 +12,7 @@
 @implementation PPLanguageTableViewCell
 @synthesize language, status, level;
 
-#pragma mark -
-#pragma mark setup methods
-
--(void)layoutSubviews
-{
-
-}
-
-#pragma mark -
-#pragma mark action methods
+#pragma mark - action methods
 
 -(IBAction)statusChange:(id)sender
 {
@@ -44,12 +35,11 @@
     [self saveUserLanguageInformation];
 }
 
-#pragma mark -
-#pragma mark save user information methods
+#pragma mark - save user information methods
 
 -(void)saveUserLanguageInformation
 {
-    [[PPDatabaseManager sharedDatabaseManager]updateLanguageWithName:language.text languageStatus:(int)status.selectedSegmentIndex languageLevel:(int)level.selectedSegmentIndex finish:^(bool success) {}];
+    [[PPDatabaseManager sharedDatabaseManager]updateLanguageWithName:language.text languageStatus:(int)status.selectedSegmentIndex languageLevel:(int)level.selectedSegmentIndex completionHandler:^(bool success) {}];
 }
 
 @end

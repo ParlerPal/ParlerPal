@@ -12,8 +12,7 @@
 @implementation PPUserRegistrationViewController
 @synthesize usernameField, passwordField, confirmField, emailField, welcomeMessage, scrollView, contentView;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
@@ -32,8 +31,7 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
-#pragma mark -
-#pragma mark gesture methods
+#pragma mark - gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
 {
@@ -49,8 +47,7 @@
     return YES; // handle the touch
 }
 
-#pragma mark -
-#pragma textfield delegate methods
+#pragma mark - textfield delegate methods
 
 // Call this method somewhere in your view controller setup code.
 -(void)registerForKeyboardNotifications
@@ -85,8 +82,7 @@
     [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
-#pragma mark -
-#pragma mark text field action methods
+#pragma mark - text field action methods
 
 -(IBAction)textFieldDidReturn:(id)sender
 {
@@ -94,8 +90,7 @@
 }
 
 
-#pragma mark -
-#pragma mark sign up methods
+#pragma mark - sign up methods
 
 -(IBAction)signup:(id)sender
 {
@@ -119,8 +114,7 @@
     [self performSegueWithIdentifier:@"leave" sender:self];
 }
 
-#pragma mark - 
-#pragma mark pop return methods
+#pragma mark - pop return methods
 
 -(IBAction)cancel:(id)sender
 {

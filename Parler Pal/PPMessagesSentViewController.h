@@ -13,7 +13,7 @@
 #import "PPDataShare.h"
 #import "PPMessageTableViewCell.h"
 
-@interface PPMessagesSentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, PPMessagesPopupViewDelegate, PPMessagesTableViewCellDelegate>
+@interface PPMessagesSentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, PPMessagesPopupViewDelegate>
 {
     NSMutableArray *messages;
     PPMessagePopupView *messageContentView;

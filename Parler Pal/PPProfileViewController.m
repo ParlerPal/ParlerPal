@@ -12,8 +12,7 @@
 @implementation PPProfileViewController
 @synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
@@ -23,7 +22,7 @@
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
     
-    [[PPDatabaseManager sharedDatabaseManager]getUserProfileWithFinish:^(NSMutableDictionary *results)
+    [[PPDatabaseManager sharedDatabaseManager]getUserProfileCompletionHandler:^(NSMutableDictionary *results)
     {
         privateEmailField.text = [results objectForKey: @"email"];
         countryField.text = [results objectForKey: @"country"];
@@ -51,8 +50,7 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
-#pragma mark -
-#pragma textfield delegate methods
+#pragma mark - textfield delegate methods
 
 // Call this method somewhere in your view controller setup code.
 -(void)registerForKeyboardNotifications
@@ -87,8 +85,7 @@
     [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
-#pragma mark -
-#pragma mark text view delegate methods
+#pragma mark - text view delegate methods
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -102,16 +99,14 @@
     [textView resignFirstResponder];
 }
 
-#pragma mark -
-#pragma mark textfield action methods
+#pragma mark - textfield action methods
 
 -(IBAction)fieldDidEndEditing:(id)sender
 {
     [sender resignFirstResponder];
 }
 
-#pragma mark -
-#pragma mark gesutre recoginizer methods
+#pragma mark - gesutre recoginizer methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec{
     [[self view] endEditing: YES];
@@ -125,8 +120,7 @@
     return YES;
 }
 
-#pragma mark -
-#pragma mark account action methods
+#pragma mark - account action methods
 
 -(IBAction)updatePassword:(id)sender
 {
@@ -134,7 +128,7 @@
     
     if([passwordField.text isEqualToString:confirmPasswordField.text] && (passwordField.text.length > 0 && confirmPasswordField.text.length >0 ))
     {
-        [[PPDatabaseManager sharedDatabaseManager]updatePasswordWithPassword:passwordField.text finish:^(bool success)
+        [[PPDatabaseManager sharedDatabaseManager]updatePasswordWithPassword:passwordField.text completionHandler:^(bool success)
         {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Your password has been changed." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
             [alert show];
@@ -157,14 +151,13 @@
     [alert show];
 }
 
-#pragma mark -
-#pragma mark Alert View Delegate Methods
+#pragma mark - Alert View Delegate Methods
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex == 1)
     {
-        [[PPDatabaseManager sharedDatabaseManager]deleteProfileWithFinish:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]deleteProfileCompletionHandler:^(bool success) {
             [self performSegueWithIdentifier:@"loginReturn" sender:self];
         }];
     }
@@ -174,14 +167,13 @@
     }
 }
 
-#pragma mark -
-#pragma mark seque methods
+#pragma mark - seque methods
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if([identifier isEqualToString:@"doneSegue"])
     {
-        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex finish:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
             
         }];
         

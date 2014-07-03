@@ -21,7 +21,6 @@
 -(IBAction)fieldDidEndEditing:(id)sender;
 //Update password confirm button action
 -(IBAction)updatePassword:(id)sender;
-
 //Delete Account!
 -(IBAction)deleteAccount:(id)sender;
 

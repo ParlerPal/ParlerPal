@@ -32,19 +32,22 @@
 @property (nonatomic, readwrite) int messageID;
 @property (nonatomic, readwrite) bool shouldShowReply;
 @property (nonatomic, weak) id delegate;
-// Declare an object for the audio player.
 @property (nonatomic, strong) AVAudioPlayer *player;
 
+//Tells the popup if there is a memo attached and whether or not we should show the audio buttons
 -(void)setMemoAttached:(bool)memoAttached;
 
 //Button Actions
 -(IBAction)hide:(id)sender;
 -(IBAction)showReply:(id)sender;
 -(IBAction)deleteMessage:(id)sender;
-//Show and display the popup
+
+//prepare and display the popup
 -(void)setup;
 -(void)show;
+
 //Audio Memo Action
 -(IBAction)playAudio:(id)sender;
 -(IBAction)stopAudio:(id)sender;
+
 @end

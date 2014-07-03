@@ -11,8 +11,7 @@
 @implementation PPPalTableViewCell
 @synthesize username, image, delegate, type, addRemoveButton, rejectButton;
 
-#pragma mark -
-#pragma mark action methods
+#pragma mark - action methods
 
 -(IBAction)didSelectAddRemoveButton:(id)sender
 {
@@ -41,8 +40,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Setter methods
+#pragma mark - setter methods
 
 -(void)setType:(PalTableViewCellType)theType
 {

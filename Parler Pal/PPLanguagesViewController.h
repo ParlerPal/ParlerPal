@@ -12,7 +12,6 @@
 @interface PPLanguagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *languages;
-    
     NSMutableArray *allUserLanguages;
 }
 @property(nonatomic, weak) IBOutlet UITableView *table;

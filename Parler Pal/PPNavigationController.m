@@ -10,8 +10,7 @@
 
 @implementation PPNavigationController
 
-#pragma mark - 
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {

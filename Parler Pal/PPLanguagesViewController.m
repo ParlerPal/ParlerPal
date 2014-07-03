@@ -13,14 +13,13 @@
 @implementation PPLanguagesViewController
 @synthesize table;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
     languages = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SupportedLanguages" ofType:@"plist"]];
     
-    [[PPDatabaseManager sharedDatabaseManager]getAllLanguages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getAllLanguagesCompletionHandler:^(NSMutableArray *results) {
         allUserLanguages = results;
         [self.table reloadData];
     }];
@@ -28,8 +27,7 @@
     [super viewDidLoad];
 }
 
-#pragma mark -
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 103.0;

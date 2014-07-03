@@ -13,20 +13,7 @@
 @implementation PPMessagesComposeViewController
 @synthesize revealButton, toField, subjectField, messageBox, lm, deleteButton, stopButton, playButton, recordButton;
 
-#pragma mark -
-#pragma mark Init Methods
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-#pragma mark -
-#pragma mark View Methods
+#pragma mark - View Methods
 
 -(void)viewDidLoad
 {
@@ -82,16 +69,14 @@
     }
 }
 
-#pragma mark -
-#pragma mark Core Location Delegate Method
+#pragma mark - Core Location Delegate Method
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.location = [locations objectAtIndex:0];
 }
 
-#pragma mark -
-#pragma mark gesture methods
+#pragma mark - gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
 {
@@ -106,12 +91,12 @@
     return YES; // handle the touch
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
     return YES;
 }
 
-#pragma mark -
-#pragma mark Action Methods
+#pragma mark - Action Methods
 
 -(IBAction)findUserButton:(id)sender
 {
@@ -141,7 +126,7 @@
         return;
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:messageBox.text location: self.location sendMemo:audioMessageRecorded finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:messageBox.text location: self.location sendMemo:audioMessageRecorded completionHandler:^(bool success) {
         subjectField.text = @"";
         messageBox.text = @"";
         
@@ -216,8 +201,8 @@
 }
 
 
-#pragma mark -
-#pragma AVAudio delegate methods
+#pragma mark - AVAudio delegate methods
+
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     self.recordButton.enabled = YES;

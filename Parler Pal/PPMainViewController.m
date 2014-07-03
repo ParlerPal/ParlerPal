@@ -15,8 +15,7 @@
 @implementation PPMainViewController
 @synthesize toolbarTitle, table, mapView;//quotes
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
@@ -31,7 +30,7 @@
     
     self.table.allowsMultipleSelectionDuringEditing = NO;
     
-    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
         [self plotMessagesPositions];
@@ -50,7 +49,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     
-    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
         [self plotMessagesPositions];
@@ -60,19 +59,18 @@
 -(void)refresh:(UIRefreshControl *)refreshControl
 {
     [refreshControl endRefreshing];
-    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
         [self plotMessagesPositions];
     }];
 }
 
-#pragma mark -
-#pragma mark Messages Popup View delegate methods
+#pragma mark - Messages Popup View delegate methods
 
 -(void)shouldDeleteMessageWithID:(int)theID
 {
-    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID completionHandler:^(bool success) {
         
         NSMutableDictionary *messageToDelete = nil;
         
@@ -94,8 +92,7 @@
     }];
 }
 
-#pragma mark -
-#pragma mark table view cell delegate methods
+#pragma mark - table view cell delegate methods
 
 -(void)shouldDeleteMessage:(id)sender
 {
@@ -111,7 +108,7 @@
         }
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:messageCell.messageID finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:messageCell.messageID completionHandler:^(bool success) {
         
         if(messageToDelete)
         {
@@ -122,8 +119,7 @@
     }];
 }
 
-#pragma mark -
-#pragma mark Quotes Animation Methods
+#pragma mark - Quotes Animation Methods
 /*
 -(void)animateText
 {
@@ -149,8 +145,7 @@
     }];
 }*/
 
-#pragma mark -
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 67.0;
@@ -197,7 +192,7 @@
 {
     NSString *messageID = [[messages objectAtIndex:indexPath.row] objectForKey:@"id"];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] andFinish:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] completionHandler:^(NSMutableDictionary *results) {
         messageContentView.content.text = [results objectForKey:@"content"];
         messageContentView.fromLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"from"];
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
@@ -205,7 +200,7 @@
         messageContentView.messageID = [messageID intValue];
         messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue]completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
             [self plotMessagesPositions];
@@ -227,7 +222,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue] finish:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue]completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
             [self plotMessagesPositions];
@@ -235,8 +230,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Map View Methods
+#pragma mark - Map View Methods
 
 -(void)plotMessagesPositions
 {
@@ -323,8 +317,7 @@
         [mapView setRegion:region];
     }
 }
-#pragma mark -
-#pragma mark segue methods
+#pragma mark - segue methods
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {

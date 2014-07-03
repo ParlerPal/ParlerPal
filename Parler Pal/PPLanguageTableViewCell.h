@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PPLanguageTableViewCell : UITableViewCell
-{
-
-}
 @property(nonatomic, weak)UILabel *language;
 @property(nonatomic, weak)UISegmentedControl *status, *level;
 

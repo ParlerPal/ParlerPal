@@ -19,6 +19,10 @@
 
 @end
 
+//Tells us what kind of pal cell this is, since this will alter the UI
+//Requests show a delete and add button
+//Found shows a add button
+//Pal shows a delete button
 typedef enum : NSUInteger {
     kPalType,
     kRequestType,
@@ -35,7 +39,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, readwrite) PalTableViewCellType type;
 @property (nonatomic, weak) IBOutlet UIButton *addRemoveButton, *rejectButton;
 
-//Action methods
 -(IBAction)didSelectAddRemoveButton:(id)sender;
 -(IBAction)rejectRequestButton:(id)sender;
 

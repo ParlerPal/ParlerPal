@@ -12,17 +12,16 @@
 @implementation PPPalsViewController
 @synthesize table;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
-    [[PPDatabaseManager sharedDatabaseManager]getAllPals:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalsCompletionHandler:^(NSMutableArray *results) {
         friendships = results;
         [self.table reloadData];
     }];
     
-    [[PPDatabaseManager sharedDatabaseManager]getAllPalRequests:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalRequestsCompletionHandler:^(NSMutableArray *results) {
         requests = results;
         [self.table reloadData];
     }];
@@ -33,13 +32,12 @@
     profilePopup.delegate = self;
 }
 
-#pragma mark -
-#pragma mark PPPalTableViewCellDelegate Methods
+#pragma mark - PPPalTableViewCellDelegate Methods
 -(void)shouldAcceptRequest:(id)sender
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     
-    [[PPDatabaseManager sharedDatabaseManager]confirmFriendshipWith:cell.username.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]confirmFriendshipWith:cell.username.text completionHandler:^(bool success) {
         
         NSMutableDictionary *userToSwap = nil;
         
@@ -64,7 +62,7 @@
 -(void)shouldDenyRequest:(id)sender
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
-    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text completionHandler:^(bool success) {
         NSMutableDictionary *userToRemove = nil;
         
         for(NSMutableDictionary *user in requests)
@@ -86,7 +84,7 @@
 -(void)shouldDeleteFriend:(id)sender
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
-    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text completionHandler:^(bool success) {
         NSMutableDictionary *userToRemove = nil;
         
         for(NSMutableDictionary *user in friendships)
@@ -105,8 +103,7 @@
     }];
 }
 
-#pragma mark -
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 95.0;
@@ -225,8 +222,7 @@
 
 }
 
-#pragma mark -
-#pragma mark segue
+#pragma mark - segue methods
 
 -(IBAction)unwindPalsViewController:(UIStoryboardSegue *)unwindSegue
 {

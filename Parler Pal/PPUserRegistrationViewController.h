@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PPUserRegistrationViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
-{
-
-}
-
 @property(nonatomic, weak)UITextField *usernameField, *passwordField, *confirmField, *emailField;
 @property(nonatomic, weak)UILabel *welcomeMessage;
 @property(nonatomic, weak)UIScrollView *scrollView;
@@ -21,8 +17,8 @@
 //Textfield did end editing so hide it
 -(IBAction)textFieldDidReturn:(id)sender;
 
+//Signup methods, cancel or signup!
 -(IBAction)signup:(id)sender;
-
 -(IBAction)cancel:(id)segue;
 
 @end

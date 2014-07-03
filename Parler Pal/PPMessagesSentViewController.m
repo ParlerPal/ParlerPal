@@ -12,14 +12,13 @@
 @implementation PPMessagesSentViewController
 @synthesize sidebarButton, table;
 
-#pragma mark -
-#pragma mark view methods
+#pragma mark - view methods
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[PPDatabaseManager sharedDatabaseManager]getAllSentMessages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
     }];
@@ -47,24 +46,22 @@
     [table setEditing:NO];
 }
 
-#pragma mark -
-#pragma mark Action methods
+#pragma mark - Action methods
 
 -(void)refresh:(UIRefreshControl *)refreshControl
 {
     [refreshControl endRefreshing];
-    [[PPDatabaseManager sharedDatabaseManager]getAllSentMessages:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
     }];
 }
 
-#pragma mark -
-#pragma mark Messages Popup View delegate methods
+#pragma mark - Messages Popup View delegate methods
 
 -(void)shouldDeleteMessageWithID:(int)theID
 {
-    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID completionHandler:^(bool success) {
         
         NSMutableDictionary *messageToDelete = nil;
         
@@ -85,10 +82,10 @@
     }];
 }
 
-#pragma mark -
-#pragma mark table view delegate methods
+#pragma mark - table view delegate methods
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 67.0;
 }
 
@@ -102,7 +99,8 @@
     return [messages count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Message";
     
     PPMessageTableViewCell *cell = (PPMessageTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -133,7 +131,7 @@
 {
     NSString *messageID = [[messages objectAtIndex:indexPath.row] objectForKey:@"id"];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] andFinish:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] completionHandler:^(NSMutableDictionary *results) {
         messageContentView.content.text = [results objectForKey:@"content"];
         messageContentView.fromLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"from"];
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
@@ -144,7 +142,7 @@
         
         if([[messages objectAtIndex:indexPath.row]objectForKey:@"opened"]==NO)
         {
-            [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(bool success) {
+            [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue]completionHandler:^(bool success) {
                 
             }];
         }
@@ -154,26 +152,28 @@
     [messageContentView show];
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     // Return YES if you want the specified item to be editable.
     return YES;
 }
 
 // Override to support editing the table view.
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue] finish:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue]completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
         }];
     }
 }
 
-#pragma mark -
-#pragma mark Gesture Recognizer Delegate methods
+#pragma mark - Gesture Recognizer Delegate methods
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
     return YES;
 }
 @end

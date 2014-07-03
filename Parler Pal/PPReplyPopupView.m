@@ -11,8 +11,6 @@
 
 @implementation PPReplyPopupView
 @synthesize view, contentField, subjectField, toField;
-#pragma mark -
-#pragma mark init methods
 
 -(id)initWithFrame:(CGRect)frame
 {
@@ -32,12 +30,10 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark setup methods
+#pragma mark - setup methods
 
 -(void)setup
 {
-    
     self.layer.masksToBounds = NO;
     self.layer.cornerRadius = 8;
     self.layer.shadowOffset = CGSizeMake(-4, 4);
@@ -58,6 +54,7 @@
     self.lm.distanceFilter = 10.0f;
     self.lm.headingFilter = 5;
     [self.lm startUpdatingLocation];
+    
     [self setUpAudio];
 }
 
@@ -90,15 +87,13 @@
     }
 }
 
-#pragma mark -
-#pragma mark Core Location Delegate Method
+#pragma mark - Core Location Delegate Method
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.location = [locations objectAtIndex:0];
 }
 
-#pragma mark -
 #pragma mark gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
@@ -116,8 +111,7 @@
     return YES;
 }
 
-#pragma mark -
-#pragma mark action methods
+#pragma mark - action methods
 
 -(IBAction)hide:(id)sender
 {
@@ -151,7 +145,7 @@
         return;
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text location: self.location sendMemo:NO finish:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text location: self.location sendMemo:NO completionHandler:^(bool success) {
         subjectField.text = @"";
         contentField.text = @"";
         self.stopButton.enabled = NO;
@@ -221,8 +215,8 @@
 }
 
 
-#pragma mark -
-#pragma AVAudio delegate methods
+#pragma mark - AVAudio delegate methods
+
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     self.recordButton.enabled = YES;
@@ -244,8 +238,7 @@
     NSLog(@"Encode Error occurred");
 }
 
-#pragma mark -
-#pragma mark visibility methods methods
+#pragma mark - visibility methods methods
 
 -(void)show
 {

@@ -11,9 +11,6 @@
 
 @implementation PPDatabaseManager
 
-#pragma mark -
-#pragma mark instance methods
-
 + (PPDatabaseManager *)sharedDatabaseManager
 {
     static PPDatabaseManager *sharedDatabaseManager;
@@ -39,8 +36,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark Signin and Registration Methods
+#pragma mark - Signin and Registration Methods
 
 -(void)signUpWithUsername:(NSString *)username password:(NSString *)password andEmail:(NSString *)email
 {
@@ -66,7 +62,7 @@
     }];
 }
 
--(void)signinWithUsername:(NSString *)username password:(NSString *)password finish:(void(^)(bool success))handler
+-(void)signinWithUsername:(NSString *)username password:(NSString *)password completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"username": username, @"password": password};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/validateUser.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -79,10 +75,10 @@
             {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid sign in!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
                 [alert show];
-                 handler(NO);
+                 if(handler)handler(NO);
             }
             else{
-                 handler(YES);
+                 if(handler)handler(YES);
             }
         }
         
@@ -92,22 +88,21 @@
           }];
 }
 
--(void)logoutWithFinish:(void(^)(bool success))handler
+-(void)logoutCompletionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/logout.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
-#pragma mark -
-#pragma mark User Profile Methods
+#pragma mark - User Profile Methods
 
--(void)getUserProfileWithFinish:(void(^)(NSMutableDictionary *results))handler
+-(void)getUserProfileCompletionHandler:(void(^)(NSMutableDictionary *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/getUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -133,7 +128,7 @@
             }
         }
         
-        handler(item);
+        if(handler)handler(item);
         
         }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -141,39 +136,39 @@
           }];
 }
 
--(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender finish:(void(^)(bool success))handler
+-(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile skypeID:(NSString *)skypeID age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"country": country, @"profile": profile, @"sharedEmail": email, @"skypeID": skypeID, @"age": age, @"gender":[NSNumber numberWithInt:gender]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updateUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
--(void)updatePasswordWithPassword:(NSString *)password finish:(void(^)(bool success))handler
+-(void)updatePasswordWithPassword:(NSString *)password completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"password": password};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updatePassword.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
--(void)deleteProfileWithFinish:(void(^)(bool success))handler
+-(void)deleteProfileCompletionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/deleteUser.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
@@ -224,7 +219,7 @@
         }
         
         [userProfileData setObject:allLanguages forKey:@"languages"];
-        handler(userProfileData);
+        if(handler)handler(userProfileData);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -232,22 +227,21 @@
           }];
 }
 
-#pragma mark -
-#pragma mark Language Methods
+#pragma mark - Language Methods
 
--(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level finish:(void(^)(bool success))handler
+-(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"languageName": name, @"languageStatus": [NSNumber numberWithInt:status], @"languageLevel": [NSNumber numberWithInt:level]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"languages/updateLanguage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
--(void)getAllLanguages:(void(^)(NSMutableArray *results))handler
+-(void)getAllLanguagesCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"languages/getAllLanguages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -277,7 +271,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -285,10 +279,9 @@
           }];
 }
 
-#pragma mark -
-#pragma mark Friendship Methods
+#pragma mark - Friendship Methods
 
--(void)getAllPals:(void(^)(NSMutableArray *results))handler
+-(void)getAllPalsCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/getAllPals.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -318,7 +311,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -326,7 +319,7 @@
           }];
 }
 
--(void)getAllPalRequests:(void(^)(NSMutableArray *results))handler
+-(void)getAllPalRequestsCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/getAllPalRequests.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -356,7 +349,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -364,31 +357,31 @@
           }];
 }
 
--(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler
+-(void)confirmFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"userToConfirm": theUser};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/confirmFriendRequest.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
--(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler
+-(void)deleteFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"userToDelete": theUser};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/deleteFriend.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
--(void)getBatchOfPals:(void(^)(NSMutableArray *results))handler
+-(void)getBatchOfPalsCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/findBatchOfPals.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -418,7 +411,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -426,22 +419,21 @@
           }];
 }
 
--(void)requestFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler
+-(void)requestFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"userToRequest": theUser};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/requestFriendship.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
-#pragma mark -
-#pragma mark messaging methods
+#pragma mark - messaging methods
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo finish:(void(^)(bool success))handler
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"lat":[NSNumber numberWithDouble:location.coordinate.latitude], @"lon":[NSNumber numberWithDouble:location.coordinate.longitude], @"memoAttached": [NSNumber numberWithBool:sendMemo]};
     
@@ -470,11 +462,11 @@
 
         if(sendMemo){[self uploadMemoForMessageID:[item objectForKey:@"messageID"]];}
         
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 
@@ -497,7 +489,7 @@
     [op start];
 }
 
--(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler
+-(void)getUnreadReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getUnreadReceivedMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -527,7 +519,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -535,7 +527,7 @@
           }];
 }
 
--(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler
+-(void)getAllReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getAllReceivedMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -565,7 +557,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -573,7 +565,7 @@
           }];
 }
 
--(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler
+-(void)getAllSentMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getSentMessages.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -603,7 +595,7 @@
             [allResults addObject:item];
         }
         
-        handler(allResults);
+        if(handler)handler(allResults);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -611,7 +603,7 @@
           }];
 }
 
--(void)getMessageContentForID:(int)messageID andFinish:(void(^)(NSMutableDictionary *results))handler
+-(void)getMessageContentForID:(int)messageID completionHandler:(void(^)(NSMutableDictionary *results))handler
 {
     NSDictionary *parameters = @{@"id":[NSNumber numberWithInt:messageID]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/getContentForMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -636,7 +628,7 @@
             }
         }
         
-        handler(item);
+        if(handler)handler(item);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -644,27 +636,27 @@
           }];
 }
 
--(void)markMessageAsRead:(int)messageID finish:(void(^)(bool success))handler
+-(void)markMessageAsRead:(int)messageID completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"id": [NSNumber numberWithInt:messageID]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/setMessageAsOpened.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)if(handler)handler(NO);
           }];
 }
 
--(void)deleteMessage:(int)messageID finish:(void(^)(bool success))handler
+-(void)deleteMessage:(int)messageID  completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"id": [NSNumber numberWithInt:messageID]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/deleteMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        handler(YES);
+        if(handler)if(handler)handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              handler(NO);
+              if(handler)handler(NO);
           }];
 }
 

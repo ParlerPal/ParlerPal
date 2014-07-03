@@ -12,8 +12,6 @@
 
 @implementation PPMessagePopupView
 @synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply, delegate, playButton, stopButton, player;
-#pragma mark -
-#pragma mark init methods
 
 -(id)initWithFrame:(CGRect)frame
 {
@@ -33,8 +31,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark setup methods
+#pragma mark - setup methods
 
 -(void)setup
 {
@@ -56,8 +53,7 @@
     [self.replyButton setHidden:!showReply];
 }
 
-#pragma mark -
-#pragma mark action methods
+#pragma mark - action methods
 
 -(IBAction)hide:(id)sender
 {
@@ -80,7 +76,6 @@
     [self hide:nil];
 }
 
-//Audio Memo Action
 -(IBAction)playAudio:(id)sender
 {
     NSURL *pathAsURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@files/upload/memo%i.m4a", WEB_SERVICES, messageID]];
@@ -112,6 +107,7 @@
     [self.playButton setHidden:!memoAttached];
     [self.stopButton setHidden:!memoAttached];
 }
+
 #pragma mark -
 #pragma mark visibility methods methods
 
