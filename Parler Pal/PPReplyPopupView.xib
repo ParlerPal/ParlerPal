@@ -7,6 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PPReplyPopupView">
             <connections>
                 <outlet property="contentField" destination="SyP-g4-6GB" id="xZX-Wx-aIA"/>
+                <outlet property="deleteButton" destination="S5H-n4-2fB" id="du4-1c-1jW"/>
+                <outlet property="playButton" destination="rPR-ut-Jsu" id="m3s-bi-H1P"/>
+                <outlet property="recordButton" destination="RLn-p9-YgZ" id="5Hh-Mh-HBO"/>
+                <outlet property="stopButton" destination="hHc-2e-On0" id="bI2-74-O6l"/>
                 <outlet property="subjectField" destination="qvt-uI-Nuv" id="tlN-qW-g6e"/>
                 <outlet property="toField" destination="zyc-2u-kQe" id="mew-ZL-Zbg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Wsg-lM-hnW"/>
@@ -49,41 +53,84 @@
                         <action selector="sendButton:" destination="-1" eventType="touchUpInside" id="2jX-8e-lGK"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qxt-VP-RuR">
-                    <rect key="frame" x="103" y="28" width="115" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Written"/>
-                        <segment title="Audio"/>
-                    </segments>
-                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zyc-2u-kQe">
-                    <rect key="frame" x="20" y="64" width="142" height="30"/>
+                    <rect key="frame" x="20" y="28" width="142" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvt-uI-Nuv">
-                    <rect key="frame" x="20" y="102" width="280" height="30"/>
+                    <rect key="frame" x="20" y="66" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyP-g4-6GB">
-                    <rect key="frame" x="20" y="140" width="280" height="370"/>
+                    <rect key="frame" x="20" y="152" width="280" height="358"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-p9-YgZ">
+                    <rect key="frame" x="94" y="106" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="recordButton.png"/>
+                    <connections>
+                        <action selector="recordAudio:" destination="-1" eventType="touchUpInside" id="bZ6-85-Drs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHc-2e-On0">
+                    <rect key="frame" x="137" y="106" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="stopButton.png">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="stopAudio:" destination="-1" eventType="touchUpInside" id="F1h-VZ-uvj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPR-ut-Jsu">
+                    <rect key="frame" x="180" y="106" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="playButton.png">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="playAudio:" destination="-1" eventType="touchUpInside" id="Hqe-YZ-O8e"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5H-n4-2fB">
+                    <rect key="frame" x="223" y="106" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="deleteButton.png">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteAudio:" destination="-1" eventType="touchUpInside" id="5Jf-Vx-9iY"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Memo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmE-oG-2M4">
+                    <rect key="frame" x="20" y="111" width="54" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
+        <image name="deleteButton.png" width="50" height="50"/>
         <image name="paper.png" width="650" height="650"/>
+        <image name="playButton.png" width="50" height="50"/>
+        <image name="recordButton.png" width="50" height="50"/>
+        <image name="stopButton.png" width="50" height="50"/>
         <image name="stripeBar.png" width="640" height="100"/>
     </resources>
 </document>

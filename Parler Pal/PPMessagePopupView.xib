@@ -8,7 +8,9 @@
             <connections>
                 <outlet property="content" destination="z5P-i3-6gY" id="cSP-Rt-OVL"/>
                 <outlet property="fromLabel" destination="6EO-Eb-fWT" id="kAH-eL-oow"/>
+                <outlet property="playButton" destination="0th-6N-9Oo" id="foP-IQ-s79"/>
                 <outlet property="replyButton" destination="9nH-WI-TDP" id="ZMF-WQ-rkf"/>
+                <outlet property="stopButton" destination="6nd-Ry-9oE" id="Lm8-8i-cVx"/>
                 <outlet property="subjectLabel" destination="xu0-3u-3ps" id="rkW-rp-mHM"/>
                 <outlet property="toLabel" destination="l0N-i6-ilE" id="KDK-Md-MgR"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Rme-61-zG5"/>
@@ -70,7 +72,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5P-i3-6gY">
-                    <rect key="frame" x="20" y="127" width="280" height="375"/>
+                    <rect key="frame" x="20" y="157" width="280" height="345"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
@@ -113,6 +115,26 @@
                         <action selector="showReply:" destination="-1" eventType="touchUpInside" id="lDf-52-gW2"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0th-6N-9Oo">
+                    <rect key="frame" x="202" y="28" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="playButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="playAudio:" destination="-1" eventType="touchUpInside" id="9io-XU-zsm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nd-Ry-9oE">
+                    <rect key="frame" x="260" y="28" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="stopButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="stopAudio:" destination="-1" eventType="touchUpInside" id="fzj-UI-Gvt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -120,6 +142,8 @@
     </objects>
     <resources>
         <image name="paper.png" width="650" height="650"/>
+        <image name="playButton.png" width="50" height="50"/>
+        <image name="stopButton.png" width="50" height="50"/>
         <image name="stripeBar.png" width="640" height="100"/>
     </resources>
 </document>
