@@ -8,7 +8,6 @@
 
 #import "PPDatabaseManager.h"
 
-#define WEB_SERVICES @"http://192.168.1.10/ppWebServices/"
 
 @implementation PPDatabaseManager
 
@@ -442,17 +441,60 @@
 #pragma mark -
 #pragma mark messaging methods
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location finish:(void(^)(bool success))handler
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo finish:(void(^)(bool success))handler
 {
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"lat":[NSNumber numberWithDouble:location.coordinate.latitude], @"lon":[NSNumber numberWithDouble:location.coordinate.longitude], @"memoAttached": [NSNumber numberWithBool:sendMemo]};
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/submitMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//message" error:nil];
+        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+        
+        for (DDXMLElement *node in results)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
 
-    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"lat":[NSNumber numberWithDouble:location.coordinate.latitude], @"lon":[NSNumber numberWithDouble:location.coordinate.longitude]};
-    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"messages/submitMessage.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(sendMemo){[self uploadMemoForMessageID:[item objectForKey:@"messageID"]];}
+        
         handler(YES);
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
               handler(NO);
           }];
+}
+
+-(void)uploadMemoForMessageID:(NSString *)messageID
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = dirPaths[0];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"memo.m4a"]];
+    NSData *audioData = [NSData dataWithContentsOfURL:soundFileURL];
+    
+    NSDictionary *parameters = @{@"messageID": messageID};
+    AFHTTPRequestOperation *op = [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"files/uploadAudio.php"] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //do not put image inside parameters dictionary as I did, but append it!
+        [formData appendPartWithFileData:audioData name:@"memo" fileName:[NSString stringWithFormat:@"memo%@.m4a",messageID] mimeType:@"audio/x-m4a"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       // NSLog(@"Success: %@ ***** %@", operation.responseString, responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+       // NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+    }];
+    [op start];
 }
 
 -(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler

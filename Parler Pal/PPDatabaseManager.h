@@ -11,6 +11,8 @@
 #import "DDXML.h"
 #import <CoreLocation/CoreLocation.h>
 
+#define WEB_SERVICES @"http://24.131.92.164/ppWebServices/"
+
 @interface PPDatabaseManager : NSObject
 {
     AFHTTPRequestOperationManager *manager;
@@ -39,7 +41,7 @@
 -(void)confirmFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 -(void)deleteFriendshipWith:(NSString *)theUser finish:(void(^)(bool success))handler;
 
--(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location finish:(void(^)(bool success))handler;
+-(void)submitMessageTo:(NSString *)theUser subject:(NSString *)subject andMessage:(NSString *)message location:(CLLocation *)location sendMemo:(bool)sendMemo finish:(void(^)(bool success))handler;
 -(void)getAllReceivedMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getUnreadReceivedMessages:(void(^)(NSMutableArray *results))handler;
 -(void)getAllSentMessages:(void(^)(NSMutableArray *results))handler;
