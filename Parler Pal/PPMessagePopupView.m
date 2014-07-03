@@ -11,7 +11,7 @@
 #import "PPDataShare.h"
 
 @implementation PPMessagePopupView
-@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply, delegate;
+@synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply, delegate, playButton, stopButton, player;
 #pragma mark -
 #pragma mark init methods
 
@@ -80,6 +80,38 @@
     [self hide:nil];
 }
 
+//Audio Memo Action
+-(IBAction)playAudio:(id)sender
+{
+    NSURL *pathAsURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@files/upload/memo%i.m4a", WEB_SERVICES, messageID]];
+    NSData *soundData = [NSData dataWithContentsOfURL:pathAsURL];
+
+    // Init the audio player.
+    NSError *error;
+    self.player = [[AVAudioPlayer alloc] initWithData:soundData error:&error];
+    [self.player prepareToPlay];
+    self.player.volume = 1.0;
+
+    // Check out what's wrong in case that the player doesn't init.
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    else{
+        // If everything is fine, just play.
+        [player play];
+    }
+}
+
+-(IBAction)stopAudio:(id)sender
+{
+    [player stop];
+}
+
+-(void)setMemoAttached:(bool)memoAttached
+{
+    [self.playButton setHidden:!memoAttached];
+    [self.stopButton setHidden:!memoAttached];
+}
 #pragma mark -
 #pragma mark visibility methods methods
 
