@@ -1297,17 +1297,13 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fPb-JS-GzY"/>
                                     <barButtonItem style="done" systemItem="done" id="mF3-g6-fN0">
                                         <connections>
                                             <segue destination="7oK-6m-LVD" kind="unwind" unwindAction="unwindMainMenuViewController:" id="TGC-iT-Dom"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BAd-pk-Izx"/>
-                                    <barButtonItem systemItem="refresh" id="71N-Z9-mjN">
-                                        <connections>
-                                            <action selector="refresh:" destination="clO-qF-ZpL" id="Am1-j9-mZ2"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1405,17 +1401,13 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ouQ-d9-J9E"/>
                                     <barButtonItem style="done" systemItem="done" id="tm6-ar-3ZN">
                                         <connections>
                                             <segue destination="Xmr-hb-rUX" kind="unwind" unwindAction="unwindMainMenuViewController:" id="5G6-fS-CwE"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ASP-gk-XMo"/>
-                                    <barButtonItem systemItem="refresh" id="QfQ-Ow-rwr">
-                                        <connections>
-                                            <action selector="refresh:" destination="2Ba-E6-Zta" id="UQc-PC-enL"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1455,17 +1447,13 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ja0-TK-4RC"/>
                                     <barButtonItem style="done" systemItem="done" id="Doy-oS-KH3">
                                         <connections>
                                             <segue destination="yOp-Xs-D1z" kind="unwind" unwindAction="unwindMainMenuViewController:" id="WOi-yW-GBi"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QxW-tM-1Yh"/>
-                                    <barButtonItem systemItem="refresh" id="Nr0-xL-PCA">
-                                        <connections>
-                                            <action selector="refresh:" destination="bjF-aj-633" id="P6q-6c-OCT"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

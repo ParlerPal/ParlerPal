@@ -100,7 +100,7 @@ typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
  
  @warning This method has been deprecated in favor of `-evaluateServerTrust:forDomain:`.
  */
-- (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust DEPRECATED_ATTRIBUTE;
+-(BOOL)evaluateServerTrust:(SecTrustRef)serverTrust DEPRECATED_ATTRIBUTE;
 
 /**
  Whether or not the specified server trust should be accepted, based on the security policy. 
@@ -112,7 +112,7 @@ typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
  
  @return Whether or not to trust the server.
  */
-- (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
+-(BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(NSString *)domain;
 
 @end

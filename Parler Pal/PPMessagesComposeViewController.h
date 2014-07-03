@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/26/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,12 +19,12 @@
 @property (nonatomic, weak) IBOutlet UITextView *messageBox;
 @property (nonatomic, strong) CLLocationManager *lm;
 @property (nonatomic, strong) CLLocation *location;
-@property (strong, nonatomic) AVAudioRecorder *audioRecorder;
-@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
-@property (weak, nonatomic) IBOutlet UIButton *recordButton;
-@property (weak, nonatomic) IBOutlet UIButton *playButton;
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (nonatomic, strong) AVAudioRecorder *audioRecorder;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+@property (nonatomic, weak) IBOutlet UIButton *recordButton;
+@property (nonatomic, weak) IBOutlet UIButton *playButton;
+@property (nonatomic, weak) IBOutlet UIButton *stopButton;
+@property (nonatomic, weak) IBOutlet UIButton *deleteButton;
 
 -(IBAction)findUserButton:(id)sender;
 -(IBAction)sendButton:(id)sender;

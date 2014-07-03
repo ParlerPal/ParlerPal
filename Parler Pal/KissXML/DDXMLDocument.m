@@ -34,7 +34,7 @@
 	return [[DDXMLDocument alloc] initWithDocPrimitive:doc owner:owner];
 }
 
-- (id)initWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)inOwner
+-(id)initWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)inOwner
 {
 	self = [super initWithPrimitive:(xmlKindPtr)doc owner:inOwner];
 	return self;
@@ -48,7 +48,7 @@
 	return nil;
 }
 
-- (id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
+-(id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
 {
 	// Promote initializers which use proper parameter types to enable compiler to catch more mistakes.
 	NSAssert(NO, @"Use initWithDocPrimitive:owner:");
@@ -62,7 +62,7 @@
  * Returns an initialized DDXMLDocument object, or nil if initialization fails
  * because of parsing errors or other reasons.
 **/
-- (id)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error
+-(id)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error
 {
 	return [self initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]
 	                  options:mask
@@ -75,7 +75,7 @@
  * Returns an initialized DDXMLDocument object, or nil if initialization fails
  * because of parsing errors or other reasons.
 **/
-- (id)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error
+-(id)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error
 {
 	if (data == nil || [data length] == 0)
 	{
@@ -105,7 +105,7 @@
 /**
  * Returns the root element of the receiver.
 **/
-- (DDXMLElement *)rootElement
+-(DDXMLElement *)rootElement
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -123,14 +123,14 @@
 		return nil;
 }
 
-- (NSData *)XMLData
+-(NSData *)XMLData
 {
 	// Zombie test occurs in XMLString
 	
 	return [[self XMLString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (NSData *)XMLDataWithOptions:(NSUInteger)options
+-(NSData *)XMLDataWithOptions:(NSUInteger)options
 {
 	// Zombie test occurs in XMLString
 	

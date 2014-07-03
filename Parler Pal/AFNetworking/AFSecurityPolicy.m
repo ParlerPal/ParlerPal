@@ -208,7 +208,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
     return securityPolicy;
 }
 
-- (id)init {
+-(id)init {
     self = [super init];
     if (!self) {
         return nil;
@@ -221,7 +221,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
 #pragma mark -
 
-- (void)setPinnedCertificates:(NSArray *)pinnedCertificates {
+-(void)setPinnedCertificates:(NSArray *)pinnedCertificates {
     _pinnedCertificates = pinnedCertificates;
 
     if (self.pinnedCertificates) {
@@ -241,11 +241,11 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
 #pragma mark -
 
-- (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust {
+-(BOOL)evaluateServerTrust:(SecTrustRef)serverTrust {
     return [self evaluateServerTrust:serverTrust forDomain:nil];
 }
 
-- (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
+-(BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(NSString *)domain
 {
     NSMutableArray *policies = [NSMutableArray array];

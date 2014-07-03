@@ -152,9 +152,9 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 @property (readwrite, nonatomic, copy) AFURLConnectionOperationCacheResponseBlock cacheResponse;
 @property (readwrite, nonatomic, copy) AFURLConnectionOperationRedirectResponseBlock redirectResponse;
 
-- (void)operationDidStart;
-- (void)finish;
-- (void)cancelConnection;
+-(void)operationDidStart;
+-(void)finish;
+-(void)cancelConnection;
 @end
 
 @implementation AFURLConnectionOperation
@@ -181,7 +181,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     return _networkRequestThread;
 }
 
-- (instancetype)initWithRequest:(NSURLRequest *)urlRequest {
+-(instancetype)initWithRequest:(NSURLRequest *)urlRequest {
     NSParameterAssert(urlRequest);
 
     self = [super init];
@@ -205,7 +205,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
     if (_outputStream) {
         [_outputStream close];
         _outputStream = nil;
@@ -221,7 +221,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 #pragma mark -
 
-- (void)setResponseData:(NSData *)responseData {
+-(void)setResponseData:(NSData *)responseData {
     [self.lock lock];
     if (!responseData) {
         _responseData = nil;
@@ -231,7 +231,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (NSString *)responseString {
+-(NSString *)responseString {
     [self.lock lock];
     if (!_responseString && self.response && self.responseData) {
         self.responseString = [[NSString alloc] initWithData:self.responseData encoding:self.responseStringEncoding];
@@ -241,7 +241,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     return _responseString;
 }
 
-- (NSStringEncoding)responseStringEncoding {
+-(NSStringEncoding)responseStringEncoding {
     [self.lock lock];
     if (!_responseStringEncoding && self.response) {
         NSStringEncoding stringEncoding = NSUTF8StringEncoding;
@@ -259,17 +259,17 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     return _responseStringEncoding;
 }
 
-- (NSInputStream *)inputStream {
+-(NSInputStream *)inputStream {
     return self.request.HTTPBodyStream;
 }
 
-- (void)setInputStream:(NSInputStream *)inputStream {
+-(void)setInputStream:(NSInputStream *)inputStream {
     NSMutableURLRequest *mutableRequest = [self.request mutableCopy];
     mutableRequest.HTTPBodyStream = inputStream;
     self.request = mutableRequest;
 }
 
-- (NSOutputStream *)outputStream {
+-(NSOutputStream *)outputStream {
     if (!_outputStream) {
         self.outputStream = [NSOutputStream outputStreamToMemory];
     }
@@ -277,7 +277,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     return _outputStream;
 }
 
-- (void)setOutputStream:(NSOutputStream *)outputStream {
+-(void)setOutputStream:(NSOutputStream *)outputStream {
     [self.lock lock];
     if (outputStream != _outputStream) {
         if (_outputStream) {
@@ -290,7 +290,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 }
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
-- (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler {
+-(void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler {
     [self.lock lock];
     if (!self.backgroundTaskIdentifier) {
         UIApplication *application = [UIApplication sharedApplication];
@@ -316,7 +316,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 #pragma mark -
 
-- (void)setState:(AFOperationState)state {
+-(void)setState:(AFOperationState)state {
     if (!AFStateTransitionIsValid(self.state, state, [self isCancelled])) {
         return;
     }
@@ -333,7 +333,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (void)pause {
+-(void)pause {
     if ([self isPaused] || [self isFinished] || [self isCancelled]) {
         return;
     }
@@ -354,17 +354,17 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (void)operationDidPause {
+-(void)operationDidPause {
     [self.lock lock];
     [self.connection cancel];
     [self.lock unlock];
 }
 
-- (BOOL)isPaused {
+-(BOOL)isPaused {
     return self.state == AFOperationPausedState;
 }
 
-- (void)resume {
+-(void)resume {
     if (![self isPaused]) {
         return;
     }
@@ -378,29 +378,29 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 #pragma mark -
 
-- (void)setUploadProgressBlock:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))block {
+-(void)setUploadProgressBlock:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))block {
     self.uploadProgress = block;
 }
 
-- (void)setDownloadProgressBlock:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))block {
+-(void)setDownloadProgressBlock:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))block {
     self.downloadProgress = block;
 }
 
-- (void)setWillSendRequestForAuthenticationChallengeBlock:(void (^)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge))block {
+-(void)setWillSendRequestForAuthenticationChallengeBlock:(void (^)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge))block {
     self.authenticationChallenge = block;
 }
 
-- (void)setCacheResponseBlock:(NSCachedURLResponse * (^)(NSURLConnection *connection, NSCachedURLResponse *cachedResponse))block {
+-(void)setCacheResponseBlock:(NSCachedURLResponse * (^)(NSURLConnection *connection, NSCachedURLResponse *cachedResponse))block {
     self.cacheResponse = block;
 }
 
-- (void)setRedirectResponseBlock:(NSURLRequest * (^)(NSURLConnection *connection, NSURLRequest *request, NSURLResponse *redirectResponse))block {
+-(void)setRedirectResponseBlock:(NSURLRequest * (^)(NSURLConnection *connection, NSURLRequest *request, NSURLResponse *redirectResponse))block {
     self.redirectResponse = block;
 }
 
 #pragma mark - NSOperation
 
-- (void)setCompletionBlock:(void (^)(void))block {
+-(void)setCompletionBlock:(void (^)(void))block {
     [self.lock lock];
     if (!block) {
         [super setCompletionBlock:nil];
@@ -427,23 +427,23 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (BOOL)isReady {
+-(BOOL)isReady {
     return self.state == AFOperationReadyState && [super isReady];
 }
 
-- (BOOL)isExecuting {
+-(BOOL)isExecuting {
     return self.state == AFOperationExecutingState;
 }
 
-- (BOOL)isFinished {
+-(BOOL)isFinished {
     return self.state == AFOperationFinishedState;
 }
 
-- (BOOL)isConcurrent {
+-(BOOL)isConcurrent {
     return YES;
 }
 
-- (void)start {
+-(void)start {
     [self.lock lock];
     if ([self isCancelled]) {
         [self performSelector:@selector(cancelConnection) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
@@ -455,7 +455,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (void)operationDidStart {
+-(void)operationDidStart {
     [self.lock lock];
     if (![self isCancelled]) {
         self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
@@ -475,7 +475,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     });
 }
 
-- (void)finish {
+-(void)finish {
     [self.lock lock];
     self.state = AFOperationFinishedState;
     [self.lock unlock];
@@ -485,7 +485,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     });
 }
 
-- (void)cancel {
+-(void)cancel {
     [self.lock lock];
     if (![self isFinished] && ![self isCancelled]) {
         [super cancel];
@@ -497,7 +497,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 }
 
-- (void)cancelConnection {
+-(void)cancelConnection {
     NSDictionary *userInfo = nil;
     if ([self.request URL]) {
         userInfo = [NSDictionary dictionaryWithObject:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
@@ -577,13 +577,13 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 #pragma mark - NSObject
 
-- (NSString *)description {
+-(NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p, state: %@, cancelled: %@ request: %@, response: %@>", NSStringFromClass([self class]), self, AFKeyPathFromOperationState(self.state), ([self isCancelled] ? @"YES" : @"NO"), self.request, self.response];
 }
 
 #pragma mark - NSURLConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection
+-(void)connection:(NSURLConnection *)connection
 willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
     if (self.authenticationChallenge) {
@@ -611,11 +611,11 @@ willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challe
     }
 }
 
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection __unused *)connection {
+-(BOOL)connectionShouldUseCredentialStorage:(NSURLConnection __unused *)connection {
     return self.shouldUseCredentialStorage;
 }
 
-- (NSURLRequest *)connection:(NSURLConnection *)connection
+-(NSURLRequest *)connection:(NSURLConnection *)connection
              willSendRequest:(NSURLRequest *)request
             redirectResponse:(NSURLResponse *)redirectResponse
 {
@@ -626,7 +626,7 @@ willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challe
     }
 }
 
-- (void)connection:(NSURLConnection __unused *)connection
+-(void)connection:(NSURLConnection __unused *)connection
    didSendBodyData:(NSInteger)bytesWritten
  totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
@@ -638,7 +638,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
     });
 }
 
-- (void)connection:(NSURLConnection __unused *)connection
+-(void)connection:(NSURLConnection __unused *)connection
 didReceiveResponse:(NSURLResponse *)response
 {
     self.response = response;
@@ -646,7 +646,7 @@ didReceiveResponse:(NSURLResponse *)response
     [self.outputStream open];
 }
 
-- (void)connection:(NSURLConnection __unused *)connection
+-(void)connection:(NSURLConnection __unused *)connection
     didReceiveData:(NSData *)data
 {
     NSUInteger length = [data length];
@@ -657,7 +657,7 @@ didReceiveResponse:(NSURLResponse *)response
 
             NSInteger numberOfBytesWritten = 0;
             while (totalNumberOfBytesWritten < (NSInteger)length) {
-                numberOfBytesWritten = [self.outputStream write:&dataBuffer[(NSUInteger)totalNumberOfBytesWritten] maxLength:(length - (NSUInteger)totalNumberOfBytesWritten)];
+                numberOfBytesWritten = [self.outputStream write:&dataBuffer[(NSUInteger)totalNumberOfBytesWritten] maxLength:(length -(NSUInteger)totalNumberOfBytesWritten)];
                 if (numberOfBytesWritten == -1) {
                     break;
                 }
@@ -684,7 +684,7 @@ didReceiveResponse:(NSURLResponse *)response
     });
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection __unused *)connection {
+-(void)connectionDidFinishLoading:(NSURLConnection __unused *)connection {
     self.responseData = [self.outputStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
 
     [self.outputStream close];
@@ -697,7 +697,7 @@ didReceiveResponse:(NSURLResponse *)response
     [self finish];
 }
 
-- (void)connection:(NSURLConnection __unused *)connection
+-(void)connection:(NSURLConnection __unused *)connection
   didFailWithError:(NSError *)error
 {
     self.error = error;
@@ -712,7 +712,7 @@ didReceiveResponse:(NSURLResponse *)response
     [self finish];
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+-(NSCachedURLResponse *)connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     if (self.cacheResponse) {
@@ -732,7 +732,7 @@ didReceiveResponse:(NSURLResponse *)response
     return YES;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+-(id)initWithCoder:(NSCoder *)decoder {
     NSURLRequest *request = [decoder decodeObjectOfClass:[NSURLRequest class] forKey:NSStringFromSelector(@selector(request))];
     
     self = [self initWithRequest:request];
@@ -749,7 +749,7 @@ didReceiveResponse:(NSURLResponse *)response
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)coder {
+-(void)encodeWithCoder:(NSCoder *)coder {
     [self pause];
     
     [coder encodeObject:self.request forKey:NSStringFromSelector(@selector(request))];
@@ -772,7 +772,7 @@ didReceiveResponse:(NSURLResponse *)response
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+-(id)copyWithZone:(NSZone *)zone {
     AFURLConnectionOperation *operation = [(AFURLConnectionOperation *)[[self class] allocWithZone:zone] initWithRequest:self.request];
     
     operation.uploadProgress = self.uploadProgress;

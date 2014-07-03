@@ -8,17 +8,17 @@
 
 + (DDXMLElement *)elementWithName:(NSString *)name xmlns:(NSString *)ns;
 
-- (DDXMLElement *)elementForName:(NSString *)name;
-- (DDXMLElement *)elementForName:(NSString *)name xmlns:(NSString *)xmlns;
+-(DDXMLElement *)elementForName:(NSString *)name;
+-(DDXMLElement *)elementForName:(NSString *)name xmlns:(NSString *)xmlns;
 
-- (NSString *)xmlns;
-- (void)setXmlns:(NSString *)ns;
+-(NSString *)xmlns;
+-(void)setXmlns:(NSString *)ns;
 
-- (NSString *)prettyXMLString;
-- (NSString *)compactXMLString;
+-(NSString *)prettyXMLString;
+-(NSString *)compactXMLString;
 
-- (void)addAttributeWithName:(NSString *)name stringValue:(NSString *)string;
+-(void)addAttributeWithName:(NSString *)name stringValue:(NSString *)string;
 
-- (NSDictionary *)attributesAsDictionary;
+-(NSDictionary *)attributesAsDictionary;
 
 @end

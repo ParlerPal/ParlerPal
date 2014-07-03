@@ -61,9 +61,9 @@ enum {
 	DDXMLNode *owner;
 }
 
-//- (id)initWithKind:(DDXMLNodeKind)kind;
+//-(id)initWithKind:(DDXMLNodeKind)kind;
 
-//- (id)initWithKind:(DDXMLNodeKind)kind options:(NSUInteger)options;
+//-(id)initWithKind:(DDXMLNodeKind)kind options:(NSUInteger)options;
 
 //+ (id)document;
 
@@ -93,48 +93,48 @@ enum {
 
 #pragma mark --- Properties ---
 
-- (DDXMLNodeKind)kind;
+-(DDXMLNodeKind)kind;
 
-- (void)setName:(NSString *)name;
-- (NSString *)name;
+-(void)setName:(NSString *)name;
+-(NSString *)name;
 
-//- (void)setObjectValue:(id)value;
-//- (id)objectValue;
+//-(void)setObjectValue:(id)value;
+//-(id)objectValue;
 
-- (void)setStringValue:(NSString *)string;
-//- (void)setStringValue:(NSString *)string resolvingEntities:(BOOL)resolve;
-- (NSString *)stringValue;
+-(void)setStringValue:(NSString *)string;
+//-(void)setStringValue:(NSString *)string resolvingEntities:(BOOL)resolve;
+-(NSString *)stringValue;
 
 #pragma mark --- Tree Navigation ---
 
-- (NSUInteger)index;
+-(NSUInteger)index;
 
-- (NSUInteger)level;
+-(NSUInteger)level;
 
-- (DDXMLDocument *)rootDocument;
+-(DDXMLDocument *)rootDocument;
 
-- (DDXMLNode *)parent;
-- (NSUInteger)childCount;
-- (NSArray *)children;
-- (DDXMLNode *)childAtIndex:(NSUInteger)index;
+-(DDXMLNode *)parent;
+-(NSUInteger)childCount;
+-(NSArray *)children;
+-(DDXMLNode *)childAtIndex:(NSUInteger)index;
 
-- (DDXMLNode *)previousSibling;
-- (DDXMLNode *)nextSibling;
+-(DDXMLNode *)previousSibling;
+-(DDXMLNode *)nextSibling;
 
-- (DDXMLNode *)previousNode;
-- (DDXMLNode *)nextNode;
+-(DDXMLNode *)previousNode;
+-(DDXMLNode *)nextNode;
 
-- (void)detach;
+-(void)detach;
 
-- (NSString *)XPath;
+-(NSString *)XPath;
 
 #pragma mark --- QNames ---
 
-- (NSString *)localName;
-- (NSString *)prefix;
+-(NSString *)localName;
+-(NSString *)prefix;
 
-- (void)setURI:(NSString *)URI;
-- (NSString *)URI;
+-(void)setURI:(NSString *)URI;
+-(NSString *)URI;
 
 + (NSString *)localNameForName:(NSString *)name;
 + (NSString *)prefixForName:(NSString *)name;
@@ -142,15 +142,15 @@ enum {
 
 #pragma mark --- Output ---
 
-- (NSString *)description;
-- (NSString *)XMLString;
-- (NSString *)XMLStringWithOptions:(NSUInteger)options;
-//- (NSString *)canonicalXMLStringPreservingComments:(BOOL)comments;
+-(NSString *)description;
+-(NSString *)XMLString;
+-(NSString *)XMLStringWithOptions:(NSUInteger)options;
+//-(NSString *)canonicalXMLStringPreservingComments:(BOOL)comments;
 
 #pragma mark --- XPath/XQuery ---
 
-- (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error;
-//- (NSArray *)objectsForXQuery:(NSString *)xquery constants:(NSDictionary *)constants error:(NSError **)error;
-//- (NSArray *)objectsForXQuery:(NSString *)xquery error:(NSError **)error;
+-(NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error;
+//-(NSArray *)objectsForXQuery:(NSString *)xquery constants:(NSDictionary *)constants error:(NSError **)error;
+//-(NSArray *)objectsForXQuery:(NSString *)xquery error:(NSError **)error;
 
 @end

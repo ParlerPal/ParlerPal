@@ -107,7 +107,7 @@
 
  @return The newly-initialized HTTP client
  */
-- (instancetype)initWithBaseURL:(NSURL *)url;
+-(instancetype)initWithBaseURL:(NSURL *)url;
 
 /**
  Initializes an `AFHTTPSessionManager` object with the specified base URL.
@@ -119,7 +119,7 @@
 
  @return The newly-initialized HTTP client
  */
-- (instancetype)initWithBaseURL:(NSURL *)url
+-(instancetype)initWithBaseURL:(NSURL *)url
            sessionConfiguration:(NSURLSessionConfiguration *)configuration;
 
 ///---------------------------
@@ -136,7 +136,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)GET:(NSString *)URLString
+-(NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(id)parameters
                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
@@ -151,7 +151,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)HEAD:(NSString *)URLString
+-(NSURLSessionDataTask *)HEAD:(NSString *)URLString
                     parameters:(id)parameters
                        success:(void (^)(NSURLSessionDataTask *task))success
                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
@@ -166,7 +166,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)POST:(NSString *)URLString
+-(NSURLSessionDataTask *)POST:(NSString *)URLString
                     parameters:(id)parameters
                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
@@ -182,7 +182,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)POST:(NSString *)URLString
+-(NSURLSessionDataTask *)POST:(NSString *)URLString
                     parameters:(id)parameters
      constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
@@ -198,7 +198,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)PUT:(NSString *)URLString
+-(NSURLSessionDataTask *)PUT:(NSString *)URLString
                    parameters:(id)parameters
                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
@@ -213,7 +213,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)PATCH:(NSString *)URLString
+-(NSURLSessionDataTask *)PATCH:(NSString *)URLString
                      parameters:(id)parameters
                         success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                         failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
@@ -228,7 +228,7 @@
 
  @see -dataTaskWithRequest:completionHandler:
  */
-- (NSURLSessionDataTask *)DELETE:(NSString *)URLString
+-(NSURLSessionDataTask *)DELETE:(NSString *)URLString
                       parameters:(id)parameters
                          success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;

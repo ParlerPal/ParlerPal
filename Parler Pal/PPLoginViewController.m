@@ -47,7 +47,7 @@
     [[self view] endEditing: YES];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if ([touch.view isKindOfClass:[UIControl class]]) {
         // we touched a button, slider, or other UIControl
@@ -73,7 +73,7 @@
 #pragma textfield delegate methods
 
 // Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications
+-(void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
@@ -86,7 +86,7 @@
 }
 
 // Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
+-(void)keyboardWasShown:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
@@ -97,7 +97,7 @@
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+-(void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     scrollView.contentInset = contentInsets;
@@ -164,7 +164,7 @@
 #pragma mark -
 #pragma mark segue
 
-- (IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
+-(IBAction)unwindToLogin:(UIStoryboardSegue *)unwindSegue
 {
     [[PPDatabaseManager sharedDatabaseManager]logoutWithFinish:^(bool success) {
     }];

@@ -16,7 +16,7 @@
  * This method returns the first child element for the given name.
  * If no child element exists for the given name, returns nil.
 **/
-- (DDXMLElement *)elementForName:(NSString *)name
+-(DDXMLElement *)elementForName:(NSString *)name
 {
 	NSArray *elements = [self elementsForName:name];
 	if([elements count] > 0)
@@ -54,7 +54,7 @@
  * This method returns the first child element for the given name and given xmlns.
  * If no child elements exist for the given name and given xmlns, returns nil.
 **/
-- (DDXMLElement *)elementForName:(NSString *)name xmlns:(NSString *)xmlns
+-(DDXMLElement *)elementForName:(NSString *)name xmlns:(NSString *)xmlns
 {
 	NSArray *elements = [self elementsForLocalName:name URI:xmlns];
 	if([elements count] > 0)
@@ -71,12 +71,12 @@
  * Returns the common xmlns "attribute", which is only accessible via the namespace methods.
  * The xmlns value is often used in jabber elements.
 **/
-- (NSString *)xmlns
+-(NSString *)xmlns
 {
 	return [[self namespaceForPrefix:@""] stringValue];
 }
 
-- (void)setXmlns:(NSString *)ns
+-(void)setXmlns:(NSString *)ns
 {
 	// If you use setURI: then the xmlns won't be displayed in the XMLString.
 	// Adding the namespace this way works properly.
@@ -89,7 +89,7 @@
 /**
  * Shortcut to get a pretty (formatted) string representation of the element.
 **/
-- (NSString *)prettyXMLString
+-(NSString *)prettyXMLString
 {
 	return [self XMLStringWithOptions:(DDXMLNodePrettyPrint | DDXMLNodeCompactEmptyElement)];
 }
@@ -97,7 +97,7 @@
 /**
  * Shortcut to get a compact string representation of the element.
 **/
-- (NSString *)compactXMLString
+-(NSString *)compactXMLString
 {
     return [self XMLStringWithOptions:DDXMLNodeCompactEmptyElement];
 }
@@ -105,7 +105,7 @@
 /**
  *	Shortcut to avoid having to manually create a DDXMLNode everytime.
 **/
-- (void)addAttributeWithName:(NSString *)name stringValue:(NSString *)string
+-(void)addAttributeWithName:(NSString *)name stringValue:(NSString *)string
 {
 	[self addAttribute:[DDXMLNode attributeWithName:name stringValue:string]];
 }
@@ -113,7 +113,7 @@
 /**
  * Returns all the attributes as a dictionary.
 **/
-- (NSDictionary *)attributesAsDictionary
+-(NSDictionary *)attributesAsDictionary
 {
 	NSArray *attributes = [self attributes];
 	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:[attributes count]];

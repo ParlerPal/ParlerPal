@@ -59,7 +59,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 @implementation AFHTTPRequestOperation
 @dynamic lock;
 
-- (instancetype)initWithRequest:(NSURLRequest *)urlRequest {
+-(instancetype)initWithRequest:(NSURLRequest *)urlRequest {
     self = [super initWithRequest:urlRequest];
     if (!self) {
         return nil;
@@ -70,7 +70,7 @@ static dispatch_group_t http_request_operation_completion_group() {
     return self;
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
+-(void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
     NSParameterAssert(responseSerializer);
 
     [self.lock lock];
@@ -80,7 +80,7 @@ static dispatch_group_t http_request_operation_completion_group() {
     [self.lock unlock];
 }
 
-- (id)responseObject {
+-(id)responseObject {
     [self.lock lock];
     if (!_responseObject && [self isFinished] && !self.error) {
         NSError *error = nil;
@@ -94,7 +94,7 @@ static dispatch_group_t http_request_operation_completion_group() {
     return _responseObject;
 }
 
-- (NSError *)error {
+-(NSError *)error {
     if (_responseSerializationError) {
         return _responseSerializationError;
     } else {
@@ -104,7 +104,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 #pragma mark - AFHTTPRequestOperation
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+-(void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     // completionBlock is manually nilled out in AFURLConnectionOperation to break the retain cycle.
@@ -150,7 +150,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 #pragma mark - AFURLRequestOperation
 
-- (void)pause {
+-(void)pause {
     [super pause];
 
     u_int64_t offset = 0;
@@ -174,7 +174,7 @@ static dispatch_group_t http_request_operation_completion_group() {
     return YES;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+-(id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (!self) {
         return nil;
@@ -185,7 +185,7 @@ static dispatch_group_t http_request_operation_completion_group() {
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)coder {
+-(void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
 
     [coder encodeObject:self.responseSerializer forKey:NSStringFromSelector(@selector(responseSerializer))];
@@ -193,7 +193,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+-(id)copyWithZone:(NSZone *)zone {
     AFHTTPRequestOperation *operation = [[[self class] allocWithZone:zone] initWithRequest:self.request];
 
     operation.responseSerializer = [self.responseSerializer copyWithZone:zone];

@@ -15,7 +15,7 @@
 #pragma mark -
 #pragma mark init method
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -27,13 +27,13 @@
 #pragma mark -
 #pragma mark view methods
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"paper.png"]];
 }
 
-- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+-(void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
     {

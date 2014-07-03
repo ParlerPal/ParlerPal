@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/27/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import "PPReplyPopupView.h"
@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark init methods
 
-- (id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -106,7 +106,7 @@
     [[self view] endEditing: YES];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if ([touch.view isKindOfClass:[UIControl class]]) {
         // we touched a button, slider, or other UIControl

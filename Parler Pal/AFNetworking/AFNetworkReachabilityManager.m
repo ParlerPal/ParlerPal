@@ -137,7 +137,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     return manager;
 }
 
-- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability {
+-(instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability {
     self = [super init];
     if (!self) {
         return nil;
@@ -149,7 +149,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
     [self stopMonitoring];
 
     if (_networkReachability) {
@@ -160,21 +160,21 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 
 #pragma mark -
 
-- (BOOL)isReachable {
+-(BOOL)isReachable {
     return [self isReachableViaWWAN] || [self isReachableViaWiFi];
 }
 
-- (BOOL)isReachableViaWWAN {
+-(BOOL)isReachableViaWWAN {
     return self.networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN;
 }
 
-- (BOOL)isReachableViaWiFi {
+-(BOOL)isReachableViaWiFi {
     return self.networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWiFi;
 }
 
 #pragma mark -
 
-- (void)startMonitoring {
+-(void)startMonitoring {
     [self stopMonitoring];
 
     if (!self.networkReachability) {
@@ -220,7 +220,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     }
 }
 
-- (void)stopMonitoring {
+-(void)stopMonitoring {
     if (!self.networkReachability) {
         return;
     }
@@ -230,13 +230,13 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 
 #pragma mark -
 
-- (NSString *)localizedNetworkReachabilityStatusString {
+-(NSString *)localizedNetworkReachabilityStatusString {
     return AFStringFromNetworkReachabilityStatus(self.networkReachabilityStatus);
 }
 
 #pragma mark -
 
-- (void)setReachabilityStatusChangeBlock:(void (^)(AFNetworkReachabilityStatus status))block {
+-(void)setReachabilityStatusChangeBlock:(void (^)(AFNetworkReachabilityStatus status))block {
     self.networkReachabilityStatusBlock = block;
 }
 

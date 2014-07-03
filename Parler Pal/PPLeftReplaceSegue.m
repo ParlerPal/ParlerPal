@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/22/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import "PPLeftReplaceSegue.h"
@@ -37,7 +37,7 @@
     [self performSelector:@selector(animationDone:) withObject:dst afterDelay:.6f];
 }
 
-- (void)animationDone:(id)vc
+-(void)animationDone:(id)vc
 {
     UIViewController *dst = (UIViewController*)vc;
     UINavigationController *nav = [[self sourceViewController] navigationController];

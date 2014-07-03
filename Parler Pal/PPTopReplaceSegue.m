@@ -37,7 +37,7 @@
     [self performSelector:@selector(animationDone:) withObject:dst afterDelay:.6f];
 }
 
-- (void)animationDone:(id)vc
+-(void)animationDone:(id)vc
 {
     UIViewController *dst = (UIViewController*)vc;
     UINavigationController *nav = [[self sourceViewController] navigationController];

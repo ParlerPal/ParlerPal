@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/26/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import "PPMessagesComposeViewController.h"
@@ -16,7 +16,7 @@
 #pragma mark -
 #pragma mark Init Methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -28,7 +28,7 @@
 #pragma mark -
 #pragma mark View Methods
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -98,7 +98,7 @@
     [[self view] endEditing: YES];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[UITextView class]]) {
         return NO; // ignore the touch
@@ -106,7 +106,7 @@
     return YES; // handle the touch
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 

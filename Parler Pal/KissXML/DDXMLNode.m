@@ -205,7 +205,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Returns a DDXML wrapper object for the given primitive node.
  * The given node MUST be non-NULL and of the proper type.
 **/
-- (id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
+-(id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
 {
 	if ((self = [super init]))
 	{
@@ -223,7 +223,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * This method shouldn't be used.
  * To maintain compatibility with Apple, we return an invalid node.
 **/
-- (id)init
+-(id)init
 {
 	self = [super init];
 	
@@ -237,7 +237,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	}
 }
 
-- (void)dealloc
+-(void)dealloc
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	MarkDeath(genericPtr, self);
@@ -298,7 +298,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark Copying
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (id)copyWithZone:(NSZone *)zone
+-(id)copyWithZone:(NSZone *)zone
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -359,7 +359,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark Equality
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (BOOL)isEqual:(id)anObject
+-(BOOL)isEqual:(id)anObject
 {
 	// DDXMLNode, DDXMLElement, and DDXMLDocument are simply light-weight wrappers atop a libxml structure.
 	// 
@@ -382,7 +382,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark Properties
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (DDXMLNodeKind)kind
+-(DDXMLNodeKind)kind
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -394,7 +394,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 		return DDXMLInvalidKind;
 }
 
-- (void)setName:(NSString *)name
+-(void)setName:(NSString *)name
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -406,7 +406,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	xmlNodeSetName((xmlNodePtr)genericPtr, [name xmlChar]);
 }
 
-- (NSString *)name
+-(NSString *)name
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -440,7 +440,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	return name;
 }
 
-- (void)setStringValue:(NSString *)string
+-(void)setStringValue:(NSString *)string
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -470,7 +470,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * This method recursively visits elements nodes and concatenates their text nodes in document order with
  * no intervening spaces.
 **/
-- (NSString *)stringValue
+-(NSString *)stringValue
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -500,7 +500,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Returns the index of the receiver identifying its position relative to its sibling nodes.
  * The first child node of a parent has an index of zero.
 **/
-- (NSUInteger)index
+-(NSUInteger)index
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -524,7 +524,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Returns the nesting level of the receiver within the tree hierarchy.
  * The root element of a document has a nesting level of one.
 **/
-- (NSUInteger)level
+-(NSUInteger)level
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -549,7 +549,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * If the receiver is a standalone node (that is, a node at the head of a detached branch of the tree), this
  * method returns nil.
 **/
-- (DDXMLDocument *)rootDocument
+-(DDXMLDocument *)rootDocument
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -572,7 +572,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * sending this message to them returns nil. A one-to-one relationship does not always exists between a parent and
  * its children; although a namespace or attribute node cannot be a child, it still has a parent element.
 **/
-- (DDXMLNode *)parent
+-(DDXMLNode *)parent
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -592,7 +592,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Returns the number of child nodes the receiver has.
  * For performance reasons, use this method instead of getting the count from the array returned by children.
 **/
-- (NSUInteger)childCount
+-(NSUInteger)childCount
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -620,7 +620,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 /**
  * Returns an immutable array containing the child nodes of the receiver (as DDXMLNode objects).
 **/
-- (NSArray *)children
+-(NSArray *)children
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -655,7 +655,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * The receiver should be a DDXMLNode object representing a document, element, or document type declaration.
  * The returned node object can represent an element, comment, text, or processing instruction.
 **/
-- (DDXMLNode *)childAtIndex:(NSUInteger)index
+-(DDXMLNode *)childAtIndex:(NSUInteger)index
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -701,7 +701,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * This object will have an index value that is one less than the receiverÕs.
  * If there are no more previous siblings (that is, other child nodes of the receiverÕs parent) the method returns nil.
 **/
-- (DDXMLNode *)previousSibling
+-(DDXMLNode *)previousSibling
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -724,7 +724,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * If there are no more subsequent siblings (that is, other child nodes of the receiverÕs parent) the
  * method returns nil.
 **/
-- (DDXMLNode *)nextSibling
+-(DDXMLNode *)nextSibling
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -748,7 +748,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * constructs appear in markup text. If you send this message to the first node in the tree (that is, the root element),
  * nil is returned. DDXMLNode bypasses namespace and attribute nodes when it traverses a tree in document order.
 **/
-- (DDXMLNode *)previousNode
+-(DDXMLNode *)previousNode
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -802,7 +802,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * constructs appear in markup text. If you send this message to the last node in the tree, nil is returned.
  * DDXMLNode bypasses namespace and attribute nodes when it traverses a tree in document order.
 **/
-- (DDXMLNode *)nextNode
+-(DDXMLNode *)nextNode
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -846,7 +846,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * This method is applicable to DDXMLNode objects representing elements, text, comments, processing instructions,
  * attributes, and namespaces. Once the node object is detached, you can add it as a child node of another parent.
 **/
-- (void)detach
+-(void)detach
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -868,7 +868,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	}
 }
 
-- (xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
+-(xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
 {
 	// This is a private/internal method
 	
@@ -878,7 +878,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	return (xmlStdPtr)genericPtr;
 }
 
-- (NSString *)XPath
+-(NSString *)XPath
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -940,7 +940,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * The local name is the part of a node name that follows a namespace-qualifying colon or the full name if
  * there is no colon. For example, ÒchapterÓ is the local name in the qualified name Òacme:chapterÓ.
 **/
-- (NSString *)localName
+-(NSString *)localName
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -956,7 +956,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * For example, ÒacmeÓ is the local name in the qualified name Òacme:chapterÓ.
  * This method returns an empty string if the receiverÕs name is not qualified by a namespace.
 **/
-- (NSString *)prefix
+-(NSString *)prefix
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	
@@ -969,7 +969,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Sets the URI identifying the source of this document.
  * Pass nil to remove the current URI.
 **/
-- (void)setURI:(NSString *)URI
+-(void)setURI:(NSString *)URI
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -1004,7 +1004,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * parsed XML or is explicitly set. You cannot change the URI for a particular node other for than a namespace
  * or document node.
 **/
-- (NSString *)URI
+-(NSString *)URI
 {
 	// Note: DDXMLNamespaceNode overrides this method
 	// Note: DDXMLAttributeNode overrides this method
@@ -1120,21 +1120,21 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark Output
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSString *)description
+-(NSString *)description
 {
 	// Zombie test occurs in XMLStringWithOptions:
 	
 	return [self XMLStringWithOptions:0];
 }
 
-- (NSString *)XMLString
+-(NSString *)XMLString
 {
 	// Zombie test occurs in XMLStringWithOptions:
 	
 	return [self XMLStringWithOptions:0];
 }
 
-- (NSString *)XMLStringWithOptions:(NSUInteger)options
+-(NSString *)XMLStringWithOptions:(NSUInteger)options
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -1194,7 +1194,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark XPath/XQuery
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error
+-(NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -1350,7 +1350,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
  * Use this method instead of parent when you only need to ensure parent is nil.
  * This prevents the unnecessary creation of a parent node wrapper.
 **/
-- (BOOL)_hasParent
+-(BOOL)_hasParent
 {
 	// This is a private/internal method
 	
@@ -2190,7 +2190,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
  * Returns a DDXML wrapper object for the given primitive node.
  * The given node MUST be non-NULL and of the proper type.
 **/
-- (id)initWithNsPrimitive:(xmlNsPtr)ns nsParent:(xmlNodePtr)parent owner:(DDXMLNode *)inOwner
+-(id)initWithNsPrimitive:(xmlNsPtr)ns nsParent:(xmlNodePtr)parent owner:(DDXMLNode *)inOwner
 {
 	if ((self = [super initWithPrimitive:(xmlKindPtr)ns owner:inOwner]))
 	{
@@ -2207,7 +2207,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
+-(id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
 {
 	// Promote initializers which use proper parameter types to enable compiler to catch more mistakes.
 	NSAssert(NO, @"Use initWithNsPrimitive:nsParent:owner:");
@@ -2219,7 +2219,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark Properties
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)setName:(NSString *)name
+-(void)setName:(NSString *)name
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2231,7 +2231,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	ns->prefix = xmlStrdup([name xmlChar]);
 }
 
-- (NSString *)name
+-(NSString *)name
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2244,7 +2244,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 		return @"";
 }
 
-- (void)setStringValue:(NSString *)string
+-(void)setStringValue:(NSString *)string
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2256,7 +2256,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	ns->href = xmlEncodeSpecialChars(NULL, [string xmlChar]);
 }
 
-- (NSString *)stringValue
+-(NSString *)stringValue
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2269,7 +2269,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark Tree Navigation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSUInteger)index
+-(NSUInteger)index
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2300,7 +2300,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return 0; // Yes 0, not result, because ns wasn't found in list
 }
 
-- (NSUInteger)level
+-(NSUInteger)level
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2318,7 +2318,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return result;
 }
 
-- (DDXMLDocument *)rootDocument
+-(DDXMLDocument *)rootDocument
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2332,7 +2332,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 		return [DDXMLDocument nodeWithDocPrimitive:node->doc owner:self];
 }
 
-- (DDXMLNode *)parent
+-(DDXMLNode *)parent
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2344,7 +2344,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 		return [DDXMLNode nodeWithUnknownPrimitive:(xmlKindPtr)nsParentPtr owner:self];
 }
 
-- (NSUInteger)childCount
+-(NSUInteger)childCount
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2353,7 +2353,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return 0;
 }
 
-- (NSArray *)children
+-(NSArray *)children
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2362,7 +2362,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)childAtIndex:(NSUInteger)index
+-(DDXMLNode *)childAtIndex:(NSUInteger)index
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2371,7 +2371,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)previousSibling
+-(DDXMLNode *)previousSibling
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2380,7 +2380,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)nextSibling
+-(DDXMLNode *)nextSibling
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2389,7 +2389,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)previousNode
+-(DDXMLNode *)previousNode
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2398,7 +2398,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)nextNode
+-(DDXMLNode *)nextNode
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2407,7 +2407,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (void)detach
+-(void)detach
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2422,7 +2422,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	}
 }
 
-- (xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
+-(xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
 {
 	// This is a private/internal method
 	
@@ -2440,7 +2440,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark QNames
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSString *)localName
+-(NSString *)localName
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2454,7 +2454,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 		return @"";
 }
 
-- (NSString *)prefix
+-(NSString *)prefix
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2464,7 +2464,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return @"";
 }
 
-- (void)setURI:(NSString *)URI
+-(void)setURI:(NSString *)URI
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2473,7 +2473,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	// Do nothing
 }
 
-- (NSString *)URI
+-(NSString *)URI
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2486,21 +2486,21 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark Private API
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (BOOL)_hasParent
+-(BOOL)_hasParent
 {
 	// This is a private/internal method
 	
 	return (nsParentPtr != NULL);
 }
 
-- (xmlNodePtr)_nsParentPtr
+-(xmlNodePtr)_nsParentPtr
 {
 	// This is a private/internal method
 	
 	return nsParentPtr;
 }
 
-- (void)_setNsParentPtr:(xmlNodePtr)parentPtr
+-(void)_setNsParentPtr:(xmlNodePtr)parentPtr
 {
 	// This is a private/internal method
 	
@@ -2520,7 +2520,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return [[DDXMLAttributeNode alloc] initWithAttrPrimitive:attr owner:owner];
 }
 
-- (id)initWithAttrPrimitive:(xmlAttrPtr)attr owner:(DDXMLNode *)inOwner
+-(id)initWithAttrPrimitive:(xmlAttrPtr)attr owner:(DDXMLNode *)inOwner
 {
 	self = [super initWithPrimitive:(xmlKindPtr)attr owner:inOwner];
 	return self;
@@ -2534,7 +2534,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
+-(id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)inOwner
 {
 	// Promote initializers which use proper parameter types to enable compiler to catch more mistakes.
 	NSAssert(NO, @"Use initWithAttrPrimitive:nsParent:owner:");
@@ -2542,7 +2542,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (void)dealloc
+-(void)dealloc
 {
 	if (attrNsPtr) xmlFreeNs(attrNsPtr);
 }
@@ -2551,7 +2551,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark Properties
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (NSString *)name
+-(NSString *)name
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2579,7 +2579,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return name;
 }
 
-- (void)setStringValue:(NSString *)string
+-(void)setStringValue:(NSString *)string
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2600,7 +2600,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	}
 }
 
-- (NSString *)stringValue
+-(NSString *)stringValue
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2620,7 +2620,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark Tree Navigation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (DDXMLNode *)previousNode
+-(DDXMLNode *)previousNode
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2629,7 +2629,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (DDXMLNode *)nextNode
+-(DDXMLNode *)nextNode
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2638,7 +2638,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	return nil;
 }
 
-- (void)detach
+-(void)detach
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2670,7 +2670,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	}
 }
 
-- (xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
+-(xmlStdPtr)_XPathPreProcess:(NSMutableString *)result
 {
 	// This is a private/internal method
 	
@@ -2692,7 +2692,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 #pragma mark QNames
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)setURI:(NSString *)URI
+-(void)setURI:(NSString *)URI
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2749,7 +2749,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 	}
 }
 
-- (NSString *)URI
+-(NSString *)URI
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2792,112 +2792,112 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 
 // #pragma mark Properties
 
-- (DDXMLNodeKind)kind {
+-(DDXMLNodeKind)kind {
 	return DDXMLInvalidKind;
 }
 
-- (void)setName:(NSString *)name { }
-- (NSString *)name {
+-(void)setName:(NSString *)name { }
+-(NSString *)name {
 	return nil;
 }
 
-- (void)setObjectValue:(id)value { }
-- (id)objectValue {
+-(void)setObjectValue:(id)value { }
+-(id)objectValue {
 	return nil;
 }
 
-- (void)setStringValue:(NSString *)string { }
-- (void)setStringValue:(NSString *)string resolvingEntities:(BOOL)resolve { }
-- (NSString *)stringValue {
+-(void)setStringValue:(NSString *)string { }
+-(void)setStringValue:(NSString *)string resolvingEntities:(BOOL)resolve { }
+-(NSString *)stringValue {
 	return nil;
 }
 
 // #pragma mark Tree Navigation
 
-- (NSUInteger)index {
+-(NSUInteger)index {
 	return 0;
 }
 
-- (NSUInteger)level {
+-(NSUInteger)level {
 	return 0;
 }
 
-- (DDXMLDocument *)rootDocument {
+-(DDXMLDocument *)rootDocument {
 	return nil;
 }
 
-- (DDXMLNode *)parent {
+-(DDXMLNode *)parent {
 	return nil;
 }
-- (NSUInteger)childCount {
+-(NSUInteger)childCount {
 	return 0;
 }
-- (NSArray *)children {
+-(NSArray *)children {
 	return [NSArray array];
 }
-- (DDXMLNode *)childAtIndex:(NSUInteger)index {
+-(DDXMLNode *)childAtIndex:(NSUInteger)index {
 	return nil;
 }
 
-- (DDXMLNode *)previousSibling {
+-(DDXMLNode *)previousSibling {
 	return nil;
 }
-- (DDXMLNode *)nextSibling {
-	return nil;
-}
-
-- (DDXMLNode *)previousNode {
-	return nil;
-}
-- (DDXMLNode *)nextNode {
+-(DDXMLNode *)nextSibling {
 	return nil;
 }
 
-- (void)detach { }
+-(DDXMLNode *)previousNode {
+	return nil;
+}
+-(DDXMLNode *)nextNode {
+	return nil;
+}
 
-- (NSString *)XPath {
+-(void)detach { }
+
+-(NSString *)XPath {
 	return @"";
 }
 
 // #pragma mark QNames
 
-- (NSString *)localName {
+-(NSString *)localName {
 	return nil;
 }
-- (NSString *)prefix {
+-(NSString *)prefix {
 	return @"";
 }
 
-- (void)setURI:(NSString *)URI { }
-- (NSString *)URI {
+-(void)setURI:(NSString *)URI { }
+-(NSString *)URI {
 	return nil;
 }
 
 // #pragma mark Output
 
-- (NSString *)description {
+-(NSString *)description {
 	return @"";
 }
-- (NSString *)XMLString {
+-(NSString *)XMLString {
 	return @"";
 }
-- (NSString *)XMLStringWithOptions:(NSUInteger)options {
+-(NSString *)XMLStringWithOptions:(NSUInteger)options {
 	return @"";
 }
-- (NSString *)canonicalXMLStringPreservingComments:(BOOL)comments {
+-(NSString *)canonicalXMLStringPreservingComments:(BOOL)comments {
 	return nil;
 }
 
 // #pragma mark XPath/XQuery
 
-- (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error {
+-(NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error {
 	return [NSArray array];
 }
 
-- (NSArray *)objectsForXQuery:(NSString *)xquery constants:(NSDictionary *)constants error:(NSError **)error {
+-(NSArray *)objectsForXQuery:(NSString *)xquery constants:(NSDictionary *)constants error:(NSError **)error {
 	return [NSArray array];
 }
-- (NSArray *)objectsForXQuery:(NSString *)xquery error:(NSError **)error {
+-(NSArray *)objectsForXQuery:(NSString *)xquery error:(NSError **)error {
 	return [NSArray array];
 }
 

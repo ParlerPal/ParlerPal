@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/22/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import "PPFindPalsViewController.h"
@@ -15,7 +15,7 @@
 #pragma mark -
 #pragma mark view methods
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -74,7 +74,7 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"pal";
     
@@ -96,7 +96,7 @@
         }
     }
     
-    NSDictionary *pal = [foundPals objectAtIndex:indexPath.row];
+    NSDictionary *pal;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         pal = [filteredPalsArray objectAtIndex:indexPath.row];

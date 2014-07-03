@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 6/25/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 #import "DDXML.h"
 #import <CoreLocation/CoreLocation.h>
 
-#define WEB_SERVICES @"http://24.131.92.164/ppWebServices/"
+#define WEB_SERVICES @"http://192.168.1.10/ppWebServices/"
 
 @interface PPDatabaseManager : NSObject
 {

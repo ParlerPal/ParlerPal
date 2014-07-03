@@ -3,7 +3,7 @@
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 7/1/14.
-//  Copyright (c) 2014 AaronVizzini. All rights reserved.
+//  Copyright (c) 2014 Aaron Vizzini. All rights reserved.
 //
 
 #import "PPMessageLocation.h"
@@ -18,7 +18,7 @@
 
 @implementation PPMessageLocation
 
-- (id)initWithName:(NSString*)name subject:(NSString*)subject coordinate:(CLLocationCoordinate2D)coordinate {
+-(id)initWithName:(NSString*)name subject:(NSString*)subject coordinate:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
         if ([name isKindOfClass:[NSString class]]) {
             self.name = name;
@@ -31,19 +31,19 @@
     return self;
 }
 
-- (NSString *)title {
+-(NSString *)title {
     return _name;
 }
 
-- (NSString *)subtitle {
+-(NSString *)subtitle {
     return _subject;
 }
 
-- (CLLocationCoordinate2D)coordinate {
+-(CLLocationCoordinate2D)coordinate {
     return _theCoordinate;
 }
 
-- (MKMapItem*)mapItem {
+-(MKMapItem*)mapItem {
     NSDictionary *addressDict = @{(NSString*)kABPersonAddressStreetKey : _subject};
     
     MKPlacemark *placemark = [[MKPlacemark alloc]

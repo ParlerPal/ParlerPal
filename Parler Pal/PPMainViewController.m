@@ -13,21 +13,21 @@
 #import "PPMessageLocation.h"
 
 @implementation PPMainViewController
-@synthesize toolbarTitle, quotes, table, mapView;
+@synthesize toolbarTitle, table, mapView;//quotes
 
 #pragma mark -
 #pragma mark view methods
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.toolbarTitle.title = [[PPDataShare sharedSingleton]currentUser];
     
-    allQuotes = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"plist"]];
-    self.quotes.text = [allQuotes objectAtIndex:languageIndex];
-    languageIndex = 1;
-    [self animateText];
+   // allQuotes = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"plist"]];
+   // self.quotes.text = [allQuotes objectAtIndex:languageIndex];
+   // languageIndex = 1;
+   // [self animateText];
     
     self.table.allowsMultipleSelectionDuringEditing = NO;
     
@@ -39,13 +39,27 @@
     
     messageContentView = [[PPMessagePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
     messageContentView.delegate = self;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.table addSubview:refreshControl];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+        messages = results;
+        [self.table reloadData];
+        [self plotMessagesPositions];
+    }];
+}
+
+-(void)refresh:(UIRefreshControl *)refreshControl
+{
+    [refreshControl endRefreshing];
     [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
         messages = results;
         [self.table reloadData];
@@ -110,7 +124,7 @@
 
 #pragma mark -
 #pragma mark Quotes Animation Methods
-
+/*
 -(void)animateText
 {
     self.quotes.alpha = 0.0;
@@ -133,7 +147,7 @@
         languageIndex = languageIndex + 1 > allQuotes.count -1 ? 0 : languageIndex + 1;
         label.text = [allQuotes objectAtIndex:languageIndex];
     }];
-}
+}*/
 
 #pragma mark -
 #pragma mark table view delegate methods
@@ -152,7 +166,7 @@
     return [messages count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Message";
     
     PPMessageTableViewCell *cell = (PPMessageTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -174,7 +188,7 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [cell setBackgroundColor:[UIColor clearColor]];
 }
@@ -250,7 +264,7 @@
 
 /*Note that when you dequeue a reusable annotation, you give it an identifier. If you have multiple styles of annotations, be sure to have a unique identifier for each one, otherwise you might mistakenly dequeue an identifier of a different type, and have unexpected behavior in your app. It’s basically the same idea behind a cell identifier in tableView:cellForRowAtIndexPath.*/
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"PPMessageLocation";
     if ([annotation isKindOfClass:[PPMessageLocation class]]) {
         
@@ -322,7 +336,7 @@
     return YES;
 }
 
-- (IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue
+-(IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue
 {
 
 }

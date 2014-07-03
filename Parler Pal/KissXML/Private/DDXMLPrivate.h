@@ -117,10 +117,10 @@ NS_INLINE BOOL IsXmlNsPtr(void *kindPtr)
 }
 
 + (id)nodeWithNsPrimitive:(xmlNsPtr)ns nsParent:(xmlNodePtr)parent owner:(DDXMLNode *)owner;
-- (id)initWithNsPrimitive:(xmlNsPtr)ns nsParent:(xmlNodePtr)parent owner:(DDXMLNode *)owner;
+-(id)initWithNsPrimitive:(xmlNsPtr)ns nsParent:(xmlNodePtr)parent owner:(DDXMLNode *)owner;
 
-- (xmlNodePtr)_nsParentPtr;
-- (void)_setNsParentPtr:(xmlNodePtr)parentPtr;
+-(xmlNodePtr)_nsParentPtr;
+-(void)_setNsParentPtr:(xmlNodePtr)parentPtr;
 
 // Overrides several methods in DDXMLNode
 
@@ -147,7 +147,7 @@ NS_INLINE BOOL IsXmlNsPtr(void *kindPtr)
 }
 
 + (id)nodeWithAttrPrimitive:(xmlAttrPtr)attr owner:(DDXMLNode *)owner;
-- (id)initWithAttrPrimitive:(xmlAttrPtr)attr owner:(DDXMLNode *)owner;
+-(id)initWithAttrPrimitive:(xmlAttrPtr)attr owner:(DDXMLNode *)owner;
 
 // Overrides several methods in DDXMLNode
 
@@ -174,9 +174,9 @@ NS_INLINE BOOL IsXmlNsPtr(void *kindPtr)
 + (id)nodeWithUnknownPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)owner;
 
 + (id)nodeWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)owner;
-- (id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)owner;
+-(id)initWithPrimitive:(xmlKindPtr)kindPtr owner:(DDXMLNode *)owner;
 
-- (BOOL)_hasParent;
+-(BOOL)_hasParent;
 
 + (void)getHasPrefix:(BOOL *)hasPrefixPtr localName:(NSString **)localNamePtr forName:(NSString *)name;
 + (void)getPrefix:(NSString **)prefixPtr localName:(NSString **)localNamePtr forName:(NSString *)name;
@@ -210,10 +210,10 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper);
 @interface DDXMLElement (PrivateAPI)
 
 + (id)nodeWithElementPrimitive:(xmlNodePtr)node owner:(DDXMLNode *)owner;
-- (id)initWithElementPrimitive:(xmlNodePtr)node owner:(DDXMLNode *)owner;
+-(id)initWithElementPrimitive:(xmlNodePtr)node owner:(DDXMLNode *)owner;
 
-- (DDXMLNode *)_recursiveResolveNamespaceForPrefix:(NSString *)prefix atNode:(xmlNodePtr)nodePtr;
-- (NSString *)_recursiveResolvePrefixForURI:(NSString *)uri atNode:(xmlNodePtr)nodePtr;
+-(DDXMLNode *)_recursiveResolveNamespaceForPrefix:(NSString *)prefix atNode:(xmlNodePtr)nodePtr;
+-(NSString *)_recursiveResolvePrefixForURI:(NSString *)uri atNode:(xmlNodePtr)nodePtr;
 
 @end
 
@@ -224,6 +224,6 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper);
 @interface DDXMLDocument (PrivateAPI)
 
 + (id)nodeWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)owner;
-- (id)initWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)owner;
+-(id)initWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)owner;
 
 @end

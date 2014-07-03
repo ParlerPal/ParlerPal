@@ -101,7 +101,7 @@ typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
  
  @return An initialized network reachability manager, actively monitoring the specified reachability.
  */
-- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability;
+-(instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability;
 
 ///--------------------------------------------------
 /// @name Starting & Stopping Reachability Monitoring
@@ -110,12 +110,12 @@ typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
 /**
  Starts monitoring for changes in network reachability status.
  */
-- (void)startMonitoring;
+-(void)startMonitoring;
 
 /**
  Stops monitoring for changes in network reachability status.
  */
-- (void)stopMonitoring;
+-(void)stopMonitoring;
 
 ///-------------------------------------------------
 /// @name Getting Localized Reachability Description
@@ -124,7 +124,7 @@ typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
 /**
  Returns a localized string representation of the current network reachability status.
  */
-- (NSString *)localizedNetworkReachabilityStatusString;
+-(NSString *)localizedNetworkReachabilityStatusString;
 
 ///---------------------------------------------------
 /// @name Setting Network Reachability Change Callback
@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
 
  @param block A block object to be executed when the network availability of the `baseURL` host changes.. This block has no return value and takes a single argument which represents the various reachability states from the device to the `baseURL`.
  */
-- (void)setReachabilityStatusChangeBlock:(void (^)(AFNetworkReachabilityStatus status))block;
+-(void)setReachabilityStatusChangeBlock:(void (^)(AFNetworkReachabilityStatus status))block;
 
 @end
 

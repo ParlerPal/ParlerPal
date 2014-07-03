@@ -51,7 +51,7 @@ typedef enum
     CGPoint _init;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
    
@@ -61,7 +61,7 @@ typedef enum
 }
 
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
     
@@ -132,9 +132,9 @@ static CGFloat statusBarAdjustment( UIView* view )
 
 
 @interface SWRevealViewController()
-- (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry;
-- (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry;
-- (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry;
+-(void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry;
+-(void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry;
+-(void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry;
 @end
 
 
@@ -151,7 +151,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (id)initWithFrame:(CGRect)frame controller:(SWRevealViewController*)controller
+-(id)initWithFrame:(CGRect)frame controller:(SWRevealViewController*)controller
 {
     self = [super initWithFrame:frame];
     if ( self )
@@ -169,7 +169,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)reloadShadow
+-(void)reloadShadow
 {
     CALayer *frontViewLayer = _frontView.layer;
     frontViewLayer.shadowColor = [UIColor blackColor].CGColor;
@@ -179,7 +179,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (CGRect)hierarchycalFrameAdjustment:(CGRect)frame
+-(CGRect)hierarchycalFrameAdjustment:(CGRect)frame
 {
     if ( _c.presentFrontViewHierarchically )
     {
@@ -193,7 +193,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)layoutSubviews
+-(void)layoutSubviews
 {
     if ( _disableLayout ) return;
 
@@ -211,7 +211,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition
+-(void)prepareRearViewForPosition:(FrontViewPosition)newPosition
 {
     if ( _rearView == nil )
     {
@@ -226,7 +226,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition
+-(void)prepareRightViewForPosition:(FrontViewPosition)newPosition
 {
     if ( _rightView == nil )
     {
@@ -241,7 +241,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition
+-(CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition
 {
     CGFloat revealWidth;
     CGFloat revealOverdraw;
@@ -262,7 +262,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)dragFrontViewToXLocation:(CGFloat)xLocation
+-(void)dragFrontViewToXLocation:(CGFloat)xLocation
 {
     CGRect bounds = self.bounds;
     
@@ -277,7 +277,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 # pragma mark private
 
 
-- (void)_layoutRearViewsForLocation:(CGFloat)xLocation
+-(void)_layoutRearViewsForLocation:(CGFloat)xLocation
 {
     CGRect bounds = self.bounds;
     
@@ -299,7 +299,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (void)_prepareForNewPosition:(FrontViewPosition)newPosition;
+-(void)_prepareForNewPosition:(FrontViewPosition)newPosition;
 {
     if ( _rearView == nil || _rightView == nil )
         return;
@@ -315,7 +315,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (CGFloat)_adjustedDragLocationForLocation:(CGFloat)x
+-(CGFloat)_adjustedDragLocationForLocation:(CGFloat)x
 {
     CGFloat result;
     
@@ -370,7 +370,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (id)initWithRevealController:(SWRevealViewController*)revealVC containerView:(UIView*)view fromVC:(UIViewController*)fromVC
+-(id)initWithRevealController:(SWRevealViewController*)revealVC containerView:(UIView*)view fromVC:(UIViewController*)fromVC
     toVC:(UIViewController*)toVC completion:(void (^)(void))completion
 {
     self = [super init];
@@ -386,60 +386,60 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (UIView *)containerView
+-(UIView *)containerView
 {
     return _view;
 }
 
 
-- (BOOL)isAnimated
+-(BOOL)isAnimated
 {
     return YES;
 }
 
 
-- (BOOL)isInteractive
+-(BOOL)isInteractive
 {
     return NO;  // not supported
 }
 
-- (BOOL)transitionWasCancelled
+-(BOOL)transitionWasCancelled
 {
     return NO; // not supported
 }
 
 
-- (UIModalPresentationStyle)presentationStyle
+-(UIModalPresentationStyle)presentationStyle
 {
     return UIModalPresentationNone;  // not applicable
 }
 
 
-- (void)updateInteractiveTransition:(CGFloat)percentComplete
+-(void)updateInteractiveTransition:(CGFloat)percentComplete
 {
     // not supported
 }
 
 
-- (void)finishInteractiveTransition
+-(void)finishInteractiveTransition
 {
     // not supported
 }
 
 
-- (void)cancelInteractiveTransition
+-(void)cancelInteractiveTransition
 {
     // not supported
 }
 
 
-- (void)completeTransition:(BOOL)didComplete
+-(void)completeTransition:(BOOL)didComplete
 {
     _completion();
 }
 
 
-- (UIViewController *)viewControllerForKey:(NSString *)key
+-(UIViewController *)viewControllerForKey:(NSString *)key
 {
     if ( [key isEqualToString:UITransitionContextFromViewControllerKey] )
         return _fromVC;
@@ -451,13 +451,13 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (CGRect)initialFrameForViewController:(UIViewController *)vc
+-(CGRect)initialFrameForViewController:(UIViewController *)vc
 {
     return _view.bounds;
 }
 
 
-- (CGRect)finalFrameForViewController:(UIViewController *)vc
+-(CGRect)finalFrameForViewController:(UIViewController *)vc
 {
     return _view.bounds;
 }
@@ -476,7 +476,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (id)initWithDuration:(NSTimeInterval)duration
+-(id)initWithDuration:(NSTimeInterval)duration
 {
     self = [super init];
     if ( self )
@@ -487,13 +487,13 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
+-(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     return _duration;
 }
 
 
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
+-(void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
@@ -535,7 +535,7 @@ const int FrontViewPositionNone = 0xff;
 
 #pragma mark - Init
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+-(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if ( self )
@@ -546,13 +546,13 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-- (id)init
+-(id)init
 {
     return [self initWithRearViewController:nil frontViewController:nil];
 }
 
 
-- (id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
+-(id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
 {
     self = [super init];
     if ( self )
@@ -565,7 +565,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-- (void)_initDefaultProperties
+-(void)_initDefaultProperties
 {
     _frontViewPosition = FrontViewPositionLeft;
     _rearViewPosition = FrontViewPositionLeft;
@@ -599,7 +599,7 @@ static NSString * const SWSegueRearIdentifier = @"sw_rear";
 static NSString * const SWSegueFrontIdentifier = @"sw_front";
 static NSString * const SWSegueRightIdentifier = @"sw_right";
 
-- (void)prepareForSegue:(SWRevealViewControllerSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(SWRevealViewControllerSegue *)segue sender:(id)sender
 {
     // $ using a custom segue we can get access to the storyboard-loaded rear/front view controllers
     // the trick is to define segues of type SWRevealViewControllerSegue on the storyboard
@@ -640,7 +640,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Load any defined front/rear controllers from the storyboard
 // This method is intended to be overrided in case the default behavior will not meet your needs
-- (void)loadStoryboardControllers
+-(void)loadStoryboardControllers
 {
     if ( self.storyboard && _rearViewController == nil )
     {
@@ -668,7 +668,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - StatusBar
 
-- (UIViewController *)childViewControllerForStatusBarStyle
+-(UIViewController *)childViewControllerForStatusBarStyle
 {
     int positionDif =  _frontViewPosition - FrontViewPositionLeft;
     
@@ -679,7 +679,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     return controller;
 }
 
-- (UIViewController *)childViewControllerForStatusBarHidden
+-(UIViewController *)childViewControllerForStatusBarHidden
 {
     UIViewController *controller = [self childViewControllerForStatusBarStyle];
     return controller;
@@ -687,7 +687,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - View lifecycle
 
-- (void)loadView
+-(void)loadView
 {
     // Do not call super, to prevent the apis from unfruitful looking for inexistent xibs!
     
@@ -726,7 +726,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)viewDidAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
@@ -751,7 +751,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (NSUInteger)supportedInterfaceOrientations
+-(NSUInteger)supportedInterfaceOrientations
 {
     // we could have simply not implemented this, but we choose to call super to make explicit that we
     // want the default behavior.
@@ -760,7 +760,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 //// Support for earlier than iOS 6.0
 //#if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 //{
 //    return YES;
 //}
@@ -769,13 +769,13 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Public methods and property accessors
 
-- (void)setFrontViewController:(UIViewController *)frontViewController
+-(void)setFrontViewController:(UIViewController *)frontViewController
 {
     [self setFrontViewController:frontViewController animated:NO];
 }
 
 
-- (void)setFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated
+-(void)setFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated
 {
     if ( ![self isViewLoaded])
     {
@@ -787,7 +787,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)pushFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated
+-(void)pushFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated
 {
     if ( ![self isViewLoaded])
     {
@@ -799,13 +799,13 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)setRearViewController:(UIViewController *)rearViewController
+-(void)setRearViewController:(UIViewController *)rearViewController
 {
     [self setRearViewController:rearViewController animated:NO];
 }
 
 
-- (void)setRearViewController:(UIViewController *)rearViewController animated:(BOOL)animated
+-(void)setRearViewController:(UIViewController *)rearViewController animated:(BOOL)animated
 {
     if ( ![self isViewLoaded])
     {
@@ -817,13 +817,13 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)setRightViewController:(UIViewController *)rightViewController
+-(void)setRightViewController:(UIViewController *)rightViewController
 {
     [self setRightViewController:rightViewController animated:NO];
 }
 
 
-- (void)setRightViewController:(UIViewController *)rightViewController animated:(BOOL)animated
+-(void)setRightViewController:(UIViewController *)rightViewController animated:(BOOL)animated
 {
     if ( ![self isViewLoaded])
     {
@@ -835,7 +835,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)revealToggleAnimated:(BOOL)animated
+-(void)revealToggleAnimated:(BOOL)animated
 {
     FrontViewPosition toogledFrontViewPosition = FrontViewPositionLeft;
     if (_frontViewPosition <= FrontViewPositionLeft)
@@ -845,7 +845,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)rightRevealToggleAnimated:(BOOL)animated
+-(void)rightRevealToggleAnimated:(BOOL)animated
 {
     FrontViewPosition toogledFrontViewPosition = FrontViewPositionLeft;
     if (_frontViewPosition >= FrontViewPositionLeft)
@@ -855,13 +855,13 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)setFrontViewPosition:(FrontViewPosition)frontViewPosition
+-(void)setFrontViewPosition:(FrontViewPosition)frontViewPosition
 {
     [self setFrontViewPosition:frontViewPosition animated:NO];
 }
 
 
-- (void)setFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
+-(void)setFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
 {
     if ( ![self isViewLoaded] )
     {
@@ -875,28 +875,28 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)setFrontViewShadowRadius:(CGFloat)frontViewShadowRadius
+-(void)setFrontViewShadowRadius:(CGFloat)frontViewShadowRadius
 {
     _frontViewShadowRadius = frontViewShadowRadius;
     [_contentView reloadShadow];
 }
 
 
-- (void)setFrontViewShadowOffset:(CGSize)frontViewShadowOffset
+-(void)setFrontViewShadowOffset:(CGSize)frontViewShadowOffset
 {
     _frontViewShadowOffset = frontViewShadowOffset;
     [_contentView reloadShadow];
 }
 
 
-- (void)setFrontViewShadowOpacity:(CGFloat)frontViewShadowOpacity
+-(void)setFrontViewShadowOpacity:(CGFloat)frontViewShadowOpacity
 {
     _frontViewShadowOpacity = frontViewShadowOpacity;
     [_contentView reloadShadow];
 }
 
 
-- (UIPanGestureRecognizer*)panGestureRecognizer
+-(UIPanGestureRecognizer*)panGestureRecognizer
 {
     if ( _panGestureRecognizer == nil)
     {
@@ -912,7 +912,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (UITapGestureRecognizer*)tapGestureRecognizer
+-(UITapGestureRecognizer*)tapGestureRecognizer
 {
     if ( _tapGestureRecognizer == nil )
     {
@@ -929,13 +929,13 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Provided acction methods
 
-- (void)revealToggle:(id)sender
+-(void)revealToggle:(id)sender
 {    
     [self revealToggleAnimated:YES];
 }
 
 
-- (void)rightRevealToggle:(id)sender
+-(void)rightRevealToggle:(id)sender
 {    
     [self rightRevealToggleAnimated:YES];
 }
@@ -944,14 +944,14 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 #pragma mark - UserInteractionEnabling
 
 // disable userInteraction on the entire control
-- (void)_disableUserInteraction
+-(void)_disableUserInteraction
 {
     [_contentView setUserInteractionEnabled:NO];
     [_contentView setDisableLayout:YES];
 }
 
 // restore userInteraction on the control
-- (void)_restoreUserInteraction
+-(void)_restoreUserInteraction
 {
     // we use the stored userInteraction state just in case a developer decided
     // to have our view interaction disabled beforehand
@@ -961,7 +961,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - PanGesture progress notification
 
-- (void)_notifyPanGestureBegan
+-(void)_notifyPanGestureBegan
 {
     if ( [_delegate respondsToSelector:@selector(revealControllerPanGestureBegan:)] )
         [_delegate revealControllerPanGestureBegan:self];
@@ -972,7 +972,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
         [_delegate revealController:self panGestureBeganFromLocation:xLocation progress:dragProgress];
 }
 
-- (void)_notifyPanGestureMoved
+-(void)_notifyPanGestureMoved
 {
     CGFloat xLocation, dragProgress;
     [self _getDragLocation:&xLocation progress:&dragProgress];
@@ -980,7 +980,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
         [_delegate revealController:self panGestureMovedToLocation:xLocation progress:dragProgress];
 }
 
-- (void)_notifyPanGestureEnded
+-(void)_notifyPanGestureEnded
 {
     CGFloat xLocation, dragProgress;
     [self _getDragLocation:&xLocation progress:&dragProgress];
@@ -994,7 +994,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Symetry
 
-- (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry
+-(void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry
 {
     if ( symetry < 0 ) *pRevealWidth = _rightViewRevealWidth, *pRevealOverdraw = _rightViewRevealOverdraw;
     else *pRevealWidth = _rearViewRevealWidth, *pRevealOverdraw = _rearViewRevealOverdraw;
@@ -1002,18 +1002,18 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     if (*pRevealWidth < 0) *pRevealWidth = _contentView.bounds.size.width + *pRevealWidth;
 }
 
-- (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry
+-(void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry
 {
     if ( symetry < 0 ) *pBounceBack = _bounceBackOnLeftOverdraw, *pStableDrag = _stableDragOnLeftOverdraw;
     else *pBounceBack = _bounceBackOnOverdraw, *pStableDrag = _stableDragOnOverdraw;
 }
 
-- (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry
+-(void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry
 {
     if ( symetry < 0 ) *frontViewPosition = FrontViewPositionLeft + symetry*(*frontViewPosition-FrontViewPositionLeft);
 }
 
-- (void)_getDragLocation:(CGFloat*)xLocation progress:(CGFloat*)progress
+-(void)_getDragLocation:(CGFloat*)xLocation progress:(CGFloat*)progress
 {
     UIView *frontView = _contentView.frontView;
     *xLocation = frontView.frame.origin.x;
@@ -1034,7 +1034,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Defers the execution of the passed in block until a paired _dequeue call is received,
 // or executes the block right away if no pending requests are present.
-- (void)_enqueueBlock:(void (^)(void))block
+-(void)_enqueueBlock:(void (^)(void))block
 {
     [_animationQueue insertObject:block atIndex:0];
     if ( _animationQueue.count == 1)
@@ -1046,7 +1046,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 // Removes the top most block in the queue and executes the following one if any.
 // Calls to this method must be paired with calls to _enqueueBlock, particularly it may be called
 // from within a block passed to _enqueueBlock to remove itself when done with animations.  
-- (void)_dequeue
+-(void)_dequeue
 {
     [_animationQueue removeLastObject];
 
@@ -1060,7 +1060,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Gesture Delegate
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)recognizer
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)recognizer
 {
     // only allow gesture if no previous request is in process
     if ( _animationQueue.count == 0 )
@@ -1076,7 +1076,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ( gestureRecognizer == _panGestureRecognizer )
     {
@@ -1095,7 +1095,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (BOOL)_tapGestureShouldBegin
+-(BOOL)_tapGestureShouldBegin
 {
     if ( _frontViewPosition == FrontViewPositionLeft ||
         _frontViewPosition == FrontViewPositionRightMostRemoved ||
@@ -1111,7 +1111,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (BOOL)_panGestureShouldBegin
+-(BOOL)_panGestureShouldBegin
 {
     // forbid gesture if the following delegate is implemented and returns NO
     if ( [_delegate respondsToSelector:@selector(revealControllerPanGestureShouldBegin:)] )
@@ -1134,14 +1134,14 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - Gesture Based Reveal
 
-- (void)_handleTapGesture:(UITapGestureRecognizer *)recognizer
+-(void)_handleTapGesture:(UITapGestureRecognizer *)recognizer
 {
     NSTimeInterval duration = _toggleAnimationDuration;
     [self _setFrontViewPosition:FrontViewPositionLeft withDuration:duration];
 }
 
 
-- (void)_handleRevealGesture:(UIPanGestureRecognizer *)recognizer
+-(void)_handleRevealGesture:(UIPanGestureRecognizer *)recognizer
 {
     switch ( recognizer.state )
     {
@@ -1168,7 +1168,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_handleRevealGestureStateBeganWithRecognizer:(UIPanGestureRecognizer *)recognizer
+-(void)_handleRevealGestureStateBeganWithRecognizer:(UIPanGestureRecognizer *)recognizer
 {
     // we know that we will not get here unless the animationQueue is empty because the recognizer
     // delegate prevents it, however we do not want any forthcoming programatic actions to disturb
@@ -1186,7 +1186,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_handleRevealGestureStateChangedWithRecognizer:(UIPanGestureRecognizer *)recognizer
+-(void)_handleRevealGestureStateChangedWithRecognizer:(UIPanGestureRecognizer *)recognizer
 {
     CGFloat translation = [recognizer translationInView:_contentView].x;
     
@@ -1212,7 +1212,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_handleRevealGestureStateEndedWithRecognizer:(UIPanGestureRecognizer *)recognizer
+-(void)_handleRevealGestureStateEndedWithRecognizer:(UIPanGestureRecognizer *)recognizer
 {
     UIView *frontView = _contentView.frontView;
     
@@ -1289,7 +1289,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_handleRevealGestureStateCancelledWithRecognizer:(UIPanGestureRecognizer *)recognizer
+-(void)_handleRevealGestureStateCancelledWithRecognizer:(UIPanGestureRecognizer *)recognizer
 {    
     [self _restoreUserInteraction];
     [self _notifyPanGestureEnded];
@@ -1299,7 +1299,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark Enqueued position and controller setup
 
-- (void)_dispatchSetFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
+-(void)_dispatchSetFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
 {
     NSTimeInterval duration = animated?_toggleAnimationDuration:0.0;
     __weak SWRevealViewController *theSelf = self;
@@ -1307,7 +1307,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_dispatchPushFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
+-(void)_dispatchPushFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
 {
     FrontViewPosition preReplacementPosition = FrontViewPositionLeft;
     if ( _frontViewPosition > FrontViewPositionLeft ) preReplacementPosition = FrontViewPositionRightMost;
@@ -1333,21 +1333,21 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void)_dispatchSetRearViewController:(UIViewController *)newRearViewController animated:(BOOL)animated
+-(void)_dispatchSetRearViewController:(UIViewController *)newRearViewController animated:(BOOL)animated
 {
     __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setRearViewController:newRearViewController animated:animated] );
 }
 
 
-- (void)_dispatchSetFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
+-(void)_dispatchSetFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
 {
     __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setFrontViewController:newFrontViewController animated:animated] );
 }
 
 
-- (void)_dispatchSetRightViewController:(UIViewController *)newRightViewController animated:(BOOL)animated
+-(void)_dispatchSetRightViewController:(UIViewController *)newRightViewController animated:(BOOL)animated
 {
     __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setRightViewController:newRightViewController animated:animated] );
@@ -1357,7 +1357,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 #pragma mark animated view controller deployment and layout
 
 // Primitive method for view controller deployment and animated layout to the given position.
-- (void)_setFrontViewPosition:(FrontViewPosition)newPosition withDuration:(NSTimeInterval)duration
+-(void)_setFrontViewPosition:(FrontViewPosition)newPosition withDuration:(NSTimeInterval)duration
 {
     void (^rearDeploymentCompletion)() = [self _rearViewDeploymentForNewFrontViewPosition:newPosition];
     void (^rightDeploymentCompletion)() = [self _rightViewDeploymentForNewFrontViewPosition:newPosition];
@@ -1400,28 +1400,28 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 
 // Primitive method for rear controller transition
-- (void)_setRearViewController:(UIViewController*)newRearViewController animated:(BOOL)animated
+-(void)_setRearViewController:(UIViewController*)newRearViewController animated:(BOOL)animated
 {
     [self _performTransitionToViewController:newRearViewController operation:SWRevealControllerOperationReplaceRearController animated:animated];
 }
 
 
 // primitive method for front controller transition
-- (void)_setFrontViewController:(UIViewController*)newFrontViewController animated:(BOOL)animated
+-(void)_setFrontViewController:(UIViewController*)newFrontViewController animated:(BOOL)animated
 {
     [self _performTransitionToViewController:newFrontViewController operation:SWRevealControllerOperationReplaceFrontController animated:animated];
 }
 
 
 // Primitive method for right controller transition
-- (void)_setRightViewController:(UIViewController*)newRightViewController animated:(BOOL)animated
+-(void)_setRightViewController:(UIViewController*)newRightViewController animated:(BOOL)animated
 {
     [self _performTransitionToViewController:newRightViewController operation:SWRevealControllerOperationReplaceRightController animated:animated];
 }
 
 
 // Primitive method for animated controller transition
-- (void)_performTransitionToViewController:(UIViewController*)new operation:(SWRevealControllerOperation)operation animated:(BOOL)animated
+-(void)_performTransitionToViewController:(UIViewController*)new operation:(SWRevealControllerOperation)operation animated:(BOOL)animated
 {
     if ( [_delegate respondsToSelector:@selector(revealController:willAddViewController:forOperation:animated:)] )
         [_delegate revealController:self willAddViewController:new forOperation:operation animated:animated];
@@ -1478,7 +1478,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Deploy/Undeploy of the front view controller following the containment principles. Returns a block
 // that must be invoked on animation completion in order to finish deployment
-- (void (^)(void))_frontViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
+-(void (^)(void))_frontViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
 {
     if ( (_rightViewController == nil && newPosition < FrontViewPositionLeft) ||
          (_rearViewController == nil && newPosition > FrontViewPositionLeft) )
@@ -1520,7 +1520,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Deploy/Undeploy of the left view controller following the containment principles. Returns a block
 // that must be invoked on animation completion in order to finish deployment
-- (void (^)(void))_rearViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
+-(void (^)(void))_rearViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
 {
     if ( _presentFrontViewHierarchically )
         newPosition = FrontViewPositionRight;
@@ -1541,7 +1541,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Deploy/Undeploy of the right view controller following the containment principles. Returns a block
 // that must be invoked on animation completion in order to finish deployment
-- (void (^)(void))_rightViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
+-(void (^)(void))_rightViewDeploymentForNewFrontViewPosition:(FrontViewPosition)newPosition
 {
     if ( _rightViewController == nil && newPosition < FrontViewPositionLeft )
         newPosition = FrontViewPositionLeft;
@@ -1558,7 +1558,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
-- (void (^)(void)) _deploymentForViewController:(UIViewController*)controller inView:(UIView*)view appear:(BOOL)appear disappear:(BOOL)disappear
+-(void (^)(void)) _deploymentForViewController:(UIViewController*)controller inView:(UIView*)view appear:(BOOL)appear disappear:(BOOL)disappear
 {
     if ( appear ) return [self _deployForViewController:controller inView:view];
     if ( disappear ) return [self _undeployForViewController:controller];
@@ -1570,7 +1570,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Containment Deploy method. Returns a block to be invoked at the
 // animation completion, or right after return in case of non-animated deployment.
-- (void (^)(void))_deployForViewController:(UIViewController*)controller inView:(UIView*)view
+-(void (^)(void))_deployForViewController:(UIViewController*)controller inView:(UIView*)view
 {
     if ( !controller || !view )
         return ^(void){};
@@ -1603,7 +1603,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Containment Undeploy method. Returns a block to be invoked at the
 // animation completion, or right after return in case of non-animated deployment.
-- (void (^)(void))_undeployForViewController:(UIViewController*)controller
+-(void (^)(void))_undeployForViewController:(UIViewController*)controller
 {
     if (!controller)
         return ^(void){};
@@ -1620,7 +1620,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 // Containment Transition method. Returns a block to be invoked at the
 // animation completion, or right after return in case of non-animated transition.
-- (void(^)(void))_transitionFromViewController:(UIViewController*)fromController toViewController:(UIViewController*)toController inView:(UIView*)view
+-(void(^)(void))_transitionFromViewController:(UIViewController*)fromController toViewController:(UIViewController*)toController inView:(UIView*)view
 {
     if ( fromController == toController )
         return ^(void){};
@@ -1653,7 +1653,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 @implementation UIViewController(SWRevealViewController)
 
-- (SWRevealViewController*)revealViewController
+-(SWRevealViewController*)revealViewController
 {
     UIViewController *parent = self;
     Class revealClass = [SWRevealViewController class];
@@ -1672,7 +1672,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 @implementation SWRevealViewControllerSegue
 
-- (void)perform
+-(void)perform
 {
     if ( _performBlock != nil )
     {

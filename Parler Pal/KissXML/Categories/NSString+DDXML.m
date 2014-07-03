@@ -6,18 +6,18 @@
 
 @implementation NSString (DDXML)
 
-- (const xmlChar *)xmlChar
+-(const xmlChar *)xmlChar
 {
 	return (const xmlChar *)[self UTF8String];
 }
 
 #ifdef GNUSTEP
-- (NSString *)stringByTrimming
+-(NSString *)stringByTrimming
 {
 	return [self stringByTrimmingSpaces];
 }
 #else
-- (NSString *)stringByTrimming
+-(NSString *)stringByTrimming
 {
 	NSMutableString *mStr = [self mutableCopy];
 	CFStringTrimWhitespace((__bridge CFMutableStringRef)mStr);
