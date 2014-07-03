@@ -12,8 +12,6 @@
 #import "PPDatabaseManager.h"
 #import "PPMessageLocation.h"
 
-#define METERS_PER_MILE 1609.344
-
 @implementation PPMainViewController
 @synthesize toolbarTitle, quotes, table, mapView;
 
@@ -47,6 +45,12 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessages:^(NSMutableArray *results) {
+        messages = results;
+        [self.table reloadData];
+        [self plotMessagesPositions];
+    }];
 }
 
 #pragma mark -
@@ -185,7 +189,7 @@
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
         messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
         messageContentView.messageID = [messageID intValue];
-        
+        messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
         [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue] finish:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
@@ -300,8 +304,8 @@
         MKCoordinateRegion region;
         region.center.latitude = center_lat;
         region.center.longitude = center_long;
-        region.span.latitudeDelta = deltaLat;
-        region.span.longitudeDelta = deltaLong;
+        region.span.latitudeDelta = deltaLat + .9;
+        region.span.longitudeDelta = deltaLong + .9;
         [mapView setRegion:region];
     }
 }
