@@ -915,23 +915,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nvL-Yp-D4U">
-                                <rect key="frame" x="103" y="92" width="115" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Written"/>
-                                    <segment title="Audio"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q23-Wp-5Dn">
-                                <rect key="frame" x="136" y="136" width="164" height="30"/>
+                                <rect key="frame" x="136" y="87" width="164" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahq-UW-zAF">
-                                <rect key="frame" x="20" y="174" width="280" height="30"/>
+                                <rect key="frame" x="20" y="125" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -967,8 +958,49 @@
                                     <action selector="saveButton:" destination="ErS-9a-s1W" eventType="touchUpInside" id="g32-T7-gBW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7I-CM-F5t">
+                                <rect key="frame" x="95" y="166" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="recordButton.png"/>
+                                <connections>
+                                    <action selector="recordAudio:" destination="ErS-9a-s1W" eventType="touchUpInside" id="Lve-q3-Swr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdq-Bo-i0g">
+                                <rect key="frame" x="141" y="166" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="stopButton.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAudio:" destination="ErS-9a-s1W" eventType="touchUpInside" id="Ale-R1-37Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6p-2J-3AQ">
+                                <rect key="frame" x="187" y="166" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="playButton.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="ErS-9a-s1W" eventType="touchUpInside" id="MxH-1M-Dez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-Fd-k1u">
+                                <rect key="frame" x="233" y="166" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="deleteButton.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAudio:" destination="ErS-9a-s1W" eventType="touchUpInside" id="r0L-qi-TjC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2n-dX-DKc">
-                                <rect key="frame" x="20" y="136" width="108" height="30"/>
+                                <rect key="frame" x="20" y="87" width="108" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>
                                 <state key="normal" title="Select Friend">
@@ -979,14 +1011,25 @@
                                     <action selector="findUserButton:" destination="ErS-9a-s1W" eventType="touchUpInside" id="b8v-Yn-1Mc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Memo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhR-pJ-6yI">
+                                <rect key="frame" x="20" y="173" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="deleteButton" destination="VQp-Fd-k1u" id="t0q-nv-OOo"/>
                         <outlet property="messageBox" destination="Avx-8Z-nH0" id="adj-u2-gJs"/>
+                        <outlet property="playButton" destination="B6p-2J-3AQ" id="PRE-nS-oyq"/>
+                        <outlet property="recordButton" destination="L7I-CM-F5t" id="23E-Ka-X2J"/>
                         <outlet property="revealButton" destination="hec-0Y-YDS" id="NTM-S5-mBy"/>
+                        <outlet property="stopButton" destination="sdq-Bo-i0g" id="yuG-Sf-hUn"/>
                         <outlet property="subjectField" destination="ahq-UW-zAF" id="Mag-Z5-4tx"/>
                         <outlet property="toField" destination="q23-Wp-5Dn" id="Ztd-Ux-dk3"/>
                     </connections>
@@ -1480,6 +1523,7 @@
     <resources>
         <image name="Login_Screen.png" width="640" height="1136"/>
         <image name="backButton.png" width="44" height="36"/>
+        <image name="deleteButton.png" width="50" height="50"/>
         <image name="languagesButton.png" width="35" height="30"/>
         <image name="map1.png" width="640" height="1136"/>
         <image name="map2r.png" width="640" height="1136"/>
@@ -1488,7 +1532,10 @@
         <image name="messageButton.png" width="35" height="30"/>
         <image name="palsButton.png" width="35" height="30"/>
         <image name="paper.png" width="650" height="650"/>
+        <image name="playButton.png" width="50" height="50"/>
+        <image name="recordButton.png" width="50" height="50"/>
         <image name="searchPalsButton.png" width="44" height="36"/>
+        <image name="stopButton.png" width="50" height="50"/>
         <image name="stripeBar.png" width="640" height="100"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
