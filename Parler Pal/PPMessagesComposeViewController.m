@@ -10,6 +10,8 @@
 #import "SWRevealViewController.h"
 #import "PPDatabaseManager.h"
 
+#define kAudioTimeLimit 60
+
 @implementation PPMessagesComposeViewController
 @synthesize revealButton, toField, subjectField, messageBox, lm, deleteButton, stopButton, playButton, recordButton;
 
@@ -145,6 +147,9 @@
 {
     if (!self.audioRecorder.recording)
     {
+        //We want to limit audio recordings to a certain amount of time
+        [self performSelector:@selector(stopAudio:) withObject:nil afterDelay:kAudioTimeLimit];
+        
         audioMessageRecorded = YES;
         
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -176,6 +181,9 @@
 
 -(IBAction)stopAudio:(id)sender
 {
+    //Cancel the previous selector call no matter what, since if the user hits stop before the time limit manually stops it we don't want this called again.
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     self.stopButton.enabled = NO;
