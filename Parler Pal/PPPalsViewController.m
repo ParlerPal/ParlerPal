@@ -30,6 +30,27 @@
     
     profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
     profilePopup.delegate = self;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.table addSubview:refreshControl];
+}
+
+#pragma mark - refresh methods
+
+-(void)refresh:(UIRefreshControl *)refreshControl
+{
+    [refreshControl endRefreshing];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalsCompletionHandler:^(NSMutableArray *results) {
+        friendships = results;
+        [self.table reloadData];
+    }];
+    
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalRequestsCompletionHandler:^(NSMutableArray *results) {
+        requests = results;
+        [self.table reloadData];
+    }];
 }
 
 #pragma mark - PPPalTableViewCellDelegate Methods

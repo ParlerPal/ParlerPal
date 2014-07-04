@@ -26,7 +26,24 @@
     
     profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
     profilePopup.delegate = self;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.table addSubview:refreshControl];
 
+}
+
+#pragma mark - refresh methods
+
+-(void)refresh:(UIRefreshControl *)refreshControl
+{
+    [refreshControl endRefreshing];
+
+    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsCompletionHandler:^(NSMutableArray *results) {
+        foundPals = results;
+        [self.table reloadData];
+        self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
+    }];
 }
 
 #pragma mark - Friendship Management delegate methods
