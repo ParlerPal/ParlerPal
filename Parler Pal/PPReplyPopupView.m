@@ -145,7 +145,7 @@
         return;
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text location: self.location sendMemo:NO completionHandler:^(bool success) {
+    [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:contentField.text location: self.location sendMemo:audioMessageRecorded completionHandler:^(bool success) {
         subjectField.text = @"";
         contentField.text = @"";
         self.stopButton.enabled = NO;
