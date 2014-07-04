@@ -11,7 +11,7 @@
 #import "DDXML.h"
 #import <CoreLocation/CoreLocation.h>
 
-#define WEB_SERVICES @"http://192.168.1.10/ppWebServices/"
+#define WEB_SERVICES @"http://24.131.92.164/ppWebServices/"
 
 @interface PPDatabaseManager : NSObject
 {
