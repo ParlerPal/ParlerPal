@@ -420,16 +420,12 @@
 				641B80191958FF4F0064289F /* map2r.png */,
 				641B801F195902C50064289F /* map3r.png */,
 				641B80171958FE7D0064289F /* map1.png */,
-				6415FE731964A647002C3B7B /* recordButton.png */,
-				6415FE741964A647002C3B7B /* stopButton.png */,
-				6415FE751964A648002C3B7B /* playButton.png */,
-				6415FE761964A648002C3B7B /* deleteButton.png */,
 				6433125D195F9C5800290E02 /* cellBG.png */,
 				648C843919631ADC009872D9 /* mapPin.png */,
 				648C843D196391EB009872D9 /* Login_Screen.png */,
 				64FC116B1958D83700915A00 /* paper.png */,
 				64FC11691958D61F00915A00 /* stripeBar.png */,
-				64AF9D7D19579980007EF924 /* Button */,
+				64AF9D7D19579980007EF924 /* Buttons */,
 				649547D1195657DE00349DC4 /* background.png */,
 				648153851953BEF500D0B3F0 /* menu.png */,
 				648153861953BEF500D0B3F0 /* menu@2x.png */,
@@ -514,9 +510,13 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
-		64AF9D7D19579980007EF924 /* Button */ = {
+		64AF9D7D19579980007EF924 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				6415FE731964A647002C3B7B /* recordButton.png */,
+				6415FE741964A647002C3B7B /* stopButton.png */,
+				6415FE751964A648002C3B7B /* playButton.png */,
+				6415FE761964A648002C3B7B /* deleteButton.png */,
 				64763E96196204AE00C757CE /* backButton.png */,
 				64763E981962057B00C757CE /* searchPalsButton.png */,
 				64763E941962024A00C757CE /* palsButton.png */,
@@ -525,7 +525,7 @@
 				64AF9D7519576F35007EF924 /* deletePalButton.png */,
 				649547D719565BB100349DC4 /* languagesButton.png */,
 			);
-			name = Button;
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 		64BFB62E1944183300D11E88 = {
