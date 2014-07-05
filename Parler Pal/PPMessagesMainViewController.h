@@ -10,12 +10,21 @@
 #import "PPMessagePopupView.h"
 #import "PPMessageTableViewCell.h"
 
+typedef enum : NSUInteger {
+    PPMessagesDisplayTypeUnread,
+    PPMessagesDisplayTypeAll,
+    PPMessagesDisplayTypeSent,
+} PPMessagesDisplayType;
+
 @interface PPMessagesMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, PPMessagesPopupViewDelegate>
 {
     NSMutableArray *messages;
     PPMessagePopupView *messageContentView;
+    PPMessagesDisplayType displayType;
 }
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
 @property(nonatomic, weak) IBOutlet UITableView *table;
+@property(nonatomic, weak) IBOutlet UINavigationItem *toolbarTitle;
+@property(nonatomic, readwrite) PPMessagesDisplayType displayType;
 
 @end

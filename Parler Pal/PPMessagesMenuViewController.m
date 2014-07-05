@@ -7,6 +7,7 @@
 //
 
 #import "PPMessagesMenuViewController.h"
+#import "PPMessagesMainViewController.h"
 #import "SWRevealViewController.h"
 
 @implementation PPMessagesMenuViewController
@@ -22,6 +23,25 @@
 
 -(void)prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
+    
+    if([segue.identifier isEqualToString:@"viewUnread"])
+    {
+        PPMessagesMainViewController *mainVC = (PPMessagesMainViewController *)segue.destinationViewController;
+        mainVC.displayType = PPMessagesDisplayTypeUnread;
+    }
+    
+    else if([segue.identifier isEqualToString:@"viewSent"])
+    {
+        PPMessagesMainViewController *mainVC = (PPMessagesMainViewController *)segue.destinationViewController;
+        mainVC.displayType = PPMessagesDisplayTypeSent;
+    }
+    
+    else if([segue.identifier isEqualToString:@"viewAll"])
+    {
+        PPMessagesMainViewController *mainVC = (PPMessagesMainViewController *)segue.destinationViewController;
+        mainVC.displayType = PPMessagesDisplayTypeAll;        
+    }
+    
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
     {
         SWRevealViewControllerSegue* rvcs = (SWRevealViewControllerSegue*) segue;

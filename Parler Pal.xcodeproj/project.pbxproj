@@ -24,7 +24,6 @@
 		6423F5991951245000C14934 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F5981951245000C14934 /* StoreKit.framework */; };
 		6423F59B1951245900C14934 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F59A1951245900C14934 /* SystemConfiguration.framework */; };
 		6423F59E195126F900C14934 /* PPUserRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6423F59D195126F900C14934 /* PPUserRegistrationViewController.m */; };
-		6433125C195F412A00290E02 /* PPMessagesSentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433125B195F412A00290E02 /* PPMessagesSentViewController.m */; };
 		6433125E195F9C5800290E02 /* cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 6433125D195F9C5800290E02 /* cellBG.png */; };
 		645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */; };
 		645A1B47195B4F54004657B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B36195B4F54004657B2 /* AFHTTPRequestOperationManager.m */; };
@@ -68,7 +67,6 @@
 		6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F341195E39F700F950AF /* PPMessagePopupView.xib */; };
 		6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F344195E5A8500F950AF /* PPReplyPopupView.m */; };
 		6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */; };
-		6492F34A195E66CA00F950AF /* PPMessagesAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */; };
 		649547D2195657DE00349DC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D1195657DE00349DC4 /* background.png */; };
 		649547D819565BB100349DC4 /* languagesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D719565BB100349DC4 /* languagesButton.png */; };
 		649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649547E1195677B200349DC4 /* Main_iPhone.storyboard */; };
@@ -138,8 +136,6 @@
 		6423F59A1951245900C14934 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6423F59C195126F900C14934 /* PPUserRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserRegistrationViewController.h; sourceTree = "<group>"; };
 		6423F59D195126F900C14934 /* PPUserRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserRegistrationViewController.m; sourceTree = "<group>"; };
-		6433125A195F412A00290E02 /* PPMessagesSentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSentViewController.h; sourceTree = "<group>"; };
-		6433125B195F412A00290E02 /* PPMessagesSentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSentViewController.m; sourceTree = "<group>"; };
 		6433125D195F9C5800290E02 /* cellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBG.png; sourceTree = "<group>"; };
 		645A1B33195B4F54004657B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -212,8 +208,6 @@
 		6492F343195E5A8500F950AF /* PPReplyPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPReplyPopupView.h; sourceTree = "<group>"; };
 		6492F344195E5A8500F950AF /* PPReplyPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPReplyPopupView.m; sourceTree = "<group>"; };
 		6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPReplyPopupView.xib; sourceTree = "<group>"; };
-		6492F348195E66CA00F950AF /* PPMessagesAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesAllViewController.h; sourceTree = "<group>"; };
-		6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesAllViewController.m; sourceTree = "<group>"; };
 		649547D1195657DE00349DC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		649547D719565BB100349DC4 /* languagesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = languagesButton.png; sourceTree = "<group>"; };
 		649547E0195677B200349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -408,10 +402,6 @@
 				6481537A1953AB7200D0B3F0 /* SWRevealViewController.m */,
 				6481537C1953ABBB00D0B3F0 /* PPMessagesMainViewController.h */,
 				6481537D1953ABBB00D0B3F0 /* PPMessagesMainViewController.m */,
-				6492F348195E66CA00F950AF /* PPMessagesAllViewController.h */,
-				6492F349195E66CA00F950AF /* PPMessagesAllViewController.m */,
-				6433125A195F412A00290E02 /* PPMessagesSentViewController.h */,
-				6433125B195F412A00290E02 /* PPMessagesSentViewController.m */,
 				6481537F1953ABCC00D0B3F0 /* PPMessagesMenuViewController.h */,
 				648153801953ABCC00D0B3F0 /* PPMessagesMenuViewController.m */,
 				645A1B70195CA99C004657B2 /* PPMessagesComposeViewController.h */,
@@ -768,7 +758,6 @@
 				645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */,
 				645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */,
 				648985711954CE66004C0286 /* PPPalsViewController.m in Sources */,
-				6492F34A195E66CA00F950AF /* PPMessagesAllViewController.m in Sources */,
 				6481537B1953AB7200D0B3F0 /* SWRevealViewController.m in Sources */,
 				645A1B64195B54EB004657B2 /* NSString+DDXML.m in Sources */,
 				645A1B66195B54EB004657B2 /* DDXMLElement.m in Sources */,
@@ -799,7 +788,6 @@
 				645A1B49195B4F54004657B2 /* AFNetworkReachabilityManager.m in Sources */,
 				645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */,
 				645A1B4C195B4F54004657B2 /* AFURLRequestSerialization.m in Sources */,
-				6433125C195F412A00290E02 /* PPMessagesSentViewController.m in Sources */,
 				645A1B67195B54EB004657B2 /* DDXMLNode.m in Sources */,
 				64F780D2195272BB0028A8D6 /* PPLanguagesViewController.m in Sources */,
 				648153811953ABCC00D0B3F0 /* PPMessagesMenuViewController.m in Sources */,

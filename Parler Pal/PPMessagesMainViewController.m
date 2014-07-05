@@ -12,7 +12,7 @@
 #import "PPDataShare.h"
 
 @implementation PPMessagesMainViewController
-@synthesize sidebarButton, table;
+@synthesize sidebarButton, table, toolbarTitle, displayType;
 
 #pragma mark - view methods
 
@@ -20,10 +20,35 @@
 {
     [super viewDidLoad];
     
-    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
-        messages = results;
-        [self.table reloadData];
-    }];
+    if(self.displayType == PPMessagesDisplayTypeUnread)
+    {
+        self.toolbarTitle.title = @"Unread Messages";
+        
+        [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
+    
+    else if(self.displayType == PPMessagesDisplayTypeSent)
+    {
+        self.toolbarTitle.title = @"Sent Messages";
+        
+        [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
+    
+    else if(self.displayType == PPMessagesDisplayTypeAll)
+    {
+        self.toolbarTitle.title = @"All Messages";
+        
+        [[PPDatabaseManager sharedDatabaseManager]getAllReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
 
     self.table.allowsMultipleSelectionDuringEditing = NO;
 
@@ -54,10 +79,30 @@
 -(void)refresh:(UIRefreshControl *)refreshControl
 {
     [refreshControl endRefreshing];
-    [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
-        messages = results;
-        [self.table reloadData];
-    }];
+    
+    if(self.displayType == PPMessagesDisplayTypeUnread)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
+    
+    else if(self.displayType == PPMessagesDisplayTypeSent)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
+    
+    else if(self.displayType == PPMessagesDisplayTypeAll)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]getAllReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
+            messages = results;
+            [self.table reloadData];
+        }];
+    }
 }
 
 #pragma mark - Messages Popup View delegate methods
@@ -140,10 +185,11 @@
         messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
         messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
         messageContentView.messageID = [messageID intValue];
+        messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
         messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
         [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue]completionHandler:^(bool success) {
-            [messages removeObjectAtIndex:indexPath.row];
+            if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
         }];
 
