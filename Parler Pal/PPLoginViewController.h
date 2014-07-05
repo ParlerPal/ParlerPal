@@ -17,7 +17,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *userName, *password;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
-@property(nonatomic, weak)UILabel *welcomeMessage;
+@property(nonatomic, weak) UILabel *welcomeMessage;
 
 //Check if login credentials are correct
 -(IBAction)login:(id)sender;
