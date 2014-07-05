@@ -345,7 +345,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="textFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="zqA-qZ-AHM"/>
+                                                    <action selector="emailFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="LLJ-We-car"/>
                                                     <outlet property="delegate" destination="wT8-0t-uvE" id="rbt-yL-fBD"/>
                                                 </connections>
                                             </textField>
@@ -354,7 +354,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="textFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="LwS-wK-Qmu"/>
+                                                    <action selector="confirmFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="5FQ-ii-tPR"/>
                                                     <outlet property="delegate" destination="wT8-0t-uvE" id="mNn-Va-7TK"/>
                                                 </connections>
                                             </textField>
@@ -363,7 +363,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="textFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="UUb-gE-a35"/>
+                                                    <action selector="passwordFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="Zgt-Sl-EFW"/>
                                                     <outlet property="delegate" destination="wT8-0t-uvE" id="2EC-2K-NhG"/>
                                                 </connections>
                                             </textField>
@@ -372,7 +372,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
-                                                    <action selector="textFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="JVJ-bw-9MZ"/>
+                                                    <action selector="usernameFieldDidReturn:" destination="wT8-0t-uvE" eventType="editingDidEndOnExit" id="KrP-W1-7UY"/>
                                                     <outlet property="delegate" destination="wT8-0t-uvE" id="mcT-I7-p41"/>
                                                 </connections>
                                             </textField>

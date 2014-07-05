@@ -84,34 +84,29 @@
 
 #pragma mark - text field action methods
 
--(IBAction)textFieldDidReturn:(id)sender
+-(IBAction)usernameFieldDidReturn:(id)sender
 {
-    if(sender == usernameField)
-    {
-        [passwordField isFirstResponder];
-    }
-    
-    else if(sender == passwordField)
-    {
-        [confirmField isFirstResponder];
-    }
-    
-    else if(sender == confirmField)
-    {
-        [emailField isFirstResponder];
-    }
-    
-    else if(sender == emailField)
-    {
-        [self signup:nil];
-    }
-    
-    else
-    {
-        [sender resignFirstResponder];
-    }
+    [self.usernameField resignFirstResponder];
+    [self.passwordField isFirstResponder];
 }
 
+-(IBAction)passwordFieldDidReturn:(id)sender
+{
+    [self.passwordField resignFirstResponder];
+    [self.confirmField isFirstResponder];
+}
+
+-(IBAction)confirmFieldDidReturn:(id)sender
+{
+    [self.confirmField resignFirstResponder];
+    [self.emailField isFirstResponder];
+}
+
+-(IBAction)emailFieldDidReturn:(id)sender
+{
+    [self.emailField resignFirstResponder];
+    [self signup:nil];
+}
 
 #pragma mark - sign up methods
 
@@ -119,17 +114,23 @@
 {
     if(self.usernameField.text == NULL || self.usernameField.text.length <= 0)
     {
-         NSLog(@"Missing username!");
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Missing username." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
     }
     
     else if(self.passwordField.text == NULL || self.confirmField.text == NULL || self.passwordField.text.length <= 0 || self.confirmField.text.length <= 0 || ![self.passwordField.text isEqualToString:self.confirmField.text])
     {
-         NSLog(@"Missing or mismatched passwords!");
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Missing or missmatched password." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
     }
     
     else if(self.emailField.text == NULL || self.emailField.text.length <= 0)
     {
-         NSLog(@"Missing email address!");
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Missing email address." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
     }
     
     [[PPDatabaseManager sharedDatabaseManager]signUpWithUsername:self.usernameField.text password:self.passwordField.text andEmail:self.emailField.text];

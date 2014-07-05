@@ -15,7 +15,10 @@
 @property(nonatomic, weak)UIView *contentView;
 
 //Textfield did end editing so hide it
--(IBAction)textFieldDidReturn:(id)sender;
+-(IBAction)usernameFieldDidReturn:(id)sender;
+-(IBAction)passwordFieldDidReturn:(id)sender;
+-(IBAction)confirmFieldDidReturn:(id)sender;
+-(IBAction)emailFieldDidReturn:(id)sender;
 
 //Signup methods, cancel or signup!
 -(IBAction)signup:(id)sender;
