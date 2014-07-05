@@ -59,11 +59,13 @@
 -(IBAction)userFieldDidReturn:(id)sender
 {
     [self.userName resignFirstResponder];
+    [self.password isFirstResponder];
 }
 
 -(IBAction)passwordFieldDidReturn:(id)sender
 {
     [self.password resignFirstResponder];
+    [self login:nil];
 }
 
 #pragma mark - textfield delegate methods
