@@ -87,19 +87,19 @@
 -(IBAction)usernameFieldDidReturn:(id)sender
 {
     [self.usernameField resignFirstResponder];
-    [self.passwordField isFirstResponder];
+    [self.passwordField becomeFirstResponder];
 }
 
 -(IBAction)passwordFieldDidReturn:(id)sender
 {
     [self.passwordField resignFirstResponder];
-    [self.confirmField isFirstResponder];
+    [self.confirmField becomeFirstResponder];
 }
 
 -(IBAction)confirmFieldDidReturn:(id)sender
 {
     [self.confirmField resignFirstResponder];
-    [self.emailField isFirstResponder];
+    [self.emailField becomeFirstResponder];
 }
 
 -(IBAction)emailFieldDidReturn:(id)sender

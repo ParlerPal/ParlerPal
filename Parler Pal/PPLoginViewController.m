@@ -59,7 +59,7 @@
 -(IBAction)userFieldDidReturn:(id)sender
 {
     [self.userName resignFirstResponder];
-    [self.password isFirstResponder];
+    [self.password becomeFirstResponder];
 }
 
 -(IBAction)passwordFieldDidReturn:(id)sender
