@@ -19,7 +19,7 @@
     PPMessagePopupView *messageContentView;
 }
 @property (nonatomic, weak) IBOutlet UINavigationItem *toolbarTitle;
-//@property (nonatomic, weak) IBOutlet UILabel *quotes;
+//@property (nonatomic, weak) IBOutlet UILabel *quotes; 
 @property (nonatomic, weak) IBOutlet UITableView *table;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 
