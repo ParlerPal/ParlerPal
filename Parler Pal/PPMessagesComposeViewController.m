@@ -39,6 +39,23 @@
     self.lm.headingFilter = 5;
     [self.lm startUpdatingLocation];
     
+    [[PPDatabaseManager sharedDatabaseManager]getAllPalsCompletionHandler:^(NSMutableArray *results) {
+        #warning this could be a leaky issue with ARC? See about this everywhere I do this. Maybe it isnt...
+        pals = results;
+    }];
+    
+    autoCompletePals = [[NSMutableArray alloc]initWithArray:pals];
+    
+    autocompleteTableView = [[UITableView alloc] initWithFrame:
+                             CGRectMake(0, toField.frame.origin.y+toField.frame.size.height, 320, 120) style:UITableViewStylePlain];
+    autocompleteTableView.delegate = self;
+    autocompleteTableView.dataSource = self;
+    autocompleteTableView.scrollEnabled = YES;
+    autocompleteTableView.hidden = YES;
+    autocompleteTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper"]];
+    autocompleteTableView.alpha = .9;
+    [self.view addSubview:autocompleteTableView];
+    
     [self setUpAudio];
 }
 
@@ -87,9 +104,11 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[UITextView class]]) {
+    if([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[UITextView class]] || CGRectIntersectsRect(CGRectMake([touch locationInView:autocompleteTableView].x, [touch locationInView:autocompleteTableView].y, autocompleteTableView.frame.size.width, autocompleteTableView.frame.size.height), autocompleteTableView.frame)
+) {
         return NO; // ignore the touch
     }
+
     return YES; // handle the touch
 }
 
@@ -100,9 +119,9 @@
 
 #pragma mark - Action Methods
 
--(IBAction)findUserButton:(id)sender
+-(IBAction)textFieldDidReturn:(id)sender
 {
-    
+    [[self view] endEditing: YES];
 }
 
 -(IBAction)sendButton:(id)sender
@@ -124,6 +143,13 @@
     else if(messageBox.text.length <= 0)
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Can't Send Message" message:@"A message needs content!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if(![self isAValidPal])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@: I'm not your friend, buddy.",toField.text] message:@"You can only send messages to those you are friends with." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -230,5 +256,111 @@
 -(void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError *)error
 {
     NSLog(@"Encode Error occurred");
+}
+
+#pragma mark - textfield delegate methods
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    autocompleteTableView.hidden = YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    autocompleteTableView.hidden = NO;
+    
+    NSString *substring = [NSString stringWithString:textField.text];
+    substring = [substring stringByReplacingCharactersInRange:range withString:string];
+    [self searchAutocompleteEntriesWithSubstring:substring];
+    return YES;
+}
+
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring
+{
+    [autoCompletePals removeAllObjects];
+    
+    for(NSDictionary *curPal in pals)
+    {
+        NSRange substringRange = [[curPal objectForKey:@"username"] rangeOfString:substring];
+        
+        if (substringRange.location == 0 || [substring isEqualToString:@""])
+        {
+            [autoCompletePals addObject:curPal];
+        }
+    }
+    [autocompleteTableView reloadData];
+}
+
+#pragma mark - table view delegate methods
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45.0;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger count =[autoCompletePals count];
+    
+    if(count > 0)tableView.hidden = NO;
+    else tableView.hidden = YES;
+    
+    return count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Pal";
+    
+    UITableViewCell *cell = (UITableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"Noteworthy" size:25];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    
+    cell.textLabel.text = [[autoCompletePals objectAtIndex:indexPath.row]objectForKey:@"username"];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView  willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    toField.text = selectedCell.textLabel.text;
+    tableView.hidden = YES;
+    [[self view] endEditing: YES];
+}
+
+#pragma mark - valid user check
+
+-(BOOL)isAValidPal
+{
+    for(NSDictionary *pal in pals)
+    {
+        if([[pal objectForKey:@"username"]isEqualToString:toField.text])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 @end

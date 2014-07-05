@@ -10,9 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate, CLLocationManagerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+@interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate, CLLocationManagerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     BOOL audioMessageRecorded;
+    
+    NSMutableArray *pals;
+    NSMutableArray *autoCompletePals;
+    UITableView *autocompleteTableView;
 }
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
@@ -26,13 +30,15 @@
 @property (nonatomic, weak) IBOutlet UIButton *stopButton;
 @property (nonatomic, weak) IBOutlet UIButton *deleteButton;
 
--(IBAction)findUserButton:(id)sender;
 -(IBAction)sendButton:(id)sender;
 -(IBAction)saveButton:(id)sender;
 
 -(IBAction)recordAudio:(id)sender;
 -(IBAction)playAudio:(id)sender;
 -(IBAction)stopAudio:(id)sender;
--(IBAction)deleteAudio:(id)sender; 
+-(IBAction)deleteAudio:(id)sender;
+
+//Textfield did end editing so hide it
+-(IBAction)textFieldDidReturn:(id)sender;
 
 @end
