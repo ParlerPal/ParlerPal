@@ -123,7 +123,7 @@
                     if ([strKeyValue length] != 0)
                     {
                         [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
-                    }
+                    } 
                 }
             }
         }
