@@ -86,7 +86,30 @@
 
 -(IBAction)textFieldDidReturn:(id)sender
 {
-    [sender resignFirstResponder];
+    if(sender == usernameField)
+    {
+        [passwordField isFirstResponder];
+    }
+    
+    else if(sender == passwordField)
+    {
+        [confirmField isFirstResponder];
+    }
+    
+    else if(sender == confirmField)
+    {
+        [emailField isFirstResponder];
+    }
+    
+    else if(sender == emailField)
+    {
+        [self signup:nil];
+    }
+    
+    else
+    {
+        [sender resignFirstResponder];
+    }
 }
 
 
