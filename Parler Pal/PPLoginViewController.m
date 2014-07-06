@@ -10,9 +10,10 @@
 #import "PPMainViewController.h"
 #import "PPDatabaseManager.h"
 #import "PPDataShare.h"
+#import "KeychainItemWrapper.h"
 
 @implementation PPLoginViewController
-@synthesize userName, password, scrollView, contentView, welcomeMessage;
+@synthesize userName, password, scrollView, contentView, welcomeMessage, savePassword;
 
 #pragma mark - view methods
 -(void)viewDidLoad
@@ -38,6 +39,23 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"ParlerPalLogin" accessGroup:nil];
+    NSString *usernameKeychain = [keychainItem objectForKey:(__bridge id)(kSecAttrAccount)];
+    NSData *passData = [keychainItem objectForKey:(__bridge id)(kSecValueData)];
+    NSString *passwordKeychain = [[NSString alloc] initWithBytes:[passData bytes] length:[passData length] encoding:NSUTF8StringEncoding];
+
+    if(passwordKeychain.length > 0 && usernameKeychain.length > 0)
+    {
+        userName.text = usernameKeychain;
+        password.text = passwordKeychain;
+
+        self.savePassword.on = YES;
+    }
+}
 #pragma mark - gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
@@ -66,6 +84,18 @@
 {
     [self.password resignFirstResponder];
     [self login:nil];
+}
+
+-(IBAction)switchSelected:(id)sender
+{
+    if(!savePassword.on)
+    {
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"ParlerPalLogin" accessGroup:nil];
+        [keychainItem resetKeychainItem];
+        
+        userName.text = @"";
+        password.text = @"";
+    }
 }
 
 #pragma mark - textfield delegate methods
@@ -150,7 +180,16 @@
     [[PPDatabaseManager sharedDatabaseManager]signinWithUsername:userName.text password:password.text completionHandler:^(bool success){
         if(success)
         {
+            //Save Password
+            if(savePassword.on)
+            {
+                KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"ParlerPalLogin" accessGroup:nil];
+                [keychainItem setObject:userName.text forKey:(__bridge id)(kSecAttrAccount)];
+                [keychainItem setObject:password.text forKey:(__bridge id)(kSecValueData)];
+            }
+            
             [[PPDataShare sharedSingleton]setCurrentUser:userName.text];
+            
             [self performSegueWithIdentifier:@"login" sender:self];
         }
         else {}

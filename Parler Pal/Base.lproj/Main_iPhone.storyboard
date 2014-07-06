@@ -231,7 +231,7 @@
                                         <rect key="frame" x="0.0" y="-124" width="320" height="575"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-Ct-1Ik">
-                                                <rect key="frame" x="95" y="360" width="131" height="37"/>
+                                                <rect key="frame" x="95" y="395" width="131" height="37"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="New">
@@ -244,7 +244,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zk0-gE-Ogk">
-                                                <rect key="frame" x="95" y="315" width="131" height="37"/>
+                                                <rect key="frame" x="95" y="350" width="131" height="37"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="21"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Login">
@@ -273,6 +273,20 @@
                                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="FPh-fY-f2e"/>
                                                 </connections>
                                             </textField>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="o3v-YV-bhz">
+                                                <rect key="frame" x="156" y="311" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="switchSelected:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Pep-B6-GyU"/>
+                                                </connections>
+                                            </switch>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlM-4v-ilC">
+                                                <rect key="frame" x="59" y="316" width="89" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -285,6 +299,7 @@
                     <connections>
                         <outlet property="contentView" destination="TuN-y1-IDh" id="f2p-7d-gBn"/>
                         <outlet property="password" destination="7Ts-CU-vci" id="HaU-9g-otX"/>
+                        <outlet property="savePassword" destination="o3v-YV-bhz" id="yGc-RR-y5H"/>
                         <outlet property="scrollView" destination="vzZ-Dd-EXy" id="zRX-6d-O4i"/>
                         <outlet property="userName" destination="Tor-hE-fa3" id="O4J-c7-kRg"/>
                         <segue destination="pnS-xi-IeC" kind="push" identifier="login" id="qax-Ks-bph"/>
