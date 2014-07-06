@@ -30,9 +30,11 @@
         self.memoAttached = [[dictionary objectForKey:@"memoAttached"]boolValue];
 
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
-        [df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSDate *theDate = [df dateFromString:[dictionary objectForKey:@"created"]];
         self.created = theDate;
+        
+        NSLog(@"%@",self.created);
     }
     
     return self;
