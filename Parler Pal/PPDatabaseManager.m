@@ -8,6 +8,10 @@
 
 #import "PPDatabaseManager.h"
 
+#import "PPUser.h"
+#import "PPMessage.h"
+#import "PPLanguage.h"
+#import "PPPal.h"
 
 @implementation PPDatabaseManager
 
@@ -102,7 +106,7 @@
 
 #pragma mark - User Profile Methods
 
--(void)getUserProfileCompletionHandler:(void(^)(NSMutableDictionary *results))handler
+-(void)getUserProfileCompletionHandler:(void(^)(PPUser *results))handler
 {
     NSDictionary *parameters = @{};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/getUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -128,7 +132,8 @@
             }
         }
         
-        if(handler)handler(item);
+        PPUser *user = [[PPUser alloc]initWithDictionary:item];
+        if(handler)handler(user);
         
         }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -172,7 +177,7 @@
           }];
 }
 
--(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(NSMutableDictionary *results))handler
+-(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(PPPal *results))handler
 {
     NSDictionary *parameters = @{@"username": username};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/getSharedUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -181,6 +186,7 @@
         
         NSArray *sharedUser = [xmlDoc nodesForXPath:@"//sharedUser" error:nil];
         NSMutableDictionary *userProfileData = [[NSMutableDictionary alloc] init];
+        
         for (DDXMLElement *node in sharedUser)
         {
             for(int counter = 0; counter < [node childCount]; counter++)
@@ -215,11 +221,16 @@
                     }
                 }
             }
-            [allLanguages addObject:language];
+            
+            PPLanguage *newLanguage = [[PPLanguage alloc]initWithDictionary:language];
+            [allLanguages addObject:newLanguage];
         }
         
         [userProfileData setObject:allLanguages forKey:@"languages"];
-        if(handler)handler(userProfileData);
+        
+        PPPal *pal = [[PPPal alloc]initWithDictionary:userProfileData];
+        
+        if(handler)handler(pal);
         
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -268,7 +279,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPLanguage *language = [[PPLanguage alloc]initWithDictionary:item];
+            [allResults addObject:language];
         }
         
         if(handler)handler(allResults);
@@ -308,7 +320,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPPal *pal = [[PPPal alloc]initWithDictionary:item];
+            [allResults addObject:pal];
         }
         
         if(handler)handler(allResults);
@@ -346,7 +359,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPPal *pal = [[PPPal alloc]initWithDictionary:item];
+            [allResults addObject:pal];
         }
         
         if(handler)handler(allResults);
@@ -408,7 +422,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPPal *pal = [[PPPal alloc]initWithDictionary:item];
+            [allResults addObject:pal];
         }
         
         if(handler)handler(allResults);

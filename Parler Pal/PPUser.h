@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface PPUser : NSObject
-@property (nonatomic, strong) NSString *username, *email, *created, *sharedEmail, *country, *profile, *skypeID;
+@property (nonatomic, strong) NSString *username, *email, *sharedEmail, *country, *profile, *skypeID;
 @property (nonatomic, readwrite) int dbID, age, gender;
+@property (nonatomic, strong) NSDate *created;
+
+-(id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

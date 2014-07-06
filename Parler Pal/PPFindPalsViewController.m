@@ -8,6 +8,8 @@
 
 #import "PPFindPalsViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPPal.h"
+#import "PPLanguage.h"
 
 @implementation PPFindPalsViewController
 @synthesize table, filteredPalsArray, searchBar;
@@ -51,11 +53,11 @@
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     [[PPDatabaseManager sharedDatabaseManager]requestFriendshipWith:cell.username.text completionHandler:^(bool success) {
-        NSMutableDictionary *userToRemove = NULL;
+        PPPal *userToRemove = NULL;
         
-        for(NSMutableDictionary *user in foundPals)
+        for(PPPal *user in foundPals)
         {
-            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            if([user.username isEqualToString:cell.username.text])
             {
                 userToRemove = user;
             }
@@ -109,7 +111,7 @@
         }
     }
     
-    NSDictionary *pal;
+    PPPal *pal;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         pal = [filteredPalsArray objectAtIndex:indexPath.row];
@@ -117,7 +119,7 @@
         pal = [foundPals objectAtIndex:indexPath.row];
     }
     
-    cell.username.text = [pal objectForKey:@"username"];
+    cell.username.text = pal.username;
     
     return cell;
 }
@@ -126,30 +128,31 @@
 {
     [[self view] endEditing: YES];
     
-    NSString *username = [[foundPals objectAtIndex:indexPath.row]objectForKey:@"username"];
+    PPPal *foundPal = [foundPals objectAtIndex:indexPath.row];
+    NSString *username = foundPal.username;
     
-    [[PPDatabaseManager sharedDatabaseManager]getSharedUserProfileForUsername:username WithFinish:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getSharedUserProfileForUsername:username WithFinish:^(PPPal *results) {
         [self.view addSubview:profilePopup];
         profilePopup.username.text = username;
-        profilePopup.profile.text = [results objectForKey:@"profile"];
-        profilePopup.gender.text = [[results objectForKey:@"gender"]intValue] == 0 ? @"Male" : [[results objectForKey:@"gender"]intValue] == 1 ? @"Female" : @"N/S";
-        profilePopup.country.text = [results objectForKey:@"country"];
-        profilePopup.age.text = [results objectForKey:@"age"];
-        profilePopup.email.text = [results objectForKey:@"sharedEmail"];
-        profilePopup.skype.text = [results objectForKey:@"skypeID"];
+        profilePopup.profile.text = results.profile;
+        profilePopup.gender.text = results.gender == 0 ? @"Male" : results.gender == 1 ? @"Female" : @"N/S";
+        profilePopup.country.text = results.country;
+        profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
+        profilePopup.email.text = results.sharedEmail;
+        profilePopup.skype.text = results.skypeID;
         
         NSMutableString *fullLanguageString = [NSMutableString string];
         NSMutableString *learning = [NSMutableString stringWithString:@"I'm Learning:\n"];
         NSMutableString *know = [NSMutableString stringWithString:@"I'm Know:\n"];
         
-        for(NSDictionary *language in [results objectForKey:@"languages"])
+        for(PPLanguage *language in results.languages)
         {
-            if([[language objectForKey:@"languageStatus"]intValue] != 2)
+            if(language.languageStatus != PPLanguageStatusNeither)
             {
-                NSString *languageName = [language objectForKey:@"name"];
-                NSString *languageLevel = [[language objectForKey:@"languageLevel"]intValue] == 0 ? @"Beginner" : [[language objectForKey:@"languageLevel"]intValue] == 1 ? @"Intermediate" : @"Fluent" ;
+                NSString *languageName = language.name;
+                NSString *languageLevel = language.languageLevel == PPLanguageLevelBeginner ? @"Beginner" : language.languageLevel == PPLanguageLevelIntermediate ? @"Intermediate" : @"Fluent" ;
                 
-                if([[language objectForKey:@"languageStatus"]intValue] == 0)
+                if(language.languageStatus == PPLanguageStatusKnown)
                 {
                     [know appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
                 }

@@ -1,5 +1,5 @@
 //
-//  PPLanguages.h
+//  PPLanguage.h
 //  Parler Pal
 //
 //  Created by Aaron Vizzini on 7/6/14.
@@ -20,10 +20,13 @@ typedef enum : NSUInteger {
     PPLanguageLevelFluent,
 } PPLanguageLevel;
 
-@interface PPLanguages : NSObject
+@interface PPLanguage : NSObject
 @property (nonatomic, readwrite) int dbID;
 @property (nonatomic, strong) NSString *name,*user;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, readwrite) PPLanguageStatus languageStatus;
 @property (nonatomic, readwrite) PPLanguageLevel languageLevel;
+
+-(id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

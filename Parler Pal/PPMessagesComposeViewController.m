@@ -9,6 +9,7 @@
 #import "PPMessagesComposeViewController.h"
 #import "SWRevealViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPPal.h"
 
 #define kAudioTimeLimit 60
 
@@ -283,9 +284,9 @@
 {
     [autoCompletePals removeAllObjects];
     
-    for(NSDictionary *curPal in pals)
+    for(PPPal *curPal in pals)
     {
-        NSRange substringRange = [[curPal objectForKey:@"username"] rangeOfString:substring];
+        NSRange substringRange = [curPal.username rangeOfString:substring];
         
         if (substringRange.location == 0 || [substring isEqualToString:@""])
         {
@@ -330,7 +331,8 @@
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     
-    cell.textLabel.text = [[autoCompletePals objectAtIndex:indexPath.row]objectForKey:@"username"];
+    PPPal *pal = [autoCompletePals objectAtIndex:indexPath.row];
+    cell.textLabel.text = pal.username;
     
     return cell;
 }
@@ -352,9 +354,9 @@
 
 -(BOOL)isAValidPal
 {
-    for(NSDictionary *pal in pals)
+    for(PPPal *pal in pals)
     {
-        if([[pal objectForKey:@"username"]isEqualToString:toField.text])
+        if([pal.username isEqualToString:toField.text])
         {
             return YES;
         }

@@ -8,6 +8,7 @@
 
 #import "PPProfileViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPUser.h"
 
 @implementation PPProfileViewController
 @synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender;
@@ -22,15 +23,15 @@
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
     
-    [[PPDatabaseManager sharedDatabaseManager]getUserProfileCompletionHandler:^(NSMutableDictionary *results)
+    [[PPDatabaseManager sharedDatabaseManager]getUserProfileCompletionHandler:^(PPUser *results)
     {
-        privateEmailField.text = [results objectForKey: @"email"];
-        countryField.text = [results objectForKey: @"country"];
-        sharedEmailField.text = [results objectForKey: @"sharedEmail"];
-        skypeIDField.text = [results objectForKey: @"skypeID"];
-        profile.text = [results objectForKey: @"profile"];
-        age.text = [results objectForKey:@"age"];
-        [gender setSelectedSegmentIndex:[[results objectForKey:@"gender"]intValue]];
+        privateEmailField.text = results.email;
+        countryField.text = results.country;
+        sharedEmailField.text = results.sharedEmail;
+        skypeIDField.text = results.skypeID;
+        profile.text = results.profile;
+        age.text = [NSString stringWithFormat:@"%i",results.age];
+        [gender setSelectedSegmentIndex:results.gender];
     }];
     
     [self registerForKeyboardNotifications];

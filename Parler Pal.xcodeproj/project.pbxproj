@@ -88,7 +88,7 @@
 		64B01CB11969C99600D90337 /* PPPal.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB01969C99600D90337 /* PPPal.m */; };
 		64B01CB41969C9A000D90337 /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB31969C9A000D90337 /* PPUser.m */; };
 		64B01CB71969C9AC00D90337 /* PPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB61969C9AC00D90337 /* PPMessage.m */; };
-		64B01CBA1969C9C700D90337 /* PPLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB91969C9C700D90337 /* PPLanguages.m */; };
+		64B01CBA1969C9C700D90337 /* PPLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB91969C9C700D90337 /* PPLanguage.m */; };
 		64BFB63B1944183300D11E88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63A1944183300D11E88 /* Foundation.framework */; };
 		64BFB63D1944183300D11E88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63C1944183300D11E88 /* CoreGraphics.framework */; };
 		64BFB63F1944183300D11E88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63E1944183300D11E88 /* UIKit.framework */; };
@@ -250,8 +250,8 @@
 		64B01CB31969C9A000D90337 /* PPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
 		64B01CB51969C9AC00D90337 /* PPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessage.h; sourceTree = "<group>"; };
 		64B01CB61969C9AC00D90337 /* PPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessage.m; sourceTree = "<group>"; };
-		64B01CB81969C9C700D90337 /* PPLanguages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguages.h; sourceTree = "<group>"; };
-		64B01CB91969C9C700D90337 /* PPLanguages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguages.m; sourceTree = "<group>"; };
+		64B01CB81969C9C700D90337 /* PPLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguage.h; sourceTree = "<group>"; };
+		64B01CB91969C9C700D90337 /* PPLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguage.m; sourceTree = "<group>"; };
 		64BFB6371944183300D11E88 /* Parler Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parler Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFB63A1944183300D11E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64BFB63C1944183300D11E88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -571,8 +571,8 @@
 				64B01CB31969C9A000D90337 /* PPUser.m */,
 				64B01CB51969C9AC00D90337 /* PPMessage.h */,
 				64B01CB61969C9AC00D90337 /* PPMessage.m */,
-				64B01CB81969C9C700D90337 /* PPLanguages.h */,
-				64B01CB91969C9C700D90337 /* PPLanguages.m */,
+				64B01CB81969C9C700D90337 /* PPLanguage.h */,
+				64B01CB91969C9C700D90337 /* PPLanguage.m */,
 			);
 			name = "Base Objects";
 			sourceTree = "<group>";
@@ -623,8 +623,8 @@
 			children = (
 				64B01CAD1969C94D00D90337 /* External Classes */,
 				64B01CAE1969C97100D90337 /* Base Objects */,
-				64A1E8961952262300620BA1 /* Custom Views */,
 				64A1E8951952260B00620BA1 /* Utilities */,
+				64A1E8961952262300620BA1 /* Custom Views */,
 				64A1E88E19520E6F00620BA1 /* Custom Segues */,
 				6423F59F195126FD00C14934 /* View Controllers */,
 				64BFB6491944183300D11E88 /* PPAppDelegate.h */,
@@ -851,7 +851,7 @@
 				649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */,
 				64BFB6471944183300D11E88 /* main.m in Sources */,
 				64AF9D7419575047007EF924 /* PPDataShare.m in Sources */,
-				64B01CBA1969C9C700D90337 /* PPLanguages.m in Sources */,
+				64B01CBA1969C9C700D90337 /* PPLanguage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

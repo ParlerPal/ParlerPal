@@ -9,6 +9,7 @@
 #import "PPLanguagesViewController.h"
 #import "PPLanguageTableViewCell.h"
 #import "PPDatabaseManager.h"
+#import "PPLanguage.h"
 
 @implementation PPLanguagesViewController
 @synthesize table;
@@ -61,20 +62,20 @@
     
     cell.language.text = [languages objectAtIndex:indexPath.row];
     
-    for(NSDictionary *dict in allUserLanguages)
+    for(PPLanguage *language in allUserLanguages)
     {
-        if([[dict objectForKey:@"name"]isEqualToString:[languages objectAtIndex:indexPath.row]])
+        if([language.name isEqualToString:[languages objectAtIndex:indexPath.row]])
         {
-                cell.status.selectedSegmentIndex = [[dict objectForKey:@"languageStatus"]intValue];
+                cell.status.selectedSegmentIndex = language.languageStatus;
                 
-                if([[dict objectForKey:@"languageStatus"]intValue] == 2)
+                if(language.languageStatus == PPLanguageStatusNeither)
                 {
                     cell.level.enabled = NO;
                 }
                 
-                else if([[dict objectForKey:@"languageStatus"]intValue] == 1 || [[dict objectForKey:@"languageStatus"]intValue] == 0)
+                else if(language.languageStatus == PPLanguageStatusLearning || language.languageStatus == PPLanguageStatusKnown)
                 {
-                    cell.level.selectedSegmentIndex = [[dict objectForKey:@"languageLevel"]intValue];
+                    cell.level.selectedSegmentIndex = language.languageLevel;
                     cell.level.enabled = YES;
                 }
                 else

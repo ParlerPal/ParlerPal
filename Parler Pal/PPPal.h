@@ -11,4 +11,9 @@
 @interface PPPal : NSObject
 @property (nonatomic, strong) NSString *username, *sharedEmail, *country, *profile, *skypeID;
 @property (nonatomic, readwrite) int dbID, age, gender;
+@property (nonatomic, strong) NSMutableArray *languages;
+@property (nonatomic, strong) NSDate *created;
+
+-(id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

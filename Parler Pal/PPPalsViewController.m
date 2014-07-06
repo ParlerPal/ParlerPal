@@ -8,6 +8,8 @@
 
 #import "PPPalsViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPPal.h"
+#import "PPLanguage.h"
 
 @implementation PPPalsViewController
 @synthesize table;
@@ -59,11 +61,11 @@
     
     [[PPDatabaseManager sharedDatabaseManager]confirmFriendshipWith:cell.username.text completionHandler:^(bool success) {
         
-        NSMutableDictionary *userToSwap = nil;
+        PPPal *userToSwap = nil;
         
-        for(NSMutableDictionary *user in requests)
+        for(PPPal *user in requests)
         {
-            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            if([user.username isEqualToString:cell.username.text])
             {
                 userToSwap = user;
             }
@@ -83,11 +85,11 @@
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text completionHandler:^(bool success) {
-        NSMutableDictionary *userToRemove = nil;
+        PPPal *userToRemove = nil;
         
-        for(NSMutableDictionary *user in requests)
+        for(PPPal *user in requests)
         {
-            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            if([user.username isEqualToString:cell.username.text])
             {
                 userToRemove = user;
             }
@@ -105,11 +107,11 @@
 {
     PPPalTableViewCell *cell = (PPPalTableViewCell *)sender;
     [[PPDatabaseManager sharedDatabaseManager]deleteFriendshipWith:cell.username.text completionHandler:^(bool success) {
-        NSMutableDictionary *userToRemove = nil;
+        PPPal *userToRemove = nil;
         
-        for(NSMutableDictionary *user in friendships)
+        for(PPPal *user in friendships)
         {
-            if([[user objectForKey:@"username"]isEqualToString:cell.username.text])
+            if([user.username isEqualToString:cell.username.text])
             {
                 userToRemove = user;
             }
@@ -178,7 +180,14 @@
                 cell = (PPPalTableViewCell *)currentObject;
                 cell.delegate = self;
                 cell.type = (indexPath.section == 1 || requests.count == 0) ? kPalType : kRequestType;
-                cell.username.text = cell.type == kPalType ? [[friendships objectAtIndex:indexPath.row]objectForKey:@"username"] : [[requests objectAtIndex:indexPath.row]objectForKey:@"username"];
+                
+                PPPal *palFriendship = nil;
+                PPPal *palRequest = nil;
+                
+                if(cell.type == kPalType) palFriendship = [friendships objectAtIndex:indexPath.row];
+                else palRequest = [requests objectAtIndex:indexPath.row];
+                
+                cell.username.text = cell.type == kPalType ? palFriendship.username : palRequest.username;
                 break;
             }
         }
@@ -193,36 +202,38 @@
     
     if(indexPath.section == 0 && requests.count > 0)
     {
-        username = [[requests objectAtIndex:indexPath.row]objectForKey:@"username"];
+        PPPal *pal = [requests objectAtIndex:indexPath.row];
+        username = pal.username;
     }
     
     else if (indexPath.section == 1 || requests.count == 0)
     {
-        username = [[friendships objectAtIndex:indexPath.row]objectForKey:@"username"];
+        PPPal *pal = [friendships objectAtIndex:indexPath.row];
+        username = pal.username;
     }
     
-    [[PPDatabaseManager sharedDatabaseManager]getSharedUserProfileForUsername:username WithFinish:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getSharedUserProfileForUsername:username WithFinish:^(PPPal *results) {
         [self.view addSubview:profilePopup];
         profilePopup.username.text = username;
-        profilePopup.profile.text = [results objectForKey:@"profile"];
-        profilePopup.gender.text = [[results objectForKey:@"gender"]intValue] == 0 ? @"Male" : [[results objectForKey:@"gender"]intValue] == 1 ? @"Female" : @"N/S";
-        profilePopup.country.text = [results objectForKey:@"country"];
-        profilePopup.age.text = [results objectForKey:@"age"];
-        profilePopup.email.text = [results objectForKey:@"sharedEmail"];
-        profilePopup.skype.text = [results objectForKey:@"skypeID"];
+        profilePopup.profile.text = results.profile;
+        profilePopup.gender.text = results.gender == 0 ? @"Male" : results.gender == 1 ? @"Female" : @"N/S";
+        profilePopup.country.text = results.country;
+        profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
+        profilePopup.email.text = results.sharedEmail;
+        profilePopup.skype.text = results.skypeID;
         
         NSMutableString *fullLanguageString = [NSMutableString string];
         NSMutableString *learning = [NSMutableString stringWithString:@"I'm Learning:\n"];
         NSMutableString *know = [NSMutableString stringWithString:@"I'm Know:\n"];
         
-        for(NSDictionary *language in [results objectForKey:@"languages"])
+        for(PPLanguage *language in results.languages)
         {
-            if([[language objectForKey:@"languageStatus"]intValue] != 2)
+            if(language.languageStatus != PPLanguageStatusNeither)
             {
-                NSString *languageName = [language objectForKey:@"name"];
-                NSString *languageLevel = [[language objectForKey:@"languageLevel"]intValue] == 0 ? @"Beginner" : [[language objectForKey:@"languageLevel"]intValue] == 1 ? @"Intermediate" : @"Fluent" ;
+                NSString *languageName = language.name;
+                NSString *languageLevel = language.languageLevel == PPLanguageLevelBeginner ? @"Beginner" : language.languageLevel == PPLanguageLevelIntermediate ? @"Intermediate" : @"Fluent" ;
                 
-                if([[language objectForKey:@"languageStatus"]intValue] == 0)
+                if(language.languageStatus == PPLanguageStatusKnown)
                 {
                     [know appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
                 }
