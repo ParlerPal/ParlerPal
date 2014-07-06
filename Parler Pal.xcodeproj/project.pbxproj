@@ -85,6 +85,10 @@
 		64AF9D8019579BBB007EF924 /* PPBottomReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7F19579BBB007EF924 /* PPBottomReplaceSegue.m */; };
 		64AF9D831957A449007EF924 /* PPRightReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D821957A449007EF924 /* PPRightReplaceSegue.m */; };
 		64AF9D861957AAC9007EF924 /* PPLeftReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D851957AAC9007EF924 /* PPLeftReplaceSegue.m */; };
+		64B01CB11969C99600D90337 /* PPPal.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB01969C99600D90337 /* PPPal.m */; };
+		64B01CB41969C9A000D90337 /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB31969C9A000D90337 /* PPUser.m */; };
+		64B01CB71969C9AC00D90337 /* PPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB61969C9AC00D90337 /* PPMessage.m */; };
+		64B01CBA1969C9C700D90337 /* PPLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB91969C9C700D90337 /* PPLanguages.m */; };
 		64BFB63B1944183300D11E88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63A1944183300D11E88 /* Foundation.framework */; };
 		64BFB63D1944183300D11E88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63C1944183300D11E88 /* CoreGraphics.framework */; };
 		64BFB63F1944183300D11E88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63E1944183300D11E88 /* UIKit.framework */; };
@@ -240,6 +244,14 @@
 		64AF9D821957A449007EF924 /* PPRightReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRightReplaceSegue.m; sourceTree = "<group>"; };
 		64AF9D841957AAC9007EF924 /* PPLeftReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLeftReplaceSegue.h; sourceTree = "<group>"; };
 		64AF9D851957AAC9007EF924 /* PPLeftReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLeftReplaceSegue.m; sourceTree = "<group>"; };
+		64B01CAF1969C99600D90337 /* PPPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPal.h; sourceTree = "<group>"; };
+		64B01CB01969C99600D90337 /* PPPal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPal.m; sourceTree = "<group>"; };
+		64B01CB21969C9A000D90337 /* PPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUser.h; sourceTree = "<group>"; };
+		64B01CB31969C9A000D90337 /* PPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
+		64B01CB51969C9AC00D90337 /* PPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessage.h; sourceTree = "<group>"; };
+		64B01CB61969C9AC00D90337 /* PPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessage.m; sourceTree = "<group>"; };
+		64B01CB81969C9C700D90337 /* PPLanguages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguages.h; sourceTree = "<group>"; };
+		64B01CB91969C9C700D90337 /* PPLanguages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguages.m; sourceTree = "<group>"; };
 		64BFB6371944183300D11E88 /* Parler Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parler Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFB63A1944183300D11E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64BFB63C1944183300D11E88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -540,6 +552,31 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		64B01CAD1969C94D00D90337 /* External Classes */ = {
+			isa = PBXGroup;
+			children = (
+				643434F51968C9B400600EF9 /* KeychainWrapper */,
+				645A1B53195B54EB004657B2 /* KissXML */,
+				645A1B32195B4F54004657B2 /* AFNetworking */,
+			);
+			name = "External Classes";
+			sourceTree = "<group>";
+		};
+		64B01CAE1969C97100D90337 /* Base Objects */ = {
+			isa = PBXGroup;
+			children = (
+				64B01CAF1969C99600D90337 /* PPPal.h */,
+				64B01CB01969C99600D90337 /* PPPal.m */,
+				64B01CB21969C9A000D90337 /* PPUser.h */,
+				64B01CB31969C9A000D90337 /* PPUser.m */,
+				64B01CB51969C9AC00D90337 /* PPMessage.h */,
+				64B01CB61969C9AC00D90337 /* PPMessage.m */,
+				64B01CB81969C9C700D90337 /* PPLanguages.h */,
+				64B01CB91969C9C700D90337 /* PPLanguages.m */,
+			);
+			name = "Base Objects";
+			sourceTree = "<group>";
+		};
 		64BFB62E1944183300D11E88 = {
 			isa = PBXGroup;
 			children = (
@@ -584,9 +621,8 @@
 		64BFB6401944183300D11E88 /* Parler Pal */ = {
 			isa = PBXGroup;
 			children = (
-				643434F51968C9B400600EF9 /* KeychainWrapper */,
-				645A1B53195B54EB004657B2 /* KissXML */,
-				645A1B32195B4F54004657B2 /* AFNetworking */,
+				64B01CAD1969C94D00D90337 /* External Classes */,
+				64B01CAE1969C97100D90337 /* Base Objects */,
 				64A1E8961952262300620BA1 /* Custom Views */,
 				64A1E8951952260B00620BA1 /* Utilities */,
 				64A1E88E19520E6F00620BA1 /* Custom Segues */,
@@ -774,6 +810,7 @@
 				6481537B1953AB7200D0B3F0 /* SWRevealViewController.m in Sources */,
 				645A1B64195B54EB004657B2 /* NSString+DDXML.m in Sources */,
 				645A1B66195B54EB004657B2 /* DDXMLElement.m in Sources */,
+				64B01CB71969C9AC00D90337 /* PPMessage.m in Sources */,
 				64A1E894195216F100620BA1 /* PPProfileViewController.m in Sources */,
 				645A1B63195B54EB004657B2 /* DDXMLElementAdditions.m in Sources */,
 				645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */,
@@ -789,12 +826,14 @@
 				648C843419631484009872D9 /* PPMessageLocation.m in Sources */,
 				648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */,
 				64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */,
+				64B01CB11969C99600D90337 /* PPPal.m in Sources */,
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
 				6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */,
 				64AF9D861957AAC9007EF924 /* PPLeftReplaceSegue.m in Sources */,
 				6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */,
 				64AF9D831957A449007EF924 /* PPRightReplaceSegue.m in Sources */,
 				645A1B4E195B4F54004657B2 /* AFURLSessionManager.m in Sources */,
+				64B01CB41969C9A000D90337 /* PPUser.m in Sources */,
 				64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */,
 				643434F81968C9B400600EF9 /* KeychainItemWrapper.m in Sources */,
 				645A1B4A195B4F54004657B2 /* AFSecurityPolicy.m in Sources */,
@@ -812,6 +851,7 @@
 				649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */,
 				64BFB6471944183300D11E88 /* main.m in Sources */,
 				64AF9D7419575047007EF924 /* PPDataShare.m in Sources */,
+				64B01CBA1969C9C700D90337 /* PPLanguages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
