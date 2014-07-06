@@ -27,10 +27,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ML7-p7-bjy" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="730"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="866"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WS1-kK-5SS">
-                                                        <rect key="frame" x="57" y="456" width="206" height="66"/>
+                                                        <rect key="frame" x="57" y="592" width="206" height="66"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="next"/>
@@ -39,7 +39,7 @@
                                                         </connections>
                                                     </textView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skype ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zd-Py-KF7">
-                                                        <rect key="frame" x="57" y="380" width="206" height="30"/>
+                                                        <rect key="frame" x="57" y="516" width="206" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         <connections>
@@ -48,7 +48,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shared Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udQ-NO-9jI">
-                                                        <rect key="frame" x="57" y="342" width="206" height="30"/>
+                                                        <rect key="frame" x="57" y="478" width="206" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         <connections>
@@ -57,7 +57,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country of Origin" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yrb-7A-Hox">
-                                                        <rect key="frame" x="57" y="304" width="206" height="30"/>
+                                                        <rect key="frame" x="57" y="440" width="206" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         <connections>
@@ -66,22 +66,22 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shared Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-vw-5pe">
-                                                        <rect key="frame" x="20" y="266" width="280" height="30"/>
+                                                        <rect key="frame" x="20" y="275" width="280" height="30"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="24"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About You!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-fr-Lmo">
-                                                        <rect key="frame" x="20" y="418" width="280" height="30"/>
+                                                        <rect key="frame" x="20" y="554" width="280" height="30"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age &amp; Gender" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgT-YB-wSu">
-                                                        <rect key="frame" x="20" y="530" width="280" height="32"/>
+                                                        <rect key="frame" x="20" y="666" width="280" height="32"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Private Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-zW-cvp">
-                                                        <rect key="frame" x="57" y="228" width="206" height="30"/>
+                                                        <rect key="frame" x="57" y="238" width="206" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         <connections>
@@ -90,12 +90,12 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvd-Jb-aYx">
-                                                        <rect key="frame" x="20" y="190" width="280" height="30"/>
+                                                        <rect key="frame" x="20" y="200" width="280" height="30"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="24"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NfA-TT-RRM">
-                                                        <rect key="frame" x="99" y="111" width="122" height="30"/>
+                                                        <rect key="frame" x="99" y="121" width="122" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                         <connections>
@@ -104,7 +104,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EZa-b9-3PS">
-                                                        <rect key="frame" x="99" y="73" width="122" height="30"/>
+                                                        <rect key="frame" x="99" y="83" width="122" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                         <connections>
@@ -113,12 +113,12 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-X8-e15">
-                                                        <rect key="frame" x="20" y="25" width="280" height="45"/>
+                                                        <rect key="frame" x="20" y="35" width="280" height="45"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="24"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85X-1Y-WkS">
-                                                        <rect key="frame" x="114" y="149" width="93" height="33"/>
+                                                        <rect key="frame" x="114" y="158" width="93" height="33"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Confirm">
@@ -130,7 +130,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBK-rr-lYJ">
-                                                        <rect key="frame" x="92" y="673" width="136" height="37"/>
+                                                        <rect key="frame" x="92" y="809" width="136" height="37"/>
                                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Delete Account">
@@ -142,7 +142,7 @@
                                                         </connections>
                                                     </button>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-1d-9Dk">
-                                                        <rect key="frame" x="71" y="608" width="179" height="29"/>
+                                                        <rect key="frame" x="71" y="744" width="179" height="29"/>
                                                         <segments>
                                                             <segment title="Male"/>
                                                             <segment title="Female"/>
@@ -151,7 +151,7 @@
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </segmentedControl>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OR-TDO">
-                                                        <rect key="frame" x="129" y="570" width="62" height="30"/>
+                                                        <rect key="frame" x="129" y="706" width="62" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
@@ -159,6 +159,11 @@
                                                             <outlet property="delegate" destination="wcY-Rr-nMp" id="JM3-t2-ZVA"/>
                                                         </connections>
                                                     </textField>
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQ6-ft-Oex">
+                                                        <rect key="frame" x="110" y="321" width="100" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
