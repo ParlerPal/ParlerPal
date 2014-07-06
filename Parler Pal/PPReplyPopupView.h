@@ -35,7 +35,6 @@
 -(IBAction)hide:(id)sender;
 
 //Show and display the popup
--(void)setup;
 -(void)show;
 
 @end

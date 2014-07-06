@@ -19,5 +19,6 @@
 @property(nonatomic, weak) IBOutlet UITableView *table;
 
 -(IBAction)unwindPalsViewController:(UIStoryboardSegue *)unwindSegue;
+
 @end
 

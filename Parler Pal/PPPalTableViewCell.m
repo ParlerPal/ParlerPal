@@ -22,7 +22,7 @@
     
     else if(self.type == kFoundType)
     {
-        self.addRemoveButton.enabled = false;
+        self.addRemoveButton.enabled = NO;
         [self.delegate shouldRequestFriend:self];
     }
     

@@ -30,6 +30,7 @@
 //Create an account button action
 -(IBAction)createAccount:(id)sender;
 
+//Save password or not...
 -(IBAction)switchSelected:(id)sender;
 
 -(IBAction)unwindToLogin:(UIStoryboardSegue *)segue;

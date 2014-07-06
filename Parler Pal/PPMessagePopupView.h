@@ -43,7 +43,6 @@
 -(IBAction)deleteMessage:(id)sender;
 
 //prepare and display the popup
--(void)setup;
 -(void)show;
 
 //Audio Memo Action

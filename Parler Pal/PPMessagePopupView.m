@@ -10,6 +10,12 @@
 #import "PPDatabaseManager.h"
 #import "PPDataShare.h"
 
+@interface PPMessagePopupView (Private)
+
+-(void)setup;
+
+@end
+
 @implementation PPMessagePopupView
 @synthesize view, content, toLabel, fromLabel, subjectLabel, messageID, replyButton, shouldShowReply, delegate, playButton, stopButton, player;
 

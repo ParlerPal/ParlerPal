@@ -11,6 +11,12 @@
 
 #define kAudioTimeLimit 60
 
+@interface PPReplyPopupView (PrivateMethods)
+
+-(void)setup;
+
+@end
+
 @implementation PPReplyPopupView
 @synthesize view, contentField, subjectField, toField;
 

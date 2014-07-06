@@ -18,4 +18,5 @@
 @property(nonatomic, weak) IBOutlet UITableView *table;
 @property(nonatomic, strong) NSMutableArray *filteredPalsArray;
 @property(nonatomic, weak) IBOutlet UISearchBar *searchBar;
+
 @end

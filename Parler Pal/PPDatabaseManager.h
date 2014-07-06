@@ -53,4 +53,5 @@
 -(void)getMessageContentForID:(int)messageID completionHandler:(void(^)(NSMutableDictionary *results))handler;
 -(void)markMessageAsRead:(int)messageID completionHandler:(void(^)(bool success))handler;
 -(void)deleteMessage:(int)messageID completionHandler:(void(^)(bool success))handler;
+
 @end

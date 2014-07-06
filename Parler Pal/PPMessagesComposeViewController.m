@@ -40,7 +40,6 @@
     [self.lm startUpdatingLocation];
     
     [[PPDatabaseManager sharedDatabaseManager]getAllPalsCompletionHandler:^(NSMutableArray *results) {
-        #warning this could be a leaky issue with ARC? See about this everywhere I do this. Maybe it isnt...
         pals = results;
     }];
     

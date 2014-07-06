@@ -23,10 +23,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *table;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 
-//Plots the pins on the map
-#warning make private
--(void)plotMessagesPositions;
-
 -(IBAction)unwindMainMenuViewController:(UIStoryboardSegue *)unwindSegue;
 
 @end

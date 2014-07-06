@@ -49,7 +49,7 @@
         NSArray *results = [xmlDoc nodesForXPath:@"//success" error:nil];
         
             for (DDXMLElement *item in results) {
-                if([[item stringValue]boolValue] == false)
+                if([[item stringValue]boolValue] == NO)
                 {
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Username taken" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
                     [alert show];

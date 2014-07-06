@@ -12,6 +12,12 @@
 #import "PPDatabaseManager.h"
 #import "PPMessageLocation.h"
 
+@interface PPMainViewController(PrivateMethods)
+
+-(void)plotMessagesPositions;
+
+@end
+
 @implementation PPMainViewController
 @synthesize toolbarTitle, table, mapView;//quotes
 
