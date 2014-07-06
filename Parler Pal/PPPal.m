@@ -30,7 +30,10 @@
         
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        [df setTimeZone:gmt];
         NSDate *theDate = [df dateFromString:[dictionary objectForKey:@"created"]];
+        
         self.created = theDate;
     }
     

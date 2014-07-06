@@ -183,7 +183,12 @@
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
                 cell.messageLabel.text = message.subject;
-                cell.dateLabel.text = [message.created description];
+                
+                NSDateFormatter *df = [[NSDateFormatter alloc]init];
+                df.dateFormat = @"yyyy-MM-dd hh:mm a";
+                df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+                cell.dateLabel.text = [df stringFromDate: message.created];
+        
                 cell.messageID = message.dbID;
                 break;
             }
