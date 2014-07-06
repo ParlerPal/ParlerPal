@@ -14,4 +14,7 @@
 @property (nonatomic, readwrite) double lat, lon;
 @property (nonatomic, readwrite) int dbID;
 @property (nonatomic, strong) NSDate *created;
+
+-(id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

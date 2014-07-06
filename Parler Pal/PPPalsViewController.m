@@ -216,7 +216,7 @@
         [self.view addSubview:profilePopup];
         profilePopup.username.text = username;
         profilePopup.profile.text = results.profile;
-        profilePopup.gender.text = results.gender == 0 ? @"Male" : results.gender == 1 ? @"Female" : @"N/S";
+        profilePopup.gender.text = results.gender == PPPalGenderMale ? @"Male" : results.gender == PPPalGenderFemale ? @"Female" : @"N/S";
         profilePopup.country.text = results.country;
         profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
         profilePopup.email.text = results.sharedEmail;

@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "PPDatabaseManager.h"
 #import "PPDataShare.h"
+#import "PPMessage.h"
 
 @implementation PPMessagesMainViewController
 @synthesize sidebarButton, table, toolbarTitle, displayType;
@@ -111,11 +112,11 @@
 {
     [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID completionHandler:^(bool success) {
         
-        NSMutableDictionary *messageToDelete = nil;
+        PPMessage *messageToDelete = nil;
         
-        for(NSMutableDictionary *message in messages)
+        for(PPMessage *message in messages)
         {
-            if([[message objectForKey:@"id"]intValue] == theID)
+            if(message.dbID == theID)
             {
                 messageToDelete = message;
             }
@@ -158,11 +159,12 @@
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
+                PPMessage *message = [messages objectAtIndex:indexPath.row];
                 cell = (PPMessageTableViewCell *)currentObject;
-                cell.fromLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"from"];
-                cell.messageLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"subject"];
-                cell.dateLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"created"];
-                cell.messageID = [[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue];
+                cell.fromLabel.text = message.from;
+                cell.messageLabel.text = message.to;
+                cell.dateLabel.text = [message.created description];
+                cell.messageID = message.dbID;
                 break;
             }
         }
@@ -177,18 +179,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *messageID = [[messages objectAtIndex:indexPath.row] objectForKey:@"id"];
+    PPMessage *message = [messages objectAtIndex:indexPath.row];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] completionHandler:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
         messageContentView.content.text = [results objectForKey:@"content"];
-        messageContentView.fromLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"from"];
-        messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
-        messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
-        messageContentView.messageID = [messageID intValue];
-        messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
-        messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue]completionHandler:^(bool success) {
+        messageContentView.fromLabel.text = message.from;
+        messageContentView.toLabel.text = message.to;
+        messageContentView.subjectLabel.text = message.subject;
+        messageContentView.messageID = message.dbID;
+        messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
+        messageContentView.memoAttached = message.memoAttached;
+        
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
             if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
         }];
@@ -210,7 +213,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue]completionHandler:^(bool success) {
+        PPMessage *message = [messages objectAtIndex:indexPath.row];
+        
+        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:message.dbID completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
         }];

@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    PPPalGenderMale,
+    PPPalGenderFemale,
+    PPPalGenderX,
+} PPPalGender;
+
 @interface PPPal : NSObject
 @property (nonatomic, strong) NSString *username, *sharedEmail, *country, *profile, *skypeID;
-@property (nonatomic, readwrite) int dbID, age, gender;
+@property (nonatomic, readwrite) int dbID, age;
+@property (nonatomic, readwrite) PPPalGender gender;
 @property (nonatomic, strong) NSMutableArray *languages;
 @property (nonatomic, strong) NSDate *created;
 

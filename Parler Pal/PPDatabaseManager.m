@@ -531,7 +531,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPMessage *message = [[PPMessage alloc]initWithDictionary:item];
+            [allResults addObject:message];
         }
         
         if(handler)handler(allResults);
@@ -569,7 +570,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPMessage *message = [[PPMessage alloc]initWithDictionary:item];
+            [allResults addObject:message];
         }
         
         if(handler)handler(allResults);
@@ -607,7 +609,8 @@
                 }
             }
             
-            [allResults addObject:item];
+            PPMessage *message = [[PPMessage alloc]initWithDictionary:item];
+            [allResults addObject:message];
         }
         
         if(handler)handler(allResults);

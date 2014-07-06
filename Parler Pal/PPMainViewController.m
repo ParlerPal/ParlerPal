@@ -10,6 +10,7 @@
 #import "PPMessageTableViewCell.h"
 #import "PPDataShare.h"
 #import "PPDatabaseManager.h"
+#import "PPMessage.h"
 #import "PPMessageLocation.h"
 
 @interface PPMainViewController(PrivateMethods)
@@ -78,11 +79,11 @@
 {
     [[PPDatabaseManager sharedDatabaseManager]deleteMessage:theID completionHandler:^(bool success) {
         
-        NSMutableDictionary *messageToDelete = nil;
+        PPMessage *messageToDelete = nil;
         
-        for(NSMutableDictionary *message in messages)
+        for(PPMessage *message in messages)
         {
-            if([[message objectForKey:@"id"]intValue] == theID)
+            if(message.dbID == theID)
             {
                 messageToDelete = message;
             }
@@ -104,11 +105,11 @@
 {
     PPMessageTableViewCell *messageCell = (PPMessageTableViewCell *)sender;
     
-    NSMutableDictionary *messageToDelete = nil;
+    PPMessage *messageToDelete = nil;
     
-    for(NSMutableDictionary *message in messages)
+    for(PPMessage *message in messages)
     {
-        if([[message objectForKey:@"id"]intValue] == messageCell.messageID)
+        if(message.dbID == messageCell.messageID)
         {
             messageToDelete = message;
         }
@@ -177,11 +178,13 @@
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
+                PPMessage *message = [messages objectAtIndex:indexPath.row];
+                
                 cell = (PPMessageTableViewCell *)currentObject;
-                cell.fromLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"from"];
-                cell.messageLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"subject"];
-                cell.dateLabel.text = [[messages objectAtIndex:indexPath.row]objectForKey:@"created"];
-                cell.messageID = [[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue];
+                cell.fromLabel.text = message.from;
+                cell.messageLabel.text = message.subject;
+                cell.dateLabel.text = [message.created description];
+                cell.messageID = message.dbID;
                 break;
             }
         }
@@ -196,17 +199,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *messageID = [[messages objectAtIndex:indexPath.row] objectForKey:@"id"];
+    PPMessage *message = [messages objectAtIndex:indexPath.row];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:[messageID intValue] completionHandler:^(NSMutableDictionary *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
         messageContentView.content.text = [results objectForKey:@"content"];
-        messageContentView.fromLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"from"];
-        messageContentView.toLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"to"];
-        messageContentView.subjectLabel.text = [[messages objectAtIndex:indexPath.row] objectForKey:@"subject"];
-        messageContentView.messageID = [messageID intValue];
-        messageContentView.memoAttached = [[[messages objectAtIndex:indexPath.row] objectForKey:@"memoAttached"]boolValue];
         
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:[messageID intValue]completionHandler:^(bool success) {
+        messageContentView.fromLabel.text = message.from;
+        messageContentView.toLabel.text = message.to;
+        messageContentView.subjectLabel.text = message.subject;
+        messageContentView.messageID = message.dbID;
+        messageContentView.memoAttached = message.memoAttached;
+        
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
             [self plotMessagesPositions];
@@ -228,7 +232,9 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:[[[messages objectAtIndex:indexPath.row]objectForKey:@"id"]intValue]completionHandler:^(bool success) {
+        PPMessage *message = [messages objectAtIndex:indexPath.row];
+        
+        [[PPDatabaseManager sharedDatabaseManager]deleteMessage:message.dbID completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
             [self plotMessagesPositions];
@@ -244,16 +250,16 @@
         [mapView removeAnnotation:annotation];
     }
 
-    for(NSDictionary *message in messages)
+    for(PPMessage *message in messages)
     {
-        if([[message objectForKey:@"lat"]doubleValue] != 0 && [[message objectForKey:@"lat"]doubleValue] != 0)
+        if(message.lat != 0 && message.lon != 0)
         {
-            NSString * name = [message objectForKey:@"from"];
-            NSString * subject = [message objectForKey:@"subject"];
+            NSString * name = message.from;
+            NSString * subject = message.to;
     
             CLLocationCoordinate2D coordinate;
-            coordinate.latitude = [[message objectForKey:@"lat"]doubleValue];
-            coordinate.longitude = [[message objectForKey:@"lon"]doubleValue];
+            coordinate.latitude = message.lat;
+            coordinate.longitude = message.lon;
             PPMessageLocation *annotation = [[PPMessageLocation alloc] initWithName:name subject:subject coordinate:coordinate] ;
             [mapView addAnnotation:annotation];
         }
@@ -289,18 +295,18 @@
     if([messages count] > 0)
     {
         //calculate new region to show on map
-        NSDictionary *firstMessage = [messages objectAtIndex:0];
-        double max_long = [[firstMessage objectForKey:@"lon"] doubleValue];
-        double min_long = [[firstMessage objectForKey:@"lon"] doubleValue];
-        double max_lat = [[firstMessage objectForKey:@"lat"] doubleValue];
-        double min_lat = [[firstMessage objectForKey:@"lat"] doubleValue];
+        PPMessage *firstMessage = [messages objectAtIndex:0];
+        double max_long = firstMessage.lon;
+        double min_long = firstMessage.lon;
+        double max_lat = firstMessage.lat;
+        double min_lat = firstMessage.lat;
         
         //find min and max values
-        for (NSDictionary *message in messages) {
-            if ([[message objectForKey:@"lat"] doubleValue] > max_lat) {max_lat = [[message objectForKey:@"lat"] doubleValue];}
-            if ([[message objectForKey:@"lat"] doubleValue] < min_lat) {min_lat = [[message objectForKey:@"lat"] doubleValue];}
-            if ([[message objectForKey:@"lon"]doubleValue] > max_long) {max_long = [[message objectForKey:@"lon"] doubleValue];}
-            if ([[message objectForKey:@"lon"]doubleValue] < min_long) {min_long = [[message objectForKey:@"lon"]doubleValue];}
+        for (PPMessage *message in messages) {
+            if (message.lat > max_lat) {max_lat = message.lat;}
+            if (message.lat < min_lat) {min_lat = message.lat;}
+            if (message.lon > max_long) {max_long = message.lon;}
+            if (message.lon < min_long) {min_long = message.lon;}
         }
         
         //calculate center of map
