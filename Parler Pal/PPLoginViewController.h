@@ -13,6 +13,8 @@
 {
     int languageIndex;
     NSArray *welcomeLanguages;
+    UILabel *welcome;
+
 }
 @property (nonatomic, weak) IBOutlet UITextField *userName, *password;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;

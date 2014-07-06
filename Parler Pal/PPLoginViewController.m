@@ -143,34 +143,33 @@
 
 #pragma mark - Welcome text animation methods
 
+#warning this runs even when this view controller is not on top... I don't like that. But, it's better than what was happening before which was a loop of death causing 100+% CPU usage...
 -(void)animateText
 {
-    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(-10, 130, 340, 100)];
+    welcome = [[UILabel alloc]initWithFrame:CGRectMake(-10, 130, 340, 100)];
+
     welcome.text = @"Welcome";
     welcome.textAlignment = NSTextAlignmentCenter;
     welcome.alpha = 0.0;
     welcome.font = [UIFont fontWithName:@"Noteworthy" size:36];
     welcome.textColor = [UIColor colorWithRed:0 green:0  blue:0  alpha:1.0];
     [self.contentView addSubview:welcome];
-    [self beginFadeInTextLabel:welcome];
+
+    [UIView animateWithDuration:4.0f
+                          delay:0.0f
+                        options:(UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat)
+                     animations:^{
+                         welcome.alpha = 1.0;
+                     }
+                     completion:nil];
+    
+    [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(changeWelcome) userInfo:nil repeats:YES];
 }
 
--(void)beginFadeInTextLabel:(UILabel *)label
+-(void)changeWelcome
 {
-    [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        label.alpha = 1.0;
-    } completion:^(BOOL finished){[self fadeOutTextLabel:label];}];
-}
-
--(void)fadeOutTextLabel:(UILabel *)label
-{
-    [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        label.alpha = 0.0;
-    } completion:^(BOOL finished){
-        [self beginFadeInTextLabel:label];
-        languageIndex = languageIndex + 1 > welcomeLanguages.count -1 ? 0 : languageIndex + 1;
-        label.text = [welcomeLanguages objectAtIndex:languageIndex];
-    }];
+    languageIndex = languageIndex + 1 > welcomeLanguages.count -1 ? 0 : languageIndex + 1;
+    welcome.text = [welcomeLanguages objectAtIndex:languageIndex];
 }
 
 #pragma mark - login methods
