@@ -218,6 +218,8 @@
     [[PPDatabaseManager sharedDatabaseManager]uploadProfileImage:self.imageView.image completionHandler:^(bool success) {
     }];
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationFade];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

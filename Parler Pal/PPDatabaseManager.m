@@ -425,7 +425,6 @@
         NSData *data = (NSData *)responseObject;
         DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
         NSArray *results = [xmlDoc nodesForXPath:@"//user" error:nil];
-        NSLog(@"%@", xmlDoc);
 
         NSMutableArray *allResults = [[NSMutableArray alloc]init];
         
