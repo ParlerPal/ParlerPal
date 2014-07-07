@@ -27,4 +27,5 @@
 
 //Select user profile photo
 -(IBAction)selectPhoto:(UIButton *)sender;
+-(IBAction)takePhoto:(UIButton *)sender;
 @end
