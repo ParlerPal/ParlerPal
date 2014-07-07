@@ -89,6 +89,7 @@
 
     // Init the audio player.
     NSError *error;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     self.player = [[AVAudioPlayer alloc] initWithData:soundData error:&error];
     [self.player prepareToPlay];
     self.player.volume = 1.0;
