@@ -14,6 +14,7 @@
 		641B80181958FE7D0064289F /* map1.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80171958FE7D0064289F /* map1.png */; };
 		641B801A1958FF4F0064289F /* map2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80191958FF4F0064289F /* map2r.png */; };
 		641B8020195902C50064289F /* map3r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B801F195902C50064289F /* map3r.png */; };
+		641F6B081969F9D9008A7E76 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641F6B071969F9D9008A7E76 /* CoreData.framework */; };
 		64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */; };
 		64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */; };
 		6423F58F1951241C00C14934 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F58E1951241C00C14934 /* AudioToolbox.framework */; };
@@ -129,6 +130,7 @@
 		641B80171958FE7D0064289F /* map1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map1.png; sourceTree = "<group>"; };
 		641B80191958FF4F0064289F /* map2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2r.png; sourceTree = "<group>"; };
 		641B801F195902C50064289F /* map3r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3r.png; sourceTree = "<group>"; };
+		641F6B071969F9D9008A7E76 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPProfilePopupView.xib; sourceTree = "<group>"; };
 		64203A1C19610D5F00C652B2 /* PPProfilePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPProfilePopupView.h; sourceTree = "<group>"; };
 		64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPProfilePopupView.m; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641F6B081969F9D9008A7E76 /* CoreData.framework in Frameworks */,
 				648C84301963115E009872D9 /* MapKit.framework in Frameworks */,
 				6423F59B1951245900C14934 /* SystemConfiguration.framework in Frameworks */,
 				6423F5991951245000C14934 /* StoreKit.framework in Frameworks */,
@@ -599,6 +602,7 @@
 		64BFB6391944183300D11E88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				641F6B071969F9D9008A7E76 /* CoreData.framework */,
 				648C842F1963115E009872D9 /* MapKit.framework */,
 				6423F59A1951245900C14934 /* SystemConfiguration.framework */,
 				6423F5981951245000C14934 /* StoreKit.framework */,

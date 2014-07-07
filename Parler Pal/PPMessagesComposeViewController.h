@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "PPAppDelegate.h"
 
 @interface PPMessagesComposeViewController : UIViewController <UIGestureRecognizerDelegate, CLLocationManagerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
