@@ -11,7 +11,7 @@
 #import "PPUser.h"
 
 @implementation PPProfileViewController
-@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender;
+@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender, imageView;
 
 #pragma mark - view methods
 
@@ -107,6 +107,16 @@
     [sender resignFirstResponder];
 }
 
+
+- (IBAction)selectPhoto:(UIButton *)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
 #pragma mark - gesutre recoginizer methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec{
@@ -184,4 +194,20 @@
     return YES;
 }
 
+#pragma mark - Image Picker Controller delegate methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationFade];
+}
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
+@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     CGPoint *previousPoint; 
 }
@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *gender;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 //Text field action methods for when editing is complete
 -(IBAction)fieldDidEndEditing:(id)sender;
@@ -24,4 +25,6 @@
 //Delete Account!
 -(IBAction)deleteAccount:(id)sender;
 
+//Select user profile photo
+-(IBAction)selectPhoto:(UIButton *)sender;
 @end
