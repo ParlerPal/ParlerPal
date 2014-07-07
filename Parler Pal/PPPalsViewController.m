@@ -247,17 +247,17 @@
                 
                 if(language.languageStatus == PPLanguageStatusKnown)
                 {
-                    [know appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
+                    [know appendString:[NSString stringWithFormat:@"%@ - %@\n", languageName,languageLevel]];
                 }
                 
                 else
                 {
-                    [learning appendString:[NSString stringWithFormat:@"%@ - %@", languageName,languageLevel]];
+                    [learning appendString:[NSString stringWithFormat:@"%@ - %@\n", languageName,languageLevel]];
                 }
             }
         }
         
-        [fullLanguageString appendString:[NSString stringWithFormat:@"%@\n\n%@",know, learning]];
+        [fullLanguageString appendString:[NSString stringWithFormat:@"%@\n%@",know, learning]];
         profilePopup.languages.text = fullLanguageString;
         
         [profilePopup show];
