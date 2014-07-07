@@ -260,7 +260,7 @@
         if(message.lat != 0 && message.lon != 0)
         {
             NSString * name = message.from;
-            NSString * subject = message.to;
+            NSString * subject = message.subject;
     
             CLLocationCoordinate2D coordinate;
             coordinate.latitude = message.lat;
