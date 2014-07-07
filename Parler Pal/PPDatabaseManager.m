@@ -253,9 +253,9 @@
         //do not put image inside parameters dictionary as I did, but append it!
         [formData appendPartWithFileData:profileData name:@"profilePhoto" fileName:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]] mimeType:@"image/png"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         NSLog(@"Success: %@ ***** %@", operation.responseString, responseObject);
+         //NSLog(@"Success: %@ ***** %@", operation.responseString, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+         //NSLog(@"Error: %@ ***** %@", operation.responseString, error);
     }];
     [op start];
 
