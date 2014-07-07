@@ -126,6 +126,7 @@
                         placeholder:nil
                     completionBlock:nil
                        failureBlock:nil];
+    cell.country.text = pal.country;
     return cell;
 }
 

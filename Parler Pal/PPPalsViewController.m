@@ -181,19 +181,20 @@
                 cell = (PPPalTableViewCell *)currentObject;
                 cell.delegate = self;
                 cell.type = (indexPath.section == 1 || requests.count == 0) ? kPalType : kRequestType;
+
+                PPPal *thePal;
                 
-                PPPal *palFriendship = nil;
-                PPPal *palRequest = nil;
+                if(cell.type == kPalType) thePal = [friendships objectAtIndex:indexPath.row];
+                else thePal = [requests objectAtIndex:indexPath.row];
                 
-                if(cell.type == kPalType) palFriendship = [friendships objectAtIndex:indexPath.row];
-                else palRequest = [requests objectAtIndex:indexPath.row];
+                cell.username.text = thePal.username;
                 
-                cell.username.text = cell.type == kPalType ? palFriendship.username : palRequest.username;
-                
-                [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, cell.type == kPalType ? palFriendship.username : palRequest.username]] key:nil
+                [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, thePal.username]] key:nil
                                 placeholder:nil
                                 completionBlock:nil
                                 failureBlock:nil];
+                cell.country.text = thePal.country;
+                
                 break;
             }
         }
