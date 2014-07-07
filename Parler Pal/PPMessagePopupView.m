@@ -84,7 +84,7 @@
 
 -(IBAction)playAudio:(id)sender
 {
-    NSURL *pathAsURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@files/upload/memo%i.m4a", WEB_SERVICES, messageID]];
+    NSURL *pathAsURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@files/uploadedAudio/memo%i.m4a", WEB_SERVICES, messageID]];
     NSData *soundData = [NSData dataWithContentsOfURL:pathAsURL];
 
     // Init the audio player.

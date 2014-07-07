@@ -8,6 +8,7 @@
 
 #import "PPProfileViewController.h"
 #import "PPDatabaseManager.h"
+#import "PPDataShare.h"
 #import "PPUser.h"
 
 @implementation PPProfileViewController
@@ -32,6 +33,10 @@
         profile.text = results.profile;
         age.text = [NSString stringWithFormat:@"%i",results.age];
         [gender setSelectedSegmentIndex:results.gender];
+        
+        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docsDir = dirPaths[0];
+        imageView.image = [UIImage imageWithContentsOfFile:[docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]]]];
     }];
     
     [self registerForKeyboardNotifications];
@@ -210,7 +215,8 @@
 {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-    
+    [[PPDatabaseManager sharedDatabaseManager]uploadProfileImage:self.imageView.image completionHandler:^(bool success) {
+    }];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

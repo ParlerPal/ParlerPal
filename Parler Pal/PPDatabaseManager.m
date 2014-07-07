@@ -7,6 +7,7 @@
 //
 
 #import "PPDatabaseManager.h"
+#import "PPDataShare.h"
 
 #import "PPUser.h"
 #import "PPMessage.h"
@@ -236,6 +237,28 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
           }];
+}
+
+-(void)uploadProfileImage:(UIImage *)image completionHandler:(void(^)(bool success))handler
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = dirPaths[0];
+    NSURL *profilePhotoFilePath = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]]]];
+    [UIImagePNGRepresentation(image) writeToURL:profilePhotoFilePath atomically:YES];
+
+    NSData *profileData = [NSData dataWithContentsOfURL:profilePhotoFilePath];
+
+    NSDictionary *parameters = @{};
+    AFHTTPRequestOperation *op = [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"files/uploadProfilePhoto.php"] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //do not put image inside parameters dictionary as I did, but append it!
+        [formData appendPartWithFileData:profileData name:@"profilePhoto" fileName:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]] mimeType:@"image/png"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSLog(@"Success: %@ ***** %@", operation.responseString, responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+    }];
+    [op start];
+
 }
 
 #pragma mark - Language Methods
