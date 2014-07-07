@@ -10,6 +10,7 @@
 #import "PPDatabaseManager.h"
 #import "PPPal.h"
 #import "PPLanguage.h"
+#import "JMImageCache.h"
 
 @implementation PPPalsViewController
 @synthesize table;
@@ -188,6 +189,11 @@
                 else palRequest = [requests objectAtIndex:indexPath.row];
                 
                 cell.username.text = cell.type == kPalType ? palFriendship.username : palRequest.username;
+                
+                [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, cell.type == kPalType ? palFriendship.username : palRequest.username]] key:nil
+                                placeholder:nil
+                                completionBlock:nil
+                                failureBlock:nil];
                 break;
             }
         }
@@ -221,6 +227,11 @@
         profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
         profilePopup.email.text = results.sharedEmail;
         profilePopup.skype.text = results.skypeID;
+        
+        [profilePopup.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, username]] key:nil
+                        placeholder:nil
+                    completionBlock:nil
+                       failureBlock:nil];
         
         NSMutableString *fullLanguageString = [NSMutableString string];
         NSMutableString *learning = [NSMutableString stringWithString:@"I'm Learning:\n"];

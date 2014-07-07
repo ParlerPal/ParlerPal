@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -10,6 +11,7 @@
                 <outlet property="country" destination="vhg-yT-63H" id="Ezc-X8-xES"/>
                 <outlet property="email" destination="u7n-48-VvM" id="tdf-Vk-14K"/>
                 <outlet property="gender" destination="wql-79-JQq" id="th0-0o-cXy"/>
+                <outlet property="image" destination="5pL-ti-6T4" id="eHz-3Z-bYa"/>
                 <outlet property="languages" destination="g4q-Ru-Yb7" id="tdZ-iS-taW"/>
                 <outlet property="profile" destination="q8U-EE-DQ0" id="li2-eb-bbc"/>
                 <outlet property="skype" destination="0CC-bs-IjR" id="NSp-9q-xyB"/>

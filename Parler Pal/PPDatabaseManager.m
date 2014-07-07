@@ -325,7 +325,7 @@
         NSArray *results = [xmlDoc nodesForXPath:@"//user" error:nil];
         
         NSMutableArray *allResults = [[NSMutableArray alloc]init];
-        
+
         for (DDXMLElement *node in results)
         {
             NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
@@ -362,7 +362,7 @@
         NSData *data = (NSData *)responseObject;
         DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
         NSArray *results = [xmlDoc nodesForXPath:@"//user" error:nil];
-        
+
         NSMutableArray *allResults = [[NSMutableArray alloc]init];
         
         for (DDXMLElement *node in results)
@@ -425,7 +425,8 @@
         NSData *data = (NSData *)responseObject;
         DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
         NSArray *results = [xmlDoc nodesForXPath:@"//user" error:nil];
-        
+        NSLog(@"%@", xmlDoc);
+
         NSMutableArray *allResults = [[NSMutableArray alloc]init];
         
         for (DDXMLElement *node in results)

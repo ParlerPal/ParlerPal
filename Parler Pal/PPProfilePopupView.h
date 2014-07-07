@@ -12,6 +12,7 @@
 @property(nonatomic, weak) IBOutlet UILabel *username, *country, *email, *skype, *age, *gender;
 @property(nonatomic, weak) IBOutlet UITextView *profile, *languages;
 @property(nonatomic, weak) IBOutlet UIView *view;
+@property(nonatomic, weak) IBOutlet UIImageView *image;
 
 -(void)show;
 @end

@@ -15,6 +15,8 @@
 		641B801A1958FF4F0064289F /* map2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80191958FF4F0064289F /* map2r.png */; };
 		641B8020195902C50064289F /* map3r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B801F195902C50064289F /* map3r.png */; };
 		641F6B081969F9D9008A7E76 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641F6B071969F9D9008A7E76 /* CoreData.framework */; };
+		641F6B16196A3E7C008A7E76 /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 641F6B15196A3E7C008A7E76 /* JMImageCache.m */; };
+		641F6B19196A3E84008A7E76 /* UIImageView+JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 641F6B18196A3E84008A7E76 /* UIImageView+JMImageCache.m */; };
 		64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */; };
 		64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */; };
 		6423F58F1951241C00C14934 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423F58E1951241C00C14934 /* AudioToolbox.framework */; };
@@ -131,6 +133,10 @@
 		641B80191958FF4F0064289F /* map2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2r.png; sourceTree = "<group>"; };
 		641B801F195902C50064289F /* map3r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3r.png; sourceTree = "<group>"; };
 		641F6B071969F9D9008A7E76 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		641F6B14196A3E7C008A7E76 /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
+		641F6B15196A3E7C008A7E76 /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
+		641F6B17196A3E84008A7E76 /* UIImageView+JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JMImageCache.h"; sourceTree = "<group>"; };
+		641F6B18196A3E84008A7E76 /* UIImageView+JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JMImageCache.m"; sourceTree = "<group>"; };
 		64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPProfilePopupView.xib; sourceTree = "<group>"; };
 		64203A1C19610D5F00C652B2 /* PPProfilePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPProfilePopupView.h; sourceTree = "<group>"; };
 		64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPProfilePopupView.m; sourceTree = "<group>"; };
@@ -320,6 +326,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		641F6B13196A3E6A008A7E76 /* JMImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				641F6B17196A3E84008A7E76 /* UIImageView+JMImageCache.h */,
+				641F6B18196A3E84008A7E76 /* UIImageView+JMImageCache.m */,
+				641F6B14196A3E7C008A7E76 /* JMImageCache.h */,
+				641F6B15196A3E7C008A7E76 /* JMImageCache.m */,
+			);
+			name = JMImageCache;
+			sourceTree = "<group>";
+		};
 		6423F59F195126FD00C14934 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +575,7 @@
 		64B01CAD1969C94D00D90337 /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				641F6B13196A3E6A008A7E76 /* JMImageCache */,
 				643434F51968C9B400600EF9 /* KeychainWrapper */,
 				645A1B53195B54EB004657B2 /* KissXML */,
 				645A1B32195B4F54004657B2 /* AFNetworking */,
@@ -828,8 +846,10 @@
 				645A1B65195B54EB004657B2 /* DDXMLDocument.m in Sources */,
 				64F780CE195270F80028A8D6 /* PPLanguageTableViewCell.m in Sources */,
 				648C843419631484009872D9 /* PPMessageLocation.m in Sources */,
+				641F6B19196A3E84008A7E76 /* UIImageView+JMImageCache.m in Sources */,
 				648985781954FAF5004C0286 /* PPPalTableViewCell.m in Sources */,
 				64203A1E19610D5F00C652B2 /* PPProfilePopupView.m in Sources */,
+				641F6B16196A3E7C008A7E76 /* JMImageCache.m in Sources */,
 				64B01CB11969C99600D90337 /* PPPal.m in Sources */,
 				64A1E88D19520AAC00620BA1 /* PPNavigationController.m in Sources */,
 				6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */,

@@ -10,6 +10,7 @@
 #import "PPDatabaseManager.h"
 #import "PPPal.h"
 #import "PPLanguage.h"
+#import "JMImageCache.h"
 
 @implementation PPFindPalsViewController
 @synthesize table, filteredPalsArray, searchBar;
@@ -121,6 +122,10 @@
     
     cell.username.text = pal.username;
     
+    [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, pal.username]] key:nil
+                        placeholder:nil
+                    completionBlock:nil
+                       failureBlock:nil];
     return cell;
 }
 

@@ -12,6 +12,7 @@
 #import "PPDatabaseManager.h"
 #import "PPMessage.h"
 #import "PPMessageLocation.h"
+#import "JMImageCache.h"
 
 @interface PPMainViewController(PrivateMethods)
 
@@ -183,7 +184,10 @@
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
                 cell.messageLabel.text = message.subject;
-                cell.imageView.image = nil;
+                [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, message.from]] key:nil
+                                    placeholder:nil
+                                completionBlock:nil
+                                   failureBlock:nil];
                 
                 NSDateFormatter *df = [[NSDateFormatter alloc]init];
                 df.dateFormat = @"yyyy-MM-dd hh:mm a";
