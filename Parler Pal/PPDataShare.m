@@ -9,7 +9,7 @@
 #import "PPDataShare.h"
 
 @implementation PPDataShare
-@synthesize currentUser, sharedMessage, sharedUser;
+@synthesize currentUser, sharedMessage, sharedUser, draft;
 
 + (PPDataShare *)sharedSingleton
 {

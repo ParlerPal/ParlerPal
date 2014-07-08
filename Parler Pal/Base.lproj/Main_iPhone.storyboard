@@ -1016,6 +1016,7 @@
                         <outlet property="stopButton" destination="sdq-Bo-i0g" id="yuG-Sf-hUn"/>
                         <outlet property="subjectField" destination="ahq-UW-zAF" id="Mag-Z5-4tx"/>
                         <outlet property="toField" destination="q23-Wp-5Dn" id="Ztd-Ux-dk3"/>
+                        <outlet property="toolbarTitle" destination="ttX-3F-npI" id="hSN-OK-CV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqM-fT-T8c" userLabel="First Responder" sceneMemberID="firstResponder"/>

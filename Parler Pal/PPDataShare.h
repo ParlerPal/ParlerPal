@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PPPalsViewController;
+@class PPDraft;
 
 @interface PPDataShare : NSObject
 {
@@ -18,6 +19,7 @@
 }
 @property(nonatomic, strong) NSString *currentUser, *sharedUser;
 @property(nonatomic, strong) NSMutableDictionary *sharedMessage;
+@property(nonatomic, strong) PPDraft *draft;
 
 +(PPDataShare *)sharedSingleton;
 

@@ -18,8 +18,6 @@
     NSMutableArray *pals;
     NSMutableArray *autoCompletePals;
     UITableView *autocompleteTableView;
-    
-    int currDraftID;
 }
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
@@ -32,6 +30,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
 @property (nonatomic, weak) IBOutlet UIButton *stopButton;
 @property (nonatomic, weak) IBOutlet UIButton *deleteButton;
+@property (nonatomic, weak) IBOutlet UINavigationItem *toolbarTitle;
+@property (nonatomic, readwrite) int currDraftID;
 
 -(IBAction)sendButton:(id)sender;
 -(IBAction)saveButton:(id)sender;

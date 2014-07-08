@@ -10,18 +10,20 @@
 #import "SWRevealViewController.h"
 #import "PPDatabaseManager.h"
 #import "PPPal.h"
+#import "PPDataShare.h"
+#import "PPDraft.h"
 
 #define kAudioTimeLimit 60
 
 @implementation PPMessagesComposeViewController
-@synthesize revealButton, toField, subjectField, messageBox, lm, deleteButton, stopButton, playButton, recordButton;
+@synthesize revealButton, toField, subjectField, messageBox, lm, deleteButton, stopButton, playButton, recordButton, currDraftID, toolbarTitle;
 
 #pragma mark - View Methods
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 
     [self.revealButton setTarget: self.revealViewController];
@@ -58,7 +60,22 @@
     
     [self setUpAudio];
     
-    currDraftID = -1;
+    self.currDraftID = -1;
+    
+    //If we are working with a draft.
+    if([[PPDataShare sharedSingleton]draft])
+    {
+        __weak PPDraft *currDraft = [[PPDataShare sharedSingleton]draft];
+        
+        self.currDraftID = currDraft.dbID;
+        self.toField.text = currDraft.to;
+        self.subjectField.text = currDraft.subject;
+        self.messageBox.text = currDraft.message;
+        self.toolbarTitle.title = @"Drafted Message";
+        int memoID = [currDraft.memoID intValue];
+        
+        [[PPDataShare sharedSingleton]setDraft:nil];
+    }
 }
 
 -(void)setUpAudio
@@ -156,6 +173,13 @@
         return;
     }
     
+    //If there is a draft delete it from the server since its being sent and no longer a draft.
+    if(self.currDraftID != -1)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]deleteDraftByID:self.currDraftID completionHandler:^(bool success) {
+        }];
+    }
+    
     [[PPDatabaseManager sharedDatabaseManager]submitMessageTo:toField.text subject:subjectField.text andMessage:messageBox.text location: self.location sendMemo:audioMessageRecorded completionHandler:^(bool success) {
         subjectField.text = @"";
         messageBox.text = @"";
@@ -168,8 +192,8 @@
 
 -(IBAction)saveButton:(id)sender
 {
-   [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:@"" draftID:currDraftID completionHandler:^(bool success, int draftID) {
-       currDraftID = draftID;
+   [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:@"" draftID:self.currDraftID completionHandler:^(bool success, int draftID) {
+       self.currDraftID = draftID;
    }];
 }
 

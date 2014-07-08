@@ -13,6 +13,7 @@
 #import "PPMessageTableViewCell.h"
 #import "JMImageCache.h"
 #import "PPMessagesComposeViewController.h"
+#import "PPDataShare.h"
 
 @implementation PPMessagesWorkInProgressViewController
 @synthesize table;
@@ -119,9 +120,15 @@
 {
     PPDraft *draft = [drafts objectAtIndex:indexPath.row];
     
-    [[PPDatabaseManager sharedDatabaseManager]getDraftByID:draft.dbID completionHandler:^(PPDraft *results) {
-        NSLog(@"%@",results.from);
+    [[PPDatabaseManager sharedDatabaseManager]getDraftByID:draft.dbID completionHandler:^(PPDraft *results) {        
         
+        [[PPDataShare sharedSingleton]setDraft:results];
+
+        UIStoryboard *sb = self.storyboard;
+        PPMessagesComposeViewController *composeViewController = [sb instantiateViewControllerWithIdentifier:@"composeView"];
+        UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
+        [navController setViewControllers: @[composeViewController] animated: NO];
+        [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: NO];
     }];
 }
 
