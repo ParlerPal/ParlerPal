@@ -272,6 +272,7 @@
             coordinate.latitude = message.lat;
             coordinate.longitude = message.lon;
             PPMessageLocation *annotation = [[PPMessageLocation alloc] initWithName:name subject:subject coordinate:coordinate] ;
+            annotation.index = (int)[messages indexOfObject:message];
             [mapView addAnnotation:annotation];
         }
     }
@@ -290,6 +291,9 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [button setTintColor:[UIColor blackColor]];
+            annotationView.rightCalloutAccessoryView = button;
             annotationView.image = [UIImage imageNamed:@"mapPin.png"];//here we use a nice image instead of the default pins
         } else {
             annotationView.annotation = annotation;
@@ -299,6 +303,32 @@
     }
     
     return nil;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    PPMessageLocation *annotation = (PPMessageLocation *)view.annotation;
+    PPMessage *message = [messages objectAtIndex:annotation.index];
+
+    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
+        messageContentView.content.text = [results objectForKey:@"content"];
+        
+        messageContentView.fromLabel.text = message.from;
+        messageContentView.toLabel.text = message.to;
+        messageContentView.subjectLabel.text = message.subject;
+        messageContentView.messageID = message.dbID;
+        messageContentView.memoAttached = message.memoAttached;
+        
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
+            [messages removeObjectAtIndex:annotation.index];
+            [self.table reloadData];
+            [self plotMessagesPositions];
+        }];
+        
+    }];
+    
+    [self.view addSubview:messageContentView];
+    [messageContentView show];
 }
 
 -(void)setMapRegion

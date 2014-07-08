@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface PPMessageLocation : NSObject <MKAnnotation>
+@property (nonatomic, readwrite) int index;
 
 -(id)initWithName:(NSString*)name subject:(NSString*)subject coordinate:(CLLocationCoordinate2D)coordinate;
 -(MKMapItem*)mapItem;

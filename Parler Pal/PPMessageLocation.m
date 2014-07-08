@@ -14,9 +14,11 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, assign) CLLocationCoordinate2D theCoordinate;
+
 @end
 
 @implementation PPMessageLocation
+@synthesize index;
 
 -(id)initWithName:(NSString*)name subject:(NSString*)subject coordinate:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
