@@ -40,6 +40,18 @@
                         <action selector="hide:" destination="-1" eventType="touchUpInside" id="J34-t4-9l8"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIJ-0A-P6J">
+                    <rect key="frame" x="243" y="518" width="57" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>
+                    <state key="normal" title="Message">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendMessage:" destination="-1" eventType="touchUpInside" id="EOm-9f-rH1"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stripeBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="GW9-sV-9hX">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

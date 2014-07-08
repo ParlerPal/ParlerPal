@@ -43,6 +43,8 @@
     [[NSBundle mainBundle]loadNibNamed:@"PPProfilePopupView" owner:self options:nil];
     [self addSubview:self.view];
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
+    
+    popupReply = [[PPReplyPopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
 }
 
 #pragma mark - action methods
@@ -52,6 +54,13 @@
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
     } completion:^(BOOL finished){[self removeFromSuperview];}];
+}
+
+-(IBAction)sendMessage:(id)sender
+{
+    [self.view addSubview:popupReply];
+    popupReply.toField.text = self.username.text;
+    [popupReply show];
 }
 
 #pragma mark - visibility methods methods
