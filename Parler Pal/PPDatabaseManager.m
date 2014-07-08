@@ -262,6 +262,18 @@
 
 }
 
+-(void)deleteProfilePhotoCompletionHandler:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"files/deleteProfilePhoto.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(handler)handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              if(handler)handler(NO);
+          }];
+}
+
 #pragma mark - Language Methods
 
 -(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level completionHandler:(void(^)(bool success))handler

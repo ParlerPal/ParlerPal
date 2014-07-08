@@ -135,6 +135,18 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
+-(IBAction)deletePhoto:(UIButton *)sender
+{
+    [[PPDatabaseManager sharedDatabaseManager]deleteProfilePhotoCompletionHandler:^(bool success) {
+    }];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = dirPaths[0];
+    [fm removeItemAtPath:[docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]]] error:nil];
+    self.imageView.image = nil;
+}
+
 #pragma mark - gesutre recoginizer methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec{

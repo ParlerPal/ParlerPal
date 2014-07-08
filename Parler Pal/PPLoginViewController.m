@@ -55,6 +55,8 @@
 
         self.savePassword.on = YES;
     }
+    
+    [UIView setAnimationsEnabled:YES];
 }
 #pragma mark - gesture methods
 

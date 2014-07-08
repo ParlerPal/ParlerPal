@@ -36,6 +36,7 @@
 -(void)deleteProfileCompletionHandler:(void(^)(bool success))handler;
 -(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(PPPal *results))handler;
 -(void)uploadProfileImage:(UIImage *)image completionHandler:(void(^)(bool success))handler;
+-(void)deleteProfilePhotoCompletionHandler:(void(^)(bool success))handler;
 
 //Language methods
 -(void)updateLanguageWithName:(NSString *)name languageStatus:(int)status languageLevel:(int)level completionHandler:(void(^)(bool success))handler;
