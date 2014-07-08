@@ -704,16 +704,37 @@
 
 #pragma mark - draft methods
 
--(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID completionHandler:(void(^)(bool success))handler
+-(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID draftID:(int)currDraftID completionHandler:(void(^)(bool success, int draftID))handler
 {
-    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"memoID": memoID};
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"memoID": memoID, @"draftID": [NSNumber numberWithInt:currDraftID]};
     
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/saveDraft.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
-        if(handler)handler(YES);
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//draft" error:nil];
+        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+        
+        for (DDXMLElement *node in results)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
+        
+        if(handler)handler(YES, [[item objectForKey:@"draftID"]intValue]);
     }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
-         if(handler)handler(NO);
+         if(handler)handler(NO, -1);
      }];
 }
 

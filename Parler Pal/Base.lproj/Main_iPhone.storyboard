@@ -846,6 +846,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yrQ-La-fFz">
+                                <rect key="frame" x="0.0" y="75" width="320" height="449"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QQR-dt-9vp" id="O84-SZ-lOU"/>
+                                    <outlet property="delegate" destination="QQR-dt-9vp" id="GJj-uq-dYX"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -853,6 +863,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="revealButton" destination="6h1-0y-g28" id="GOf-DF-QaS"/>
+                        <outlet property="table" destination="yrQ-La-fFz" id="FYB-xn-Gzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00j-kn-xwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -863,7 +874,7 @@
         <!--Messages Compose View Controller-->
         <scene sceneID="q3J-ro-BFL">
             <objects>
-                <viewController id="ErS-9a-s1W" customClass="PPMessagesComposeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="composeView" id="ErS-9a-s1W" customClass="PPMessagesComposeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H8U-Ae-0bw"/>
                         <viewControllerLayoutGuide type="bottom" id="aca-mY-vdX"/>

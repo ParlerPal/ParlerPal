@@ -57,6 +57,8 @@
     [self.view addSubview:autocompleteTableView];
     
     [self setUpAudio];
+    
+    currDraftID = -1;
 }
 
 -(void)setUpAudio
@@ -166,7 +168,9 @@
 
 -(IBAction)saveButton:(id)sender
 {
-    NSLog(@"SAVE");
+   [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:@"" draftID:currDraftID completionHandler:^(bool success, int draftID) {
+       currDraftID = draftID;
+   }];
 }
 
 -(IBAction)recordAudio:(id)sender

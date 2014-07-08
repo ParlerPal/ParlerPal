@@ -163,7 +163,7 @@
                 PPMessage *message = [messages objectAtIndex:indexPath.row];
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
-                cell.messageLabel.text = message.to;
+                cell.messageLabel.text = message.subject;
                 [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, message.from]] key:nil
                                         placeholder:nil
                                     completionBlock:nil

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PPMessagesWorkInProgressViewController : UIViewController
+@interface PPMessagesWorkInProgressViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+{
+    NSMutableArray *drafts;
+}
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
+@property(nonatomic, weak) IBOutlet UITableView *table;
 
 @end

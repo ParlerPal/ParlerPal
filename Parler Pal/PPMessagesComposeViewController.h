@@ -18,6 +18,8 @@
     NSMutableArray *pals;
     NSMutableArray *autoCompletePals;
     UITableView *autocompleteTableView;
+    
+    int currDraftID;
 }
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property (nonatomic, weak) IBOutlet UITextField *toField, *subjectField;
