@@ -72,7 +72,7 @@
         self.subjectField.text = currDraft.subject;
         self.messageBox.text = currDraft.message;
         self.toolbarTitle.title = @"Drafted Message";
-        int memoID = currDraft.memoID;
+        //int memoID = currDraft.memoID;
         
         [[PPDataShare sharedSingleton]setDraft:nil];
     }
@@ -194,6 +194,9 @@
 {
    [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:0 draftID:self.currDraftID completionHandler:^(bool success, int draftID) {
        self.currDraftID = draftID;
+       
+       UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Draft Saved" message:@"The draft has been saved, keep in mind that any audio recordings are not saved." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
+       [alert show];
    }];
 }
 
