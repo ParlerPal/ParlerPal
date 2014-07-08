@@ -13,6 +13,7 @@
 
 @class PPPal;
 @class PPUser;
+@class PPDraft;
 
 #define WEB_SERVICES @"http://24.131.92.164/ppWebServices/"
 
@@ -58,4 +59,9 @@
 -(void)markMessageAsRead:(int)messageID completionHandler:(void(^)(bool success))handler;
 -(void)deleteMessage:(int)messageID completionHandler:(void(^)(bool success))handler;
 
+//Draft Methods
+-(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID completionHandler:(void(^)(bool success))handler;
+-(void)getDraftByID:(int)draftID completionHandler:(void(^)(PPDraft *results))handler;
+-(void)getAllDraftsCompletionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)deleteDraftByID:(int)draftID completionHandler:(void(^)(bool success))handler;
 @end

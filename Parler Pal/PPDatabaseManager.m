@@ -13,6 +13,7 @@
 #import "PPMessage.h"
 #import "PPLanguage.h"
 #import "PPPal.h"
+#import "PPDraft.h"
 
 @implementation PPDatabaseManager
 
@@ -700,5 +701,106 @@
               if(handler)handler(NO);
           }];
 }
+
+#pragma mark - draft methods
+
+-(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID completionHandler:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"memoID": memoID};
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/saveDraft.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        if(handler)handler(YES);
+    }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+         if(handler)handler(NO);
+     }];
+}
+
+-(void)getDraftByID:(int)draftID completionHandler:(void(^)(PPDraft *results))handler
+{
+    NSDictionary *parameters = @{@"id":[NSNumber numberWithInt:draftID]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/getDraftByID.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//draft" error:nil];
+        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+        
+        for (DDXMLElement *node in results)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
+        
+        PPDraft *draft = [[PPDraft alloc]initWithDictionary:item];
+        if(handler)handler(draft);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)getAllDraftsCompletionHandler:(void(^)(NSMutableArray *results))handler
+{
+    NSDictionary *parameters = @{};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/getAllDrafts.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//draft" error:nil];
+        
+        NSMutableArray *allResults = [[NSMutableArray alloc]init];
+        
+        for (DDXMLElement *node in results)
+        {
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+            
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+            
+            PPDraft *draft = [[PPDraft alloc]initWithDictionary:item];
+            [allResults addObject:draft];
+        }
+        
+        if(handler)handler(allResults);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+-(void)deleteDraftByID:(int)draftID completionHandler:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"id": [NSNumber numberWithInt:draftID]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/deleteDraftByID.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(handler)if(handler)handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              if(handler)handler(NO);
+          }];
+}
+
 
 @end
