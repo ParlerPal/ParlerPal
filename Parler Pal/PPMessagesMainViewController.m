@@ -202,11 +202,13 @@
         messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
         messageContentView.memoAttached = message.memoAttached;
         
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
-            if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
-            [self.table reloadData];
-        }];
-
+        if(self.displayType != PPMessagesDisplayTypeSent)
+        {
+            [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
+                if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
+                [self.table reloadData];
+            }];
+        }
     }];
     
     [self.view addSubview:messageContentView];

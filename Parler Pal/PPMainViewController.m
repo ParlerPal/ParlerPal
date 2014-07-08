@@ -324,7 +324,6 @@
             [self.table reloadData];
             [self plotMessagesPositions];
         }];
-        
     }];
     
     [self.view addSubview:messageContentView];
