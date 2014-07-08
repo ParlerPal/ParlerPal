@@ -298,11 +298,15 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if(textField == self.subjectField)return;
+    
     autocompleteTableView.hidden = YES;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if(textField == self.subjectField)return YES;
+    
     autocompleteTableView.hidden = NO;
     
     NSString *substring = [NSString stringWithString:textField.text];
