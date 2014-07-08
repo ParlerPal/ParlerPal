@@ -20,7 +20,10 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = dirPaths[0];
+    [fm createDirectoryAtPath:[docsDir stringByAppendingPathComponent:@"audioMessages"] withIntermediateDirectories:YES attributes:nil error:nil];
     return YES;
 }
 							

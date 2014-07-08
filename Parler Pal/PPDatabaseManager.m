@@ -513,7 +513,7 @@
 {
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = dirPaths[0];
-    NSURL *soundFileURL = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"memo.m4a"]];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"audioMessages/tempAudioMessage.m4a"]];
     NSData *audioData = [NSData dataWithContentsOfURL:soundFileURL];
     
     NSDictionary *parameters = @{@"messageID": messageID};
@@ -704,9 +704,9 @@
 
 #pragma mark - draft methods
 
--(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID draftID:(int)currDraftID completionHandler:(void(^)(bool success, int draftID))handler
+-(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(int)memoID draftID:(int)currDraftID completionHandler:(void(^)(bool success, int draftID))handler
 {
-    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"memoID": memoID, @"draftID": [NSNumber numberWithInt:currDraftID]};
+    NSDictionary *parameters = @{@"to": theUser, @"subject": subject, @"message": message, @"memoID": [NSNumber numberWithInt:memoID], @"draftID": [NSNumber numberWithInt:currDraftID]};
     
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"drafts/saveDraft.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         NSData *data = (NSData *)responseObject;

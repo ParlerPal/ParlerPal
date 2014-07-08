@@ -60,7 +60,7 @@
 -(void)deleteMessage:(int)messageID completionHandler:(void(^)(bool success))handler;
 
 //Draft Methods
--(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(NSString *)memoID draftID:(int)currDraftID completionHandler:(void(^)(bool success, int draftID))handler;
+-(void)submitDraftWithTo:(NSString *)theUser subject:(NSString *)subject message:(NSString *)message andMemoID:(int)memoID draftID:(int)currDraftID completionHandler:(void(^)(bool success, int draftID))handler;
 -(void)getDraftByID:(int)draftID completionHandler:(void(^)(PPDraft *results))handler;
 -(void)getAllDraftsCompletionHandler:(void(^)(NSMutableArray *results))handler;
 -(void)deleteDraftByID:(int)draftID completionHandler:(void(^)(bool success))handler;

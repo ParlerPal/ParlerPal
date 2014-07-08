@@ -22,7 +22,7 @@
         self.to = [dictionary objectForKey:@"to"];
         self.subject = [dictionary objectForKey:@"subject"];
         self.message = [dictionary objectForKey:@"message"];
-        self.memoID = [dictionary objectForKey:@"memoID"];
+        self.memoID = [[dictionary objectForKey:@"memoID"]intValue];
         
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

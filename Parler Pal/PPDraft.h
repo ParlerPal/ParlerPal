@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface PPDraft : NSObject
-@property (nonatomic, strong) NSString *from, *to, *subject, *message, *memoID;
-@property (nonatomic, readwrite) int dbID;
+@property (nonatomic, strong) NSString *from, *to, *subject, *message;
+@property (nonatomic, readwrite) int dbID, memoID;
 @property (nonatomic, strong) NSDate *created;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;

@@ -72,7 +72,7 @@
         self.subjectField.text = currDraft.subject;
         self.messageBox.text = currDraft.message;
         self.toolbarTitle.title = @"Drafted Message";
-        int memoID = [currDraft.memoID intValue];
+        int memoID = currDraft.memoID;
         
         [[PPDataShare sharedSingleton]setDraft:nil];
     }
@@ -88,7 +88,7 @@
     
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = dirPaths[0];
-    NSURL *soundFileURL = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"memo.m4a"]];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"audioMessages/tempAudioMessage.m4a"]];
     
     NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: 1], AVNumberOfChannelsKey, [NSNumber numberWithFloat:12000.0], AVSampleRateKey, [NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,nil];
     
@@ -192,7 +192,7 @@
 
 -(IBAction)saveButton:(id)sender
 {
-   [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:@"" draftID:self.currDraftID completionHandler:^(bool success, int draftID) {
+   [[PPDatabaseManager sharedDatabaseManager]submitDraftWithTo:toField.text subject:subjectField.text message:messageBox.text andMemoID:0 draftID:self.currDraftID completionHandler:^(bool success, int draftID) {
        self.currDraftID = draftID;
    }];
 }
