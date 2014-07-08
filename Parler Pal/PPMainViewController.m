@@ -184,6 +184,7 @@
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
                 cell.messageLabel.text = message.subject;
+                cell.toLabel.text = message.to;
                 [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, message.from]] key:nil
                                     placeholder:nil
                                 completionBlock:nil

@@ -9,6 +9,6 @@
 #import "PPMessageTableViewCell.h"
 
 @implementation PPMessageTableViewCell
-@synthesize imageView, fromLabel, messageLabel, dateLabel, messageID;
+@synthesize imageView, fromLabel, messageLabel, dateLabel, messageID, toLabel;
 
 @end

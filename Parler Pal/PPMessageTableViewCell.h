@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PPMessageTableViewCell : UITableViewCell
-@property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, weak) UILabel *fromLabel, *messageLabel, *dateLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *fromLabel, *messageLabel, *dateLabel, *toLabel;
 @property (readwrite) int messageID;
 
 @end

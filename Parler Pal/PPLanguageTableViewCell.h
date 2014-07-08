@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PPLanguageTableViewCell : UITableViewCell
-@property(nonatomic, weak)UILabel *language;
-@property(nonatomic, weak)UISegmentedControl *status, *level;
+@property(nonatomic, weak)IBOutlet UILabel *language;
+@property(nonatomic, weak)IBOutlet UISegmentedControl *status, *level;
 
 //Action Methods
 -(IBAction)statusChange:(id)sender;
