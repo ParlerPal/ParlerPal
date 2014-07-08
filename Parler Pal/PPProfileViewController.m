@@ -10,6 +10,7 @@
 #import "PPDatabaseManager.h"
 #import "PPDataShare.h"
 #import "PPUser.h"
+#import "UIImage+Resize.h"
 
 @implementation PPProfileViewController
 @synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender, imageView;
@@ -40,6 +41,8 @@
     }];
     
     [self registerForKeyboardNotifications];
+    
+    self.imageView.layer.cornerRadius = 5.0;
 }
 
 -(void)viewDidLayoutSubviews
@@ -214,6 +217,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    if(chosenImage.size.width*chosenImage.size.height >= 62500)chosenImage = [UIImage imageWithImage:chosenImage scaledToSize:CGSizeMake(250, 250)];
     self.imageView.image = chosenImage;
     [[PPDatabaseManager sharedDatabaseManager]uploadProfileImage:self.imageView.image completionHandler:^(bool success) {
     }];

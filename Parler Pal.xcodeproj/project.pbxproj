@@ -29,6 +29,7 @@
 		6423F59E195126F900C14934 /* PPUserRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6423F59D195126F900C14934 /* PPUserRegistrationViewController.m */; };
 		6433125E195F9C5800290E02 /* cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 6433125D195F9C5800290E02 /* cellBG.png */; };
 		643434F81968C9B400600EF9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 643434F71968C9B400600EF9 /* KeychainItemWrapper.m */; };
+		6446AFA3196C366A00521135 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6446AFA2196C366A00521135 /* UIImage+Resize.m */; };
 		645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */; };
 		645A1B47195B4F54004657B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B36195B4F54004657B2 /* AFHTTPRequestOperationManager.m */; };
 		645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B38195B4F54004657B2 /* AFHTTPSessionManager.m */; };
@@ -153,6 +154,8 @@
 		6433125D195F9C5800290E02 /* cellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBG.png; sourceTree = "<group>"; };
 		643434F61968C9B400600EF9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		643434F71968C9B400600EF9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		6446AFA1196C366A00521135 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		6446AFA2196C366A00521135 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		645A1B33195B4F54004657B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		645A1B35195B4F54004657B2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 				645A1B69195B5A72004657B2 /* PPDatabaseManager.m */,
 				64AF9D7219575047007EF924 /* PPDataShare.h */,
 				64AF9D7319575047007EF924 /* PPDataShare.m */,
+				6446AFA1196C366A00521135 /* UIImage+Resize.h */,
+				6446AFA2196C366A00521135 /* UIImage+Resize.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -880,6 +885,7 @@
 				64A1E89119520EB000620BA1 /* PPTopReplaceSegue.m in Sources */,
 				649548061956907600349DC4 /* PPFindPalsViewController.m in Sources */,
 				64BFB6471944183300D11E88 /* main.m in Sources */,
+				6446AFA3196C366A00521135 /* UIImage+Resize.m in Sources */,
 				64AF9D7419575047007EF924 /* PPDataShare.m in Sources */,
 				64B01CBA1969C9C700D90337 /* PPLanguage.m in Sources */,
 			);
