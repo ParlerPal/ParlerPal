@@ -261,20 +261,19 @@
         [mapView removeAnnotation:annotation];
     }
 
-    for(PPMessage *message in messages)
+    NSMutableArray *messagesToPin = [self getMessagesThatCanBePinned];
+
+    for(PPMessage *message in messagesToPin)
     {
-        if(message.lat != 0 && message.lon != 0)
-        {
-            NSString * name = message.from;
-            NSString * subject = message.subject;
-    
-            CLLocationCoordinate2D coordinate;
-            coordinate.latitude = message.lat;
-            coordinate.longitude = message.lon;
-            PPMessageLocation *annotation = [[PPMessageLocation alloc] initWithName:name subject:subject coordinate:coordinate] ;
-            annotation.index = (int)[messages indexOfObject:message];
-            [mapView addAnnotation:annotation];
-        }
+        NSString * name = message.from;
+        NSString * subject = message.subject;
+
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = message.lat;
+        coordinate.longitude = message.lon;
+        PPMessageLocation *annotation = [[PPMessageLocation alloc] initWithName:name subject:subject coordinate:coordinate] ;
+        annotation.index = (int)[messages indexOfObject:message];
+        [mapView addAnnotation:annotation];
     }
     
     [self setMapRegion];
@@ -332,17 +331,20 @@
 
 -(void)setMapRegion
 {
-    if([messages count] > 0)
+    NSMutableArray *messagesToPin = [self getMessagesThatCanBePinned];
+    
+    if([messagesToPin count] > 0)
     {
         //calculate new region to show on map
-        PPMessage *firstMessage = [messages objectAtIndex:0];
+        PPMessage *firstMessage = [messagesToPin objectAtIndex:0];
         double max_long = firstMessage.lon;
         double min_long = firstMessage.lon;
         double max_lat = firstMessage.lat;
         double min_lat = firstMessage.lat;
         
         //find min and max values
-        for (PPMessage *message in messages) {
+        for (PPMessage *message in messagesToPin)
+        {
             if (message.lat > max_lat) {max_lat = message.lat;}
             if (message.lat < min_lat) {min_lat = message.lat;}
             if (message.lon > max_long) {max_long = message.lon;}
@@ -369,6 +371,22 @@
         [mapView setRegion:region];
     }
 }
+
+-(NSMutableArray *)getMessagesThatCanBePinned
+{
+    NSMutableArray *validMessages = [[NSMutableArray alloc]init];
+    
+    for(PPMessage *message in messages)
+    {
+        if(message.lat != 0 && message.lon != 0)
+        {
+            [validMessages addObject:message];
+        }
+    }
+    
+    return validMessages;
+}
+
 #pragma mark - segue methods
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender

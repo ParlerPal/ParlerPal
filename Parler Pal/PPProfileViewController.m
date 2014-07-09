@@ -199,7 +199,7 @@
     if(buttonIndex == 1)
     {
         [[PPDatabaseManager sharedDatabaseManager]deleteProfileCompletionHandler:^(bool success) {
-            [self performSegueWithIdentifier:@"loginReturn" sender:self];
+            [self performSegueWithIdentifier:@"logout" sender:self];
         }];
     }
     

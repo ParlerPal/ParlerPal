@@ -246,6 +246,7 @@
                         <outlet property="scrollView" destination="Jnp-PZ-orE" id="Txq-cw-W4p"/>
                         <outlet property="sharedEmailField" destination="udQ-NO-9jI" id="vaz-kU-rYt"/>
                         <outlet property="skypeIDField" destination="4zd-Py-KF7" id="gU4-jx-HAd"/>
+                        <segue destination="Rpl-kr-e5T" kind="unwind" identifier="logout" unwindAction="unwindToLogin:" id="VLk-LU-SXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Apv-99-2cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
