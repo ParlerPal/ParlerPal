@@ -23,7 +23,12 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = dirPaths[0];
-    [fm createDirectoryAtPath:[docsDir stringByAppendingPathComponent:@"audioMessages"] withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    if(![fm fileExistsAtPath:[docsDir stringByAppendingPathComponent:@"audioMessages"]])
+    {
+        [fm createDirectoryAtPath:[docsDir stringByAppendingPathComponent:@"audioMessages"] withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
     return YES;
 }
 							
