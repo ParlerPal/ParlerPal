@@ -330,6 +330,12 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-OA-jHM">
+                                                <rect key="frame" x="20" y="163" width="280" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -345,6 +351,7 @@
                         <outlet property="savePassword" destination="o3v-YV-bhz" id="yGc-RR-y5H"/>
                         <outlet property="scrollView" destination="vzZ-Dd-EXy" id="zRX-6d-O4i"/>
                         <outlet property="userName" destination="Tor-hE-fa3" id="O4J-c7-kRg"/>
+                        <outlet property="welcomeMessage" destination="1eP-OA-jHM" id="qnn-Rk-qaF"/>
                         <segue destination="pnS-xi-IeC" kind="push" identifier="login" id="qax-Ks-bph"/>
                     </connections>
                 </viewController>

@@ -19,8 +19,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self animateText];
 
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     tapRec.delegate = self;
@@ -30,19 +28,36 @@
     welcomeLanguages = @[@"Welcome",@"أهلا وسهلا", @"Bienvenue",@"Willkommen",@"Benvenuto",@"ようこそ",@"환영합니다",@"歡迎",@"Bem-vindo",@"Merhaba", @"witaj", @"добро пожаловать", @"Ласкаво просимо",@"chào mừng"];
     
     [self registerForKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationEnteredForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(changeWelcomeText) userInfo:nil repeats:YES];
 }
 
--(void)viewDidLayoutSubviews
+- (void)applicationEnteredForeground:(NSNotification *)notification
 {
-    [super viewDidLayoutSubviews];
-    [self.scrollView layoutIfNeeded];
-    self.scrollView.contentSize = self.contentView.bounds.size;
+    [self.welcomeMessage.layer removeAllAnimations];
+    self.welcomeMessage.alpha = 1.0;
+    [self animate];
+    
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(changeWelcomeText) userInfo:nil repeats:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
+    [self.welcomeMessage.layer removeAllAnimations];
+    self.welcomeMessage.alpha = 1.0;
+    [self animate];
+    
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(changeWelcomeText) userInfo:nil repeats:YES];
+    
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"ParlerPalLogin" accessGroup:nil];
     NSString *usernameKeychain = [keychainItem objectForKey:(__bridge id)(kSecAttrAccount)];
     NSData *passData = [keychainItem objectForKey:(__bridge id)(kSecValueData)];
@@ -55,9 +70,37 @@
 
         self.savePassword.on = YES;
     }
-    
-    [UIView setAnimationsEnabled:YES];
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [timer invalidate];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
+}
+
+#pragma mark - animate
+
+-(void)animate
+{
+    [UIView animateWithDuration:3.0 delay:3.0 options:(UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat) animations:^{
+        self.welcomeMessage.alpha = 0.0;
+    } completion:^(BOOL finished) {
+    }];
+}
+
+-(void)changeWelcomeText
+{
+    languageIndex = languageIndex + 1 > welcomeLanguages.count -1 ? 0 : languageIndex + 1;
+    self.welcomeMessage.text = [welcomeLanguages objectAtIndex:languageIndex];
+}
+
 #pragma mark - gesture methods
 
 -(void)tap:(UITapGestureRecognizer *)tapRec
@@ -141,37 +184,6 @@
 -(IBAction)createAccount:(id)sender
 {
 
-}
-
-#pragma mark - Welcome text animation methods
-
-#warning this runs even when this view controller is not on top... I don't like that. But, it's better than what was happening before which was a loop of death causing 100+% CPU usage...
--(void)animateText
-{
-    welcome = [[UILabel alloc]initWithFrame:CGRectMake(-10, 130, 340, 100)];
-
-    welcome.text = @"Welcome";
-    welcome.textAlignment = NSTextAlignmentCenter;
-    welcome.alpha = 0.0;
-    welcome.font = [UIFont fontWithName:@"Noteworthy" size:36];
-    welcome.textColor = [UIColor colorWithRed:0 green:0  blue:0  alpha:1.0];
-    [self.contentView addSubview:welcome];
-
-    [UIView animateWithDuration:4.0f
-                          delay:0.0f
-                        options:(UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat)
-                     animations:^{
-                         welcome.alpha = 1.0;
-                     }
-                     completion:nil];
-    
-    [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(changeWelcome) userInfo:nil repeats:YES];
-}
-
--(void)changeWelcome
-{
-    languageIndex = languageIndex + 1 > welcomeLanguages.count -1 ? 0 : languageIndex + 1;
-    welcome.text = [welcomeLanguages objectAtIndex:languageIndex];
 }
 
 #pragma mark - login methods
