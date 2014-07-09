@@ -159,10 +159,11 @@
                                                             <outlet property="delegate" destination="wcY-Rr-nMp" id="JM3-t2-ZVA"/>
                                                         </connections>
                                                     </textField>
-                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQ6-ft-Oex">
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="FQ6-ft-Oex">
                                                         <rect key="frame" x="110" y="320" width="100" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD1-KH-oeM">
                                                         <rect key="frame" x="87" y="422" width="54" height="36"/>
@@ -1274,6 +1275,7 @@
         <image name="palsButton.png" width="35" height="30"/>
         <image name="paper.png" width="650" height="650"/>
         <image name="playButton.png" width="50" height="50"/>
+        <image name="profile.png" width="250" height="250"/>
         <image name="recordButton.png" width="50" height="50"/>
         <image name="searchPalsButton.png" width="44" height="36"/>
         <image name="stopButton.png" width="50" height="50"/>

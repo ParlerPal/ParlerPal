@@ -30,6 +30,7 @@
 		6433125E195F9C5800290E02 /* cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 6433125D195F9C5800290E02 /* cellBG.png */; };
 		643434F81968C9B400600EF9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 643434F71968C9B400600EF9 /* KeychainItemWrapper.m */; };
 		6446AFA3196C366A00521135 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6446AFA2196C366A00521135 /* UIImage+Resize.m */; };
+		6446AFA5196CE50100521135 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6446AFA4196CE50100521135 /* profile.png */; };
 		645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */; };
 		645A1B47195B4F54004657B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B36195B4F54004657B2 /* AFHTTPRequestOperationManager.m */; };
 		645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B38195B4F54004657B2 /* AFHTTPSessionManager.m */; };
@@ -155,6 +156,7 @@
 		643434F71968C9B400600EF9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6446AFA1196C366A00521135 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		6446AFA2196C366A00521135 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		6446AFA4196CE50100521135 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		645A1B33195B4F54004657B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		645A1B35195B4F54004657B2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 		648153891953BEF900D0B3F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6446AFA4196CE50100521135 /* profile.png */,
 				641B80191958FF4F0064289F /* map2r.png */,
 				641B801F195902C50064289F /* map3r.png */,
 				641B80171958FE7D0064289F /* map1.png */,
@@ -809,6 +812,7 @@
 				64FC116C1958D83800915A00 /* paper.png in Resources */,
 				641B80181958FE7D0064289F /* map1.png in Resources */,
 				6415FE771964A648002C3B7B /* recordButton.png in Resources */,
+				6446AFA5196CE50100521135 /* profile.png in Resources */,
 				64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */,
 				64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */,
 				6415FE791964A648002C3B7B /* playButton.png in Resources */,

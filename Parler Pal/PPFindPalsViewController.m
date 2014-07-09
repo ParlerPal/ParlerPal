@@ -123,7 +123,7 @@
     cell.username.text = pal.username;
     
     [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, pal.username]] key:nil
-                        placeholder:nil
+                        placeholder:[UIImage imageNamed:@"profile.png"]
                     completionBlock:nil
                        failureBlock:nil];
     cell.country.text = pal.country;
@@ -147,7 +147,7 @@
         profilePopup.email.text = results.sharedEmail;
         profilePopup.skype.text = results.skypeID;
         [profilePopup.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, username]] key:nil
-                                placeholder:nil
+                                placeholder:[UIImage imageNamed:@"profile.png"]
                             completionBlock:nil
                                failureBlock:nil];
         

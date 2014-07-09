@@ -144,7 +144,7 @@
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = dirPaths[0];
     [fm removeItemAtPath:[docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]]] error:nil];
-    self.imageView.image = nil;
+    self.imageView.image = [UIImage imageNamed:@"profile.png"];
 }
 
 #pragma mark - gesutre recoginizer methods

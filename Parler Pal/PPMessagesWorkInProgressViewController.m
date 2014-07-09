@@ -95,7 +95,7 @@
                 cell.messageLabel.text = draft.subject;
                 cell.toLabel.text = draft.to;
                 [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, draft.from]] key:nil
-                                    placeholder:nil
+                                    placeholder:[UIImage imageNamed:@"profile.png"]
                                 completionBlock:nil
                                    failureBlock:nil];
                 
