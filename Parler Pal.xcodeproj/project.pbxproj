@@ -48,7 +48,6 @@
 		645A1B6F195C887F004657B2 /* quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 645A1B6E195C887F004657B2 /* quotes.plist */; };
 		645A1B72195CA99C004657B2 /* PPMessagesComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */; };
 		645A1B75195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */; };
-		645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */; };
 		64763E93196201F300C757CE /* messageButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E92196201F300C757CE /* messageButton.png */; };
 		64763E951962024A00C757CE /* palsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E941962024A00C757CE /* palsButton.png */; };
 		64763E97196204AE00C757CE /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64763E96196204AE00C757CE /* backButton.png */; };
@@ -194,8 +193,6 @@
 		645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesComposeViewController.m; sourceTree = "<group>"; };
 		645A1B73195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesWorkInProgressViewController.h; sourceTree = "<group>"; };
 		645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesWorkInProgressViewController.m; sourceTree = "<group>"; };
-		645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagesSavedViewController.h; sourceTree = "<group>"; };
-		645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagesSavedViewController.m; sourceTree = "<group>"; };
 		64763E92196201F300C757CE /* messageButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButton.png; sourceTree = "<group>"; };
 		64763E941962024A00C757CE /* palsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palsButton.png; sourceTree = "<group>"; };
 		64763E96196204AE00C757CE /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
@@ -458,8 +455,6 @@
 				645A1B71195CA99C004657B2 /* PPMessagesComposeViewController.m */,
 				645A1B73195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.h */,
 				645A1B74195D2FC1004657B2 /* PPMessagesWorkInProgressViewController.m */,
-				645A1B76195D2FDE004657B2 /* PPMessagesSavedViewController.h */,
-				645A1B77195D2FDE004657B2 /* PPMessagesSavedViewController.m */,
 			);
 			name = MessagesViewControllers;
 			sourceTree = "<group>";
@@ -845,7 +840,6 @@
 				64B01CB71969C9AC00D90337 /* PPMessage.m in Sources */,
 				64A1E894195216F100620BA1 /* PPProfileViewController.m in Sources */,
 				645A1B63195B54EB004657B2 /* DDXMLElementAdditions.m in Sources */,
-				645A1B78195D2FDE004657B2 /* PPMessagesSavedViewController.m in Sources */,
 				645A1B4D195B4F54004657B2 /* AFURLResponseSerialization.m in Sources */,
 				64BFB674194429C500D11E88 /* PPMainViewController.m in Sources */,
 				6481537E1953ABBB00D0B3F0 /* PPMessagesMainViewController.m in Sources */,

@@ -331,7 +331,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-OA-jHM">
-                                                <rect key="frame" x="20" y="163" width="280" height="37"/>
+                                                <rect key="frame" x="20" y="159" width="280" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
                                                 <nil key="highlightedColor"/>
@@ -782,26 +782,6 @@
                                             <segue destination="QQR-dt-9vp" kind="custom" customClass="SWRevealViewControllerSegue" id="kmR-2c-3Um"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ogj-RB-9cD" style="IBUITableViewCellStyleDefault" id="621-fl-O8l">
-                                        <rect key="frame" x="0.0" y="240" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="621-fl-O8l" id="bke-e0-bDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Saved" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogj-RB-9cD">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="h0M-um-RTI" kind="custom" customClass="SWRevealViewControllerSegue" id="OEZ-Ij-YV7"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1190,66 +1170,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1466" y="850"/>
-        </scene>
-        <!--Messages Saved View Controller-->
-        <scene sceneID="WR5-ji-Pdx">
-            <objects>
-                <viewController id="h0M-um-RTI" customClass="PPMessagesSavedViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kbq-55-bsI"/>
-                        <viewControllerLayoutGuide type="bottom" id="Vd8-5y-duZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5ti-9I-kdi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paper.png" translatesAutoresizingMaskIntoConstraints="NO" id="sQp-DL-YyG">
-                                <rect key="frame" x="0.0" y="44" width="325" height="524"/>
-                            </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNl-cT-oLv">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wue-Av-nFG"/>
-                                    <barButtonItem style="done" systemItem="done" id="uAJ-0C-TLn">
-                                        <connections>
-                                            <segue destination="h9d-pc-87u" kind="unwind" unwindAction="unwindMainMenuViewController:" id="RTs-Dn-Tal"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zU6-Gk-bVt"/>
-                                </items>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stripeBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZo-WN-Wz9">
-                                <rect key="frame" x="0.0" y="44" width="320" height="30"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c19-Bv-bYM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Saved" id="7LW-sM-9lk">
-                                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="z4h-h9-IdO">
-                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="revealButton" destination="z4h-h9-IdO" id="dck-jV-BYE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C4o-N2-TAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="h9d-pc-87u" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1998" y="850"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="791-Gi-dRH">
