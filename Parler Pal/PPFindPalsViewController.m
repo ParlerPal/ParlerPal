@@ -11,6 +11,7 @@
 #import "PPPal.h"
 #import "PPLanguage.h"
 #import "JMImageCache.h"
+#import "PPSearchFilterPopupView.h"
 
 @implementation PPFindPalsViewController
 @synthesize table, filteredPalsArray, searchBar;
@@ -21,18 +22,32 @@
 {
     [super viewDidLoad];
     
-    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsCompletionHandler:^(NSMutableArray *results) {
+    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    searchFilterView = [[PPSearchFilterPopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 165)];
+    searchFilterView.delegate = self;
+    
+    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsWithUsername:searchFilterView.usernameField.text
+                                                                  gender:(int)searchFilterView.genderSegment.selectedSegmentIndex
+                                                                  minAge:searchFilterView.minStepper.value
+                                                                  maxAge:searchFilterView.maxStepper.value
+    completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
         self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
     }];
-    
-    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
-    
+
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.table addSubview:refreshControl];
 
+}
+
+#pragma mark - action methods
+
+-(IBAction)filter
+{
+    [self.view addSubview:searchFilterView];
+    [searchFilterView show];
 }
 
 #pragma mark - refresh methods
@@ -41,11 +56,22 @@
 {
     [refreshControl endRefreshing];
 
-    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsCompletionHandler:^(NSMutableArray *results) {
+    [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsWithUsername:searchFilterView.usernameField.text
+                                                                  gender:(int)searchFilterView.genderSegment.selectedSegmentIndex
+                                                                  minAge:searchFilterView.minStepper.value
+                                                                  maxAge:searchFilterView.maxStepper.value
+    completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
         self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
     }];
+}
+
+#pragma mark - PPSearchFilterViewPopupDelegate
+
+-(void)didFinishFiltering
+{
+    [self refresh:nil];
 }
 
 #pragma mark - Friendship Management delegate methods

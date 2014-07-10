@@ -215,7 +215,6 @@
     if([identifier isEqualToString:@"doneSegue"])
     {
         [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
-            
         }];
         
         return YES;

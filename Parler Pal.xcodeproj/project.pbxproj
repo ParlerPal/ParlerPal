@@ -84,6 +84,8 @@
 		64A1E894195216F100620BA1 /* PPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E893195216F100620BA1 /* PPProfileViewController.m */; };
 		64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A1E8981952265700620BA1 /* PPMessageTableViewCell.m */; };
 		64A76762196B693100760A69 /* PPDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A76761196B693100760A69 /* PPDraft.m */; };
+		64A87A9B196EFB9700902B97 /* PPSearchFilterPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A87A9A196EFB9700902B97 /* PPSearchFilterPopupView.m */; };
+		64A87A9D196EFBB900902B97 /* PPSearchFilterPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A87A9C196EFBB900902B97 /* PPSearchFilterPopupView.xib */; };
 		64AF9D7419575047007EF924 /* PPDataShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7319575047007EF924 /* PPDataShare.m */; };
 		64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7519576F35007EF924 /* deletePalButton.png */; };
 		64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7719576F3F007EF924 /* addPalButton.png */; };
@@ -247,6 +249,9 @@
 		64A1E8981952265700620BA1 /* PPMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessageTableViewCell.m; sourceTree = "<group>"; };
 		64A76760196B693100760A69 /* PPDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDraft.h; sourceTree = "<group>"; };
 		64A76761196B693100760A69 /* PPDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDraft.m; sourceTree = "<group>"; };
+		64A87A99196EFB9700902B97 /* PPSearchFilterPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchFilterPopupView.h; sourceTree = "<group>"; };
+		64A87A9A196EFB9700902B97 /* PPSearchFilterPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchFilterPopupView.m; sourceTree = "<group>"; };
+		64A87A9C196EFBB900902B97 /* PPSearchFilterPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPSearchFilterPopupView.xib; sourceTree = "<group>"; };
 		64AF9D7219575047007EF924 /* PPDataShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDataShare.h; sourceTree = "<group>"; };
 		64AF9D7319575047007EF924 /* PPDataShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDataShare.m; sourceTree = "<group>"; };
 		64AF9D7519576F35007EF924 /* deletePalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletePalButton.png; sourceTree = "<group>"; };
@@ -556,6 +561,9 @@
 				64203A1C19610D5F00C652B2 /* PPProfilePopupView.h */,
 				64203A1D19610D5F00C652B2 /* PPProfilePopupView.m */,
 				64203A1A19610D2A00C652B2 /* PPProfilePopupView.xib */,
+				64A87A99196EFB9700902B97 /* PPSearchFilterPopupView.h */,
+				64A87A9A196EFB9700902B97 /* PPSearchFilterPopupView.m */,
+				64A87A9C196EFBB900902B97 /* PPSearchFilterPopupView.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -817,6 +825,7 @@
 				64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */,
 				6415FE791964A648002C3B7B /* playButton.png in Resources */,
 				64763E97196204AE00C757CE /* backButton.png in Resources */,
+				64A87A9D196EFBB900902B97 /* PPSearchFilterPopupView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +879,7 @@
 				64A1E89A1952265700620BA1 /* PPMessageTableViewCell.m in Sources */,
 				643434F81968C9B400600EF9 /* KeychainItemWrapper.m in Sources */,
 				645A1B4A195B4F54004657B2 /* AFSecurityPolicy.m in Sources */,
+				64A87A9B196EFB9700902B97 /* PPSearchFilterPopupView.m in Sources */,
 				64BFB6541944183300D11E88 /* PPLoginViewController.m in Sources */,
 				645A1B49195B4F54004657B2 /* AFNetworkReachabilityManager.m in Sources */,
 				645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */,
