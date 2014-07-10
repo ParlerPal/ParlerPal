@@ -25,6 +25,8 @@
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
     
+    listOfCountries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"plist"]];
+    
     [[PPDatabaseManager sharedDatabaseManager]getUserProfileCompletionHandler:^(PPUser *results)
     {
         privateEmailField.text = results.email;
@@ -43,6 +45,11 @@
     [self registerForKeyboardNotifications];
     
     self.imageView.layer.cornerRadius = 5.0;
+    
+    UIPickerView *picker = [[UIPickerView alloc] init];
+    picker.dataSource = self;
+    picker.delegate = self;
+    self.countryField.inputView = picker;
 }
 
 -(void)viewDidLayoutSubviews
@@ -243,4 +250,24 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES
                                             withAnimation:UIStatusBarAnimationFade];
 }
+
+#pragma mark - picker view delegate methods
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [listOfCountries count];
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return  1;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [listOfCountries objectAtIndex:row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.countryField.text = [listOfCountries objectAtIndex:row];
+    [self.countryField resignFirstResponder];
+}
+
 @end

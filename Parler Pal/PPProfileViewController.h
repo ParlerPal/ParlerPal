@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PPProfileViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
-    CGPoint *previousPoint; 
+    CGPoint *previousPoint;
+    NSArray *listOfCountries;
 }
 @property (nonatomic, weak) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
 @property (nonatomic, weak) IBOutlet UITextView *profile;

@@ -89,6 +89,7 @@
 		64A87AA2196F230000902B97 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA0196F230000902B97 /* female.png */; };
 		64A87AA3196F230000902B97 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA1196F230000902B97 /* male.png */; };
 		64A87AA5196F243E00902B97 /* noGender.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA4196F243E00902B97 /* noGender.png */; };
+		64A87AA7196F361E00902B97 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA6196F361E00902B97 /* countries.plist */; };
 		64AF9D7419575047007EF924 /* PPDataShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7319575047007EF924 /* PPDataShare.m */; };
 		64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7519576F35007EF924 /* deletePalButton.png */; };
 		64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7719576F3F007EF924 /* addPalButton.png */; };
@@ -258,6 +259,7 @@
 		64A87AA0196F230000902B97 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		64A87AA1196F230000902B97 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		64A87AA4196F243E00902B97 /* noGender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noGender.png; sourceTree = "<group>"; };
+		64A87AA6196F361E00902B97 /* countries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countries.plist; sourceTree = "<group>"; };
 		64AF9D7219575047007EF924 /* PPDataShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDataShare.h; sourceTree = "<group>"; };
 		64AF9D7319575047007EF924 /* PPDataShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDataShare.m; sourceTree = "<group>"; };
 		64AF9D7519576F35007EF924 /* deletePalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletePalButton.png; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				64BFB6481944183300D11E88 /* Parler Pal-Prefix.pch */,
 				64F780D319527CBB0028A8D6 /* SupportedLanguages.plist */,
 				645A1B6E195C887F004657B2 /* quotes.plist */,
+				64A87AA6196F361E00902B97 /* countries.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				6415FE781964A648002C3B7B /* stopButton.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
 				64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */,
+				64A87AA7196F361E00902B97 /* countries.plist in Resources */,
 				649547D2195657DE00349DC4 /* background.png in Resources */,
 				649547D819565BB100349DC4 /* languagesButton.png in Resources */,
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
