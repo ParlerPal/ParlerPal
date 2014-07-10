@@ -86,6 +86,9 @@
 		64A76762196B693100760A69 /* PPDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A76761196B693100760A69 /* PPDraft.m */; };
 		64A87A9B196EFB9700902B97 /* PPSearchFilterPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A87A9A196EFB9700902B97 /* PPSearchFilterPopupView.m */; };
 		64A87A9D196EFBB900902B97 /* PPSearchFilterPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A87A9C196EFBB900902B97 /* PPSearchFilterPopupView.xib */; };
+		64A87AA2196F230000902B97 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA0196F230000902B97 /* female.png */; };
+		64A87AA3196F230000902B97 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA1196F230000902B97 /* male.png */; };
+		64A87AA5196F243E00902B97 /* noGender.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA4196F243E00902B97 /* noGender.png */; };
 		64AF9D7419575047007EF924 /* PPDataShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7319575047007EF924 /* PPDataShare.m */; };
 		64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7519576F35007EF924 /* deletePalButton.png */; };
 		64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7719576F3F007EF924 /* addPalButton.png */; };
@@ -252,6 +255,9 @@
 		64A87A99196EFB9700902B97 /* PPSearchFilterPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchFilterPopupView.h; sourceTree = "<group>"; };
 		64A87A9A196EFB9700902B97 /* PPSearchFilterPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchFilterPopupView.m; sourceTree = "<group>"; };
 		64A87A9C196EFBB900902B97 /* PPSearchFilterPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPSearchFilterPopupView.xib; sourceTree = "<group>"; };
+		64A87AA0196F230000902B97 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		64A87AA1196F230000902B97 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		64A87AA4196F243E00902B97 /* noGender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noGender.png; sourceTree = "<group>"; };
 		64AF9D7219575047007EF924 /* PPDataShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDataShare.h; sourceTree = "<group>"; };
 		64AF9D7319575047007EF924 /* PPDataShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDataShare.m; sourceTree = "<group>"; };
 		64AF9D7519576F35007EF924 /* deletePalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletePalButton.png; sourceTree = "<group>"; };
@@ -469,6 +475,9 @@
 		648153891953BEF900D0B3F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64A87AA0196F230000902B97 /* female.png */,
+				64A87AA1196F230000902B97 /* male.png */,
+				64A87AA4196F243E00902B97 /* noGender.png */,
 				6446AFA4196CE50100521135 /* profile.png */,
 				641B80191958FF4F0064289F /* map2r.png */,
 				641B801F195902C50064289F /* map3r.png */,
@@ -798,6 +807,7 @@
 				64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */,
 				648C843E196391EB009872D9 /* Login_Screen.png in Resources */,
 				64763E93196201F300C757CE /* messageButton.png in Resources */,
+				64A87AA2196F230000902B97 /* female.png in Resources */,
 				64763E951962024A00C757CE /* palsButton.png in Resources */,
 				6415FE781964A648002C3B7B /* stopButton.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
@@ -808,10 +818,12 @@
 				6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
 				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
+				64A87AA3196F230000902B97 /* male.png in Resources */,
 				6433125E195F9C5800290E02 /* cellBG.png in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
 				648153881953BEF500D0B3F0 /* menu@2x.png in Resources */,
+				64A87AA5196F243E00902B97 /* noGender.png in Resources */,
 				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,
 				649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */,
 				641B801A1958FF4F0064289F /* map2r.png in Resources */,
