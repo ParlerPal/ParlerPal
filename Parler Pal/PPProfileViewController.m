@@ -120,8 +120,16 @@
 -(IBAction)fieldDidEndEditing:(id)sender
 {
     [sender resignFirstResponder];
+    
+    if(sender == self.age)
+    {
+        UITextField *textField = (UITextField *)sender;
+        
+        textField.text = [NSString stringWithFormat:@"%i",[textField.text intValue] < 16 ? 16 : [textField.text intValue] > 120 ? 120 : [textField.text intValue]];
+    }
 }
 
+#pragma mark - photo delegat methods
 
 -(IBAction)selectPhoto:(UIButton *)sender
 {
