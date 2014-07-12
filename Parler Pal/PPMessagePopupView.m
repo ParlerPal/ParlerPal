@@ -47,11 +47,12 @@
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = 0.5;
     
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
     [[NSBundle mainBundle]loadNibNamed:@"PPMessagePopupView" owner:self options:nil];
     [self addSubview:self.view];
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
-    
-    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    self.view.frame = screenSize;
+
     popupReply = [[PPReplyPopupView alloc]initWithFrame:screenSize];
 }
 

@@ -52,9 +52,11 @@
     [self addSubview:self.view];
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
     
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
     tapRec.delegate = self;
     [self.view addGestureRecognizer:tapRec];
+    self.view.frame = screenSize;
     
     if(!self.lm)self.lm = [CLLocationManager new];
     self.lm.delegate = self;

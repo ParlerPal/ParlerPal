@@ -33,8 +33,11 @@
 
 -(void)setup
 {
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
     [[NSBundle mainBundle]loadNibNamed:@"PPSearchFilterPopupView" owner:self options:nil];
     [self addSubview:self.view];
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, screenSize.size.width, self.view.frame.size.height);
+    
     self.view.frame = CGRectMake(self.view.frame.origin.x, -1 * self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     self.layer.shadowOffset = CGSizeMake(-3, 3);
     self.layer.shadowRadius = 2;
