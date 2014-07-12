@@ -31,7 +31,8 @@
 
     [super viewDidLoad];
     
-    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    profilePopup = [[PPProfilePopupView alloc]initWithFrame:screenSize];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];

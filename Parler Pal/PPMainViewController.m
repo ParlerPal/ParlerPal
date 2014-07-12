@@ -44,7 +44,8 @@
         [self plotMessagesPositions];
     }];
     
-    messageContentView = [[PPMessagePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    messageContentView = [[PPMessagePopupView alloc]initWithFrame:screenSize];
     messageContentView.delegate = self;
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];

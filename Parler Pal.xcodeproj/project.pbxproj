@@ -11,9 +11,6 @@
 		6415FE781964A648002C3B7B /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6415FE741964A647002C3B7B /* stopButton.png */; };
 		6415FE791964A648002C3B7B /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6415FE751964A648002C3B7B /* playButton.png */; };
 		6415FE7A1964A648002C3B7B /* deleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6415FE761964A648002C3B7B /* deleteButton.png */; };
-		641B80181958FE7D0064289F /* map1.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80171958FE7D0064289F /* map1.png */; };
-		641B801A1958FF4F0064289F /* map2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B80191958FF4F0064289F /* map2r.png */; };
-		641B8020195902C50064289F /* map3r.png in Resources */ = {isa = PBXBuildFile; fileRef = 641B801F195902C50064289F /* map3r.png */; };
 		641F6B081969F9D9008A7E76 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641F6B071969F9D9008A7E76 /* CoreData.framework */; };
 		641F6B16196A3E7C008A7E76 /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 641F6B15196A3E7C008A7E76 /* JMImageCache.m */; };
 		641F6B19196A3E84008A7E76 /* UIImageView+JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 641F6B18196A3E84008A7E76 /* UIImageView+JMImageCache.m */; };
@@ -67,12 +64,10 @@
 		648C84301963115E009872D9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C842F1963115E009872D9 /* MapKit.framework */; };
 		648C843419631484009872D9 /* PPMessageLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 648C843319631484009872D9 /* PPMessageLocation.m */; };
 		648C843A19631ADC009872D9 /* mapPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C843919631ADC009872D9 /* mapPin.png */; };
-		648C843E196391EB009872D9 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C843D196391EB009872D9 /* Login_Screen.png */; };
 		6492F340195E398700F950AF /* PPMessagePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F33F195E398700F950AF /* PPMessagePopupView.m */; };
 		6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F341195E39F700F950AF /* PPMessagePopupView.xib */; };
 		6492F345195E5A8500F950AF /* PPReplyPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6492F344195E5A8500F950AF /* PPReplyPopupView.m */; };
 		6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */; };
-		649547D2195657DE00349DC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D1195657DE00349DC4 /* background.png */; };
 		649547D819565BB100349DC4 /* languagesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 649547D719565BB100349DC4 /* languagesButton.png */; };
 		649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649547E1195677B200349DC4 /* Main_iPhone.storyboard */; };
 		649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649547EA19567FEE00349DC4 /* PPLanguageTableViewCell.xib */; };
@@ -90,6 +85,7 @@
 		64A87AA3196F230000902B97 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA1196F230000902B97 /* male.png */; };
 		64A87AA5196F243E00902B97 /* noGender.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA4196F243E00902B97 /* noGender.png */; };
 		64A87AA7196F361E00902B97 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA6196F361E00902B97 /* countries.plist */; };
+		64A87AA9196F911B00902B97 /* Login_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A87AA8196F911B00902B97 /* Login_Screen.png */; };
 		64AF9D7419575047007EF924 /* PPDataShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF9D7319575047007EF924 /* PPDataShare.m */; };
 		64AF9D7619576F35007EF924 /* deletePalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7519576F35007EF924 /* deletePalButton.png */; };
 		64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 64AF9D7719576F3F007EF924 /* addPalButton.png */; };
@@ -100,6 +96,9 @@
 		64B01CB41969C9A000D90337 /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB31969C9A000D90337 /* PPUser.m */; };
 		64B01CB71969C9AC00D90337 /* PPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB61969C9AC00D90337 /* PPMessage.m */; };
 		64B01CBA1969C9C700D90337 /* PPLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B01CB91969C9C700D90337 /* PPLanguage.m */; };
+		64B52C681970797100985F46 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B52C671970797100985F46 /* logo.png */; };
+		64B52C6B19707C5000985F46 /* map2r.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B52C6919707C5000985F46 /* map2r.png */; };
+		64B52C6C19707C5000985F46 /* map3r.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B52C6A19707C5000985F46 /* map3r.png */; };
 		64BFB63B1944183300D11E88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63A1944183300D11E88 /* Foundation.framework */; };
 		64BFB63D1944183300D11E88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63C1944183300D11E88 /* CoreGraphics.framework */; };
 		64BFB63F1944183300D11E88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BFB63E1944183300D11E88 /* UIKit.framework */; };
@@ -137,9 +136,6 @@
 		6415FE741964A647002C3B7B /* stopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopButton.png; sourceTree = "<group>"; };
 		6415FE751964A648002C3B7B /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
 		6415FE761964A648002C3B7B /* deleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteButton.png; sourceTree = "<group>"; };
-		641B80171958FE7D0064289F /* map1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map1.png; sourceTree = "<group>"; };
-		641B80191958FF4F0064289F /* map2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2r.png; sourceTree = "<group>"; };
-		641B801F195902C50064289F /* map3r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3r.png; sourceTree = "<group>"; };
 		641F6B071969F9D9008A7E76 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		641F6B14196A3E7C008A7E76 /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
 		641F6B15196A3E7C008A7E76 /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
@@ -225,14 +221,12 @@
 		648C843219631484009872D9 /* PPMessageLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessageLocation.h; sourceTree = "<group>"; };
 		648C843319631484009872D9 /* PPMessageLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessageLocation.m; sourceTree = "<group>"; };
 		648C843919631ADC009872D9 /* mapPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapPin.png; sourceTree = "<group>"; };
-		648C843D196391EB009872D9 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
 		6492F33E195E398700F950AF /* PPMessagePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMessagePopupView.h; sourceTree = "<group>"; };
 		6492F33F195E398700F950AF /* PPMessagePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessagePopupView.m; sourceTree = "<group>"; };
 		6492F341195E39F700F950AF /* PPMessagePopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPMessagePopupView.xib; sourceTree = "<group>"; };
 		6492F343195E5A8500F950AF /* PPReplyPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPReplyPopupView.h; sourceTree = "<group>"; };
 		6492F344195E5A8500F950AF /* PPReplyPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPReplyPopupView.m; sourceTree = "<group>"; };
 		6492F346195E5A9E00F950AF /* PPReplyPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPReplyPopupView.xib; sourceTree = "<group>"; };
-		649547D1195657DE00349DC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		649547D719565BB100349DC4 /* languagesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = languagesButton.png; sourceTree = "<group>"; };
 		649547E0195677B200349DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		649547E5195678D600349DC4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main_iPad.strings; sourceTree = "<group>"; };
@@ -260,6 +254,7 @@
 		64A87AA1196F230000902B97 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		64A87AA4196F243E00902B97 /* noGender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noGender.png; sourceTree = "<group>"; };
 		64A87AA6196F361E00902B97 /* countries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countries.plist; sourceTree = "<group>"; };
+		64A87AA8196F911B00902B97 /* Login_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_Screen.png; sourceTree = "<group>"; };
 		64AF9D7219575047007EF924 /* PPDataShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDataShare.h; sourceTree = "<group>"; };
 		64AF9D7319575047007EF924 /* PPDataShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDataShare.m; sourceTree = "<group>"; };
 		64AF9D7519576F35007EF924 /* deletePalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletePalButton.png; sourceTree = "<group>"; };
@@ -278,6 +273,9 @@
 		64B01CB61969C9AC00D90337 /* PPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMessage.m; sourceTree = "<group>"; };
 		64B01CB81969C9C700D90337 /* PPLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLanguage.h; sourceTree = "<group>"; };
 		64B01CB91969C9C700D90337 /* PPLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLanguage.m; sourceTree = "<group>"; };
+		64B52C671970797100985F46 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		64B52C6919707C5000985F46 /* map2r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map2r.png; sourceTree = "<group>"; };
+		64B52C6A19707C5000985F46 /* map3r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3r.png; sourceTree = "<group>"; };
 		64BFB6371944183300D11E88 /* Parler Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parler Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFB63A1944183300D11E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64BFB63C1944183300D11E88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -477,20 +475,16 @@
 		648153891953BEF900D0B3F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				64A87AA0196F230000902B97 /* female.png */,
-				64A87AA1196F230000902B97 /* male.png */,
-				64A87AA4196F243E00902B97 /* noGender.png */,
+				64AF9D7D19579980007EF924 /* Buttons */,
 				6446AFA4196CE50100521135 /* profile.png */,
-				641B80191958FF4F0064289F /* map2r.png */,
-				641B801F195902C50064289F /* map3r.png */,
-				641B80171958FE7D0064289F /* map1.png */,
+				64B52C671970797100985F46 /* logo.png */,
+				64A87AA8196F911B00902B97 /* Login_Screen.png */,
 				6433125D195F9C5800290E02 /* cellBG.png */,
+				64B52C6919707C5000985F46 /* map2r.png */,
+				64B52C6A19707C5000985F46 /* map3r.png */,
 				648C843919631ADC009872D9 /* mapPin.png */,
-				648C843D196391EB009872D9 /* Login_Screen.png */,
 				64FC116B1958D83700915A00 /* paper.png */,
 				64FC11691958D61F00915A00 /* stripeBar.png */,
-				64AF9D7D19579980007EF924 /* Buttons */,
-				649547D1195657DE00349DC4 /* background.png */,
 				648153851953BEF500D0B3F0 /* menu.png */,
 				648153861953BEF500D0B3F0 /* menu@2x.png */,
 			);
@@ -582,6 +576,9 @@
 		64AF9D7D19579980007EF924 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				64A87AA0196F230000902B97 /* female.png */,
+				64A87AA1196F230000902B97 /* male.png */,
+				64A87AA4196F243E00902B97 /* noGender.png */,
 				6415FE731964A647002C3B7B /* recordButton.png */,
 				6415FE741964A647002C3B7B /* stopButton.png */,
 				6415FE751964A648002C3B7B /* playButton.png */,
@@ -801,25 +798,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				641B8020195902C50064289F /* map3r.png in Resources */,
 				648153871953BEF500D0B3F0 /* menu.png in Resources */,
 				6415FE7A1964A648002C3B7B /* deleteButton.png in Resources */,
 				648C843A19631ADC009872D9 /* mapPin.png in Resources */,
 				64763E991962057B00C757CE /* searchPalsButton.png in Resources */,
+				64A87AA9196F911B00902B97 /* Login_Screen.png in Resources */,
 				64FC116A1958D61F00915A00 /* stripeBar.png in Resources */,
 				64AF9D7819576F3F007EF924 /* addPalButton.png in Resources */,
-				648C843E196391EB009872D9 /* Login_Screen.png in Resources */,
 				64763E93196201F300C757CE /* messageButton.png in Resources */,
 				64A87AA2196F230000902B97 /* female.png in Resources */,
 				64763E951962024A00C757CE /* palsButton.png in Resources */,
 				6415FE781964A648002C3B7B /* stopButton.png in Resources */,
 				6492F347195E5A9E00F950AF /* PPReplyPopupView.xib in Resources */,
+				64B52C681970797100985F46 /* logo.png in Resources */,
 				64203A1B19610D2A00C652B2 /* PPProfilePopupView.xib in Resources */,
 				64A87AA7196F361E00902B97 /* countries.plist in Resources */,
-				649547D2195657DE00349DC4 /* background.png in Resources */,
 				649547D819565BB100349DC4 /* languagesButton.png in Resources */,
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
 				6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */,
+				64B52C6B19707C5000985F46 /* map2r.png in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
 				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
 				64A87AA3196F230000902B97 /* male.png in Resources */,
@@ -830,11 +827,10 @@
 				64A87AA5196F243E00902B97 /* noGender.png in Resources */,
 				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,
 				649547F6195682A700349DC4 /* PPMessageTableViewCell.xib in Resources */,
-				641B801A1958FF4F0064289F /* map2r.png in Resources */,
 				64BFB6451944183300D11E88 /* InfoPlist.strings in Resources */,
 				6481538E1953E87F00D0B3F0 /* Noteworthy.ttc in Resources */,
+				64B52C6C19707C5000985F46 /* map3r.png in Resources */,
 				64FC116C1958D83800915A00 /* paper.png in Resources */,
-				641B80181958FE7D0064289F /* map1.png in Resources */,
 				6415FE771964A648002C3B7B /* recordButton.png in Resources */,
 				6446AFA5196CE50100521135 /* profile.png in Resources */,
 				64F780D419527CBB0028A8D6 /* SupportedLanguages.plist in Resources */,

@@ -22,8 +22,9 @@
 {
     [super viewDidLoad];
     
-    profilePopup = [[PPProfilePopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
-    searchFilterView = [[PPSearchFilterPopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 165)];
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    profilePopup = [[PPProfilePopupView alloc]initWithFrame:screenSize];
+    searchFilterView = [[PPSearchFilterPopupView alloc]initWithFrame:CGRectMake(0, 0, screenSize.size.width, 165)];
     searchFilterView.delegate = self;
     
     [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsWithUsername:searchFilterView.usernameField.text

@@ -44,7 +44,8 @@
     [self addSubview:self.view];
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
     
-    popupReply = [[PPReplyPopupView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    popupReply = [[PPReplyPopupView alloc]initWithFrame:screenSize];
 }
 
 #pragma mark - action methods
