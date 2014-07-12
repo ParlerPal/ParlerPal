@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface PPUserRegistrationViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
-@property(nonatomic, weak)UITextField *usernameField, *passwordField, *confirmField, *emailField;
-@property(nonatomic, weak)UILabel *welcomeMessage;
-@property(nonatomic, weak)UIScrollView *scrollView;
-@property(nonatomic, weak)UIView *contentView;
+{
+    UITextField *activeField;
+}
+@property(nonatomic, weak)IBOutlet UITextField *usernameField, *passwordField, *confirmField, *emailField;
+@property(nonatomic, weak)IBOutlet UILabel *welcomeMessage;
+@property(nonatomic, weak)IBOutlet UIScrollView *scrollView;
+@property(nonatomic, weak)IBOutlet UIView *contentView;
 
 //Textfield did end editing so hide it
 -(IBAction)usernameFieldDidReturn:(id)sender;

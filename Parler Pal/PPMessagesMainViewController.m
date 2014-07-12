@@ -194,7 +194,6 @@
     
     [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
         messageContentView.content.text = [results objectForKey:@"content"];
-        
         messageContentView.fromLabel.text = message.from;
         messageContentView.toLabel.text = message.to;
         messageContentView.subjectLabel.text = message.subject;

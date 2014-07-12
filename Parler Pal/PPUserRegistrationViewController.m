@@ -31,23 +31,27 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
-#pragma mark - gesture methods
-
--(void)tap:(UITapGestureRecognizer *)tapRec
+-(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
+}
+
+#pragma mark - gesutre recoginizer methods
+
+-(void)tap:(UITapGestureRecognizer *)tapRec{
     [[self view] endEditing: YES];
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([touch.view isKindOfClass:[UIControl class]]) {
         // we touched a button, slider, or other UIControl
         return NO; // ignore the touch
     }
-    return YES; // handle the touch
+    return YES;
 }
 
-#pragma mark - textfield delegate methods
 
 // Call this method somewhere in your view controller setup code.
 -(void)registerForKeyboardNotifications
@@ -67,19 +71,29 @@
 {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height+10, 0.0);
-    scrollView.contentInset = contentInsets;
-    scrollView.scrollIndicatorInsets = contentInsets;
+    CGRect bkgndRect = activeField.superview.frame;
+    bkgndRect.size.height += kbSize.height;
+    [activeField.superview setFrame:bkgndRect];
+    [scrollView setContentOffset:CGPointMake(0.0, activeField.frame.origin.y-kbSize.height) animated:YES];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 -(void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    scrollView.contentInset = contentInsets;
-    scrollView.scrollIndicatorInsets = contentInsets;
-    [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    activeField = textField;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    activeField = nil;
 }
 
 #pragma mark - text field action methods
