@@ -40,6 +40,7 @@
         NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *docsDir = dirPaths[0];
         imageView.image = [UIImage imageWithContentsOfFile:[docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[[PPDataShare sharedSingleton]currentUser]]]];
+        if(!imageView.image)self.imageView.image = [UIImage imageNamed:@"profile.png"];
     }];
     
     [self registerForKeyboardNotifications];
