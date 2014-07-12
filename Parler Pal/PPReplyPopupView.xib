@@ -87,7 +87,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-p9-YgZ">
-                    <rect key="frame" x="94" y="106" width="35" height="35"/>
+                    <rect key="frame" x="74" y="106" width="35" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="Esf-UX-Pxo"/>
@@ -98,7 +98,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHc-2e-On0">
-                    <rect key="frame" x="137" y="106" width="35" height="35"/>
+                    <rect key="frame" x="117" y="106" width="35" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="VpH-TZ-Sng"/>
@@ -112,7 +112,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPR-ut-Jsu">
-                    <rect key="frame" x="180" y="106" width="35" height="35"/>
+                    <rect key="frame" x="160" y="106" width="35" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="vmi-4m-8dv"/>
@@ -126,7 +126,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5H-n4-2fB">
-                    <rect key="frame" x="223" y="106" width="35" height="35"/>
+                    <rect key="frame" x="203" y="106" width="35" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="WCF-aD-pCW"/>
@@ -140,10 +140,12 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmE-oG-2M4">
-                    <rect key="frame" x="20" y="111" width="54" height="28"/>
+                    <rect key="frame" x="20" y="111" width="42" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="SwK-jm-9EE"/>
+                        <constraint firstAttribute="width" constant="42" id="gzU-3U-goj"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="y5H-6v-PSL"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -155,7 +157,6 @@
                 <constraint firstItem="hHc-2e-On0" firstAttribute="bottom" secondItem="rPR-ut-Jsu" secondAttribute="bottom" id="0DD-wu-EPN"/>
                 <constraint firstItem="qvt-uI-Nuv" firstAttribute="top" secondItem="zyc-2u-kQe" secondAttribute="bottom" constant="8" symbolic="YES" id="4gI-OV-G7P"/>
                 <constraint firstItem="md6-Mr-Drb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5Ac-jx-6VL"/>
-                <constraint firstAttribute="trailing" secondItem="S5H-n4-2fB" secondAttribute="trailing" constant="62" id="6gJ-fe-5nn"/>
                 <constraint firstItem="qvt-uI-Nuv" firstAttribute="leading" secondItem="zyc-2u-kQe" secondAttribute="leading" id="6p3-HV-G2C"/>
                 <constraint firstItem="CDm-nx-9xg" firstAttribute="top" secondItem="SyP-g4-6GB" secondAttribute="bottom" constant="8" symbolic="YES" id="Bdm-PN-nrt"/>
                 <constraint firstItem="zyc-2u-kQe" firstAttribute="top" secondItem="QHd-N6-zdM" secondAttribute="bottom" constant="8" symbolic="YES" id="G6g-tx-wTh"/>
@@ -182,7 +183,7 @@
                 <constraint firstItem="TmE-oG-2M4" firstAttribute="top" secondItem="qvt-uI-Nuv" secondAttribute="bottom" constant="15" id="ojA-7d-NoW"/>
                 <constraint firstItem="SyP-g4-6GB" firstAttribute="top" secondItem="RLn-p9-YgZ" secondAttribute="bottom" constant="11" id="phx-Uv-4at"/>
                 <constraint firstAttribute="bottom" secondItem="FsI-cW-cZa" secondAttribute="bottom" constant="20" symbolic="YES" id="s4z-b2-wb0"/>
-                <constraint firstItem="RLn-p9-YgZ" firstAttribute="leading" secondItem="TmE-oG-2M4" secondAttribute="trailing" constant="20" id="slb-Bb-adO"/>
+                <constraint firstItem="RLn-p9-YgZ" firstAttribute="leading" secondItem="TmE-oG-2M4" secondAttribute="trailing" constant="12" id="slb-Bb-adO"/>
                 <constraint firstItem="FsI-cW-cZa" firstAttribute="top" secondItem="SyP-g4-6GB" secondAttribute="bottom" constant="8" symbolic="YES" id="unq-at-cqh"/>
                 <constraint firstAttribute="bottom" secondItem="md6-Mr-Drb" secondAttribute="bottom" id="vu3-bm-oqw"/>
                 <constraint firstItem="S5H-n4-2fB" firstAttribute="top" secondItem="rPR-ut-Jsu" secondAttribute="top" id="yA7-FW-9Pp"/>
