@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -13,15 +14,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="French" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nk4-6A-iUW">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nk4-6A-iUW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="hIh-Af-t14"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="fHx-Tc-foo">
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="fHx-Tc-foo">
                         <rect key="frame" x="20" y="29" width="280" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="Det-3I-Mgo"/>
+                            <constraint firstAttribute="height" constant="28" id="lqF-GQ-kgo"/>
+                        </constraints>
                         <segments>
                             <segment title="I Know It"/>
                             <segment title="I'm Learning"/>
@@ -31,9 +39,13 @@
                             <action selector="statusChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="wTy-8r-pWF"/>
                         </connections>
                     </segmentedControl>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="vCz-OD-wNg">
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="vCz-OD-wNg">
                         <rect key="frame" x="20" y="65" width="280" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="AR5-Dh-9Rf"/>
+                            <constraint firstAttribute="height" constant="28" id="qvN-13-fK2"/>
+                        </constraints>
                         <segments>
                             <segment title="Beginner"/>
                             <segment title="Intermediate"/>
@@ -46,6 +58,16 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Nk4-6A-iUW" secondAttribute="trailing" id="0jy-Dz-Jb4"/>
+                    <constraint firstItem="Nk4-6A-iUW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="58I-Pr-n45"/>
+                    <constraint firstAttribute="centerX" secondItem="Nk4-6A-iUW" secondAttribute="centerX" id="JqF-LY-I3u"/>
+                    <constraint firstAttribute="centerX" secondItem="vCz-OD-wNg" secondAttribute="centerX" id="Yy0-mg-dmX"/>
+                    <constraint firstItem="vCz-OD-wNg" firstAttribute="top" secondItem="fHx-Tc-foo" secondAttribute="bottom" constant="8" id="aiZ-ko-Cpl"/>
+                    <constraint firstItem="Nk4-6A-iUW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hvM-Ed-FtR"/>
+                    <constraint firstItem="fHx-Tc-foo" firstAttribute="top" secondItem="Nk4-6A-iUW" secondAttribute="bottom" id="lzU-C4-06X"/>
+                    <constraint firstAttribute="centerX" secondItem="fHx-Tc-foo" secondAttribute="centerX" id="uq7-RP-R2W"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="language" destination="Nk4-6A-iUW" id="KOh-E6-Li1"/>

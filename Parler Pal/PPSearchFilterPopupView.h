@@ -21,7 +21,7 @@
 @property(nonatomic, weak) IBOutlet UITextField *usernameField;
 @property(nonatomic, weak) IBOutlet UISegmentedControl *genderSegment;
 @property(nonatomic, weak) IBOutlet UIStepper *minStepper, *maxStepper;
-@property(nonatomic, weak) IBOutlet id delegate;
+@property(nonatomic, weak) id delegate;
 
 -(void)show;
 -(IBAction)hide:(id)sender;

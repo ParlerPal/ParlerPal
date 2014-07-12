@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -14,31 +14,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cellBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-u7-SR3">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-u7-SR3">
                         <rect key="frame" x="0.0" y="4" width="320" height="85"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIv-cd-Pd4">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIv-cd-Pd4">
                         <rect key="frame" x="20" y="18" width="58" height="58"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="58" id="gr5-Ol-Oh8"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-tf-bnc">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-tf-bnc">
                         <rect key="frame" x="86" y="22" width="132" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="X1s-z9-BYR"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-P4-Y1S">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-P4-Y1S">
                         <rect key="frame" x="86" y="48" width="132" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-ha-HXX">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-ha-HXX">
                         <rect key="frame" x="265" y="34" width="35" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="Krw-Mw-5Bi"/>
+                        </constraints>
                         <state key="normal" image="addPalButton.png">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,9 +56,12 @@
                             <action selector="didSelectAddRemoveButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Q2m-5X-YlM"/>
                         </connections>
                     </button>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-NG-cl4">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-NG-cl4">
                         <rect key="frame" x="222" y="34" width="35" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="mlf-1s-pbN"/>
+                        </constraints>
                         <state key="normal" backgroundImage="deletePalButton.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -59,6 +71,27 @@
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="xCb-NG-cl4" firstAttribute="leading" secondItem="r9h-tf-bnc" secondAttribute="trailing" constant="4" id="3JZ-eW-Zna"/>
+                    <constraint firstItem="DHd-P4-Y1S" firstAttribute="top" secondItem="r9h-tf-bnc" secondAttribute="bottom" constant="5" id="8NH-9V-UKc"/>
+                    <constraint firstItem="r9h-tf-bnc" firstAttribute="leading" secondItem="aIv-cd-Pd4" secondAttribute="trailing" constant="8" symbolic="YES" id="Cz3-Oh-dxL"/>
+                    <constraint firstItem="qxy-ha-HXX" firstAttribute="leading" secondItem="xCb-NG-cl4" secondAttribute="trailing" constant="8" symbolic="YES" id="Djl-gi-TYm"/>
+                    <constraint firstAttribute="bottom" secondItem="nuk-u7-SR3" secondAttribute="bottom" constant="5" id="Dlf-1o-1vz"/>
+                    <constraint firstItem="DHd-P4-Y1S" firstAttribute="trailing" secondItem="r9h-tf-bnc" secondAttribute="trailing" id="IQ4-NC-xwe"/>
+                    <constraint firstItem="xCb-NG-cl4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="KNF-hO-blf"/>
+                    <constraint firstAttribute="trailing" secondItem="qxy-ha-HXX" secondAttribute="trailing" constant="20" symbolic="YES" id="OVc-vM-F1H"/>
+                    <constraint firstItem="xCb-NG-cl4" firstAttribute="bottom" secondItem="qxy-ha-HXX" secondAttribute="bottom" id="S1L-Rr-yWN"/>
+                    <constraint firstItem="aIv-cd-Pd4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="abR-up-uie"/>
+                    <constraint firstAttribute="trailing" secondItem="nuk-u7-SR3" secondAttribute="trailing" id="ccI-u4-RHB"/>
+                    <constraint firstItem="aIv-cd-Pd4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dMM-6P-SsV"/>
+                    <constraint firstItem="xCb-NG-cl4" firstAttribute="top" secondItem="qxy-ha-HXX" secondAttribute="top" id="ngk-nd-Z5g"/>
+                    <constraint firstItem="DHd-P4-Y1S" firstAttribute="leading" secondItem="aIv-cd-Pd4" secondAttribute="trailing" constant="8" symbolic="YES" id="quX-mQ-r8M"/>
+                    <constraint firstItem="nuk-u7-SR3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="tCY-8k-cCk"/>
+                    <constraint firstItem="aIv-cd-Pd4" firstAttribute="bottom" secondItem="DHd-P4-Y1S" secondAttribute="bottom" id="vhA-up-VLe"/>
+                    <constraint firstItem="aIv-cd-Pd4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="y3K-3i-gir"/>
+                    <constraint firstAttribute="bottom" secondItem="xCb-NG-cl4" secondAttribute="bottom" constant="32" id="ymt-bi-FMM"/>
+                    <constraint firstItem="nuk-u7-SR3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yrt-Vz-Pfk"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
