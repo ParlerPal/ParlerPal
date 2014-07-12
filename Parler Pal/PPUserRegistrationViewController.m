@@ -71,20 +71,21 @@
 {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    CGRect bkgndRect = activeField.superview.frame;
-    bkgndRect.size.height += kbSize.height;
-    [activeField.superview setFrame:bkgndRect];
-    [scrollView setContentOffset:CGPointMake(0.0, activeField.frame.origin.y-kbSize.height) animated:YES];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height+10, 0.0);
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 -(void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-    [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+    [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
