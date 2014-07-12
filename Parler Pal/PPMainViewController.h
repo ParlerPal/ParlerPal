@@ -13,13 +13,10 @@
 
 @interface PPMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PPMessagesPopupViewDelegate, MKMapViewDelegate>
 {
-    //int languageIndex;
-    //NSArray *allQuotes;
     NSMutableArray *messages;
     PPMessagePopupView *messageContentView;
 }
 @property (nonatomic, weak) IBOutlet UINavigationItem *toolbarTitle;
-//@property (nonatomic, weak) IBOutlet UILabel *quotes; 
 @property (nonatomic, weak) IBOutlet UITableView *table;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 
