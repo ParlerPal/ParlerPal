@@ -217,7 +217,7 @@
                                     <barButtonItem style="done" systemItem="done" id="AqW-Cx-Rwe">
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="Rpl-kr-e5T" kind="unwind" unwindAction="unwindMainMenuViewController:" id="a4u-am-PEV"/>
+                                            <segue destination="Rpl-kr-e5T" kind="unwind" identifier="doneSegue" unwindAction="unwindMainMenuViewController:" id="a4u-am-PEV"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Aeh-mV-vp0"/>
