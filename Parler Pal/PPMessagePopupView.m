@@ -52,7 +52,7 @@
     [self addSubview:self.view];
     [self setTransform:CGAffineTransformMakeScale(0, 0)];
     self.view.frame = screenSize;
-
+    [self.content scrollRangeToVisible:NSMakeRange(0, 0)];
     popupReply = [[PPReplyPopupView alloc]initWithFrame:screenSize];
 }
 
@@ -124,6 +124,7 @@
 {
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
+        [self.content scrollRangeToVisible:NSMakeRange(0, 0)];
     } completion:^(BOOL finished){}];
 }
 
