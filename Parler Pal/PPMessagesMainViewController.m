@@ -14,7 +14,7 @@
 #import "JMImageCache.h"
 
 @implementation PPMessagesMainViewController
-@synthesize sidebarButton, table, toolbarTitle, displayType;
+@synthesize sidebarButton, table, toolbarTitle, displayType, filteredMessagesArray, searchBar;
 
 #pragma mark - view methods
 
@@ -29,6 +29,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
     
@@ -39,6 +40,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
     
@@ -49,6 +51,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getAllReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
 
@@ -88,6 +91,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getUnreadReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
     
@@ -96,6 +100,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getAllSentMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
     
@@ -104,6 +109,7 @@
         [[PPDatabaseManager sharedDatabaseManager]getAllReceivedMessagesCompletionHandler:^(NSMutableArray *results) {
             messages = results;
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
 }
@@ -147,7 +153,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [messages count];
+    // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredMessagesArray count];
+    } else {
+        return [messages count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,7 +172,14 @@
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
-                PPMessage *message = [messages objectAtIndex:indexPath.row];
+                PPMessage *message;
+                
+                if (tableView == self.searchDisplayController.searchResultsTableView) {
+                    message = [filteredMessagesArray objectAtIndex:indexPath.row];
+                } else {
+                    message = [messages objectAtIndex:indexPath.row];
+                }
+                
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
                 cell.messageLabel.text = message.subject;
@@ -207,6 +225,7 @@
             [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
                 if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
                 [self.table reloadData];
+                self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
             }];
         }
     }];
@@ -231,6 +250,7 @@
         [[PPDatabaseManager sharedDatabaseManager]deleteMessage:message.dbID completionHandler:^(bool success) {
             [messages removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
         }];
     }
 }
@@ -239,6 +259,39 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    return YES;
+}
+
+#pragma mark - Content Filtering
+
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredMessagesArray removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.subject contains[c] %@ OR SELF.from contains[c] %@ OR SELF.to contains[c] %@", searchText, searchText, searchText];
+    filteredMessagesArray = [NSMutableArray arrayWithArray:[messages filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    UIImage *patternImage = [UIImage imageNamed:@"paper.png"];
+    [controller.searchResultsTableView setBackgroundColor:[UIColor colorWithPatternImage: patternImage]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 

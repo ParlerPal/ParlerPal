@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
     PPMessagesDisplayTypeSent,
 } PPMessagesDisplayType;
 
-@interface PPMessagesMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, PPMessagesPopupViewDelegate>
+@interface PPMessagesMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UIGestureRecognizerDelegate, PPMessagesPopupViewDelegate>
 {
     NSMutableArray *messages;
     PPMessagePopupView *messageContentView;
@@ -26,5 +26,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, weak) IBOutlet UITableView *table;
 @property(nonatomic, weak) IBOutlet UINavigationItem *toolbarTitle;
 @property(nonatomic, readwrite) PPMessagesDisplayType displayType;
+@property(nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property(nonatomic, strong) NSMutableArray *filteredMessagesArray;
 
 @end

@@ -14,7 +14,7 @@
 #import "PPSearchFilterPopupView.h"
 
 @implementation PPFindPalsViewController
-@synthesize table, filteredPalsArray, searchBar;
+@synthesize table;
 
 #pragma mark - view methods
 
@@ -34,7 +34,6 @@
     completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
-        self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
     }];
 
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -64,7 +63,6 @@
     completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
-        self.filteredPalsArray = [NSMutableArray arrayWithCapacity:[foundPals count]];
     }];
 }
 
@@ -109,12 +107,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [filteredPalsArray count];
-    } else {
-        return [foundPals count];
-    }
+    return [foundPals count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,13 +132,7 @@
         }
     }
     
-    PPPal *pal;
-    
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        pal = [filteredPalsArray objectAtIndex:indexPath.row];
-    } else {
-        pal = [foundPals objectAtIndex:indexPath.row];
-    }
+    PPPal *pal = [foundPals objectAtIndex:indexPath.row];
     
     cell.username.text = pal.username;
     
@@ -208,39 +195,5 @@
     }];
     
 }
-
-#pragma mark - Content Filtering
-
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    // Update the filtered array based on the search text and scope.
-    // Remove all objects from the filtered search array
-    [self.filteredPalsArray removeAllObjects];
-    // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.username contains[c] %@",searchText];
-    filteredPalsArray = [NSMutableArray arrayWithArray:[foundPals filteredArrayUsingPredicate:predicate]];
-}
-
-#pragma mark - UISearchDisplayController Delegate Methods
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    // Tells the table data source to reload when text changes
-    [self filterContentForSearchText:searchString scope:
-    [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    UIImage *patternImage = [UIImage imageNamed:@"paper.png"];
-    [controller.searchResultsTableView setBackgroundColor:[UIColor colorWithPatternImage: patternImage]];
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Tells the table data source to reload when scope bar selection changes
-    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
 
 @end
