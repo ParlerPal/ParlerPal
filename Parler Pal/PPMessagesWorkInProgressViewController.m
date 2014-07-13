@@ -16,7 +16,7 @@
 #import "PPDataShare.h"
 
 @implementation PPMessagesWorkInProgressViewController
-@synthesize table;
+@synthesize table, searchBar, filteredDraftsArray;
 
 #pragma mark - view methods
 
@@ -29,6 +29,7 @@
     [[PPDatabaseManager sharedDatabaseManager]getAllDraftsCompletionHandler:^(NSMutableArray *results) {
         drafts = results;
         [self.table reloadData];
+        self.filteredDraftsArray = [NSMutableArray arrayWithCapacity:[drafts count]];
     }];
     
     self.table.allowsMultipleSelectionDuringEditing = NO;
@@ -58,6 +59,7 @@
     [[PPDatabaseManager sharedDatabaseManager]getAllDraftsCompletionHandler:^(NSMutableArray *results) {
         drafts = results;
         [self.table reloadData];
+        self.filteredDraftsArray = [NSMutableArray arrayWithCapacity:[drafts count]];
     }];
 }
 
@@ -75,7 +77,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [drafts count];
+    // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredDraftsArray count];
+    } else {
+        return [drafts count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,6 +97,13 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
                 PPDraft *draft = [drafts objectAtIndex:indexPath.row];
+                
+                if (tableView == self.searchDisplayController.searchResultsTableView) {
+                    draft = [filteredDraftsArray objectAtIndex:indexPath.row];
+                } else {
+                    draft = [drafts objectAtIndex:indexPath.row];
+                }
+                
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = draft.from;
                 cell.messageLabel.text = draft.subject;
@@ -149,6 +163,7 @@
         [[PPDatabaseManager sharedDatabaseManager]deleteDraftByID:draft.dbID completionHandler:^(bool success) {
             [drafts removeObjectAtIndex:indexPath.row];
             [self.table reloadData];
+            self.filteredDraftsArray = [NSMutableArray arrayWithCapacity:[drafts count]];
         }];
     }
 }
@@ -157,6 +172,39 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    return YES;
+}
+
+#pragma mark - Content Filtering
+
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredDraftsArray removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.subject contains[c] %@ OR SELF.from contains[c] %@ OR SELF.to contains[c] %@ OR SELF.message contains[c] %@", searchText, searchText, searchText, searchText];
+    filteredDraftsArray = [NSMutableArray arrayWithArray:[drafts filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    UIImage *patternImage = [UIImage imageNamed:@"paper.png"];
+    [controller.searchResultsTableView setBackgroundColor:[UIColor colorWithPatternImage: patternImage]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PPMessagesWorkInProgressViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface PPMessagesWorkInProgressViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UIGestureRecognizerDelegate>
 {
     NSMutableArray *drafts;
 }
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButton;
 @property(nonatomic, weak) IBOutlet UITableView *table;
+@property(nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property(nonatomic, strong) NSMutableArray *filteredDraftsArray;
 
 @end

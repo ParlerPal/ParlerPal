@@ -1185,16 +1185,10 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stripeBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZCk-BE-9IT">
-                                <rect key="frame" x="0.0" y="44" width="320" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="3GW-Ry-3Nu"/>
-                                </constraints>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEA-r6-X8g">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="KOc-Ri-83l"/>
+                                    <constraint firstAttribute="height" constant="44" id="fXx-PA-7tK"/>
                                 </constraints>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -1209,7 +1203,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yrQ-La-fFz">
-                                <rect key="frame" x="0.0" y="75" width="320" height="449"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1218,37 +1212,58 @@
                                     <outlet property="delegate" destination="QQR-dt-9vp" id="GJj-uq-dYX"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="wtq-Mh-2TE">
+                                <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QQR-dt-9vp" id="UJh-y5-wYJ"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="g8n-qJ-A16" secondAttribute="bottom" id="4Sn-nm-UqZ"/>
-                            <constraint firstItem="yrQ-La-fFz" firstAttribute="trailing" secondItem="g8n-qJ-A16" secondAttribute="trailing" id="Aur-gz-1DL"/>
-                            <constraint firstItem="g8n-qJ-A16" firstAttribute="top" secondItem="yrQ-La-fFz" secondAttribute="bottom" id="BiC-Cc-pLv"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="leading" secondItem="yrQ-La-fFz" secondAttribute="leading" id="CCu-SG-JcR"/>
-                            <constraint firstAttribute="trailing" secondItem="g8n-qJ-A16" secondAttribute="trailing" id="CEc-qa-G9Y"/>
-                            <constraint firstItem="g8n-qJ-A16" firstAttribute="leading" secondItem="OPt-2Z-Vgk" secondAttribute="leading" id="FDk-Cq-EoI"/>
-                            <constraint firstItem="yrQ-La-fFz" firstAttribute="top" secondItem="ZCk-BE-9IT" secondAttribute="bottom" constant="1" id="GHf-3M-w2J"/>
-                            <constraint firstItem="g8n-qJ-A16" firstAttribute="bottom" secondItem="OPt-2Z-Vgk" secondAttribute="bottom" id="HQb-i3-kqx"/>
-                            <constraint firstItem="g8n-qJ-A16" firstAttribute="leading" secondItem="dQF-jg-lZw" secondAttribute="leading" id="KUE-hp-fLv"/>
-                            <constraint firstItem="g8n-qJ-A16" firstAttribute="leading" secondItem="yrQ-La-fFz" secondAttribute="leading" id="Q93-2t-3nr"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="leading" secondItem="qEA-r6-X8g" secondAttribute="leading" id="SQW-vk-IzV"/>
-                            <constraint firstAttribute="trailing" secondItem="OPt-2Z-Vgk" secondAttribute="trailing" constant="-5" id="TDI-WW-f8v"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="trailing" secondItem="qEA-r6-X8g" secondAttribute="trailing" id="m4Q-hz-SjS"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="top" secondItem="OPt-2Z-Vgk" secondAttribute="top" id="pkq-Q9-1cW"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="top" secondItem="qEA-r6-X8g" secondAttribute="bottom" id="rQu-CQ-Mek"/>
-                            <constraint firstItem="ZCk-BE-9IT" firstAttribute="trailing" secondItem="yrQ-La-fFz" secondAttribute="trailing" id="rSX-bC-QqW"/>
-                            <constraint firstItem="qEA-r6-X8g" firstAttribute="top" secondItem="dQF-jg-lZw" secondAttribute="top" id="yv9-fg-aUp"/>
+                            <constraint firstItem="qEA-r6-X8g" firstAttribute="trailing" secondItem="wtq-Mh-2TE" secondAttribute="trailing" id="3nO-Ee-4nm"/>
+                            <constraint firstItem="wtq-Mh-2TE" firstAttribute="leading" secondItem="qEA-r6-X8g" secondAttribute="leading" id="4AU-I8-1nd"/>
+                            <constraint firstItem="yrQ-La-fFz" firstAttribute="leading" secondItem="OPt-2Z-Vgk" secondAttribute="leading" id="Hde-Wx-44R"/>
+                            <constraint firstItem="g8n-qJ-A16" firstAttribute="leading" secondItem="dQF-jg-lZw" secondAttribute="leading" id="QDx-qZ-40F"/>
+                            <constraint firstItem="wtq-Mh-2TE" firstAttribute="top" secondItem="qEA-r6-X8g" secondAttribute="bottom" id="Wu1-sK-GKd"/>
+                            <constraint firstItem="yrQ-La-fFz" firstAttribute="leading" secondItem="g8n-qJ-A16" secondAttribute="leading" id="XKa-vN-DGW"/>
+                            <constraint firstAttribute="trailing" secondItem="OPt-2Z-Vgk" secondAttribute="trailing" constant="-5" id="dDG-71-yU2"/>
+                            <constraint firstItem="wtq-Mh-2TE" firstAttribute="leading" secondItem="yrQ-La-fFz" secondAttribute="leading" id="dv4-HQ-FVZ"/>
+                            <constraint firstItem="g8n-qJ-A16" firstAttribute="top" secondItem="yrQ-La-fFz" secondAttribute="bottom" id="dyJ-PZ-ubH"/>
+                            <constraint firstAttribute="bottom" secondItem="g8n-qJ-A16" secondAttribute="bottom" id="eWG-bC-CSM"/>
+                            <constraint firstItem="yrQ-La-fFz" firstAttribute="top" secondItem="wtq-Mh-2TE" secondAttribute="bottom" id="g69-6y-sPe"/>
+                            <constraint firstItem="g8n-qJ-A16" firstAttribute="bottom" secondItem="OPt-2Z-Vgk" secondAttribute="bottom" id="niX-Y1-8hy"/>
+                            <constraint firstItem="qEA-r6-X8g" firstAttribute="top" secondItem="dQF-jg-lZw" secondAttribute="top" id="rWy-H3-Y5f"/>
+                            <constraint firstItem="yrQ-La-fFz" firstAttribute="trailing" secondItem="g8n-qJ-A16" secondAttribute="trailing" id="tCc-DE-cd4"/>
+                            <constraint firstItem="OPt-2Z-Vgk" firstAttribute="top" secondItem="qEA-r6-X8g" secondAttribute="bottom" id="uU7-KB-3nt"/>
+                            <constraint firstItem="wtq-Mh-2TE" firstAttribute="trailing" secondItem="yrQ-La-fFz" secondAttribute="trailing" id="ugZ-bj-IFU"/>
+                            <constraint firstAttribute="trailing" secondItem="yrQ-La-fFz" secondAttribute="trailing" id="xby-jM-ghC"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="revealButton" destination="6h1-0y-g28" id="GOf-DF-QaS"/>
+                        <outlet property="searchBar" destination="wtq-Mh-2TE" id="oIf-Te-F5q"/>
+                        <outlet property="searchDisplayController" destination="tI2-7a-8gF" id="WNE-U4-A9I"/>
                         <outlet property="table" destination="yrQ-La-fFz" id="FYB-xn-Gzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00j-kn-xwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fT0-8z-wpP" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="tI2-7a-8gF">
+                    <connections>
+                        <outlet property="delegate" destination="QQR-dt-9vp" id="uE5-Gn-U7j"/>
+                        <outlet property="searchBar" destination="wtq-Mh-2TE" id="A6n-Nf-iEk"/>
+                        <outlet property="searchContentsController" destination="QQR-dt-9vp" id="ozg-ih-1Q1"/>
+                        <outlet property="searchResultsDataSource" destination="QQR-dt-9vp" id="Yid-bn-08W"/>
+                        <outlet property="searchResultsDelegate" destination="QQR-dt-9vp" id="72E-Yq-lxq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1998" y="191"/>
         </scene>
