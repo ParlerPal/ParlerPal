@@ -148,9 +148,40 @@
         return;
     }
     
+    else if(self.passwordField.text.length < 6)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Password must be at least 6 characters." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    else if (![self validateEmail:self.emailField.text])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Please enter a valid email address." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
     [[PPDatabaseManager sharedDatabaseManager]signUpWithUsername:self.usernameField.text password:self.passwordField.text andEmail:self.emailField.text];
     
     [self performSegueWithIdentifier:@"leave" sender:self];
+}
+
+#pragma mark - email validation
+
+- (BOOL) validateEmail: (NSString *)emailAddress
+{
+    NSString *regex =
+    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    NSPredicate *emailPred = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", regex];
+    
+    return [emailPred evaluateWithObject:emailAddress];
 }
 
 #pragma mark - pop return methods
