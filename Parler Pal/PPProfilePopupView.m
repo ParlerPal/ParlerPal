@@ -10,7 +10,7 @@
 #import "PPDatabaseManager.h"
 
 @implementation PPProfilePopupView
-@synthesize username, country, email, skype, age, gender, profile, languages, view, image;
+@synthesize username, country, email, skype, age, gender, profile, languages, view, image, messageButton;
 
 -(id)initWithFrame:(CGRect)frame
 {

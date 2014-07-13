@@ -13,6 +13,7 @@
                 <outlet property="gender" destination="wql-79-JQq" id="th0-0o-cXy"/>
                 <outlet property="image" destination="5pL-ti-6T4" id="eHz-3Z-bYa"/>
                 <outlet property="languages" destination="g4q-Ru-Yb7" id="tdZ-iS-taW"/>
+                <outlet property="messageButton" destination="EIJ-0A-P6J" id="loC-YG-0ia"/>
                 <outlet property="profile" destination="q8U-EE-DQ0" id="li2-eb-bbc"/>
                 <outlet property="skype" destination="0CC-bs-IjR" id="NSp-9q-xyB"/>
                 <outlet property="username" destination="nH8-qa-gbY" id="crP-rc-qbR"/>
@@ -44,7 +45,7 @@
                         <action selector="hide:" destination="-1" eventType="touchUpInside" id="J34-t4-9l8"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIJ-0A-P6J">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIJ-0A-P6J">
                     <rect key="frame" x="243" y="518" width="57" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>

@@ -17,6 +17,7 @@
 @property(nonatomic, weak) IBOutlet UITextView *profile, *languages;
 @property(nonatomic, weak) IBOutlet UIView *view;
 @property(nonatomic, weak) IBOutlet UIImageView *image;
+@property(nonatomic, weak) IBOutlet UIButton *messageButton;
 
 -(void)show;
 -(IBAction)sendMessage:(id)sender;

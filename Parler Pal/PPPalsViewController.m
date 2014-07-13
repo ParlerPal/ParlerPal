@@ -229,6 +229,8 @@
         profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
         profilePopup.email.text = results.sharedEmail;
         profilePopup.skype.text = results.skypeID;
+        PPPalTableViewCell *cell = (PPPalTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [profilePopup.messageButton setHidden:!(cell.type == kPalType)];
         
         [profilePopup.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, username]] key:nil
                         placeholder:[UIImage imageNamed:@"profile.png"]
