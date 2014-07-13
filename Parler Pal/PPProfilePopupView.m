@@ -71,6 +71,8 @@
 {
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
+        [self.languages scrollRangeToVisible:NSMakeRange(0, 0)];
+        [self.profile scrollRangeToVisible:NSMakeRange(0, 0)];
     } completion:^(BOOL finished){}];
 }
 
