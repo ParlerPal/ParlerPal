@@ -211,24 +211,22 @@
 {
     PPMessage *message = [messages objectAtIndex:indexPath.row];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
-        messageContentView.content.text = [results objectForKey:@"content"];
-        messageContentView.fromLabel.text = message.from;
-        messageContentView.toLabel.text = message.to;
-        messageContentView.subjectLabel.text = message.subject;
-        messageContentView.messageID = message.dbID;
-        messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
-        messageContentView.memoAttached = message.memoAttached;
+    messageContentView.fromLabel.text = message.from;
+    messageContentView.toLabel.text = message.to;
+    messageContentView.subjectLabel.text = message.subject;
+    messageContentView.content.text = message.message;
+    messageContentView.messageID = message.dbID;
+    messageContentView.shouldShowReply = displayType == PPMessagesDisplayTypeSent ? NO : YES;
+    messageContentView.memoAttached = message.memoAttached;
         
-        if(self.displayType != PPMessagesDisplayTypeSent)
-        {
-            [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
-                if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
-                [self.table reloadData];
-                self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
-            }];
-        }
-    }];
+    if(self.displayType != PPMessagesDisplayTypeSent)
+    {
+        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
+            if(displayType == PPMessagesDisplayTypeUnread)[messages removeObjectAtIndex:indexPath.row];
+            [self.table reloadData];
+            self.filteredMessagesArray = [NSMutableArray arrayWithCapacity:[messages count]];
+        }];
+    }
     
     [self.view addSubview:messageContentView];
     [messageContentView show];
@@ -269,7 +267,7 @@
     // Remove all objects from the filtered search array
     [self.filteredMessagesArray removeAllObjects];
     // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.subject contains[c] %@ OR SELF.from contains[c] %@ OR SELF.to contains[c] %@", searchText, searchText, searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.subject contains[c] %@ OR SELF.from contains[c] %@ OR SELF.to contains[c] %@ OR SELF.message contains[c] %@", searchText, searchText, searchText, searchText];
     filteredMessagesArray = [NSMutableArray arrayWithArray:[messages filteredArrayUsingPredicate:predicate]];
 }
 

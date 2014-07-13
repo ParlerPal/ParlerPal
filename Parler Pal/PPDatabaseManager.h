@@ -56,7 +56,7 @@
 -(void)getAllReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
 -(void)getUnreadReceivedMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
 -(void)getAllSentMessagesCompletionHandler:(void(^)(NSMutableArray *results))handler;
--(void)getMessageContentForID:(int)messageID completionHandler:(void(^)(NSMutableDictionary *results))handler;
+-(void)getMessageContentForID:(int)messageID completionHandler:(void(^)(NSMutableDictionary *results))handler __attribute__ ((deprecated));
 -(void)markMessageAsRead:(int)messageID completionHandler:(void(^)(bool success))handler;
 -(void)deleteMessage:(int)messageID completionHandler:(void(^)(bool success))handler;
 

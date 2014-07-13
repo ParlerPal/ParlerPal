@@ -21,7 +21,7 @@
         self.from = [dictionary objectForKey:@"from"];
         self.to = [dictionary objectForKey:@"to"];
         self.subject = [dictionary objectForKey:@"subject"];
-        self.message = [dictionary objectForKey:@"message"];
+        self.message = [dictionary objectForKey:@"content"];
         self.opened = [[dictionary objectForKey:@"opened"]boolValue];
         self.senderDeleted = [[dictionary objectForKey:@"senderDeleted"]boolValue];
         self.receiverDeleted = [[dictionary objectForKey:@"receiverDeleted"]boolValue];

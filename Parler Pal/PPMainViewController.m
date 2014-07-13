@@ -150,7 +150,7 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
                 PPMessage *message = [messages objectAtIndex:indexPath.row];
-                
+
                 cell = (PPMessageTableViewCell *)currentObject;
                 cell.fromLabel.text = message.from;
                 cell.messageLabel.text = message.subject;
@@ -182,21 +182,19 @@
 {
     PPMessage *message = [messages objectAtIndex:indexPath.row];
     
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
-        messageContentView.content.text = [results objectForKey:@"content"];
-        
-        messageContentView.fromLabel.text = message.from;
-        messageContentView.toLabel.text = message.to;
-        messageContentView.subjectLabel.text = message.subject;
-        messageContentView.messageID = message.dbID;
-        messageContentView.memoAttached = message.memoAttached;
-        
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
-            [messages removeObjectAtIndex:indexPath.row];
-            [self.table reloadData];
-            [self plotMessagesPositions];
-        }];
-        
+    messageContentView.fromLabel.text = message.from;
+    messageContentView.toLabel.text = message.to;
+    messageContentView.subjectLabel.text = message.subject;
+    messageContentView.content.text = message.message;
+    messageContentView.messageID = message.dbID;
+    messageContentView.shouldShowReply = YES;
+    messageContentView.memoAttached = message.memoAttached;
+    
+    
+    [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
+        [messages removeObjectAtIndex:indexPath.row];
+        [self.table reloadData];
+        [self plotMessagesPositions];
     }];
     
     [self.view addSubview:messageContentView];
@@ -278,21 +276,20 @@
 {
     PPMessageLocation *annotation = (PPMessageLocation *)view.annotation;
     PPMessage *message = [messages objectAtIndex:annotation.index];
+    
+    messageContentView.fromLabel.text = message.from;
+    messageContentView.toLabel.text = message.to;
+    messageContentView.subjectLabel.text = message.subject;
+    messageContentView.content.text = message.message;
+    messageContentView.messageID = message.dbID;
+    messageContentView.shouldShowReply = YES;
+    messageContentView.memoAttached = message.memoAttached;
+    
 
-    [[PPDatabaseManager sharedDatabaseManager]getMessageContentForID:message.dbID completionHandler:^(NSMutableDictionary *results) {
-        messageContentView.content.text = [results objectForKey:@"content"];
-        
-        messageContentView.fromLabel.text = message.from;
-        messageContentView.toLabel.text = message.to;
-        messageContentView.subjectLabel.text = message.subject;
-        messageContentView.messageID = message.dbID;
-        messageContentView.memoAttached = message.memoAttached;
-        
-        [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
-            [messages removeObjectAtIndex:annotation.index];
-            [self.table reloadData];
-            [self plotMessagesPositions];
-        }];
+    [[PPDatabaseManager sharedDatabaseManager]markMessageAsRead:message.dbID completionHandler:^(bool success) {
+        [messages removeObjectAtIndex:annotation.index];
+        [self.table reloadData];
+        [self plotMessagesPositions];
     }];
     
     [self.view addSubview:messageContentView];
