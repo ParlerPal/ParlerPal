@@ -28,6 +28,8 @@
 		643434F81968C9B400600EF9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 643434F71968C9B400600EF9 /* KeychainItemWrapper.m */; };
 		6446AFA3196C366A00521135 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6446AFA2196C366A00521135 /* UIImage+Resize.m */; };
 		6446AFA5196CE50100521135 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6446AFA4196CE50100521135 /* profile.png */; };
+		64494EE019744CF300B14231 /* upVote.png in Resources */ = {isa = PBXBuildFile; fileRef = 64494EDE19744CF300B14231 /* upVote.png */; };
+		64494EE119744CF300B14231 /* downVote.png in Resources */ = {isa = PBXBuildFile; fileRef = 64494EDF19744CF300B14231 /* downVote.png */; };
 		645A1B46195B4F54004657B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */; };
 		645A1B47195B4F54004657B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B36195B4F54004657B2 /* AFHTTPRequestOperationManager.m */; };
 		645A1B48195B4F54004657B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A1B38195B4F54004657B2 /* AFHTTPSessionManager.m */; };
@@ -159,6 +161,8 @@
 		6446AFA1196C366A00521135 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		6446AFA2196C366A00521135 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		6446AFA4196CE50100521135 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		64494EDE19744CF300B14231 /* upVote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upVote.png; sourceTree = "<group>"; };
+		64494EDF19744CF300B14231 /* downVote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downVote.png; sourceTree = "<group>"; };
 		645A1B33195B4F54004657B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		645A1B34195B4F54004657B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		645A1B35195B4F54004657B2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -576,6 +580,8 @@
 		64AF9D7D19579980007EF924 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				64494EDE19744CF300B14231 /* upVote.png */,
+				64494EDF19744CF300B14231 /* downVote.png */,
 				64A87AA0196F230000902B97 /* female.png */,
 				64A87AA1196F230000902B97 /* male.png */,
 				64A87AA4196F243E00902B97 /* noGender.png */,
@@ -817,12 +823,14 @@
 				649547DF195677B200349DC4 /* Main_iPhone.storyboard in Resources */,
 				6492F342195E39F700F950AF /* PPMessagePopupView.xib in Resources */,
 				64B52C6B19707C5000985F46 /* map2r.png in Resources */,
+				64494EE119744CF300B14231 /* downVote.png in Resources */,
 				64BFB6511944183300D11E88 /* Main_iPad.storyboard in Resources */,
 				645A1B6F195C887F004657B2 /* quotes.plist in Resources */,
 				64A87AA3196F230000902B97 /* male.png in Resources */,
 				6433125E195F9C5800290E02 /* cellBG.png in Resources */,
 				649547E819567FEE00349DC4 /* PPLanguageTableViewCell.xib in Resources */,
 				64BFB6561944183300D11E88 /* Images.xcassets in Resources */,
+				64494EE019744CF300B14231 /* upVote.png in Resources */,
 				648153881953BEF500D0B3F0 /* menu@2x.png in Resources */,
 				64A87AA5196F243E00902B97 /* noGender.png in Resources */,
 				649547EF1956826A00349DC4 /* PPPalTableViewCell.xib in Resources */,

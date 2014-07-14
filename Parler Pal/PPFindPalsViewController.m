@@ -141,6 +141,7 @@
                     completionBlock:nil
                        failureBlock:nil];
     cell.country.text = pal.country;
+    cell.recommendationScore.text = [NSString stringWithFormat:@"%@%@",[pal.recommendationScore intValue] >= 0 ? @"+" : @"",pal.recommendationScore];
     return cell;
 }
 

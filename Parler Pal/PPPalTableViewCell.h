@@ -33,7 +33,7 @@ typedef enum : NSUInteger {
 {
     PalTableViewCellType type;
 }
-@property (nonatomic, weak) IBOutlet UILabel *username, *country;
+@property (nonatomic, weak) IBOutlet UILabel *username, *country, *recommendationScore;
 @property (nonatomic, weak) IBOutlet UIImageView *image;
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, readwrite) PalTableViewCellType type;

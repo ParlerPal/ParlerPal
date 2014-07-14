@@ -9,7 +9,7 @@
 #import "PPPalTableViewCell.h"
 
 @implementation PPPalTableViewCell
-@synthesize username, image, delegate, type, addRemoveButton, rejectButton, country;
+@synthesize username, image, delegate, type, addRemoveButton, rejectButton, country, recommendationScore;
 
 #pragma mark - action methods
 
