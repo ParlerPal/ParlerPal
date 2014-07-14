@@ -66,10 +66,27 @@
 }
 
 -(IBAction)changeScore:(id)sender
-{
+{  
     int newScore = self.scoreControl.selectedSegmentIndex == 1 ? 1 : -1;
     [[PPDatabaseManager sharedDatabaseManager]setRecommendationOfUser:self.username.text recommendation:newScore completionHandler:^(bool success) {
     }];
+    
+    if(oldSegmentSelection == 1 && scoreControl.selectedSegmentIndex == 0)
+    {
+        self.score.text = [NSString stringWithFormat:@"%i",[self.score.text intValue] - 2];
+    }
+    
+    else if(oldSegmentSelection == 0 && scoreControl.selectedSegmentIndex == 1)
+    {
+        self.score.text = [NSString stringWithFormat:@"%i",[self.score.text intValue] + 2];
+    }
+    
+    else if(oldSegmentSelection != 1 && oldSegmentSelection != 0)
+    {
+        self.score.text = [NSString stringWithFormat:@"%i",[self.score.text intValue] + newScore];
+    }
+    
+    oldSegmentSelection = (int)scoreControl.selectedSegmentIndex;
 }
 
 #pragma mark - visibility methods methods
@@ -84,6 +101,8 @@
         [[PPDatabaseManager sharedDatabaseManager]getRecommendationValueOfUser:self.username.text completionHandler:^(int value) {
             if(value == 1 || value == -1)self.scoreControl.selectedSegmentIndex = value ==  -1 ? 0 : 1;
             else self.scoreControl.selectedSegmentIndex = -1;
+            
+            oldSegmentSelection = (int)scoreControl.selectedSegmentIndex;
         }];
     } completion:^(BOOL finished){}];
 }

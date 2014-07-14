@@ -12,6 +12,7 @@
 @interface PPProfilePopupView : UIView
 {
     PPReplyPopupView *popupReply;
+    int oldSegmentSelection;
 }
 @property(nonatomic, weak) IBOutlet UILabel *username, *country, *age, *gender, *score;
 @property(nonatomic, weak) IBOutlet UITextView *profile, *languages;
