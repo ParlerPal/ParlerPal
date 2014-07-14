@@ -18,7 +18,7 @@
 @interface PPSearchFilterPopupView : UIView <UITextFieldDelegate>
 @property(nonatomic, weak) IBOutlet UIView *view;
 @property(nonatomic, weak) IBOutlet UILabel *minAgeLabel, *maxAgeLabel;
-@property(nonatomic, weak) IBOutlet UITextField *usernameField;
+@property(nonatomic, weak) IBOutlet UITextField *usernameField, *palRating;
 @property(nonatomic, weak) IBOutlet UISegmentedControl *genderSegment;
 @property(nonatomic, weak) IBOutlet UIStepper *minStepper, *maxStepper;
 @property(nonatomic, weak) id delegate;
@@ -27,4 +27,5 @@
 -(IBAction)hide:(id)sender;
 -(IBAction)minStepper:(id)sender;
 -(IBAction)maxStepper:(id)sender;
+-(IBAction)fieldDidEndEditing:(id)sender;
 @end

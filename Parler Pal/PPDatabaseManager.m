@@ -431,9 +431,9 @@
           }];
 }
 
--(void)getBatchOfPalsWithUsername:(NSString *)username gender:(int)gender minAge:(int)minAage maxAge:(int)maxAge completionHandler:(void(^)(NSMutableArray *results))handler
+-(void)getBatchOfPalsWithUsername:(NSString *)username gender:(int)gender minAge:(int)minAage maxAge:(int)maxAge minRecScore:(int)score completionHandler:(void(^)(NSMutableArray *results))handler
 {
-    NSDictionary *parameters = @{@"username":username, @"gender":[NSNumber numberWithInt:gender], @"minAge":[NSNumber numberWithInt:minAage], @"maxAge":[NSNumber numberWithInt:maxAge]};
+    NSDictionary *parameters = @{@"username":username, @"gender":[NSNumber numberWithInt:gender], @"minAge":[NSNumber numberWithInt:minAage], @"maxAge":[NSNumber numberWithInt:maxAge], @"minRecScore":[NSNumber numberWithInt:score]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"friendships/findBatchOfPals.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSData *data = (NSData *)responseObject;
         DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];

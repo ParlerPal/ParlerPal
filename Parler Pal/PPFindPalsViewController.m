@@ -24,13 +24,14 @@
     
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     profilePopup = [[PPProfilePopupView alloc]initWithFrame:screenSize];
-    searchFilterView = [[PPSearchFilterPopupView alloc]initWithFrame:CGRectMake(0, 0, screenSize.size.width, 165)];
+    searchFilterView = [[PPSearchFilterPopupView alloc]initWithFrame:CGRectMake(0, 0, screenSize.size.width, 200)];
     searchFilterView.delegate = self;
     
     [[PPDatabaseManager sharedDatabaseManager]getBatchOfPalsWithUsername:searchFilterView.usernameField.text
                                                                   gender:(int)searchFilterView.genderSegment.selectedSegmentIndex
                                                                   minAge:searchFilterView.minStepper.value
                                                                   maxAge:searchFilterView.maxStepper.value
+                                                                  minRecScore:[searchFilterView.palRating.text intValue]
     completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];
@@ -60,6 +61,7 @@
                                                                   gender:(int)searchFilterView.genderSegment.selectedSegmentIndex
                                                                   minAge:searchFilterView.minStepper.value
                                                                   maxAge:searchFilterView.maxStepper.value
+                                                                  minRecScore:[searchFilterView.palRating.text intValue]
     completionHandler:^(NSMutableArray *results) {
         foundPals = results;
         [self.table reloadData];

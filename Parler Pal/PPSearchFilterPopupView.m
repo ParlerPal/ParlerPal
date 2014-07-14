@@ -9,7 +9,7 @@
 #import "PPSearchFilterPopupView.h"
 
 @implementation PPSearchFilterPopupView
-@synthesize view, usernameField, genderSegment, minAgeLabel, maxAgeLabel, minStepper, maxStepper, delegate;
+@synthesize view, usernameField, genderSegment, minAgeLabel, maxAgeLabel, minStepper, maxStepper, delegate, palRating;
 
 -(id)initWithFrame:(CGRect)frame
 {
@@ -95,6 +95,28 @@
     
     minAgeLabel.text = [NSString stringWithFormat:@"%i",(int)minStepper.value];
     maxAgeLabel.text = [NSString stringWithFormat:@"%i",(int)maxStepper.value];
+}
+
+#pragma mark - UITextiField delegate methods
+
+-(IBAction)fieldDidEndEditing:(id)sender
+{
+    UITextField *textField = (UITextField *)sender;
+    
+    if(textField == self.palRating)
+    {
+        NSString *regex = @"^(\\+|-)?\\d+$";
+        NSPredicate *numPred = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", regex];
+        
+        if(![numPred evaluateWithObject:textField.text])
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Positive or negative integers only." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+            [alert show];
+            textField.text = @"";
+        }
+    }
+    
+    [textField resignFirstResponder];
 }
 
 @end

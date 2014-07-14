@@ -12,13 +12,14 @@
                 <outlet property="maxStepper" destination="bB0-PK-726" id="J6p-rs-P4C"/>
                 <outlet property="minAgeLabel" destination="9Cj-hS-f8M" id="fFc-Cs-j4l"/>
                 <outlet property="minStepper" destination="c35-MJ-dHk" id="F4X-hR-bFT"/>
+                <outlet property="palRating" destination="hmx-eT-d8F" id="Qa5-qV-jbl"/>
                 <outlet property="usernameField" destination="W5a-Ga-eQq" id="C5S-Qx-pHN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="fH6-aM-3gv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-9J-bPG">
@@ -45,11 +46,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="huD-CR-mW8"/>
+                        <action selector="fieldDidEndEditing:" destination="-1" eventType="editingDidEndOnExit" id="299-Xi-KFH"/>
+                        <outlet property="delegate" destination="-1" id="n2u-em-Oyq"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-pC-DsY">
-                    <rect key="frame" x="142" y="129" width="37" height="30"/>
+                    <rect key="frame" x="142" y="164" width="37" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Done">
                         <color key="titleColor" red="0.015686275440000001" green="0.0078431377190000002" blue="0.011764707040000001" alpha="1" colorSpace="deviceRGB"/>
@@ -96,7 +98,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minimumValue="16" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c35-MJ-dHk">
-                    <rect key="frame" x="37" y="92" width="94" height="29"/>
+                    <rect key="frame" x="37" y="89" width="94" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="tintColor" red="0.015686275440000001" green="0.0078431377190000002" blue="0.011764707040000001" alpha="1" colorSpace="deviceRGB"/>
                     <connections>
@@ -104,31 +106,48 @@
                     </connections>
                 </stepper>
                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="16" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bB0-PK-726">
-                    <rect key="frame" x="188" y="92" width="94" height="29"/>
+                    <rect key="frame" x="188" y="89" width="94" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="tintColor" red="0.015686275440000001" green="0.0078431377190000002" blue="0.011764707040000001" alpha="1" colorSpace="deviceRGB"/>
                     <connections>
                         <action selector="maxStepper:" destination="-1" eventType="valueChanged" id="ewh-AK-J7t"/>
                     </connections>
                 </stepper>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&lt; Pal Rating" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmx-eT-d8F">
+                    <rect key="frame" x="112" y="130" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Bln-yf-Lbq"/>
+                        <constraint firstAttribute="width" constant="97" id="rDy-9N-Acf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation"/>
+                    <connections>
+                        <action selector="fieldDidEndEditing:" destination="-1" eventType="editingDidEndOnExit" id="tgY-Fe-zia"/>
+                        <outlet property="delegate" destination="-1" id="9aa-wV-15Z"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="jZa-cI-Pba" firstAttribute="leading" secondItem="dgO-uf-7hA" secondAttribute="trailing" constant="6" id="41k-5R-JqW"/>
                 <constraint firstItem="dgO-uf-7hA" firstAttribute="top" secondItem="D4e-9J-bPG" secondAttribute="bottom" constant="14" id="4BX-3z-mqo"/>
                 <constraint firstItem="W5a-Ga-eQq" firstAttribute="leading" secondItem="mFp-jh-WxL" secondAttribute="leading" constant="-2" id="AcH-BC-inu"/>
-                <constraint firstAttribute="bottom" secondItem="c35-MJ-dHk" secondAttribute="bottom" constant="44" id="BDI-8l-OMp"/>
+                <constraint firstAttribute="bottom" secondItem="c35-MJ-dHk" secondAttribute="bottom" constant="82" id="BDI-8l-OMp"/>
                 <constraint firstAttribute="bottom" secondItem="Nir-pC-DsY" secondAttribute="bottom" constant="6" id="Dzm-ea-gYe"/>
+                <constraint firstItem="hmx-eT-d8F" firstAttribute="top" secondItem="c35-MJ-dHk" secondAttribute="bottom" constant="12" id="Fbx-jN-57g"/>
                 <constraint firstItem="W5a-Ga-eQq" firstAttribute="leading" secondItem="Nir-pC-DsY" secondAttribute="leading" constant="-113" id="HxT-FB-6Ch"/>
                 <constraint firstItem="W5a-Ga-eQq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="NuA-Qo-i4g"/>
+                <constraint firstItem="Nir-pC-DsY" firstAttribute="leading" secondItem="hmx-eT-d8F" secondAttribute="trailing" constant="-67" id="Ph2-wY-MAQ"/>
                 <constraint firstItem="D4e-9J-bPG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="PsF-zv-ILm"/>
+                <constraint firstAttribute="centerX" secondItem="hmx-eT-d8F" secondAttribute="centerX" id="RdD-JO-q79"/>
                 <constraint firstItem="9Cj-hS-f8M" firstAttribute="leading" secondItem="mFp-jh-WxL" secondAttribute="trailing" constant="7" id="Rpq-gG-chX"/>
                 <constraint firstItem="dgO-uf-7hA" firstAttribute="leading" secondItem="D4e-9J-bPG" secondAttribute="leading" id="Yuc-aR-ZTf"/>
                 <constraint firstAttribute="centerX" secondItem="Nir-pC-DsY" secondAttribute="centerX" id="Zbl-mJ-Olo"/>
                 <constraint firstItem="D4e-9J-bPG" firstAttribute="trailing" secondItem="Nir-pC-DsY" secondAttribute="trailing" constant="112" id="cX3-dA-zH9"/>
                 <constraint firstItem="9Cj-hS-f8M" firstAttribute="centerY" secondItem="mFp-jh-WxL" secondAttribute="centerY" id="ij9-Y0-R2E"/>
                 <constraint firstItem="mFp-jh-WxL" firstAttribute="top" secondItem="W5a-Ga-eQq" secondAttribute="bottom" constant="13" id="nPR-kE-sIN"/>
-                <constraint firstAttribute="bottom" secondItem="bB0-PK-726" secondAttribute="bottom" constant="44" id="nWI-X2-sVG"/>
+                <constraint firstAttribute="bottom" secondItem="bB0-PK-726" secondAttribute="bottom" constant="82" id="nWI-X2-sVG"/>
                 <constraint firstItem="bB0-PK-726" firstAttribute="trailing" secondItem="Nir-pC-DsY" secondAttribute="trailing" constant="103" id="oRI-eZ-5bU"/>
                 <constraint firstItem="dgO-uf-7hA" firstAttribute="centerY" secondItem="jZa-cI-Pba" secondAttribute="centerY" id="psZ-GU-Woz"/>
                 <constraint firstItem="c35-MJ-dHk" firstAttribute="leading" secondItem="Nir-pC-DsY" secondAttribute="leading" constant="-105" id="usV-TI-cV1"/>

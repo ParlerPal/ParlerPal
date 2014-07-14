@@ -169,7 +169,7 @@
 
 #pragma mark - email validation
 
-- (BOOL) validateEmail: (NSString *)emailAddress
+-(BOOL)validateEmail:(NSString *)emailAddress
 {
     NSString *regex =
     @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"

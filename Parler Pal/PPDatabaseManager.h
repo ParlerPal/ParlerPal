@@ -45,7 +45,7 @@
 //Friendship methods
 -(void)getAllPalsCompletionHandler:(void(^)(NSMutableArray *results))handler;
 -(void)getAllPalRequestsCompletionHandler:(void(^)(NSMutableArray *results))handler;
--(void)getBatchOfPalsWithUsername:(NSString *)username gender:(int)gender minAge:(int)minAage maxAge:(int)maxAge completionHandler:(void(^)(NSMutableArray *results))handler;
+-(void)getBatchOfPalsWithUsername:(NSString *)username gender:(int)gender minAge:(int)minAage maxAge:(int)maxAge minRecScore:(int)score completionHandler:(void(^)(NSMutableArray *results))handler;
 
 -(void)requestFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler;
 -(void)confirmFriendshipWith:(NSString *)theUser completionHandler:(void(^)(bool success))handler;
