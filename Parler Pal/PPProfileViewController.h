@@ -12,12 +12,13 @@
     CGPoint *previousPoint;
     NSArray *listOfCountries;
 }
-@property (nonatomic, weak) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *sharedEmailField, *skypeIDField, *age;
+@property (nonatomic, weak) IBOutlet UITextField *passwordField, *confirmPasswordField, *privateEmailField, *countryField, *age;
 @property (nonatomic, weak) IBOutlet UITextView *profile;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *gender;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *palRating;
 
 //Text field action methods for when editing is complete
 -(IBAction)fieldDidEndEditing:(id)sender;

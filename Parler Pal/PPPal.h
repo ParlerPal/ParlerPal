@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
 } PPPalGender;
 
 @interface PPPal : NSObject
-@property (nonatomic, strong) NSString *username, *sharedEmail, *country, *profile, *skypeID, *recommendationScore;
+@property (nonatomic, strong) NSString *username, *country, *profile, *recommendationScore;
 @property (nonatomic, readwrite) int dbID, age;
 @property (nonatomic, readwrite) PPPalGender gender;
 @property (nonatomic, strong) NSMutableArray *languages;

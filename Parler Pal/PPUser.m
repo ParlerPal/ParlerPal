@@ -9,7 +9,7 @@
 #import "PPUser.h"
 
 @implementation PPUser
-@synthesize sharedEmail, username, country, profile, skypeID, age, gender, email, created, dbID, recommendationScore;
+@synthesize username, country, profile, age, gender, email, created, dbID, recommendationScore;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -18,11 +18,9 @@
     if(self)
     {
         self.dbID = [[dictionary objectForKey:@"id"]intValue];
-        self.sharedEmail = [dictionary objectForKey:@"sharedEmail"];
         self.username = [dictionary objectForKey:@"username"];
         self.country = [dictionary objectForKey:@"country"];
         self.profile = [dictionary objectForKey:@"profile"];
-        self.skypeID = [dictionary objectForKey:@"skypeID"];
         self.age = [[dictionary objectForKey:@"age"]intValue];
         self.gender = [[dictionary objectForKey:@"gender"]intValue];
         self.email = [dictionary objectForKey:@"email"];

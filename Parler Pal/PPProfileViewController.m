@@ -13,7 +13,7 @@
 #import "UIImage+Resize.h"
 
 @implementation PPProfileViewController
-@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, sharedEmailField, skypeIDField, profile, scrollView, contentView, age, gender, imageView;
+@synthesize passwordField, confirmPasswordField, privateEmailField, countryField, profile, scrollView, contentView, age, gender, imageView, palRating;
 
 #pragma mark - view methods
 
@@ -31,10 +31,9 @@
     {
         privateEmailField.text = results.email;
         countryField.text = results.country;
-        sharedEmailField.text = results.sharedEmail;
-        skypeIDField.text = results.skypeID;
         profile.text = results.profile;
         age.text = [NSString stringWithFormat:@"%i",results.age];
+        palRating.text = [NSString stringWithFormat:@"Pal Rating: %@",results.recommendationScore];
         [gender setSelectedSegmentIndex:results.gender];
         
         NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -230,7 +229,7 @@
 {
     if([identifier isEqualToString:@"doneSegue"])
     {
-        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:sharedEmailField.text country:countryField.text profile:profile.text skypeID:skypeIDField.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithCountry:countryField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
         }];
         
         return YES;
