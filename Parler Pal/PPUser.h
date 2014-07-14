@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
 } PPUserGender;
 
 @interface PPUser : NSObject
-@property (nonatomic, strong) NSString *username, *email, *sharedEmail, *country, *profile, *skypeID;
+@property (nonatomic, strong) NSString *username, *email, *sharedEmail, *country, *profile, *skypeID, *recommendationScore;
 @property (nonatomic, readwrite) int dbID, age;
 @property (nonatomic, readwrite) PPUserGender gender;
 @property (nonatomic, strong) NSDate *created;

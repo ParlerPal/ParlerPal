@@ -65,4 +65,9 @@
 -(void)getDraftByID:(int)draftID completionHandler:(void(^)(PPDraft *results))handler;
 -(void)getAllDraftsCompletionHandler:(void(^)(NSMutableArray *results))handler;
 -(void)deleteDraftByID:(int)draftID completionHandler:(void(^)(bool success))handler;
+
+//recommendations
+-(void)setRecommendationOfUser:(NSString *)user recommendation:(int)recommendation completionHandler:(void(^)(bool success))handler;
+-(void)getRecommendationValueOfUser:(NSString *)user completionHandler:(void(^)(int value))handler;
+
 @end

@@ -13,14 +13,16 @@
 {
     PPReplyPopupView *popupReply;
 }
-@property(nonatomic, weak) IBOutlet UILabel *username, *country, *email, *skype, *age, *gender;
+@property(nonatomic, weak) IBOutlet UILabel *username, *country, *age, *gender, *score;
 @property(nonatomic, weak) IBOutlet UITextView *profile, *languages;
 @property(nonatomic, weak) IBOutlet UIView *view;
 @property(nonatomic, weak) IBOutlet UIImageView *image;
 @property(nonatomic, weak) IBOutlet UIButton *messageButton;
+@property(nonatomic, weak) IBOutlet UISegmentedControl *scoreControl;
 
 -(void)show;
 -(IBAction)sendMessage:(id)sender;
 -(IBAction)hide:(id)sender;
+-(IBAction)changeScore:(id)sender;
 
 @end

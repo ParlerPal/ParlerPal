@@ -227,10 +227,10 @@
         profilePopup.gender.text = results.gender == PPPalGenderMale ? @"Male" : results.gender == PPPalGenderFemale ? @"Female" : @"N/S";
         profilePopup.country.text = results.country;
         profilePopup.age.text = [NSString stringWithFormat:@"%i",results.age];
-        profilePopup.email.text = results.sharedEmail;
-        profilePopup.skype.text = results.skypeID;
+        profilePopup.score.text = results.recommendationScore;
         PPPalTableViewCell *cell = (PPPalTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
         [profilePopup.messageButton setHidden:!(cell.type == kPalType)];
+        [profilePopup.scoreControl setHidden:!(cell.type == kPalType)];
         
         [profilePopup.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@files/uploadedProfilePhotos/%@.png", WEB_SERVICES, username]] key:nil
                         placeholder:[UIImage imageNamed:@"profile.png"]

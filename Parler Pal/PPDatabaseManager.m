@@ -835,5 +835,51 @@
           }];
 }
 
+#pragma mark - recommendation methods
+
+-(void)setRecommendationOfUser:(NSString *)user recommendation:(int)recommendation completionHandler:(void(^)(bool success))handler
+{
+    NSDictionary *parameters = @{@"recommendee": user, @"recommendation": [NSNumber numberWithInt:recommendation]};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"recommendations/setRecommendationOfUser.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(handler)if(handler)handler(YES);
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              if(handler)handler(NO);
+          }];
+}
+
+-(void)getRecommendationValueOfUser:(NSString *)user completionHandler:(void(^)(int value))handler
+{
+    NSDictionary *parameters = @{@"recommendee": user};
+    [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"recommendations/getRecommendationOfUser.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSData *data = (NSData *)responseObject;
+        DDXMLDocument *xmlDoc = [[DDXMLDocument alloc]initWithData:data options:0 error:nil];
+        NSArray *results = [xmlDoc nodesForXPath:@"//recommendation" error:nil];
+        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+        
+        for (DDXMLElement *node in results)
+        {
+            for(int counter = 0; counter < [node childCount]; counter++)
+            {
+                if ([[node childAtIndex:counter] stringValue] != nil)
+                {
+                    NSString * strKeyValue = [[[node childAtIndex:counter] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    if ([strKeyValue length] != 0)
+                    {
+                        [item setObject:strKeyValue forKey:[[node childAtIndex:counter] name]];
+                    }
+                }
+            }
+        }
+        
+        if(handler)handler([[item objectForKey:@"recommended"]intValue]);
+        
+    }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
 
 @end

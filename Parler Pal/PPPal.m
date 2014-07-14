@@ -10,7 +10,7 @@
 #import "PPPal.h"
 
 @implementation PPPal
-@synthesize sharedEmail, username, country, profile, skypeID, age, gender, dbID, languages, created;
+@synthesize sharedEmail, username, country, profile, skypeID, age, gender, dbID, languages, created, recommendationScore;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -27,6 +27,7 @@
         self.age = [[dictionary objectForKey:@"age"]intValue];
         self.gender = [[dictionary objectForKey:@"gender"]intValue];
         self.languages = [dictionary objectForKey:@"languages"];
+        self.recommendationScore = [dictionary objectForKey:@"recommendationScore"];
         
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

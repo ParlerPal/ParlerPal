@@ -9,7 +9,7 @@
 #import "PPUser.h"
 
 @implementation PPUser
-@synthesize sharedEmail, username, country, profile, skypeID, age, gender, email, created, dbID;
+@synthesize sharedEmail, username, country, profile, skypeID, age, gender, email, created, dbID, recommendationScore;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -26,6 +26,7 @@
         self.age = [[dictionary objectForKey:@"age"]intValue];
         self.gender = [[dictionary objectForKey:@"gender"]intValue];
         self.email = [dictionary objectForKey:@"email"];
+        self.recommendationScore = [dictionary objectForKey:@"recommendationScore"];
         
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
