@@ -31,7 +31,7 @@
 
 //User profile methods
 -(void)getUserProfileCompletionHandler:(void(^)(PPUser *results))handler;
--(void)updateUserProfileWithCountry:(NSString *)country profile:(NSString *)profile age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler;
+-(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler;
 -(void)updatePasswordWithPassword:(NSString *)password completionHandler:(void(^)(bool success))handler;
 -(void)deleteProfileCompletionHandler:(void(^)(bool success))handler;
 -(void)getSharedUserProfileForUsername:(NSString *)username WithFinish:(void(^)(PPPal *results))handler;

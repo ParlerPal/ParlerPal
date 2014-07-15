@@ -143,7 +143,7 @@
           }];
 }
 
--(void)updateUserProfileWithCountry:(NSString *)country profile:(NSString *)profile age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler
+-(void)updateUserProfileWithEmail:(NSString *)email country:(NSString *)country profile:(NSString *)profile age:(NSString *)age gender:(int)gender completionHandler:(void(^)(bool success))handler
 {
     NSDictionary *parameters = @{@"country": country, @"profile": profile, @"age": age, @"gender":[NSNumber numberWithInt:gender]};
     [manager POST:[NSString stringWithFormat:@"%@%@", WEB_SERVICES, @"users/updateUserProfile.php"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

@@ -236,7 +236,7 @@
     
     if([identifier isEqualToString:@"doneSegue"])
     {
-        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithCountry:countryField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
+        [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithEmail:privateEmailField.text country:countryField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
         }];
         
         return YES;
