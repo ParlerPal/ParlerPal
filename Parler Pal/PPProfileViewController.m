@@ -182,7 +182,7 @@
 {
     [self.view endEditing:YES];
     
-    if([passwordField.text isEqualToString:confirmPasswordField.text] && (passwordField.text.length > 0 && confirmPasswordField.text.length >0 ))
+    if([passwordField.text isEqualToString:confirmPasswordField.text] && (passwordField.text.length > 6 && confirmPasswordField.text.length > 6 ))
     {
         [[PPDatabaseManager sharedDatabaseManager]updatePasswordWithPassword:passwordField.text completionHandler:^(bool success)
         {
@@ -227,6 +227,13 @@
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
+    if (![self validateEmail:self.privateEmailField.text])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Please enter a valid email address." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+        [alert show];
+        return NO;
+    }
+    
     if([identifier isEqualToString:@"doneSegue"])
     {
         [[PPDatabaseManager sharedDatabaseManager]updateUserProfileWithCountry:countryField.text profile:profile.text age:age.text gender:(int)gender.selectedSegmentIndex completionHandler:^(bool success) {
@@ -276,6 +283,23 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.countryField.text = [listOfCountries objectAtIndex:row];
     [self.countryField resignFirstResponder];
+}
+
+#pragma mark - email validation
+
+-(BOOL)validateEmail:(NSString *)emailAddress
+{
+    NSString *regex =
+    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    NSPredicate *emailPred = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", regex];
+    
+    return [emailPred evaluateWithObject:emailAddress];
 }
 
 @end
